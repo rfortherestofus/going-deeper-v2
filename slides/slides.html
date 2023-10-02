@@ -1326,6 +1326,24 @@
 # ℹ 70 more rows</code></pre>
 </div>
 </div>
+</section>
+<section id="your-turn-4" class="slide level2 your-turn center">
+<h2>Your Turn</h2>
+<ul>
+<li class="fragment">Run the following code to view the built-in <code>gss_cat</code> data frame.</li>
+</ul>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb55-2"><a href="#cb55-2"></a></span>
+<span id="cb55-3"><a href="#cb55-3"></a>gss_cat <span class="sc">|&gt;</span> </span>
+<span id="cb55-4"><a href="#cb55-4"></a>  <span class="fu">view</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<ul>
+<li class="fragment"><p>Then, write code to count the number of unique responses in the <code>partyid</code> variable.</p></li>
+<li class="fragment"><p>You’ll need to use the <code>separate_longer_delim()</code> and <code>count()</code> functions to do this.</p></li>
+</ul>
 </section></section>
 <section>
 <section id="changing-variable-types" class="title-slide slide level1 inverse center" data-background-image="assets/types.jpg">
@@ -1335,10 +1353,10 @@
 <section id="changing-variable-types-1" class="slide level2 center">
 <h2>Changing Variable Types</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a>german_speakers <span class="sc">|&gt;</span></span>
-<span id="cb55-2"><a href="#cb55-2"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>state,</span>
-<span id="cb55-3"><a href="#cb55-3"></a>               <span class="at">names_to =</span> <span class="st">"year"</span>,</span>
-<span id="cb55-4"><a href="#cb55-4"></a>               <span class="at">values_to =</span> <span class="st">"number"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a>german_speakers <span class="sc">|&gt;</span></span>
+<span id="cb56-2"><a href="#cb56-2"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>state,</span>
+<span id="cb56-3"><a href="#cb56-3"></a>               <span class="at">names_to =</span> <span class="st">"year"</span>,</span>
+<span id="cb56-4"><a href="#cb56-4"></a>               <span class="at">values_to =</span> <span class="st">"number"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 153 × 3
    state    year                           number
@@ -1360,11 +1378,11 @@
 <section id="changing-variable-types-2" class="slide level2 center">
 <h2>Changing Variable Types</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb57" data-code-line-numbers="5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a>german_speakers <span class="sc">|&gt;</span></span>
-<span id="cb57-2"><a href="#cb57-2"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>state,</span>
-<span id="cb57-3"><a href="#cb57-3"></a>               <span class="at">names_to =</span> <span class="st">"year"</span>,</span>
-<span id="cb57-4"><a href="#cb57-4"></a>               <span class="at">values_to =</span> <span class="st">"number"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb57-5"><a href="#cb57-5"></a>  <span class="fu">summarize</span>(<span class="at">total =</span> <span class="fu">sum</span>(number, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58" data-code-line-numbers="5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a>german_speakers <span class="sc">|&gt;</span></span>
+<span id="cb58-2"><a href="#cb58-2"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>state,</span>
+<span id="cb58-3"><a href="#cb58-3"></a>               <span class="at">names_to =</span> <span class="st">"year"</span>,</span>
+<span id="cb58-4"><a href="#cb58-4"></a>               <span class="at">values_to =</span> <span class="st">"number"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb58-5"><a href="#cb58-5"></a>  <span class="fu">summarize</span>(<span class="at">total =</span> <span class="fu">sum</span>(number, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output cell-output-error">
@@ -1379,12 +1397,12 @@ Caused by error in `sum()`:
 <h2>Changing Variable Types</h2>
 <p>To change variable types, you use the <code>mutate()</code> function combined with <code>as.numeric()</code>, <code>as.character()</code>, etc.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb59" data-code-line-numbers="5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a>german_speakers <span class="sc">|&gt;</span></span>
-<span id="cb59-2"><a href="#cb59-2"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>state,</span>
-<span id="cb59-3"><a href="#cb59-3"></a>               <span class="at">names_to =</span> <span class="st">"year"</span>,</span>
-<span id="cb59-4"><a href="#cb59-4"></a>               <span class="at">values_to =</span> <span class="st">"number"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb59-5"><a href="#cb59-5"></a>  <span class="fu">mutate</span>(<span class="at">number =</span> <span class="fu">as.numeric</span>(number)) <span class="sc">|&gt;</span> </span>
-<span id="cb59-6"><a href="#cb59-6"></a>  <span class="fu">summarize</span>(<span class="at">total =</span> <span class="fu">sum</span>(number, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb60" data-code-line-numbers="5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1"></a>german_speakers <span class="sc">|&gt;</span></span>
+<span id="cb60-2"><a href="#cb60-2"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>state,</span>
+<span id="cb60-3"><a href="#cb60-3"></a>               <span class="at">names_to =</span> <span class="st">"year"</span>,</span>
+<span id="cb60-4"><a href="#cb60-4"></a>               <span class="at">values_to =</span> <span class="st">"number"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb60-5"><a href="#cb60-5"></a>  <span class="fu">mutate</span>(<span class="at">number =</span> <span class="fu">as.numeric</span>(number)) <span class="sc">|&gt;</span> </span>
+<span id="cb60-6"><a href="#cb60-6"></a>  <span class="fu">summarize</span>(<span class="at">total =</span> <span class="fu">sum</span>(number, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
   total
@@ -1410,11 +1428,11 @@ Caused by error in `sum()`:
 <h2>Changing Variable Types</h2>
 <p>You can also use <code>parse_number()</code> to change the variable to numeric.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1"></a>german_speakers <span class="sc">|&gt;</span></span>
-<span id="cb61-2"><a href="#cb61-2"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>state,</span>
-<span id="cb61-3"><a href="#cb61-3"></a>               <span class="at">names_to =</span> <span class="st">"year"</span>,</span>
-<span id="cb61-4"><a href="#cb61-4"></a>               <span class="at">values_to =</span> <span class="st">"number"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb61-5"><a href="#cb61-5"></a>  <span class="fu">mutate</span>(<span class="at">number =</span> <span class="fu">parse_number</span>(number)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1"></a>german_speakers <span class="sc">|&gt;</span></span>
+<span id="cb62-2"><a href="#cb62-2"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>state,</span>
+<span id="cb62-3"><a href="#cb62-3"></a>               <span class="at">names_to =</span> <span class="st">"year"</span>,</span>
+<span id="cb62-4"><a href="#cb62-4"></a>               <span class="at">values_to =</span> <span class="st">"number"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb62-5"><a href="#cb62-5"></a>  <span class="fu">mutate</span>(<span class="at">number =</span> <span class="fu">parse_number</span>(number)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 153 × 3
    state    year                           number
@@ -1440,7 +1458,7 @@ Caused by error in `sum()`:
 <li class="fragment"><p>Count the number of students at each proficiency level</p></li>
 </ol>
 </section>
-<section id="your-turn-4" class="slide level2 your-turn center">
+<section id="your-turn-5" class="slide level2 your-turn center">
 <h2>Your Turn</h2>
 <ol type="1">
 <li class="fragment"><p>Convert the <code>number_of_students</code> variable to numeric by using <code>as.numeric()</code> and <code>parse_number()</code></p></li>
@@ -1455,10 +1473,10 @@ Caused by error in `sum()`:
 <section id="use-the-na-argument-when-importing-data" class="slide level2 center">
 <h2>Use the <code>na</code> Argument When Importing Data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb63" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1"></a>math_scores_2021_2022 <span class="ot">&lt;-</span></span>
-<span id="cb63-2"><a href="#cb63-2"></a>  <span class="fu">read_excel</span>(<span class="at">path =</span> <span class="st">"data-raw/pagr_schools_math_tot_raceethnicity_2122.xlsx"</span>,</span>
-<span id="cb63-3"><a href="#cb63-3"></a>             <span class="at">na =</span> <span class="fu">c</span>(<span class="st">"*"</span>, <span class="st">"-"</span>, <span class="st">"--"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb63-4"><a href="#cb63-4"></a>  <span class="fu">clean_names</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb64" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1"></a>math_scores_2021_2022 <span class="ot">&lt;-</span></span>
+<span id="cb64-2"><a href="#cb64-2"></a>  <span class="fu">read_excel</span>(<span class="at">path =</span> <span class="st">"data-raw/pagr_schools_math_tot_raceethnicity_2122.xlsx"</span>,</span>
+<span id="cb64-3"><a href="#cb64-3"></a>             <span class="at">na =</span> <span class="fu">c</span>(<span class="st">"*"</span>, <span class="st">"-"</span>, <span class="st">"--"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb64-4"><a href="#cb64-4"></a>  <span class="fu">clean_names</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="na_if" class="slide level2 center">
@@ -1485,21 +1503,21 @@ Caused by error in `sum()`:
 <section id="na_if-1" class="slide level2 center">
 <h2><code>na_if()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb65" data-code-line-numbers="5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1"></a>german_speakers <span class="sc">|&gt;</span></span>
-<span id="cb65-2"><a href="#cb65-2"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>state,</span>
-<span id="cb65-3"><a href="#cb65-3"></a>               <span class="at">names_to =</span> <span class="st">"year"</span>,</span>
-<span id="cb65-4"><a href="#cb65-4"></a>               <span class="at">values_to =</span> <span class="st">"number"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb65-5"><a href="#cb65-5"></a>  <span class="fu">mutate</span>(<span class="at">number =</span> <span class="fu">na_if</span>(number, <span class="st">"-"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="na_if-2" class="slide level2 center">
-<h2><code>na_if()</code></h2>
-<div class="cell">
 <div class="sourceCode cell-code" id="cb66" data-code-line-numbers="5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1"></a>german_speakers <span class="sc">|&gt;</span></span>
 <span id="cb66-2"><a href="#cb66-2"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>state,</span>
 <span id="cb66-3"><a href="#cb66-3"></a>               <span class="at">names_to =</span> <span class="st">"year"</span>,</span>
 <span id="cb66-4"><a href="#cb66-4"></a>               <span class="at">values_to =</span> <span class="st">"number"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb66-5"><a href="#cb66-5"></a>  <span class="fu">mutate</span>(<span class="at">number =</span> <span class="fu">na_if</span>(number, <span class="st">"-"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="na_if-2" class="slide level2 center">
+<h2><code>na_if()</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb67" data-code-line-numbers="5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1"></a>german_speakers <span class="sc">|&gt;</span></span>
+<span id="cb67-2"><a href="#cb67-2"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>state,</span>
+<span id="cb67-3"><a href="#cb67-3"></a>               <span class="at">names_to =</span> <span class="st">"year"</span>,</span>
+<span id="cb67-4"><a href="#cb67-4"></a>               <span class="at">values_to =</span> <span class="st">"number"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb67-5"><a href="#cb67-5"></a>  <span class="fu">mutate</span>(<span class="at">number =</span> <span class="fu">na_if</span>(number, <span class="st">"-"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 153 × 3
    state    year                           number
@@ -1534,12 +1552,12 @@ Caused by error in `sum()`:
 <section id="replace_na" class="slide level2 center">
 <h2><code>replace_na()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb68" data-code-line-numbers="6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1"></a>german_speakers <span class="sc">|&gt;</span></span>
-<span id="cb68-2"><a href="#cb68-2"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>state,</span>
-<span id="cb68-3"><a href="#cb68-3"></a>               <span class="at">names_to =</span> <span class="st">"year"</span>,</span>
-<span id="cb68-4"><a href="#cb68-4"></a>               <span class="at">values_to =</span> <span class="st">"number"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb68-5"><a href="#cb68-5"></a>  <span class="fu">mutate</span>(<span class="at">number =</span> <span class="fu">na_if</span>(number, <span class="st">"-"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb68-6"><a href="#cb68-6"></a>  <span class="fu">mutate</span>(<span class="at">number =</span> <span class="fu">replace_na</span>(number, <span class="st">"0"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb69" data-code-line-numbers="6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1"></a>german_speakers <span class="sc">|&gt;</span></span>
+<span id="cb69-2"><a href="#cb69-2"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>state,</span>
+<span id="cb69-3"><a href="#cb69-3"></a>               <span class="at">names_to =</span> <span class="st">"year"</span>,</span>
+<span id="cb69-4"><a href="#cb69-4"></a>               <span class="at">values_to =</span> <span class="st">"number"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb69-5"><a href="#cb69-5"></a>  <span class="fu">mutate</span>(<span class="at">number =</span> <span class="fu">na_if</span>(number, <span class="st">"-"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb69-6"><a href="#cb69-6"></a>  <span class="fu">mutate</span>(<span class="at">number =</span> <span class="fu">replace_na</span>(number, <span class="st">"0"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <aside class="notes">
 <p>The <code>replace_na()</code> function does the opposite: turns NAs into values.</p>
@@ -1558,12 +1576,12 @@ Caused by error in `sum()`:
 <section id="replace_na-1" class="slide level2 center">
 <h2><code>replace_na()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb69" data-code-line-numbers="6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1"></a>german_speakers <span class="sc">|&gt;</span></span>
-<span id="cb69-2"><a href="#cb69-2"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>state,</span>
-<span id="cb69-3"><a href="#cb69-3"></a>               <span class="at">names_to =</span> <span class="st">"year"</span>,</span>
-<span id="cb69-4"><a href="#cb69-4"></a>               <span class="at">values_to =</span> <span class="st">"number"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb69-5"><a href="#cb69-5"></a>  <span class="fu">mutate</span>(<span class="at">number =</span> <span class="fu">na_if</span>(number, <span class="st">"-"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb69-6"><a href="#cb69-6"></a>  <span class="fu">mutate</span>(<span class="at">number =</span> <span class="fu">replace_na</span>(number, <span class="st">"0"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb70" data-code-line-numbers="6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1"></a>german_speakers <span class="sc">|&gt;</span></span>
+<span id="cb70-2"><a href="#cb70-2"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>state,</span>
+<span id="cb70-3"><a href="#cb70-3"></a>               <span class="at">names_to =</span> <span class="st">"year"</span>,</span>
+<span id="cb70-4"><a href="#cb70-4"></a>               <span class="at">values_to =</span> <span class="st">"number"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb70-5"><a href="#cb70-5"></a>  <span class="fu">mutate</span>(<span class="at">number =</span> <span class="fu">na_if</span>(number, <span class="st">"-"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb70-6"><a href="#cb70-6"></a>  <span class="fu">mutate</span>(<span class="at">number =</span> <span class="fu">replace_na</span>(number, <span class="st">"0"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 153 × 3
    state    year                           number
@@ -1599,7 +1617,7 @@ Caused by error in `sum()`:
           display:block!important;
       }</style></aside>
 </section>
-<section id="your-turn-5" class="slide level2 your-turn center">
+<section id="your-turn-6" class="slide level2 your-turn center">
 <h2>Your Turn</h2>
 <ol type="1">
 <li class="fragment"><p>Convert all of the missing values in the <code>number_of_students</code> variable to NA using <code>na_if()</code></p></li>
@@ -1614,20 +1632,6 @@ Caused by error in `sum()`:
 <section id="group_by-mutate" class="slide level2 center">
 <h2><code>group_by()</code> + <code>mutate()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb71" data-code-line-numbers="7,8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1"></a>german_speakers <span class="sc">|&gt;</span></span>
-<span id="cb71-2"><a href="#cb71-2"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>state,</span>
-<span id="cb71-3"><a href="#cb71-3"></a>               <span class="at">names_to =</span> <span class="st">"year"</span>,</span>
-<span id="cb71-4"><a href="#cb71-4"></a>               <span class="at">values_to =</span> <span class="st">"number"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb71-5"><a href="#cb71-5"></a>  <span class="fu">mutate</span>(<span class="at">number =</span> <span class="fu">parse_number</span>(number)) <span class="sc">|&gt;</span></span>
-<span id="cb71-6"><a href="#cb71-6"></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">parse_number</span>(year)) <span class="sc">|&gt;</span></span>
-<span id="cb71-7"><a href="#cb71-7"></a>  <span class="fu">group_by</span>(year) <span class="sc">|&gt;</span> </span>
-<span id="cb71-8"><a href="#cb71-8"></a>  <span class="fu">mutate</span>(<span class="at">pct =</span> number <span class="sc">/</span> <span class="fu">sum</span>(number, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb71-9"><a href="#cb71-9"></a>  <span class="fu">arrange</span>(year, state)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="group_by-mutate-1" class="slide level2 center">
-<h2><code>group_by()</code> + <code>mutate()</code></h2>
-<div class="cell">
 <div class="sourceCode cell-code" id="cb72" data-code-line-numbers="7,8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1"></a>german_speakers <span class="sc">|&gt;</span></span>
 <span id="cb72-2"><a href="#cb72-2"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>state,</span>
 <span id="cb72-3"><a href="#cb72-3"></a>               <span class="at">names_to =</span> <span class="st">"year"</span>,</span>
@@ -1637,6 +1641,20 @@ Caused by error in `sum()`:
 <span id="cb72-7"><a href="#cb72-7"></a>  <span class="fu">group_by</span>(year) <span class="sc">|&gt;</span> </span>
 <span id="cb72-8"><a href="#cb72-8"></a>  <span class="fu">mutate</span>(<span class="at">pct =</span> number <span class="sc">/</span> <span class="fu">sum</span>(number, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span> </span>
 <span id="cb72-9"><a href="#cb72-9"></a>  <span class="fu">arrange</span>(year, state)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="group_by-mutate-1" class="slide level2 center">
+<h2><code>group_by()</code> + <code>mutate()</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb73" data-code-line-numbers="7,8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1"></a>german_speakers <span class="sc">|&gt;</span></span>
+<span id="cb73-2"><a href="#cb73-2"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>state,</span>
+<span id="cb73-3"><a href="#cb73-3"></a>               <span class="at">names_to =</span> <span class="st">"year"</span>,</span>
+<span id="cb73-4"><a href="#cb73-4"></a>               <span class="at">values_to =</span> <span class="st">"number"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb73-5"><a href="#cb73-5"></a>  <span class="fu">mutate</span>(<span class="at">number =</span> <span class="fu">parse_number</span>(number)) <span class="sc">|&gt;</span></span>
+<span id="cb73-6"><a href="#cb73-6"></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">parse_number</span>(year)) <span class="sc">|&gt;</span></span>
+<span id="cb73-7"><a href="#cb73-7"></a>  <span class="fu">group_by</span>(year) <span class="sc">|&gt;</span> </span>
+<span id="cb73-8"><a href="#cb73-8"></a>  <span class="fu">mutate</span>(<span class="at">pct =</span> number <span class="sc">/</span> <span class="fu">sum</span>(number, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb73-9"><a href="#cb73-9"></a>  <span class="fu">arrange</span>(year, state)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 153 × 4
 # Groups:   year [3]
@@ -1659,21 +1677,6 @@ Caused by error in `sum()`:
 <section id="ungroup" class="slide level2 center">
 <h2><code>ungroup()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb74" data-code-line-numbers="7,8,9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1"></a>german_speakers <span class="sc">|&gt;</span></span>
-<span id="cb74-2"><a href="#cb74-2"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>state,</span>
-<span id="cb74-3"><a href="#cb74-3"></a>               <span class="at">names_to =</span> <span class="st">"year"</span>,</span>
-<span id="cb74-4"><a href="#cb74-4"></a>               <span class="at">values_to =</span> <span class="st">"number"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb74-5"><a href="#cb74-5"></a>  <span class="fu">mutate</span>(<span class="at">number =</span> <span class="fu">parse_number</span>(number)) <span class="sc">|&gt;</span></span>
-<span id="cb74-6"><a href="#cb74-6"></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">parse_number</span>(year)) <span class="sc">|&gt;</span></span>
-<span id="cb74-7"><a href="#cb74-7"></a>  <span class="fu">group_by</span>(year) <span class="sc">|&gt;</span> </span>
-<span id="cb74-8"><a href="#cb74-8"></a>  <span class="fu">mutate</span>(<span class="at">pct =</span> number <span class="sc">/</span> <span class="fu">sum</span>(number, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb74-9"><a href="#cb74-9"></a>  <span class="fu">slice_max</span>(<span class="at">order_by =</span> pct, <span class="at">n =</span> <span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb74-10"><a href="#cb74-10"></a>  <span class="fu">arrange</span>(year, state)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="ungroup-1" class="slide level2 center">
-<h2><code>ungroup()</code></h2>
-<div class="cell">
 <div class="sourceCode cell-code" id="cb75" data-code-line-numbers="7,8,9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1"></a>german_speakers <span class="sc">|&gt;</span></span>
 <span id="cb75-2"><a href="#cb75-2"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>state,</span>
 <span id="cb75-3"><a href="#cb75-3"></a>               <span class="at">names_to =</span> <span class="st">"year"</span>,</span>
@@ -1684,6 +1687,21 @@ Caused by error in `sum()`:
 <span id="cb75-8"><a href="#cb75-8"></a>  <span class="fu">mutate</span>(<span class="at">pct =</span> number <span class="sc">/</span> <span class="fu">sum</span>(number, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb75-9"><a href="#cb75-9"></a>  <span class="fu">slice_max</span>(<span class="at">order_by =</span> pct, <span class="at">n =</span> <span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb75-10"><a href="#cb75-10"></a>  <span class="fu">arrange</span>(year, state)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="ungroup-1" class="slide level2 center">
+<h2><code>ungroup()</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb76" data-code-line-numbers="7,8,9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1"></a>german_speakers <span class="sc">|&gt;</span></span>
+<span id="cb76-2"><a href="#cb76-2"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>state,</span>
+<span id="cb76-3"><a href="#cb76-3"></a>               <span class="at">names_to =</span> <span class="st">"year"</span>,</span>
+<span id="cb76-4"><a href="#cb76-4"></a>               <span class="at">values_to =</span> <span class="st">"number"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb76-5"><a href="#cb76-5"></a>  <span class="fu">mutate</span>(<span class="at">number =</span> <span class="fu">parse_number</span>(number)) <span class="sc">|&gt;</span></span>
+<span id="cb76-6"><a href="#cb76-6"></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">parse_number</span>(year)) <span class="sc">|&gt;</span></span>
+<span id="cb76-7"><a href="#cb76-7"></a>  <span class="fu">group_by</span>(year) <span class="sc">|&gt;</span> </span>
+<span id="cb76-8"><a href="#cb76-8"></a>  <span class="fu">mutate</span>(<span class="at">pct =</span> number <span class="sc">/</span> <span class="fu">sum</span>(number, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb76-9"><a href="#cb76-9"></a>  <span class="fu">slice_max</span>(<span class="at">order_by =</span> pct, <span class="at">n =</span> <span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb76-10"><a href="#cb76-10"></a>  <span class="fu">arrange</span>(year, state)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 4
 # Groups:   year [3]
@@ -1698,22 +1716,6 @@ Caused by error in `sum()`:
 <section id="ungroup-2" class="slide level2 center">
 <h2><code>ungroup()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb77" data-code-line-numbers="9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1"></a>german_speakers <span class="sc">|&gt;</span></span>
-<span id="cb77-2"><a href="#cb77-2"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>state,</span>
-<span id="cb77-3"><a href="#cb77-3"></a>               <span class="at">names_to =</span> <span class="st">"year"</span>,</span>
-<span id="cb77-4"><a href="#cb77-4"></a>               <span class="at">values_to =</span> <span class="st">"number"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb77-5"><a href="#cb77-5"></a>  <span class="fu">mutate</span>(<span class="at">number =</span> <span class="fu">parse_number</span>(number)) <span class="sc">|&gt;</span></span>
-<span id="cb77-6"><a href="#cb77-6"></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">parse_number</span>(year)) <span class="sc">|&gt;</span></span>
-<span id="cb77-7"><a href="#cb77-7"></a>  <span class="fu">group_by</span>(year) <span class="sc">|&gt;</span> </span>
-<span id="cb77-8"><a href="#cb77-8"></a>  <span class="fu">mutate</span>(<span class="at">pct =</span> number <span class="sc">/</span> <span class="fu">sum</span>(number, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb77-9"><a href="#cb77-9"></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb77-10"><a href="#cb77-10"></a>  <span class="fu">slice_max</span>(<span class="at">order_by =</span> pct, <span class="at">n =</span> <span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb77-11"><a href="#cb77-11"></a>  <span class="fu">arrange</span>(year, state)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="ungroup-3" class="slide level2 center">
-<h2><code>ungroup()</code></h2>
-<div class="cell">
 <div class="sourceCode cell-code" id="cb78" data-code-line-numbers="9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1"></a>german_speakers <span class="sc">|&gt;</span></span>
 <span id="cb78-2"><a href="#cb78-2"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>state,</span>
 <span id="cb78-3"><a href="#cb78-3"></a>               <span class="at">names_to =</span> <span class="st">"year"</span>,</span>
@@ -1725,6 +1727,22 @@ Caused by error in `sum()`:
 <span id="cb78-9"><a href="#cb78-9"></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span> </span>
 <span id="cb78-10"><a href="#cb78-10"></a>  <span class="fu">slice_max</span>(<span class="at">order_by =</span> pct, <span class="at">n =</span> <span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb78-11"><a href="#cb78-11"></a>  <span class="fu">arrange</span>(year, state)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="ungroup-3" class="slide level2 center">
+<h2><code>ungroup()</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb79" data-code-line-numbers="9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1"></a>german_speakers <span class="sc">|&gt;</span></span>
+<span id="cb79-2"><a href="#cb79-2"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>state,</span>
+<span id="cb79-3"><a href="#cb79-3"></a>               <span class="at">names_to =</span> <span class="st">"year"</span>,</span>
+<span id="cb79-4"><a href="#cb79-4"></a>               <span class="at">values_to =</span> <span class="st">"number"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb79-5"><a href="#cb79-5"></a>  <span class="fu">mutate</span>(<span class="at">number =</span> <span class="fu">parse_number</span>(number)) <span class="sc">|&gt;</span></span>
+<span id="cb79-6"><a href="#cb79-6"></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">parse_number</span>(year)) <span class="sc">|&gt;</span></span>
+<span id="cb79-7"><a href="#cb79-7"></a>  <span class="fu">group_by</span>(year) <span class="sc">|&gt;</span> </span>
+<span id="cb79-8"><a href="#cb79-8"></a>  <span class="fu">mutate</span>(<span class="at">pct =</span> number <span class="sc">/</span> <span class="fu">sum</span>(number, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb79-9"><a href="#cb79-9"></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb79-10"><a href="#cb79-10"></a>  <span class="fu">slice_max</span>(<span class="at">order_by =</span> pct, <span class="at">n =</span> <span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb79-11"><a href="#cb79-11"></a>  <span class="fu">arrange</span>(year, state)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 4
   state     year number    pct
@@ -1738,7 +1756,7 @@ Caused by error in `sum()`:
 <p>I’ll calculate the percent of students at each school who are at each proficient level in math.</p>
 <p>And I can’t forget to <code>ungroup()</code>!</p>
 </section>
-<section id="your-turn-6" class="slide level2 your-turn center">
+<section id="your-turn-7" class="slide level2 your-turn center">
 <h2>Your Turn</h2>
 <p>Create a new variable called <code>pct</code> that shows each race/ethnicity as a percentage of all students in each district.</p>
 <p>You’ll need to use <code>group_by()</code> and <code>mutate()</code>.</p>
@@ -1767,7 +1785,7 @@ Caused by error in `sum()`:
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1"></a>german_speakers_2018</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1"></a>german_speakers_2018</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 51 × 3
    state                 year number
@@ -1787,7 +1805,7 @@ Caused by error in `sum()`:
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1"></a>german_speakers_2019</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1"></a>german_speakers_2019</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 51 × 3
    state                 year number
@@ -1811,7 +1829,7 @@ Caused by error in `sum()`:
 <section id="bind_rows-1" class="slide level2 center">
 <h2>bind_rows()</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1"></a><span class="fu">bind_rows</span>(german_speakers_2018, german_speakers_2019) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1"></a><span class="fu">bind_rows</span>(german_speakers_2018, german_speakers_2019) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="bind_rows-2" class="slide level2 center">
@@ -1830,13 +1848,13 @@ Caused by error in `sum()`:
 <section id="bind_cols" class="slide level2 center">
 <h2>bind_cols()</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1"></a><span class="fu">bind_cols</span>(german_speakers_2018, german_speakers_2019)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1"></a><span class="fu">bind_cols</span>(german_speakers_2018, german_speakers_2019)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="bind_cols-1" class="slide level2 center">
 <h2>bind_cols()</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1"></a><span class="fu">bind_cols</span>(german_speakers_2018, german_speakers_2019)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1"></a><span class="fu">bind_cols</span>(german_speakers_2018, german_speakers_2019)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 51 × 6
    state...1            year...2 number...3 state...4        year...5 number...6
@@ -1859,7 +1877,7 @@ Caused by error in `sum()`:
 <h2>My Turn</h2>
 <p>I’ll import 2018-2019 math proficiency data and then use <code>bind_rows()</code> to make a <code>third_grade_math_proficiency</code> data frame.</p>
 </section>
-<section id="your-turn-7" class="slide level2 your-turn center">
+<section id="your-turn-8" class="slide level2 your-turn center">
 <h2>Your Turn</h2>
 <ol type="1">
 <li class="fragment"><p>Import 2021-2022 enrollment data into a data frame called <code>enrollment_by_race_ethnicity_2021_2022</code> and clean it using the code you used for the 2022-2023 data. You’ll need to change bits of your code to make it work.</p></li>

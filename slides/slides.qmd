@@ -713,6 +713,26 @@ activities_survey |>
   count(activities)
 ```
 
+## Your Turn {.your-turn}
+
+- Run the following code to view the built-in `gss_cat` data frame. 
+
+::: {.fragment}
+```{r}
+#| echo: true
+
+library(tidyverse)
+
+gss_cat |> 
+  view()
+```
+:::
+
+- Then, write code to count the number of unique responses in the `partyid` variable.
+
+- You'll need to use the `separate_longer_delim()` and `count()` functions to do this.
+
+
 
 # Changing Variable Types {.inverse background-image="assets/types.jpg"}
 
