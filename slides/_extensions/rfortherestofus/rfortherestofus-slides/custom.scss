@@ -225,9 +225,10 @@ a > code {
 }
 
 .reveal .slide blockquote {
-  border-left: none;
-  padding-left: 1.5em;
-  color: white;
+  border-left: $body-color 3px solid;
+  font-style: italic;
+  color: $body-color;
+  margin-bottom: 1em;
 }
 
 .reveal .slide blockquote li {

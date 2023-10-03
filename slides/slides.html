@@ -567,8 +567,8 @@
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>german_speakers_numeric <span class="sc">|&gt;</span></span>
 <span id="cb8-2"><a href="#cb8-2"></a>  <span class="fu">mutate</span>(<span class="at">total =</span> number_of_german_speakers_2017 <span class="sc">+</span> </span>
-<span id="cb8-3"><a href="#cb8-3"></a>                 number_of_german_speakers_2018 <span class="sc">+</span> </span>
-<span id="cb8-4"><a href="#cb8-4"></a>                 number_of_german_speakers_2019) <span class="sc">|&gt;</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a>           number_of_german_speakers_2018 <span class="sc">+</span> </span>
+<span id="cb8-4"><a href="#cb8-4"></a>           number_of_german_speakers_2019) <span class="sc">|&gt;</span></span>
 <span id="cb8-5"><a href="#cb8-5"></a>  <span class="fu">select</span>(state, total)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 51 × 2
@@ -1880,7 +1880,7 @@ Caused by error in `sum()`:
 <section id="your-turn-8" class="slide level2 your-turn center">
 <h2>Your Turn</h2>
 <ol type="1">
-<li class="fragment"><p>Import 2021-2022 enrollment data into a data frame called <code>enrollment_by_race_ethnicity_2021_2022</code> and clean it using the code you used for the 2022-2023 data. You’ll need to change bits of your code to make it work.</p></li>
+<li class="fragment"><p>Import 2021-2022 enrollment data into a data frame called <code>enrollment_by_race_ethnicity_2021_2022</code> and clean it using the code you used for the 2022-2023 data.</p></li>
 <li class="fragment"><p>Add a <code>year</code> variable to the <code>enrollment_by_race_ethnicity_2021_2022</code> and <code>enrollment_by_race_ethnicity_2022_2023</code> data frames.</p></li>
 </ol>
 </section>
@@ -1889,276 +1889,492 @@ Caused by error in `sum()`:
 <ol start="3" type="1">
 <li class="fragment">Use bind_rows() to make a <code>enrollment_by_race_ethnicity</code> data frame by combining the <code>enrollment_by_race_ethnicity_2021_2022</code> and <code>enrollment_by_race_ethnicity_2022_2023</code> data frames.</li>
 </ol>
-<!-- class: center, middle, dk-section-title -->
-<!-- background-image:url("assets/code-heart.jpg") -->
-<!-- # Functions -->
-<!-- ## When to Use Functions? -->
-<!-- You should consider writing a function whenever you’ve copied and pasted a block of code more than twice (i.e. you now have three copies of the same code). -->
-<!-- ## What is a Function? -->
-<!-- <iframe src="https://player.vimeo.com/video/365850546" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe> -->
-<!-- Source: [R for the Rest of Us Blog](https://rfortherestofus.com/2019/10/how-to-make-functions-in-r/) -->
-<!-- ## Why Use Functions? -->
-<!-- 1. You can give a function an evocative name that makes your code easier to understand. -->
-<!-- -- -->
-<!-- 1. As requirements change, you only need to update code in one place, instead of many. -->
-<!-- -- -->
-<!-- 1. You eliminate the chance of making incidental mistakes when you copy and paste (i.e. updating a variable name in one place, but not in another). -->
-<!-- .right[ -->
-<!-- Source: [R for Data Science, Chapter 19](https://r4ds.had.co.nz/functions.html) -->
-<!-- ] -->
-<!-- class: my-turn -->
-<!-- ## My Turn -->
-<!-- I'll create a function to clean each year of math proficiency data, then use `bind_rows()` to bind them together -->
-<!-- class: inverse -->
-<!-- ## Your Turn -->
-<!-- Create a function to clean each year of enrollment data, then use `bind_rows()` to bind them together -->
-<!-- -- -->
-<!-- Arguments you'll need to use: -->
-<!-- - Data year -->
-<!-- - Text to remove in the `str_remove()` line -->
-<!-- class: center, middle, dk-section-title -->
-<!-- background-image:url("assets/highway.jpg") -->
-<!-- # Data Merging -->
-<!-- ## Data Merging -->
-<!-- All of the animations and explanations used here come from the [tidyexplain project by Garrick Aden-Buie](https://www.garrickadenbuie.com/project/tidyexplain/). -->
-<!-- ## Data Merging -->
-<!-- ```{r} -->
-<!-- #| eval: false -->
-<!-- #| echo: false -->
-<!-- german_speakers_2019 <- german_speakers |> -->
-<!--   pivot_longer(cols = -state, -->
-<!--                names_to = "year", -->
-<!--                values_to = "number") |> -->
-<!--   mutate(number = na_if(number, "-")) |> -->
-<!--   mutate(number = replace_na(number, 0)) |> -->
-<!--   mutate(number = as.numeric(number)) |> -->
-<!--   mutate(year = parse_number(year)) |> -->
-<!--   filter(year == 2019) |> -->
-<!--   select(-year) -->
-<!-- ``` -->
-<!-- ```{r eval = TRUE} -->
-<!-- german_speakers_2019 -->
-<!-- ``` -->
-<!-- ## Data Merging -->
-<!-- ```{r eval = TRUE, include = FALSE} -->
-<!-- french_speakers_2019 <- read_excel(path = here("data-raw", "german-and-french-speakers.xlsx"), -->
-<!--                                    sheet = "French speakers 2019") -->
-<!-- ``` -->
-<!-- ```{r include = TRUE, eval = FALSE} -->
-<!-- french_speakers_2019 <- read_excel(path = "data-raw/german-and-french-speakers.xlsx", -->
-<!--                                    sheet = "French speakers 2019") -->
-<!-- ``` -->
-<!-- -- -->
-<!-- ```{r} -->
-<!-- #| eval: false -->
-<!-- #| echo: false -->
-<!-- french_speakers_2019 -->
-<!-- ``` -->
-<!-- ## Joins -->
-<!-- ![](assets/original-dfs.png) -->
-<!-- ## Joins -->
-<!-- ```{r} -->
-<!--  type_of_join(x, y, -->
-<!--               by = "id_variable")) -->
-<!-- ``` -->
-<!-- -- -->
-<!-- What if we don't have a variable with the same name in both data frames? -->
-<!-- -- -->
-<!-- ```{r} -->
-<!-- type_of_join(x, y, -->
-<!--              by = c("id_variable_x" = "id_variable_y")) -->
-<!-- ``` -->
-<!-- -- -->
-<!-- What if we need to join on multiple variables with different names in both data frames? -->
-<!-- -- -->
-<!-- ```{r} -->
-<!--  type_of_join(x, y, -->
-<!--               by = c("id_variable_a" = "id_variable_b", -->
-<!--                      "id_variable_c" = "id_variable_d")) -->
-<!-- ``` -->
-<!-- ## Which join should I use? -->
-<!-- ![](assets/claus-wilke-left-join.png) -->
-<!-- ## Mutating joins -->
+<div class="fragment">
+<p>You’ll need to change bits of your code to make it work, including renaming variables so they are consistent across the two data frames. Use the starter code to help you.</p>
+</div>
+</section>
+<section id="renaming-variables" class="slide level2 center">
+<h2>Renaming Variables</h2>
+</section>
+<section id="rename" class="slide level2 center">
+<h2><code>rename()</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1"></a>data_frame <span class="sc">|&gt;</span></span>
+<span id="cb89-2"><a href="#cb89-2"></a>  <span class="fu">rename</span>(<span class="at">new_variable_name =</span> old_variable_name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="set_names" class="slide level2 center">
+<h2><code>set_names()</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1"></a>data_frame <span class="sc">|&gt;</span></span>
+<span id="cb90-2"><a href="#cb90-2"></a>  <span class="fu">set_names</span>(<span class="st">"variable1"</span>, <span class="st">"variable2"</span>, <span class="st">"variable3"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section></section>
+<section>
+<section id="functions" class="title-slide slide level1 inverse center" data-background-image="assets/code-heart.jpg">
+<h1>Functions</h1>
+<aside class="notes">
+<p>Show example of my turn and talk about if I want to add more years and/or change the code</p>
+<p>Let’s talk about the why and the when before we get into how functions work</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="when-to-use-functions" class="slide level2 center">
+<h2>When to Use Functions?</h2>
+<blockquote>
+<p>A good rule of thumb is to consider writing a function whenever you’ve copied and pasted a block of code more than twice (i.e.&nbsp;you now have three copies of the same code)</p>
+</blockquote>
+<div class="small">
+<p>Source: Hadley Wickham, Mine Çetinkaya-Rundel, and Garrett Grolemund in <a href="https://r4ds.hadley.nz/functions#:~:text=A%20good%20rule%20of%20thumb%20is%20to%20consider%20writing%20a%20function%20whenever%20you%E2%80%99ve%20copied%20and%20pasted%20a%20block%20of%20code%20more%20than%20twice%20(i.e.%C2%A0you%20now%20have%20three%20copies%20of%20the%20same%20code)">R for Data Science</a></p>
+</div>
+</section>
+<section id="why-use-functions" class="slide level2 center">
+<h2>Why Use Functions?</h2>
+<ol type="1">
+<li class="fragment"><p>You can give a function an evocative name that makes your code easier to understand.</p></li>
+<li class="fragment"><p>As requirements change, you only need to update code in one place, instead of many.</p></li>
+<li class="fragment"><p>You eliminate the chance of making incidental mistakes when you copy and paste (i.e.&nbsp;updating a variable name in one place, but not in another).</p></li>
+<li class="fragment"><p>It makes it easier to reuse work from project-to-project, increasing your productivity over time.</p></li>
+</ol>
+<div class="fragment small">
+<p>Source: <a href="https://r4ds.hadley.nz/functions#:~:text=You%20can%20give,productivity%20over%20time.">R for Data Science</a></p>
+</div>
+</section>
+<section id="how-do-functions-work" class="slide level2 center">
+<h2>How do Functions Work?</h2>
+<div class="fragment">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 51 × 3
+   state                 year number
+   &lt;chr&gt;                &lt;dbl&gt;  &lt;dbl&gt;
+ 1 Alabama               2018    395
+ 2 Alaska                2018    201
+ 3 Arizona               2018    858
+ 4 Arkansas              2018    635
+ 5 California            2018    318
+ 6 Colorado              2018    498
+ 7 Connecticut           2018    334
+ 8 Delaware              2018    998
+ 9 District of Columbia  2018    745
+10 Florida               2018    924
+# ℹ 41 more rows</code></pre>
+</div>
+</div>
+</div>
+<p><br></p>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1"></a>find_most_german_speakers <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb92-2"><a href="#cb92-2"></a>  </span>
+<span id="cb92-3"><a href="#cb92-3"></a>  german_speakers_2018 <span class="sc">|&gt;</span> </span>
+<span id="cb92-4"><a href="#cb92-4"></a>    <span class="fu">slice_max</span>(<span class="at">order_by =</span> number,</span>
+<span id="cb92-5"><a href="#cb92-5"></a>              <span class="at">n =</span> <span class="dv">1</span>)</span>
+<span id="cb92-6"><a href="#cb92-6"></a>  </span>
+<span id="cb92-7"><a href="#cb92-7"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<p><br></p>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1"></a><span class="fu">find_most_german_speakers</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+  state     year number
+  &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt;
+1 Delaware  2018    998</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="function-arguments" class="slide level2 center">
+<h2>Function Arguments</h2>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1"></a>find_most_german_speakers <span class="ot">&lt;-</span> <span class="cf">function</span>(df) {</span>
+<span id="cb95-2"><a href="#cb95-2"></a>  </span>
+<span id="cb95-3"><a href="#cb95-3"></a>  df <span class="sc">|&gt;</span> </span>
+<span id="cb95-4"><a href="#cb95-4"></a>    <span class="fu">slice_max</span>(<span class="at">order_by =</span> number,</span>
+<span id="cb95-5"><a href="#cb95-5"></a>              <span class="at">n =</span> <span class="dv">1</span>)</span>
+<span id="cb95-6"><a href="#cb95-6"></a>  </span>
+<span id="cb95-7"><a href="#cb95-7"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<p><br></p>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1"></a><span class="fu">find_most_german_speakers</span>(<span class="at">df =</span> german_speakers_2018)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+  state     year number
+  &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt;
+1 Delaware  2018    998</code></pre>
+</div>
+</div>
+</div>
+<p><br></p>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1"></a><span class="fu">find_most_german_speakers</span>(<span class="at">df =</span> german_speakers_2019)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+  state          year number
+  &lt;chr&gt;         &lt;dbl&gt;  &lt;dbl&gt;
+1 West Virginia  2019    974</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="my-turn-8" class="slide level2 my-turn center">
+<h2>My Turn</h2>
+<p>I’ll create a function to clean each year of math proficiency data, then use <code>bind_rows()</code> to bind them together.</p>
+</section>
+<section id="your-turn-9" class="slide level2 your-turn center">
+<h2>Your Turn</h2>
+<ol type="1">
+<li class="fragment"><p>Create a function to clean each year of enrollment data.</p></li>
+<li class="fragment"><p>To check that your function works, create <code>enrollment_by_race_ethnicity_2021_2022</code> and <code>enrollment_by_race_ethnicity_2022_2023</code> data frames and then bind them together with <code>bind_rows()</code>.</p></li>
+</ol>
+</section>
+<section id="your-turn-continued-4" class="slide level2 your-turn center">
+<h2>Your Turn, Continued</h2>
+<ol start="3" type="1">
+<li class="fragment">After you create your function to clean each year of enrollment data, use <code>bind_rows()</code> to bind them together.</li>
+</ol>
+<div class="fragment">
+<p>This exercise is challenging! Use the starter code to help you if you need to.</p>
+</div>
+<aside class="notes">
+<ul>
+<li>Need to select by position</li>
+<li>Need to use set_names() to give consistent variable names</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="data-merging" class="title-slide slide level1 inverse center" data-background-image="assets/highway.jpg">
+<h1>Data Merging</h1>
 
-<!-- > A mutating join allows you to combine variables from two tables. It first matches observations by their keys, then copies across variables from one table to the other. - [R for Data Science](https://r4ds.had.co.nz/relational-data.html#mutating-joins) -->
-<!-- ### `left_join()` -->
-<!-- All rows from x, and all columns from x and y. Rows in x with no match in y will have NA values in the new columns. -->
-<!-- ### `left_join()` -->
-<!-- .center[ -->
-<!-- ![](assets/left-join.gif) -->
-<!-- ] -->
-<!-- ### `left_join()` -->
-<!-- ```{r} -->
-<!-- #| eval: false -->
-<!-- left_join(german_speakers_2019, -->
-<!--           french_speakers_2019, -->
-<!--           by = "state") -->
-<!-- ``` -->
-<!-- -- -->
-<!-- ```{r} -->
-<!-- #| eval: false -->
-<!-- #| echo: false -->
-<!-- left_join(german_speakers_2019, -->
-<!--           french_speakers_2019, -->
-<!--           by = "state") -->
-<!-- ``` -->
-<!-- ### `right_join()` -->
-<!-- All rows from y, and all columns from x and y. Rows in y with no match in x will have NA values in the new columns. -->
-<!-- ### `right_join()` -->
-<!-- .center[ -->
-<!-- ![](assets/right-join.gif) -->
-<!-- ] -->
-<!-- ### `right_join()` -->
-<!-- ```{r eval = TRUE} -->
-<!-- right_join(german_speakers_2019, -->
-<!--            french_speakers_2019, -->
-<!--            by = "state") -->
-<!-- ``` -->
-<!-- ### `full_join()` -->
-<!-- All rows and all columns from both x and y. Where there are not matching values, returns NA for the one missing. -->
-<!-- ### `full_join()` -->
-<!-- .center[ -->
-<!-- ![](assets/full-join.gif) -->
-<!-- ] -->
-<!-- ### `full_join()` -->
-<!-- ```{r eval = TRUE} -->
-<!-- full_join(german_speakers_2019, -->
-<!--           french_speakers_2019, -->
-<!--           by = "state") -->
-<!-- ``` -->
-<!-- ### `inner_join()` -->
-<!-- All rows and all columns from both x and y. Where there are not matching values, returns NA for the one missing. -->
-<!-- ### `inner_join()` -->
-<!-- .center[ -->
-<!-- ![](assets/inner-join.gif) -->
-<!-- ] -->
-<!-- ### `inner_join()` -->
-<!-- ```{r eval = TRUE} -->
-<!-- inner_join(german_speakers_2019, -->
-<!--            french_speakers_2019, -->
-<!--            by = "state") -->
-<!-- ``` -->
-<!-- ## Filtering joins -->
-<!-- > Filtering joins match observations in the same way as mutating joins, but affect the observations, not the variables - [R for Data Science](https://r4ds.had.co.nz/relational-data.html#filtering-joins) -->
-<!-- ### `semi_join()` -->
-<!-- All rows from x where there are matching values in y, keeping just columns from x. -->
-<!-- ### `semi_join()` -->
-<!-- .center[ -->
-<!-- ![](assets/semi-join.gif) -->
-<!-- ] -->
-<!-- ### `semi_join()` -->
-<!-- ```{r eval = TRUE} -->
-<!-- semi_join(german_speakers_2019, -->
-<!--           french_speakers_2019, -->
-<!--           by = "state") -->
-<!-- ``` -->
-<!-- ### `anti_join()` -->
-<!-- All rows from x where there are not matching values in y, keeping just columns from x. -->
-<!-- ### `anti_join()` -->
-<!-- .center[ -->
-<!-- ![](assets/anti-join.gif) -->
-<!-- ] -->
-<!-- ### `anti_join()` -->
-<!-- ```{r eval = TRUE} -->
-<!-- anti_join(german_speakers_2019, -->
-<!--           french_speakers_2019, -->
-<!--           by = "state") -->
-<!-- ``` -->
-<!-- class: my-turn -->
-<!-- ## My Turn -->
-<!-- 1. Download the oregon-districts-and-schools.xlsx file into the data-raw folder. -->
-<!-- -- -->
-<!-- 1. Import a new data frame called `oregon_districts_and_schools` from oregon-districts-and-schools.xlsx -->
-<!-- -- -->
-<!-- 1. Merge the `oregon_districts_and_schools` data frame into the `third_grade_math_proficiency` data frame so I can see the names of the schools as well as associated districts -->
-<!-- class: inverse -->
-<!-- ## Your Turn -->
-<!-- 1. Download the oregon-districts.xlsx file into the data-raw folder. -->
-<!-- -- -->
-<!-- 1. Import a new data frame called `oregon_districts` from oregon-districts.xlsx -->
-<!-- -- -->
-<!-- 1. Merge the `oregon_districts` data frame into the `enrollment_by_race_ethnicity` data frame so you can see the names of the districts -->
-<!-- class: center, middle, dk-section-title -->
-<!-- background-image:url("assets/circle-pattern.jpg") -->
-<!-- # Renaming Variables -->
-<!-- ## Renaming Variables -->
-<!-- ```{r eval = TRUE} -->
-<!-- french_and_german_speakers_2019 <- left_join(german_speakers_2019, -->
-<!--                                              french_speakers_2019, -->
-<!--                                              by = "state") -->
-<!-- ``` -->
-<!-- ```{r eval = TRUE, include = TRUE, echo = FALSE} -->
-<!-- french_and_german_speakers_2019 -->
-<!-- ``` -->
-<!-- ## `rename()` -->
-<!-- ```{r} -->
-<!-- data_frame |> -->
-<!--   rename(new_variable_name = old_variable_name) -->
-<!-- ``` -->
-<!-- ## `rename()` -->
-<!-- ```{r eval = TRUE} -->
-<!-- french_and_german_speakers_2019 <- left_join(german_speakers_2019, -->
-<!--                                              french_speakers_2019, -->
-<!--                                              by = "state") |> -->
-<!--   rename(german_speakers = number) #<< -->
-<!-- ``` -->
-<!-- -- -->
-<!-- ```{r eval = TRUE, include = TRUE} -->
-<!-- french_and_german_speakers_2019 -->
-<!-- ``` -->
-<!-- ## `set_names()` -->
-<!-- ```{r eval = TRUE} -->
-<!-- french_and_german_speakers_2019 <- left_join(german_speakers_2019, -->
-<!--                                              french_speakers_2019, -->
-<!--                                              by = "state") |> -->
-<!--   set_names("state", "german_speakers", "french_speakers") #<< -->
-<!-- ``` -->
-<!-- -- -->
-<!-- ```{r eval = TRUE, include = TRUE} -->
-<!-- french_and_german_speakers_2019 -->
-<!-- ``` -->
-<!-- class: my-turn -->
-<!-- ## My Turn -->
-<!-- I'll use `rename()` and/or `set_names()` to give the `third_grade_math_proficiency` data frame more meaningful names. -->
-<!-- class: inverse -->
-<!-- ## Your Turn -->
-<!-- Use either `rename()` or `set_names()` to give the `enrollment_by_race_ethnicity` data frame more meaningful variable names. In particular, change the `pct` variable to something more descriptive. -->
-<!-- class: center, middle, dk-section-title -->
-<!-- background-image:url("assets/files.jpg") -->
-<!-- # Quick Interlude to Reorganize Your Code -->
-<!-- class: inverse -->
-<!-- ## Your Turn -->
-<!-- Reorganize your code so that you only create the `enrollment_by_race_ethnicity` data frame in one place. -->
-<!-- class: center, middle, dk-section-title -->
-<!-- background-image:url("assets/ship-export.jpg") -->
-<!-- # Exporting Data -->
-<!-- ## `write_csv()` -->
-<!-- ```{r echo = FALSE} -->
-<!-- write_csv(french_and_german_speakers_2019, -->
-<!--           "../data/french_and_german_speakers_2019.csv") -->
-<!-- ``` -->
-<!-- ```{r} -->
-<!-- write_csv(french_and_german_speakers_2019, -->
-<!--           path = "data/french_and_german_speakers_2019.csv") -->
-<!-- ``` -->
-<!-- ## `write_rds()` -->
-<!-- ```{r echo = FALSE} -->
-<!-- write_rds(french_and_german_speakers_2019, -->
-<!--           "../data/french_and_german_speakers_2019.rds") -->
-<!-- ``` -->
-<!-- ```{r} -->
-<!-- write_rds(french_and_german_speakers_2019, -->
-<!--           path = "data/french_and_german_speakers_2019.rds") -->
-<!-- ``` -->
-<!-- class: my-turn -->
-<!-- ## My Turn -->
-<!-- -- -->
-<!-- 1. Export my `third_grade_math_proficiency` data frame as a CSV -->
-<!-- -- -->
-<!-- 1. Export my `third_grade_math_proficiency` data frame as an RDS file -->
-<!-- class: inverse -->
-<!-- ## Your Turn -->
-<!-- Export the `enrollment_by_race_ethnicity` data frame as an RDS file in the data directory (you'll need to make this directory) -->
+</section>
+<section class="slide level2 center">
+
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1"></a>german_speakers_2019</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 51 × 2
+   state                number
+   &lt;chr&gt;                 &lt;dbl&gt;
+ 1 Alabama                 711
+ 2 Alaska                  131
+ 3 Arizona                 136
+ 4 Arkansas                557
+ 5 California              854
+ 6 Colorado                768
+ 7 Connecticut             586
+ 8 Delaware                453
+ 9 District of Columbia    180
+10 Florida                 958
+# ℹ 41 more rows</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1"></a>french_speakers_2019</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 9 × 2
+  state                french_speakers
+  &lt;chr&gt;                          &lt;dbl&gt;
+1 Alabama                         1678
+2 Alaska                          1441
+3 Arizona                         1002
+4 Arkansas                        1558
+5 California                      1935
+6 Colorado                        1714
+7 Connecticut                     1536
+8 Delaware                        1824
+9 District of Columbia            1601</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="joins" class="title-slide slide level1 inverse center">
+<h1>Joins</h1>
+
+</section>
+<section class="slide level2 center">
+
+
+<img data-src="assets/tidyexplain.png" class="r-stretch quarto-figure-center"><aside class="notes">
+<p>All of the animations and explanations used here come from the <a href="https://www.garrickadenbuie.com/project/tidyexplain/">tidyexplain project by Garrick Aden-Buie</a>.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2 center">
+
+
+<img data-src="assets/original-dfs.png" class="r-stretch quarto-figure-center"></section>
+<section class="slide level2 center">
+
+<p>Join with variables in common in <code>x</code> and <code>y</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1"></a><span class="fu">type_of_join</span>(x, y,</span>
+<span id="cb104-2"><a href="#cb104-2"></a>             <span class="fu">join_by</span>(id_variable))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="fragment">
+<p><br> What if we don’t have a variable with the same name in both data frames?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a href="#cb105-1"></a><span class="fu">type_of_join</span>(x, y,</span>
+<span id="cb105-2"><a href="#cb105-2"></a>             <span class="fu">join_by</span>(<span class="at">id_variable_1 =</span> id_variable_2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="fragment">
+<p><br> What if we need to join on multiple variables with different names in both data frames?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1"></a><span class="fu">type_of_join</span>(x, y,</span>
+<span id="cb106-2"><a href="#cb106-2"></a>             <span class="fu">join_by</span>(<span class="at">id_variable_1 =</span> id_variable_2,</span>
+<span id="cb106-3"><a href="#cb106-3"></a>                     <span class="at">id_variable_3 =</span> id_variable_4))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="types-of-joins" class="slide level2 center">
+<h2>Types of Joins</h2>
+<ul>
+<li class="fragment"><p><code>left_join()</code></p></li>
+<li class="fragment"><p><code>right_join()</code></p></li>
+<li class="fragment"><p><code>full_join()</code></p></li>
+<li class="fragment"><p><code>semi_join()</code></p></li>
+<li class="fragment"><p><code>anti_join()</code></p></li>
+</ul>
+</section>
+<section id="which-join-should-you-use" class="slide level2 center">
+<h2>Which Join Should You Use?</h2>
+
+<img data-src="assets/claus-wilke-left-join.png" class="r-stretch"></section>
+<section class="slide level2 center">
+
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong><code>left_join()</code></strong></p>
+<p>All rows from x, and all columns from x and y. Rows in x with no match in y will have NA values in the new columns.</p>
+</div><div class="column" style="width:50%;">
+<p><img data-src="assets/left-join.gif"></p>
+</div>
+</div>
+</section>
+<section id="left_join" class="slide level2 center">
+<h2><code>left_join()</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a href="#cb107-1"></a><span class="fu">left_join</span>(german_speakers_2019,</span>
+<span id="cb107-2"><a href="#cb107-2"></a>          french_speakers_2019,</span>
+<span id="cb107-3"><a href="#cb107-3"></a>          <span class="at">by =</span> <span class="st">"state"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["state"],"name":[1],"type":["chr"],"align":["left"]},{"label":["number"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["french_speakers"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"Alabama","2":"711","3":"1678"},{"1":"Alaska","2":"131","3":"1441"},{"1":"Arizona","2":"136","3":"1002"},{"1":"Arkansas","2":"557","3":"1558"},{"1":"California","2":"854","3":"1935"},{"1":"Colorado","2":"768","3":"1714"},{"1":"Connecticut","2":"586","3":"1536"},{"1":"Delaware","2":"453","3":"1824"},{"1":"District of Columbia","2":"180","3":"1601"},{"1":"Florida","2":"958","3":"NA"},{"1":"Georgia","2":"821","3":"NA"},{"1":"Hawaii","2":"931","3":"NA"},{"1":"Idaho","2":"NA","3":"NA"},{"1":"Illinois","2":"827","3":"NA"},{"1":"Indiana","2":"728","3":"NA"},{"1":"Iowa","2":"657","3":"NA"},{"1":"Kansas","2":"501","3":"NA"},{"1":"Kentucky","2":"332","3":"NA"},{"1":"Louisiana","2":"490","3":"NA"},{"1":"Maine","2":"206","3":"NA"},{"1":"Montana","2":"527","3":"NA"},{"1":"Nebraska","2":"232","3":"NA"},{"1":"Nevada","2":"647","3":"NA"},{"1":"New Hampshire","2":"818","3":"NA"},{"1":"New Jersey","2":"168","3":"NA"},{"1":"New Mexico","2":"336","3":"NA"},{"1":"New York","2":"207","3":"NA"},{"1":"North Carolina","2":"508","3":"NA"},{"1":"North Dakota","2":"652","3":"NA"},{"1":"Ohio","2":"186","3":"NA"},{"1":"Oklahoma","2":"621","3":"NA"},{"1":"Oregon","2":"471","3":"NA"},{"1":"Maryland","2":"507","3":"NA"},{"1":"Massachusetts","2":"859","3":"NA"},{"1":"Michigan","2":"467","3":"NA"},{"1":"Minnesota","2":"251","3":"NA"},{"1":"Mississippi","2":"372","3":"NA"},{"1":"Missouri","2":"972","3":"NA"},{"1":"Pennsylvania","2":"956","3":"NA"},{"1":"Rhode Island","2":"900","3":"NA"},{"1":"South Carolina","2":"182","3":"NA"},{"1":"South Dakota","2":"584","3":"NA"},{"1":"Tennessee","2":"476","3":"NA"},{"1":"Texas","2":"292","3":"NA"},{"1":"Utah","2":"758","3":"NA"},{"1":"Vermont","2":"158","3":"NA"},{"1":"Virginia","2":"432","3":"NA"},{"1":"Washington","2":"615","3":"NA"},{"1":"West Virginia","2":"974","3":"NA"},{"1":"Wisconsin","2":"842","3":"NA"},{"1":"Wyoming","2":"431","3":"NA"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2 center">
+
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong><code>right_join()</code></strong></p>
+<p>All rows from y, and all columns from x and y. Rows in y with no match in x will have NA values in the new columns.</p>
+</div><div class="column" style="width:50%;">
+<p><img data-src="assets/right-join.gif"></p>
+</div>
+</div>
+</section>
+<section id="right_join" class="slide level2 center">
+<h2><code>right_join()</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1"></a><span class="fu">right_join</span>(german_speakers_2019,</span>
+<span id="cb108-2"><a href="#cb108-2"></a>           french_speakers_2019,</span>
+<span id="cb108-3"><a href="#cb108-3"></a>           <span class="at">by =</span> <span class="st">"state"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["state"],"name":[1],"type":["chr"],"align":["left"]},{"label":["number"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["french_speakers"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"Alabama","2":"711","3":"1678"},{"1":"Alaska","2":"131","3":"1441"},{"1":"Arizona","2":"136","3":"1002"},{"1":"Arkansas","2":"557","3":"1558"},{"1":"California","2":"854","3":"1935"},{"1":"Colorado","2":"768","3":"1714"},{"1":"Connecticut","2":"586","3":"1536"},{"1":"Delaware","2":"453","3":"1824"},{"1":"District of Columbia","2":"180","3":"1601"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2 center">
+
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong><code>full_join()</code></strong></p>
+<p>All rows and all columns from both x and y. Where there are not matching values, returns NA for the one missing.</p>
+</div><div class="column" style="width:50%;">
+<p><img data-src="assets/full-join.gif"></p>
+</div>
+</div>
+</section>
+<section id="full_join" class="slide level2 center">
+<h2><code>full_join()</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1"></a><span class="fu">full_join</span>(german_speakers_2019,</span>
+<span id="cb109-2"><a href="#cb109-2"></a>          french_speakers_2019,</span>
+<span id="cb109-3"><a href="#cb109-3"></a>          <span class="at">by =</span> <span class="st">"state"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["state"],"name":[1],"type":["chr"],"align":["left"]},{"label":["number"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["french_speakers"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"Alabama","2":"711","3":"1678"},{"1":"Alaska","2":"131","3":"1441"},{"1":"Arizona","2":"136","3":"1002"},{"1":"Arkansas","2":"557","3":"1558"},{"1":"California","2":"854","3":"1935"},{"1":"Colorado","2":"768","3":"1714"},{"1":"Connecticut","2":"586","3":"1536"},{"1":"Delaware","2":"453","3":"1824"},{"1":"District of Columbia","2":"180","3":"1601"},{"1":"Florida","2":"958","3":"NA"},{"1":"Georgia","2":"821","3":"NA"},{"1":"Hawaii","2":"931","3":"NA"},{"1":"Idaho","2":"NA","3":"NA"},{"1":"Illinois","2":"827","3":"NA"},{"1":"Indiana","2":"728","3":"NA"},{"1":"Iowa","2":"657","3":"NA"},{"1":"Kansas","2":"501","3":"NA"},{"1":"Kentucky","2":"332","3":"NA"},{"1":"Louisiana","2":"490","3":"NA"},{"1":"Maine","2":"206","3":"NA"},{"1":"Montana","2":"527","3":"NA"},{"1":"Nebraska","2":"232","3":"NA"},{"1":"Nevada","2":"647","3":"NA"},{"1":"New Hampshire","2":"818","3":"NA"},{"1":"New Jersey","2":"168","3":"NA"},{"1":"New Mexico","2":"336","3":"NA"},{"1":"New York","2":"207","3":"NA"},{"1":"North Carolina","2":"508","3":"NA"},{"1":"North Dakota","2":"652","3":"NA"},{"1":"Ohio","2":"186","3":"NA"},{"1":"Oklahoma","2":"621","3":"NA"},{"1":"Oregon","2":"471","3":"NA"},{"1":"Maryland","2":"507","3":"NA"},{"1":"Massachusetts","2":"859","3":"NA"},{"1":"Michigan","2":"467","3":"NA"},{"1":"Minnesota","2":"251","3":"NA"},{"1":"Mississippi","2":"372","3":"NA"},{"1":"Missouri","2":"972","3":"NA"},{"1":"Pennsylvania","2":"956","3":"NA"},{"1":"Rhode Island","2":"900","3":"NA"},{"1":"South Carolina","2":"182","3":"NA"},{"1":"South Dakota","2":"584","3":"NA"},{"1":"Tennessee","2":"476","3":"NA"},{"1":"Texas","2":"292","3":"NA"},{"1":"Utah","2":"758","3":"NA"},{"1":"Vermont","2":"158","3":"NA"},{"1":"Virginia","2":"432","3":"NA"},{"1":"Washington","2":"615","3":"NA"},{"1":"West Virginia","2":"974","3":"NA"},{"1":"Wisconsin","2":"842","3":"NA"},{"1":"Wyoming","2":"431","3":"NA"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2 center">
+
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong><code>semi_join()</code></strong></p>
+<p>All rows from x where there are matching values in y, keeping just columns from x.</p>
+</div><div class="column" style="width:50%;">
+<p><img data-src="assets/semi-join.gif"></p>
+</div>
+</div>
+</section>
+<section id="semi_join" class="slide level2 center">
+<h2><code>semi_join()</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1"></a><span class="fu">semi_join</span>(german_speakers_2019,</span>
+<span id="cb110-2"><a href="#cb110-2"></a>          french_speakers_2019,</span>
+<span id="cb110-3"><a href="#cb110-3"></a>          <span class="at">by =</span> <span class="st">"state"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["state"],"name":[1],"type":["chr"],"align":["left"]},{"label":["number"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"Alabama","2":"711"},{"1":"Alaska","2":"131"},{"1":"Arizona","2":"136"},{"1":"Arkansas","2":"557"},{"1":"California","2":"854"},{"1":"Colorado","2":"768"},{"1":"Connecticut","2":"586"},{"1":"Delaware","2":"453"},{"1":"District of Columbia","2":"180"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2 center">
+
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong><code>anti_join()</code></strong></p>
+<p>All rows from x where there are not matching values in y, keeping just columns from x.</p>
+</div><div class="column" style="width:50%;">
+<p><img data-src="assets/anti-join.gif"></p>
+</div>
+</div>
+</section>
+<section id="anti_join" class="slide level2 center">
+<h2><code>anti_join()</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1"></a><span class="fu">anti_join</span>(german_speakers_2019,</span>
+<span id="cb111-2"><a href="#cb111-2"></a>          french_speakers_2019,</span>
+<span id="cb111-3"><a href="#cb111-3"></a>          <span class="at">by =</span> <span class="st">"state"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["state"],"name":[1],"type":["chr"],"align":["left"]},{"label":["number"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"Florida","2":"958"},{"1":"Georgia","2":"821"},{"1":"Hawaii","2":"931"},{"1":"Idaho","2":"NA"},{"1":"Illinois","2":"827"},{"1":"Indiana","2":"728"},{"1":"Iowa","2":"657"},{"1":"Kansas","2":"501"},{"1":"Kentucky","2":"332"},{"1":"Louisiana","2":"490"},{"1":"Maine","2":"206"},{"1":"Montana","2":"527"},{"1":"Nebraska","2":"232"},{"1":"Nevada","2":"647"},{"1":"New Hampshire","2":"818"},{"1":"New Jersey","2":"168"},{"1":"New Mexico","2":"336"},{"1":"New York","2":"207"},{"1":"North Carolina","2":"508"},{"1":"North Dakota","2":"652"},{"1":"Ohio","2":"186"},{"1":"Oklahoma","2":"621"},{"1":"Oregon","2":"471"},{"1":"Maryland","2":"507"},{"1":"Massachusetts","2":"859"},{"1":"Michigan","2":"467"},{"1":"Minnesota","2":"251"},{"1":"Mississippi","2":"372"},{"1":"Missouri","2":"972"},{"1":"Pennsylvania","2":"956"},{"1":"Rhode Island","2":"900"},{"1":"South Carolina","2":"182"},{"1":"South Dakota","2":"584"},{"1":"Tennessee","2":"476"},{"1":"Texas","2":"292"},{"1":"Utah","2":"758"},{"1":"Vermont","2":"158"},{"1":"Virginia","2":"432"},{"1":"Washington","2":"615"},{"1":"West Virginia","2":"974"},{"1":"Wisconsin","2":"842"},{"1":"Wyoming","2":"431"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</section>
+<section id="my-turn-9" class="slide level2 my-turn center">
+<h2>My Turn</h2>
+<ol type="1">
+<li class="fragment"><p>Download the <code>oregon-districts-and-schools.xlsx</code> file into the data-raw folder.</p></li>
+<li class="fragment"><p>Import a new data frame called <code>oregon_districts_and_schools</code> from <code>oregon-districts-and-schools.xlsx</code>.</p></li>
+<li class="fragment"><p>Merge the <code>oregon_districts_and_schools</code> data frame into the <code>third_grade_math_proficiency</code> data frame so I can see the names of the schools as well as associated districts.</p></li>
+</ol>
+</section>
+<section id="your-turn-10" class="slide level2 your-turn center">
+<h2>Your Turn</h2>
+<ol type="1">
+<li class="fragment"><p>Download the <code>oregon-districts.xlsx</code> file into the data-raw folder.</p></li>
+<li class="fragment"><p>Import a new data frame called <code>oregon_districts</code> from <code>oregon-districts.xlsx</code>.</p></li>
+<li class="fragment"><p>Merge the <code>oregon_districts</code> data frame into the <code>enrollment_by_race_ethnicity</code> data frame so you can see the names of the districts.</p></li>
+</ol>
+</section></section>
+<section>
+<section id="exporting-data" class="title-slide slide level1 inverse center" data-background-image="assets/ship-export.jpg">
+<h1>Exporting Data</h1>
+
+</section>
+<section id="write_csv" class="slide level2 center">
+<h2><code>write_csv()</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1"></a><span class="fu">write_csv</span>(french_and_german_speakers_2019,</span>
+<span id="cb112-2"><a href="#cb112-2"></a>          <span class="at">path =</span> <span class="st">"data/french_and_german_speakers_2019.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="write_rds" class="slide level2 center">
+<h2><code>write_rds()</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb113"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb113-1"><a href="#cb113-1"></a><span class="fu">write_rds</span>(french_and_german_speakers_2019,</span>
+<span id="cb113-2"><a href="#cb113-2"></a>          <span class="at">path =</span> <span class="st">"data/french_and_german_speakers_2019.rds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="my-turn-10" class="slide level2 my-turn center">
+<h2>My Turn</h2>
+<ol type="1">
+<li class="fragment"><p>Export my <code>third_grade_math_proficiency</code> data frame as a CSV.</p></li>
+<li class="fragment"><p>Export my <code>third_grade_math_proficiency</code> data frame as an RDS file.</p></li>
+</ol>
+</section>
+<section id="your-turn-11" class="slide level2 your-turn center">
+<h2>Your Turn</h2>
+<ol type="1">
+<li class="fragment"><p>Make a <code>data</code> folder using the <code>dir_create()</code> function from the <code>fs</code> package.</p></li>
+<li class="fragment"><p>Export the <code>enrollment_by_race_ethnicity</code> data frame as an RDS file in the <code>data</code> folder.</p></li>
+</ol>
 <div class="footer footer-default">
 
 </div>
