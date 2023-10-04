@@ -1212,14 +1212,18 @@ Source: [R for Data Science](https://r4ds.hadley.nz/functions#:~:text=You%20can%
 ## How do Functions Work?
 
 
+:::: {.columns}
+
+::: {.column width="40%"}
 ::: {.fragment}
 ```{r}
+#| echo: true
 german_speakers_2018
 ```
 :::
+:::
 
-<br>
-
+::: {.column width="60%"}
 ::: {.fragment}
 ```{r}
 #| eval: true
@@ -1244,6 +1248,15 @@ find_most_german_speakers <- function() {
 find_most_german_speakers()
 ```
 :::
+:::
+
+::::
+
+
+
+
+
+
 
 
 
@@ -1299,10 +1312,6 @@ I'll create a function to clean each year of math proficiency data, then use `bi
 1. Create a function to clean each year of enrollment data. 
 
 1. To check that your function works, create `enrollment_by_race_ethnicity_2021_2022` and `enrollment_by_race_ethnicity_2022_2023` data frames and then bind them together with `bind_rows()`.
-
-## Your Turn, Continued {.your-turn}
-
-3. After you create your function to clean each year of enrollment data, use `bind_rows()` to bind them together.
 
 ::: {.fragment}
 This exercise is challenging! Use the starter code to help you if you need to. 
