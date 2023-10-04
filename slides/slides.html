@@ -2197,7 +2197,7 @@ Caused by error in `sum()`:
 <div class="cell">
 <div class="sourceCode cell-code" id="cb108"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1"></a><span class="fu">left_join</span>(german_speakers_2019,</span>
 <span id="cb108-2"><a href="#cb108-2"></a>          french_speakers_2019,</span>
-<span id="cb108-3"><a href="#cb108-3"></a>          <span class="at">by =</span> <span class="st">"state"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb108-3"><a href="#cb108-3"></a>          <span class="fu">join_by</span>(state))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -2226,7 +2226,7 @@ Caused by error in `sum()`:
 <div class="cell">
 <div class="sourceCode cell-code" id="cb109"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1"></a><span class="fu">right_join</span>(german_speakers_2019,</span>
 <span id="cb109-2"><a href="#cb109-2"></a>           french_speakers_2019,</span>
-<span id="cb109-3"><a href="#cb109-3"></a>           <span class="at">by =</span> <span class="st">"state"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb109-3"><a href="#cb109-3"></a>           <span class="fu">join_by</span>(state))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -2255,7 +2255,7 @@ Caused by error in `sum()`:
 <div class="cell">
 <div class="sourceCode cell-code" id="cb110"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1"></a><span class="fu">full_join</span>(german_speakers_2019,</span>
 <span id="cb110-2"><a href="#cb110-2"></a>          french_speakers_2019,</span>
-<span id="cb110-3"><a href="#cb110-3"></a>          <span class="at">by =</span> <span class="st">"state"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb110-3"><a href="#cb110-3"></a>          <span class="fu">join_by</span>(state))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -2284,7 +2284,7 @@ Caused by error in `sum()`:
 <div class="cell">
 <div class="sourceCode cell-code" id="cb111"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1"></a><span class="fu">semi_join</span>(german_speakers_2019,</span>
 <span id="cb111-2"><a href="#cb111-2"></a>          french_speakers_2019,</span>
-<span id="cb111-3"><a href="#cb111-3"></a>          <span class="at">by =</span> <span class="st">"state"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb111-3"><a href="#cb111-3"></a>          <span class="fu">join_by</span>(state))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -2313,7 +2313,7 @@ Caused by error in `sum()`:
 <div class="cell">
 <div class="sourceCode cell-code" id="cb112"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1"></a><span class="fu">anti_join</span>(german_speakers_2019,</span>
 <span id="cb112-2"><a href="#cb112-2"></a>          french_speakers_2019,</span>
-<span id="cb112-3"><a href="#cb112-3"></a>          <span class="at">by =</span> <span class="st">"state"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb112-3"><a href="#cb112-3"></a>          <span class="fu">join_by</span>(state))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -2329,7 +2329,7 @@ Caused by error in `sum()`:
 <section id="my-turn-9" class="slide level2 my-turn center">
 <h2>My Turn</h2>
 <ol type="1">
-<li class="fragment"><p>Download the <code>oregon-districts-and-schools.xlsx</code> file into the data-raw folder.</p></li>
+<li class="fragment"><p>Download the <code>oregon-districts-and-schools.xlsx</code> file into the <code>data-raw</code> folder.</p></li>
 <li class="fragment"><p>Import a new data frame called <code>oregon_districts_and_schools</code> from <code>oregon-districts-and-schools.xlsx</code>.</p></li>
 <li class="fragment"><p>Merge the <code>oregon_districts_and_schools</code> data frame into the <code>third_grade_math_proficiency</code> data frame so I can see the names of the schools as well as associated districts.</p></li>
 </ol>
@@ -2337,7 +2337,7 @@ Caused by error in `sum()`:
 <section id="your-turn-10" class="slide level2 your-turn center">
 <h2>Your Turn</h2>
 <ol type="1">
-<li class="fragment"><p>Download the <code>oregon-districts.xlsx</code> file into the data-raw folder.</p></li>
+<li class="fragment"><p>Download the <code>oregon-districts.xlsx</code> file into the <code>data-raw</code> folder.</p></li>
 <li class="fragment"><p>Import a new data frame called <code>oregon_districts</code> from <code>oregon-districts.xlsx</code>.</p></li>
 <li class="fragment"><p>Merge the <code>oregon_districts</code> data frame into the <code>enrollment_by_race_ethnicity</code> data frame so you can see the names of the districts.</p></li>
 </ol>

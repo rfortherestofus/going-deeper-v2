@@ -1469,7 +1469,7 @@ All rows from x, and all columns from x and y. Rows in x with no match in y will
 #| echo: True
 left_join(german_speakers_2019,
           french_speakers_2019,
-          by = "state")
+          join_by(state))
 ```
 
 
@@ -1478,7 +1478,7 @@ left_join(german_speakers_2019,
 #| echo: false
 left_join(german_speakers_2019,
           french_speakers_2019,
-          by = "state") |> 
+          join_by(state)) |> 
   paged_table()
 ```
 
@@ -1506,7 +1506,7 @@ All rows from y, and all columns from x and y. Rows in y with no match in x will
 #| echo: True
 right_join(german_speakers_2019,
            french_speakers_2019,
-           by = "state")
+           join_by(state))
 ```
 
 
@@ -1515,7 +1515,7 @@ right_join(german_speakers_2019,
 #| echo: false
 right_join(german_speakers_2019,
            french_speakers_2019,
-           by = "state") |> 
+           join_by(state)) |> 
   paged_table()
 ```
 
@@ -1543,7 +1543,7 @@ All rows and all columns from both x and y. Where there are not matching values,
 #| echo: True
 full_join(german_speakers_2019,
           french_speakers_2019,
-          by = "state")
+          join_by(state))
 ```
 
 
@@ -1552,7 +1552,7 @@ full_join(german_speakers_2019,
 #| echo: false
 full_join(german_speakers_2019,
           french_speakers_2019,
-          by = "state") |> 
+          join_by(state)) |> 
   paged_table()
 ```
 
@@ -1580,7 +1580,7 @@ All rows from x where there are matching values in y, keeping just columns from 
 #| echo: True
 semi_join(german_speakers_2019,
           french_speakers_2019,
-          by = "state")
+          join_by(state))
 ```
 
 
@@ -1589,7 +1589,7 @@ semi_join(german_speakers_2019,
 #| echo: false
 semi_join(german_speakers_2019,
           french_speakers_2019,
-          by = "state") |> 
+          join_by(state)) |> 
   paged_table()
 ```
 
@@ -1617,7 +1617,7 @@ All rows from x where there are not matching values in y, keeping just columns f
 #| echo: True
 anti_join(german_speakers_2019,
           french_speakers_2019,
-          by = "state")
+          join_by(state))
 ```
 
 
@@ -1626,7 +1626,7 @@ anti_join(german_speakers_2019,
 #| echo: false
 anti_join(german_speakers_2019,
           french_speakers_2019,
-          by = "state") |> 
+          join_by(state)) |> 
   paged_table()
 ```
 
@@ -1634,7 +1634,7 @@ anti_join(german_speakers_2019,
 
 ## My Turn {.my-turn}
 
-1. Download the `oregon-districts-and-schools.xlsx` file into the data-raw folder.
+1. Download the `oregon-districts-and-schools.xlsx` file into the `data-raw` folder.
 
 1. Import a new data frame called `oregon_districts_and_schools` from `oregon-districts-and-schools.xlsx`.
 
@@ -1645,7 +1645,7 @@ anti_join(german_speakers_2019,
 
 ## Your Turn {.your-turn}
 
-1. Download the `oregon-districts.xlsx` file into the data-raw folder.
+1. Download the `oregon-districts.xlsx` file into the `data-raw` folder.
 
 1. Import a new data frame called `oregon_districts` from `oregon-districts.xlsx`.
 
