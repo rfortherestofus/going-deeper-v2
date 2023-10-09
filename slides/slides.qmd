@@ -1800,53 +1800,22 @@ ggplot(data = german_speakers_tidy,
 
 # Pipe Data Into ggplot {.has-bg-image background-image="assets/pipes.jpg"}
 
-## Load Data
-
 ```{r}
 third_grade_math_proficiency <- 
   read_rds(here("data/third_grade_math_proficiency.rds"))
 ```
 
-```{r}
-#| eval: false
-third_grade_math_proficiency <- 
-  read_rds("data/third_grade_math_proficiency.rds")
-```
+## My Turn {.my-turn}
 
-## Pipe Data Into ggplot 
+1. Create a new R script file.
 
-```{r}
-#| echo: true
-third_grade_math_proficiency |> 
-  filter(year == "2018-2019") |> 
-  filter(district == "Portland SD 1J")
-```
+1. Create a `data` directory using the `fs` package.
 
-## Pipe Data Into ggplot 
+1. Download a slightly modified version of the third grade math proficiency data into the `data` directory.
 
-```{r}
-#| echo: true
-#| output: false
-#| code-line-numbers: "4,5,6,7"
-third_grade_math_proficiency |> 
-  filter(year == "2018-2019") |> 
-  filter(district == "Portland SD 1J") |> 
-  ggplot(aes(x = percent_proficient, 
-             y = school)) +
-  geom_col()
-```
+1. Import the RDS file into a data frame called `third_grade_math_proficiency`.
 
----
-
-```{r}
-#| output: true
-third_grade_math_proficiency |> 
-  filter(year == "2018-2019") |> 
-  filter(district == "Portland SD 1J") |> 
-  ggplot(aes(x = percent_proficient, 
-             y = school)) +
-  geom_col()
-```
+1. Make a plot by piping the third grade math proficiency data direcly into ggplot.
 
 
 ## Your Turn {.your-turn}
@@ -1863,58 +1832,9 @@ third_grade_math_proficiency |>
 
 # Reorder Plots to Highlight Findings {.has-bg-image background-image="assets/goya-cans.jpg"}
 
----
+## My Turn {.my-turn}
 
-```{r}
-#| output: true
-third_grade_math_proficiency |> 
-  filter(year == "2018-2019") |> 
-  filter(district == "Portland SD 1J") |> 
-  ggplot(aes(x = percent_proficient, 
-             y = school)) +
-  geom_col() 
-```
-
----
-
-```{r}
-#| output: true
-third_grade_math_proficiency |> 
-  filter(year == "2018-2019") |> 
-  filter(district == "Portland SD 1J") |> 
-  ggplot(aes(x = percent_proficient, 
-             y = reorder(school, percent_proficient))) +
-  geom_col() 
-```
-
-## Reorder Plots to Highlight Findings
-
-```{r}
-#| echo: true
-#| output: false
-#| code-line-numbers: "5"
-third_grade_math_proficiency |> 
-  filter(year == "2018-2019") |> 
-  filter(district == "Portland SD 1J") |> 
-  ggplot(aes(x = percent_proficient, 
-             y = reorder(school, percent_proficient))) +
-  geom_col() 
-```
-
-## Reorder Plots to Highlight Findings
-
-```{r}
-#| echo: true
-#| output: false
-#| code-line-numbers: "4"
-third_grade_math_proficiency |> 
-  filter(year == "2018-2019") |> 
-  filter(district == "Portland SD 1J") |> 
-  mutate(school = fct_reorder(school, percent_proficient)) |>
-  ggplot(aes(x = percent_proficient, 
-             y = reorder(school, percent_proficient))) +
-  geom_col() 
-```
+1. Reorder my bar chart so that it shows schools with the highest proficiency rates at the top.
 
 
 ## Your Turn {.your-turn}
