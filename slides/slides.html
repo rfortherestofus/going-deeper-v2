@@ -850,7 +850,7 @@
 <section id="my-turn-continued-1" class="slide level2 my-turn center">
 <h2>My Turn, Continued</h2>
 <ol start="3" type="1">
-<li class="fragment"><p>Use <code>select()</code> to only keep the <code>academic_year</code> and <code>school_id</code> variables as well as all variables related to the <strong>number</strong> (not percentage) of students who are proficient in math</p></li>
+<li class="fragment"><p>Use <code>select()</code> to only keep the <code>year</code> and <code>school_id</code> variables as well as all variables related to the <strong>number</strong> (not percentage) of students who are proficient in math</p></li>
 <li class="fragment"><p>Use <code>pivot_longer()</code> to make my data frame tidy</p></li>
 </ol>
 </section>
@@ -2479,10 +2479,10 @@ Caused by error in `sum()`:
 <section id="can-we-plot-untidy-data-2" class="slide level2 center">
 <h2>Can We Plot Untidy Data?</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb120"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb120-1"><a href="#cb120-1"></a>german_speakers_tidy <span class="ot">&lt;-</span> german_speakers_numeric <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb120"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb120-1"><a href="#cb120-1"></a>german_speakers_tidy <span class="ot">&lt;-</span> german_speakers_numeric <span class="sc">|&gt;</span></span>
 <span id="cb120-2"><a href="#cb120-2"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>state,</span>
 <span id="cb120-3"><a href="#cb120-3"></a>               <span class="at">names_to =</span> <span class="st">"year"</span>,</span>
-<span id="cb120-4"><a href="#cb120-4"></a>               <span class="at">values_to =</span> <span class="st">"number"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb120-4"><a href="#cb120-4"></a>               <span class="at">values_to =</span> <span class="st">"number"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb120-5"><a href="#cb120-5"></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">parse_number</span>(year))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><br></p>
@@ -2530,23 +2530,23 @@ Caused by error in `sum()`:
 <section id="pipe-data-into-ggplot-1" class="slide level2 center">
 <h2>Pipe Data Into ggplot</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb124"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb124-1"><a href="#cb124-1"></a>third_grade_math_proficiency <span class="sc">%&gt;%</span> </span>
-<span id="cb124-2"><a href="#cb124-2"></a>  <span class="fu">filter</span>(academic_year <span class="sc">==</span> <span class="st">"2018-2019"</span>) <span class="sc">%&gt;%</span> </span>
+<div class="sourceCode cell-code" id="cb124"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb124-1"><a href="#cb124-1"></a>third_grade_math_proficiency <span class="sc">|&gt;</span> </span>
+<span id="cb124-2"><a href="#cb124-2"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="st">"2018-2019"</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb124-3"><a href="#cb124-3"></a>  <span class="fu">filter</span>(district <span class="sc">==</span> <span class="st">"Portland SD 1J"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 64 × 4
-   academic_year school                        district       percent_proficient
-   &lt;chr&gt;         &lt;chr&gt;                         &lt;chr&gt;                       &lt;dbl&gt;
- 1 2018-2019     Abernethy Elementary School   Portland SD 1J              0.707
- 2 2018-2019     Ainsworth Elementary School   Portland SD 1J              0.804
- 3 2018-2019     Alameda Elementary School     Portland SD 1J              0.831
- 4 2018-2019     Arleta Elementary School      Portland SD 1J              0.423
- 5 2018-2019     Astor Elementary School       Portland SD 1J              0.595
- 6 2018-2019     Atkinson Elementary School    Portland SD 1J              0.508
- 7 2018-2019     Beach Elementary School       Portland SD 1J              0.565
- 8 2018-2019     Beverly Cleary School         Portland SD 1J              0.681
- 9 2018-2019     Boise-Eliot Elementary School Portland SD 1J              0.175
-10 2018-2019     Bridger Elementary School     Portland SD 1J              0.603
+   year      school                        district       percent_proficient
+   &lt;chr&gt;     &lt;chr&gt;                         &lt;chr&gt;                       &lt;dbl&gt;
+ 1 2018-2019 Abernethy Elementary School   Portland SD 1J              0.707
+ 2 2018-2019 Ainsworth Elementary School   Portland SD 1J              0.804
+ 3 2018-2019 Alameda Elementary School     Portland SD 1J              0.831
+ 4 2018-2019 Arleta Elementary School      Portland SD 1J              0.423
+ 5 2018-2019 Astor Elementary School       Portland SD 1J              0.595
+ 6 2018-2019 Atkinson Elementary School    Portland SD 1J              0.508
+ 7 2018-2019 Beach Elementary School       Portland SD 1J              0.565
+ 8 2018-2019 Beverly Cleary School         Portland SD 1J              0.681
+ 9 2018-2019 Boise-Eliot Elementary School Portland SD 1J              0.175
+10 2018-2019 Bridger Elementary School     Portland SD 1J              0.603
 # ℹ 54 more rows</code></pre>
 </div>
 </div>
@@ -2554,13 +2554,12 @@ Caused by error in `sum()`:
 <section id="pipe-data-into-ggplot-2" class="slide level2 center">
 <h2>Pipe Data Into ggplot</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb126" data-code-line-numbers="4,5,6,7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb126-1"><a href="#cb126-1"></a>third_grade_math_proficiency <span class="sc">%&gt;%</span> </span>
-<span id="cb126-2"><a href="#cb126-2"></a>  <span class="fu">filter</span>(academic_year <span class="sc">==</span> <span class="st">"2018-2019"</span>) <span class="sc">%&gt;%</span> </span>
+<div class="sourceCode cell-code" id="cb126" data-code-line-numbers="4,5,6,7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb126-1"><a href="#cb126-1"></a>third_grade_math_proficiency <span class="sc">|&gt;</span> </span>
+<span id="cb126-2"><a href="#cb126-2"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="st">"2018-2019"</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb126-3"><a href="#cb126-3"></a>  <span class="fu">filter</span>(district <span class="sc">==</span> <span class="st">"Portland SD 1J"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb126-4"><a href="#cb126-4"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> school, </span>
-<span id="cb126-5"><a href="#cb126-5"></a>             <span class="at">y =</span> percent_proficient)) <span class="sc">+</span></span>
-<span id="cb126-6"><a href="#cb126-6"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
-<span id="cb126-7"><a href="#cb126-7"></a>  <span class="fu">coord_flip</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb126-4"><a href="#cb126-4"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> percent_proficient, </span>
+<span id="cb126-5"><a href="#cb126-5"></a>             <span class="at">y =</span> school)) <span class="sc">+</span></span>
+<span id="cb126-6"><a href="#cb126-6"></a>  <span class="fu">geom_col</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section class="slide level2 center">
@@ -2569,25 +2568,128 @@ Caused by error in `sum()`:
 <img data-src="slides_files/figure-revealjs/unnamed-chunk-94-1.png" width="960" class="r-stretch"></section>
 <section id="your-turn-12" class="slide level2 your-turn center">
 <h2>Your Turn</h2>
-<p>Create a new R script file</p>
-<p>Create a data frame called <code>enrollment_by_race_ethnicity</code> by reading in your race/ethnicity data from the data wrangling and analysis section using the read_rds() function</p>
-<p>Pipe your data into a bar chart that shows the breakdown of race/ethnicity among students in Beaverton SD 48J in 2018-2019</p>
+<ol type="1">
+<li class="fragment"><p>Create a new R script file.</p></li>
+<li class="fragment"><p>Download a slightly modified version of the enrollment data by race/ethnicity from <a href="https://rfor.us/enrollment-data"><code>https://rfor.us/enrollment-data</code></a> and save it in a <code>data</code> folder (create it if necessary).</p></li>
+<li class="fragment"><p>Create a data frame called <code>enrollment_by_race_ethnicity</code> by reading in the data you just downloaded.</p></li>
+<li class="fragment"><p>Pipe your data into a bar chart that shows the breakdown of race/ethnicity among students in Beaverton SD 48J in 2018-2019.</p></li>
+</ol>
 </section></section>
-<section id="reorder-plots-to-highlight-findings" class="title-slide slide level1 inverse center">
+<section id="highlight-1" class="title-slide slide level1 has-bg-image center" data-background-image="assets/highlight.jpg">
+<h1>Highlight</h1>
+
+</section>
+
+<section>
+<section id="reorder-plots-to-highlight-findings" class="title-slide slide level1 has-bg-image center" data-background-image="assets/goya-cans.jpg">
 <h1>Reorder Plots to Highlight Findings</h1>
 
 </section>
+<section class="slide level2 center">
 
-<section id="line-charts" class="title-slide slide level1 inverse center">
+
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-95-1.png" width="960" class="r-stretch"></section>
+<section class="slide level2 center">
+
+
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-96-1.png" width="960" class="r-stretch"></section>
+<section id="reorder-plots-to-highlight-findings-1" class="slide level2 center">
+<h2>Reorder Plots to Highlight Findings</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb127" data-code-line-numbers="5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb127-1"><a href="#cb127-1"></a>third_grade_math_proficiency <span class="sc">|&gt;</span> </span>
+<span id="cb127-2"><a href="#cb127-2"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="st">"2018-2019"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb127-3"><a href="#cb127-3"></a>  <span class="fu">filter</span>(district <span class="sc">==</span> <span class="st">"Portland SD 1J"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb127-4"><a href="#cb127-4"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> percent_proficient, </span>
+<span id="cb127-5"><a href="#cb127-5"></a>             <span class="at">y =</span> <span class="fu">reorder</span>(school, percent_proficient))) <span class="sc">+</span></span>
+<span id="cb127-6"><a href="#cb127-6"></a>  <span class="fu">geom_col</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="reorder-plots-to-highlight-findings-2" class="slide level2 center">
+<h2>Reorder Plots to Highlight Findings</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb128" data-code-line-numbers="4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb128-1"><a href="#cb128-1"></a>third_grade_math_proficiency <span class="sc">|&gt;</span> </span>
+<span id="cb128-2"><a href="#cb128-2"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="st">"2018-2019"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb128-3"><a href="#cb128-3"></a>  <span class="fu">filter</span>(district <span class="sc">==</span> <span class="st">"Portland SD 1J"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb128-4"><a href="#cb128-4"></a>  <span class="fu">mutate</span>(<span class="at">school =</span> <span class="fu">fct_reorder</span>(school, percent_proficient)) <span class="sc">|&gt;</span></span>
+<span id="cb128-5"><a href="#cb128-5"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> percent_proficient, </span>
+<span id="cb128-6"><a href="#cb128-6"></a>             <span class="at">y =</span> <span class="fu">reorder</span>(school, percent_proficient))) <span class="sc">+</span></span>
+<span id="cb128-7"><a href="#cb128-7"></a>  <span class="fu">geom_col</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="your-turn-13" class="slide level2 your-turn center">
+<h2>Your Turn</h2>
+<ol type="1">
+<li class="fragment"><p>Make a bar chart that shows race/ethnicity in Beaverton SD 48J. As before, filter your data to only include 2018-2019 data and only include Beaverton SD 48J. Then, do the following:</p></li>
+<li class="fragment"><p>Using the <code>reorder()</code> function, make a bar chart that shows the percent of race/ethnicity groups in descending order</p></li>
+<li class="fragment"><p>Make the same bar chart using <code>mutate()</code> and <code>fct_reorder()</code> to reorder the race/ethnicity groups</p></li>
+</ol>
+</section></section>
+<section>
+<section id="line-charts" class="title-slide slide level1 has-bg-image center" data-background-image="assets/lines.jpg">
 <h1>Line Charts</h1>
 
 </section>
+<section id="line-charts-1" class="slide level2 center">
+<h2>Line Charts</h2>
+<div class="cell">
+<div class="cell-output-display">
 
-<section id="use-color-to-highlight-findings" class="title-slide slide level1 inverse center">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["year"],"name":[1],"type":["chr"],"align":["left"]},{"label":["school"],"name":[2],"type":["chr"],"align":["left"]},{"label":["district"],"name":[3],"type":["chr"],"align":["left"]},{"label":["percent_proficient"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"2018-2019","2":"Abernethy Elementary School","3":"Portland SD 1J","4":"0.70652174"},{"1":"2018-2019","2":"Ainsworth Elementary School","3":"Portland SD 1J","4":"0.80434783"},{"1":"2018-2019","2":"Alameda Elementary School","3":"Portland SD 1J","4":"0.83050847"},{"1":"2018-2019","2":"Arleta Elementary School","3":"Portland SD 1J","4":"0.42307692"},{"1":"2018-2019","2":"Astor Elementary School","3":"Portland SD 1J","4":"0.59523810"},{"1":"2018-2019","2":"Atkinson Elementary School","3":"Portland SD 1J","4":"0.50793651"},{"1":"2018-2019","2":"Beach Elementary School","3":"Portland SD 1J","4":"0.56521739"},{"1":"2018-2019","2":"Beverly Cleary School","3":"Portland SD 1J","4":"0.68055556"},{"1":"2018-2019","2":"Boise-Eliot Elementary School","3":"Portland SD 1J","4":"0.17500000"},{"1":"2018-2019","2":"Bridger Elementary School","3":"Portland SD 1J","4":"0.60317460"},{"1":"2018-2019","2":"Bridlemile Elementary School","3":"Portland SD 1J","4":"0.68292683"},{"1":"2018-2019","2":"Buckman Elementary School","3":"Portland SD 1J","4":"0.56410256"},{"1":"2018-2019","2":"Capitol Hill Elementary School","3":"Portland SD 1J","4":"0.66250000"},{"1":"2018-2019","2":"Cesar Chavez K-8 School","3":"Portland SD 1J","4":"0.26000000"},{"1":"2018-2019","2":"Chapman Elementary School","3":"Portland SD 1J","4":"0.69736842"},{"1":"2018-2019","2":"Chief Joseph Elementary School","3":"Portland SD 1J","4":"0.50877193"},{"1":"2018-2019","2":"Creative Science School","3":"Portland SD 1J","4":"0.37500000"},{"1":"2018-2019","2":"Creston Elementary School","3":"Portland SD 1J","4":"0.55263158"},{"1":"2018-2019","2":"Duniway Elementary School","3":"Portland SD 1J","4":"0.70588235"},{"1":"2018-2019","2":"Emerson School","3":"Portland SD 1J","4":"0.52173913"},{"1":"2018-2019","2":"Faubion Elementary School","3":"Portland SD 1J","4":"0.21052632"},{"1":"2018-2019","2":"Forest Park Elementary School","3":"Portland SD 1J","4":"0.69642857"},{"1":"2018-2019","2":"Glencoe Elementary School","3":"Portland SD 1J","4":"0.69512195"},{"1":"2018-2019","2":"Grout Elementary School","3":"Portland SD 1J","4":"0.48333333"},{"1":"2018-2019","2":"Harrison Park School","3":"Portland SD 1J","4":"0.16438356"},{"1":"2018-2019","2":"Hayhurst Elementary School","3":"Portland SD 1J","4":"0.67021277"},{"1":"2018-2019","2":"Irvington Elementary School","3":"Portland SD 1J","4":"0.64285714"},{"1":"2018-2019","2":"James John Elementary School","3":"Portland SD 1J","4":"0.41860465"},{"1":"2018-2019","2":"Kairos PDX","3":"Portland SD 1J","4":"0.08000000"},{"1":"2018-2019","2":"Kelly Elementary School","3":"Portland SD 1J","4":"0.23376623"},{"1":"2018-2019","2":"Laurelhurst Elementary School","3":"Portland SD 1J","4":"0.68000000"},{"1":"2018-2019","2":"Le Monde French Immersion Public Charter School","3":"Portland SD 1J","4":"0.84126984"},{"1":"2018-2019","2":"Lee Elementary School","3":"Portland SD 1J","4":"0.22222222"},{"1":"2018-2019","2":"Lent Elementary School","3":"Portland SD 1J","4":"0.11111111"},{"1":"2018-2019","2":"Lewis Elementary School","3":"Portland SD 1J","4":"0.54687500"},{"1":"2018-2019","2":"Llewellyn Elementary School","3":"Portland SD 1J","4":"0.79268293"},{"1":"2018-2019","2":"Maplewood Elementary School","3":"Portland SD 1J","4":"0.43750000"},{"1":"2018-2019","2":"Markham Elementary School","3":"Portland SD 1J","4":"0.71428571"},{"1":"2018-2019","2":"Martin Luther King Jr. School","3":"Portland SD 1J","4":"0.09090909"},{"1":"2018-2019","2":"Marysville Elementary School","3":"Portland SD 1J","4":"0.25000000"},{"1":"2018-2019","2":"Metropolitan Learning Center","3":"Portland SD 1J","4":"0.42857143"},{"1":"2018-2019","2":"Opal School of the Portland Children's Museum","3":"Portland SD 1J","4":"0.28571429"},{"1":"2018-2019","2":"Peninsula Elementary School","3":"Portland SD 1J","4":"0.27272727"},{"1":"2018-2019","2":"Portland Arthur Academy Charter School","3":"Portland SD 1J","4":"0.42857143"},{"1":"2018-2019","2":"Portland Village School","3":"Portland SD 1J","4":"0.56410256"},{"1":"2018-2019","2":"Richmond Elementary School","3":"Portland SD 1J","4":"0.77884615"},{"1":"2018-2019","2":"Rieke Elementary School","3":"Portland SD 1J","4":"0.75438596"},{"1":"2018-2019","2":"Rigler Elementary School","3":"Portland SD 1J","4":"0.06666667"},{"1":"2018-2019","2":"Rosa Parks Elementary School","3":"Portland SD 1J","4":"0.14893617"},{"1":"2018-2019","2":"Rose City Park","3":"Portland SD 1J","4":"0.63218391"},{"1":"2018-2019","2":"Sabin Elementary School","3":"Portland SD 1J","4":"0.61971831"},{"1":"2018-2019","2":"Scott Elementary School","3":"Portland SD 1J","4":"0.27027027"},{"1":"2018-2019","2":"Sitton Elementary School","3":"Portland SD 1J","4":"0.14545455"},{"1":"2018-2019","2":"Skyline Elementary School","3":"Portland SD 1J","4":"0.50000000"},{"1":"2018-2019","2":"Stephenson Elementary School","3":"Portland SD 1J","4":"0.80000000"},{"1":"2018-2019","2":"Sunnyside Environmental School","3":"Portland SD 1J","4":"0.39655172"},{"1":"2018-2019","2":"Trillium","3":"Portland SD 1J","4":"0.28571429"},{"1":"2018-2019","2":"Vernon Elementary School","3":"Portland SD 1J","4":"0.52380952"},{"1":"2018-2019","2":"Vestal Elementary School","3":"Portland SD 1J","4":"0.64285714"},{"1":"2018-2019","2":"Whitman Elementary School","3":"Portland SD 1J","4":"0.37500000"},{"1":"2018-2019","2":"Winterhaven School","3":"Portland SD 1J","4":"0.36363636"},{"1":"2018-2019","2":"Woodlawn Elementary School","3":"Portland SD 1J","4":"0.46666667"},{"1":"2018-2019","2":"Woodmere Elementary School","3":"Portland SD 1J","4":"0.21276596"},{"1":"2018-2019","2":"Woodstock Elementary School","3":"Portland SD 1J","4":"0.69620253"},{"1":"2021-2022","2":"Abernethy Elementary School","3":"Portland SD 1J","4":"0.79166667"},{"1":"2021-2022","2":"Ainsworth Elementary School","3":"Portland SD 1J","4":"0.67777778"},{"1":"2021-2022","2":"Alameda Elementary School","3":"Portland SD 1J","4":"0.81720430"},{"1":"2021-2022","2":"Arleta Elementary School","3":"Portland SD 1J","4":"0.51851852"},{"1":"2021-2022","2":"Astor Elementary School","3":"Portland SD 1J","4":"0.63636364"},{"1":"2021-2022","2":"Atkinson Elementary School","3":"Portland SD 1J","4":"0.57692308"},{"1":"2021-2022","2":"Beach Elementary School","3":"Portland SD 1J","4":"0.73846154"},{"1":"2021-2022","2":"Beverly Cleary School","3":"Portland SD 1J","4":"0.75362319"},{"1":"2021-2022","2":"Boise-Eliot Elementary School","3":"Portland SD 1J","4":"0.21276596"},{"1":"2021-2022","2":"Bridger Elementary School","3":"Portland SD 1J","4":"0.34482759"},{"1":"2021-2022","2":"Bridlemile Elementary School","3":"Portland SD 1J","4":"0.72058824"},{"1":"2021-2022","2":"Buckman Elementary School","3":"Portland SD 1J","4":"0.49230769"},{"1":"2021-2022","2":"Capitol Hill Elementary School","3":"Portland SD 1J","4":"0.67272727"},{"1":"2021-2022","2":"Cesar Chavez K-8 School","3":"Portland SD 1J","4":"0.12962963"},{"1":"2021-2022","2":"Chapman Elementary School","3":"Portland SD 1J","4":"0.53658537"},{"1":"2021-2022","2":"Chief Joseph Elementary School","3":"Portland SD 1J","4":"0.50000000"},{"1":"2021-2022","2":"Creative Science School","3":"Portland SD 1J","4":"0.42105263"},{"1":"2021-2022","2":"Creston Elementary School","3":"Portland SD 1J","4":"0.61290323"},{"1":"2021-2022","2":"Duniway Elementary School","3":"Portland SD 1J","4":"0.66250000"},{"1":"2021-2022","2":"Emerson School","3":"Portland SD 1J","4":"0.62500000"},{"1":"2021-2022","2":"Faubion Elementary School","3":"Portland SD 1J","4":"0.16883117"},{"1":"2021-2022","2":"Forest Park Elementary School","3":"Portland SD 1J","4":"0.84313725"},{"1":"2021-2022","2":"Glencoe Elementary School","3":"Portland SD 1J","4":"0.56666667"},{"1":"2021-2022","2":"Grout Elementary School","3":"Portland SD 1J","4":"0.54166667"},{"1":"2021-2022","2":"Harrison Park School","3":"Portland SD 1J","4":"0.35000000"},{"1":"2021-2022","2":"Hayhurst Elementary School","3":"Portland SD 1J","4":"0.66216216"},{"1":"2021-2022","2":"Irvington Elementary School","3":"Portland SD 1J","4":"0.50000000"},{"1":"2021-2022","2":"James John Elementary School","3":"Portland SD 1J","4":"0.40000000"},{"1":"2021-2022","2":"Kairos PDX","3":"Portland SD 1J","4":"0.51612903"},{"1":"2021-2022","2":"Kelly Elementary School","3":"Portland SD 1J","4":"0.28571429"},{"1":"2021-2022","2":"Laurelhurst Elementary School","3":"Portland SD 1J","4":"0.59459459"},{"1":"2021-2022","2":"Le Monde French Immersion Public Charter School","3":"Portland SD 1J","4":"0.77272727"},{"1":"2021-2022","2":"Lee Elementary School","3":"Portland SD 1J","4":"0.50000000"},{"1":"2021-2022","2":"Lent Elementary School","3":"Portland SD 1J","4":"0.11428571"},{"1":"2021-2022","2":"Lewis Elementary School","3":"Portland SD 1J","4":"0.62711864"},{"1":"2021-2022","2":"Llewellyn Elementary School","3":"Portland SD 1J","4":"0.80952381"},{"1":"2021-2022","2":"Maplewood Elementary School","3":"Portland SD 1J","4":"0.66000000"},{"1":"2021-2022","2":"Markham Elementary School","3":"Portland SD 1J","4":"0.44827586"},{"1":"2021-2022","2":"Martin Luther King Jr. School","3":"Portland SD 1J","4":"0.36734694"},{"1":"2021-2022","2":"Marysville Elementary School","3":"Portland SD 1J","4":"0.36842105"},{"1":"2021-2022","2":"Metropolitan Learning Center","3":"Portland SD 1J","4":"0.61904762"},{"1":"2021-2022","2":"Peninsula Elementary School","3":"Portland SD 1J","4":"0.48717949"},{"1":"2021-2022","2":"Portland Arthur Academy Charter School","3":"Portland SD 1J","4":"0.50000000"},{"1":"2021-2022","2":"Portland Village School","3":"Portland SD 1J","4":"0.54347826"},{"1":"2021-2022","2":"Richmond Elementary School","3":"Portland SD 1J","4":"0.72619048"},{"1":"2021-2022","2":"Rieke Elementary School","3":"Portland SD 1J","4":"0.78000000"},{"1":"2021-2022","2":"Rigler Elementary School","3":"Portland SD 1J","4":"0.30000000"},{"1":"2021-2022","2":"Rosa Parks Elementary School","3":"Portland SD 1J","4":"0.07500000"},{"1":"2021-2022","2":"Rose City Park","3":"Portland SD 1J","4":"0.71951220"},{"1":"2021-2022","2":"Sabin Elementary School","3":"Portland SD 1J","4":"0.62295082"},{"1":"2021-2022","2":"Scott Elementary School","3":"Portland SD 1J","4":"0.46875000"},{"1":"2021-2022","2":"Sitton Elementary School","3":"Portland SD 1J","4":"0.30188679"},{"1":"2021-2022","2":"Skyline Elementary School","3":"Portland SD 1J","4":"0.80000000"},{"1":"2021-2022","2":"Stephenson Elementary School","3":"Portland SD 1J","4":"0.76271186"},{"1":"2021-2022","2":"Sunnyside Environmental School","3":"Portland SD 1J","4":"0.65789474"},{"1":"2021-2022","2":"Vernon Elementary School","3":"Portland SD 1J","4":"0.54545455"},{"1":"2021-2022","2":"Vestal Elementary School","3":"Portland SD 1J","4":"0.54838710"},{"1":"2021-2022","2":"Whitman Elementary School","3":"Portland SD 1J","4":"0.18518519"},{"1":"2021-2022","2":"Winterhaven School","3":"Portland SD 1J","4":"0.84210526"},{"1":"2021-2022","2":"Woodlawn Elementary School","3":"Portland SD 1J","4":"0.44230769"},{"1":"2021-2022","2":"Woodmere Elementary School","3":"Portland SD 1J","4":"0.28205128"},{"1":"2021-2022","2":"Woodstock Elementary School","3":"Portland SD 1J","4":"0.76136364"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</section>
+<section id="line-charts-2" class="slide level2 center">
+<h2>Line Charts</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb129"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb129-1"><a href="#cb129-1"></a>third_grade_math_proficiency <span class="sc">%&gt;%</span></span>
+<span id="cb129-2"><a href="#cb129-2"></a>  <span class="fu">filter</span>(district <span class="sc">==</span> <span class="st">"Portland SD 1J"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb129-3"><a href="#cb129-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year,</span>
+<span id="cb129-4"><a href="#cb129-4"></a>             <span class="at">y =</span> percent_proficient)) <span class="sc">+</span></span>
+<span id="cb129-5"><a href="#cb129-5"></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="slides_files/figure-revealjs/unnamed-chunk-101-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="line-charts-3" class="slide level2 center">
+<h2>Line Charts</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb130" data-code-line-numbers="5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb130-1"><a href="#cb130-1"></a>third_grade_math_proficiency <span class="sc">%&gt;%</span></span>
+<span id="cb130-2"><a href="#cb130-2"></a>  <span class="fu">filter</span>(district <span class="sc">==</span> <span class="st">"Portland SD 1J"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb130-3"><a href="#cb130-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year,</span>
+<span id="cb130-4"><a href="#cb130-4"></a>             <span class="at">y =</span> percent_proficient,</span>
+<span id="cb130-5"><a href="#cb130-5"></a>             <span class="at">group =</span> school)) <span class="sc">+</span></span>
+<span id="cb130-6"><a href="#cb130-6"></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="slides_files/figure-revealjs/unnamed-chunk-103-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="your-turn-14" class="slide level2 your-turn center">
+<h2>Your Turn</h2>
+<p>Make a line chart that shows the growth in the Hispanic/Latino population in school districts from 2017-2018 to 2018-2019</p>
+</section></section>
+<section>
+<section id="use-color-to-highlight-findings" class="title-slide slide level1 has-bg-image center" data-background-image="assets/color.jpg">
 <h1>Use Color to Highlight Findings</h1>
 
-</section>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-104-1.png" width="960" class="r-stretch"></section>
+<section id="use-color-to-highlight-findings-1" class="slide level2 center">
+<h2>Use Color to Highlight Findings</h2>
 
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-105-1.png" width="960" class="r-stretch"></section></section>
 <section id="declutter-1" class="title-slide slide level1 inverse center">
 <h1>Declutter</h1>
 
