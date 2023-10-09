@@ -1684,3 +1684,213 @@ write_rds(french_and_german_speakers_2019,
 
 1. Export the `enrollment_by_race_ethnicity` data frame as an RDS file in the `data` folder.
 
+# Data Visualization {.inverse}
+
+# Best Practices in Data Visualization {.inverse}
+
+---
+
+![](assets/nyt-sea-ice-viz.png){fig-width="100%"}
+
+## Highlight {.has-bg-image background-image="assets/highlight.jpg"}
+
+---
+
+![](assets/nyt-sea-ice-viz.png){fig-width="100%"}
+
+
+## Declutter {.has-bg-image background-image="assets/declutter.jpg"}
+
+
+---
+
+![](assets/nyt-sea-ice-viz.png){fig-width="100%"}
+
+## Explain {.has-bg-image background-image="assets/explain.jpg"}
+
+
+---
+
+![](assets/nyt-sea-ice-viz.png){fig-width="100%"}
+
+
+
+## Sparkle {.has-bg-image background-image="assets/sparkle.jpg"}
+
+---
+
+![](assets/nyt-sea-ice-viz.png){fig-width="100%"}
+
+
+# Tidy Data {.has-bg-image background-image="assets/messy.jpg"}
+
+## Can We Plot Untidy Data?
+
+```{r}
+#| echo: false
+german_speakers_numeric <- read_excel(path = here("data-raw", "german-and-french-speakers.xlsx"),
+                                      sheet = "German speakers",
+                                      na = "-") %>% 
+  clean_names()
+```
+
+
+```{r}
+#| echo: true
+#| output: true
+german_speakers_numeric
+```
+
+---
+
+## Can We Plot Untidy Data?
+
+```{r}
+#| echo: true
+#| output: true
+german_speakers_numeric
+```
+
+<br>
+
+```{r}
+#| eval: false
+#| echo: true
+#| code-line-numbers: "2"
+ggplot(data = german_speakers_numeric,
+       mapping = aes(x = ???, 
+                     y = state))
+```
+
+
+
+## Can We Plot Untidy Data?
+
+```{r}
+#| echo: true
+german_speakers_tidy <- german_speakers_numeric %>%
+  pivot_longer(cols = -state,
+               names_to = "year",
+               values_to = "number") %>%
+  mutate(year = parse_number(year))
+```
+
+<br>
+
+::: {.fragment}
+```{r}
+#| include: true
+#| echo: true
+german_speakers_tidy
+```
+:::
+
+
+## Can We Plot Untidy Data?
+
+```{r}
+#| echo: true
+
+ggplot(data = german_speakers_tidy,
+       mapping = aes(x = number,
+                     y = state)) +
+  geom_col() +
+  facet_wrap(~year)
+```
+
+# Pipe Data Into ggplot {.has-bg-image background-image="assets/pipes.jpg"}
+
+## Load Data
+
+```{r}
+third_grade_math_proficiency <- 
+  read_rds(here("data/third_grade_math_proficiency.rds"))
+```
+
+```{r}
+#| eval: false
+third_grade_math_proficiency <- 
+  read_rds("data/third_grade_math_proficiency.rds")
+```
+
+## Pipe Data Into ggplot 
+
+```{r}
+#| echo: true
+third_grade_math_proficiency %>% 
+  filter(academic_year == "2018-2019") %>% 
+  filter(district == "Portland SD 1J")
+```
+
+## Pipe Data Into ggplot 
+
+```{r}
+#| echo: true
+#| output: false
+#| code-line-numbers: "4,5,6,7"
+third_grade_math_proficiency %>% 
+  filter(academic_year == "2018-2019") %>% 
+  filter(district == "Portland SD 1J") |> 
+  ggplot(aes(x = school, 
+             y = percent_proficient)) +
+  geom_col() +
+  coord_flip()
+```
+
+---
+
+```{r}
+#| output: true
+third_grade_math_proficiency %>% 
+  filter(academic_year == "2018-2019") %>% 
+  filter(district == "Portland SD 1J") |> 
+  ggplot(aes(x = school, 
+             y = percent_proficient)) +
+  geom_col() +
+  coord_flip()
+```
+
+
+## Your Turn {.your-turn}
+
+Create a new R script file
+
+Create a data frame called `enrollment_by_race_ethnicity` by reading in your race/ethnicity data from the data wrangling and analysis section using the read_rds() function
+
+Pipe your data into a bar chart that shows the breakdown of race/ethnicity among students in Beaverton SD 48J in 2018-2019
+
+
+
+# Reorder Plots to Highlight Findings {.inverse}
+
+# Line Charts {.inverse}
+
+# Use Color to Highlight Findings {.inverse}
+
+# Declutter {.inverse}
+
+# Use the `scales` Package for Nicely Formatted Values
+
+# Use Direct Labeling {.inverse}
+
+# Use Axis Text Wisely {.inverse}
+
+- Format nicely
+- Or remove it
+
+# Use Axis Text Wisely {.inverse}
+
+# Use Titles to Highlight Findings {.inverse}
+
+# Use Color in Titles to Highlight Findings {.inverse}
+
+# Use Annotations to Explain {.inverse}
+
+# Tweak Spacing {.inverse}
+
+# Customize Your Theme {.inverse}
+
+# Customize Your Fonts {.inverse}
+
+# Try New Plot Types {.inverse}
+

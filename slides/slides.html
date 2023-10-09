@@ -2374,10 +2374,284 @@ Caused by error in `sum()`:
 <li class="fragment"><p>Make a <code>data</code> folder using the <code>dir_create()</code> function from the <code>fs</code> package.</p></li>
 <li class="fragment"><p>Export the <code>enrollment_by_race_ethnicity</code> data frame as an RDS file in the <code>data</code> folder.</p></li>
 </ol>
+</section></section>
+<section id="data-visualization" class="title-slide slide level1 inverse center">
+<h1>Data Visualization</h1>
+
+</section>
+
+<section>
+<section id="best-practices-in-data-visualization" class="title-slide slide level1 inverse center">
+<h1>Best Practices in Data Visualization</h1>
+
+</section>
+<section class="slide level2 center">
+
+
+<img data-src="assets/nyt-sea-ice-viz.png" class="r-stretch quarto-figure-center"></section>
+<section id="highlight" class="slide level2 has-bg-image center" data-background-image="assets/highlight.jpg">
+<h2>Highlight</h2>
+</section>
+<section class="slide level2 center">
+
+
+<img data-src="assets/nyt-sea-ice-viz.png" class="r-stretch quarto-figure-center"></section>
+<section id="declutter" class="slide level2 has-bg-image center" data-background-image="assets/declutter.jpg">
+<h2>Declutter</h2>
+</section>
+<section class="slide level2 center">
+
+
+<img data-src="assets/nyt-sea-ice-viz.png" class="r-stretch quarto-figure-center"></section>
+<section id="explain" class="slide level2 has-bg-image center" data-background-image="assets/explain.jpg">
+<h2>Explain</h2>
+</section>
+<section class="slide level2 center">
+
+
+<img data-src="assets/nyt-sea-ice-viz.png" class="r-stretch quarto-figure-center"></section>
+<section id="sparkle" class="slide level2 has-bg-image center" data-background-image="assets/sparkle.jpg">
+<h2>Sparkle</h2>
+</section>
+<section class="slide level2 center">
+
+
+<img data-src="assets/nyt-sea-ice-viz.png" class="r-stretch quarto-figure-center"></section></section>
+<section>
+<section id="tidy-data-2" class="title-slide slide level1 has-bg-image center" data-background-image="assets/messy.jpg">
+<h1>Tidy Data</h1>
+
+</section>
+<section id="can-we-plot-untidy-data" class="slide level2 center">
+<h2>Can We Plot Untidy Data?</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb115"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb115-1"><a href="#cb115-1"></a>german_speakers_numeric</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 51 × 4
+   state    number_of_german_spe…¹ number_of_german_spe…² number_of_german_spe…³
+   &lt;chr&gt;                     &lt;dbl&gt;                  &lt;dbl&gt;                  &lt;dbl&gt;
+ 1 Alabama                     426                    395                    711
+ 2 Alaska                      331                    201                    131
+ 3 Arizona                     636                    858                    136
+ 4 Arkansas                     NA                    635                    557
+ 5 Califor…                    440                    318                    854
+ 6 Colorado                    251                    498                    768
+ 7 Connect…                    187                    334                    586
+ 8 Delaware                     NA                    998                    453
+ 9 Distric…                    799                    745                    180
+10 Florida                     399                    924                    958
+# ℹ 41 more rows
+# ℹ abbreviated names: ¹​number_of_german_speakers_2017,
+#   ²​number_of_german_speakers_2018, ³​number_of_german_speakers_2019</code></pre>
+</div>
+</div>
+</section>
+<section id="can-we-plot-untidy-data-1" class="slide level2 center">
+<h2>Can We Plot Untidy Data?</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb117"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb117-1"><a href="#cb117-1"></a>german_speakers_numeric</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 51 × 4
+   state    number_of_german_spe…¹ number_of_german_spe…² number_of_german_spe…³
+   &lt;chr&gt;                     &lt;dbl&gt;                  &lt;dbl&gt;                  &lt;dbl&gt;
+ 1 Alabama                     426                    395                    711
+ 2 Alaska                      331                    201                    131
+ 3 Arizona                     636                    858                    136
+ 4 Arkansas                     NA                    635                    557
+ 5 Califor…                    440                    318                    854
+ 6 Colorado                    251                    498                    768
+ 7 Connect…                    187                    334                    586
+ 8 Delaware                     NA                    998                    453
+ 9 Distric…                    799                    745                    180
+10 Florida                     399                    924                    958
+# ℹ 41 more rows
+# ℹ abbreviated names: ¹​number_of_german_speakers_2017,
+#   ²​number_of_german_speakers_2018, ³​number_of_german_speakers_2019</code></pre>
+</div>
+</div>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb119" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a href="#cb119-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> german_speakers_numeric,</span>
+<span id="cb119-2"><a href="#cb119-2"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> ???, </span>
+<span id="cb119-3"><a href="#cb119-3"></a>                     <span class="at">y =</span> state))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="can-we-plot-untidy-data-2" class="slide level2 center">
+<h2>Can We Plot Untidy Data?</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb120"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb120-1"><a href="#cb120-1"></a>german_speakers_tidy <span class="ot">&lt;-</span> german_speakers_numeric <span class="sc">%&gt;%</span></span>
+<span id="cb120-2"><a href="#cb120-2"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>state,</span>
+<span id="cb120-3"><a href="#cb120-3"></a>               <span class="at">names_to =</span> <span class="st">"year"</span>,</span>
+<span id="cb120-4"><a href="#cb120-4"></a>               <span class="at">values_to =</span> <span class="st">"number"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb120-5"><a href="#cb120-5"></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">parse_number</span>(year))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br></p>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb121"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb121-1"><a href="#cb121-1"></a>german_speakers_tidy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 153 × 3
+   state     year number
+   &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt;
+ 1 Alabama   2017    426
+ 2 Alabama   2018    395
+ 3 Alabama   2019    711
+ 4 Alaska    2017    331
+ 5 Alaska    2018    201
+ 6 Alaska    2019    131
+ 7 Arizona   2017    636
+ 8 Arizona   2018    858
+ 9 Arizona   2019    136
+10 Arkansas  2017     NA
+# ℹ 143 more rows</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="can-we-plot-untidy-data-3" class="slide level2 center">
+<h2>Can We Plot Untidy Data?</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a href="#cb123-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> german_speakers_tidy,</span>
+<span id="cb123-2"><a href="#cb123-2"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> number,</span>
+<span id="cb123-3"><a href="#cb123-3"></a>                     <span class="at">y =</span> state)) <span class="sc">+</span></span>
+<span id="cb123-4"><a href="#cb123-4"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb123-5"><a href="#cb123-5"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>year)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-89-1.png" width="960" class="r-stretch"></section></section>
+<section>
+<section id="pipe-data-into-ggplot" class="title-slide slide level1 has-bg-image center" data-background-image="assets/pipes.jpg">
+<h1>Pipe Data Into ggplot</h1>
+
+</section>
+<section id="load-data" class="slide level2 center">
+<h2>Load Data</h2>
+</section>
+<section id="pipe-data-into-ggplot-1" class="slide level2 center">
+<h2>Pipe Data Into ggplot</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb124"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb124-1"><a href="#cb124-1"></a>third_grade_math_proficiency <span class="sc">%&gt;%</span> </span>
+<span id="cb124-2"><a href="#cb124-2"></a>  <span class="fu">filter</span>(academic_year <span class="sc">==</span> <span class="st">"2018-2019"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb124-3"><a href="#cb124-3"></a>  <span class="fu">filter</span>(district <span class="sc">==</span> <span class="st">"Portland SD 1J"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 64 × 4
+   academic_year school                        district       percent_proficient
+   &lt;chr&gt;         &lt;chr&gt;                         &lt;chr&gt;                       &lt;dbl&gt;
+ 1 2018-2019     Abernethy Elementary School   Portland SD 1J              0.707
+ 2 2018-2019     Ainsworth Elementary School   Portland SD 1J              0.804
+ 3 2018-2019     Alameda Elementary School     Portland SD 1J              0.831
+ 4 2018-2019     Arleta Elementary School      Portland SD 1J              0.423
+ 5 2018-2019     Astor Elementary School       Portland SD 1J              0.595
+ 6 2018-2019     Atkinson Elementary School    Portland SD 1J              0.508
+ 7 2018-2019     Beach Elementary School       Portland SD 1J              0.565
+ 8 2018-2019     Beverly Cleary School         Portland SD 1J              0.681
+ 9 2018-2019     Boise-Eliot Elementary School Portland SD 1J              0.175
+10 2018-2019     Bridger Elementary School     Portland SD 1J              0.603
+# ℹ 54 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="pipe-data-into-ggplot-2" class="slide level2 center">
+<h2>Pipe Data Into ggplot</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb126" data-code-line-numbers="4,5,6,7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb126-1"><a href="#cb126-1"></a>third_grade_math_proficiency <span class="sc">%&gt;%</span> </span>
+<span id="cb126-2"><a href="#cb126-2"></a>  <span class="fu">filter</span>(academic_year <span class="sc">==</span> <span class="st">"2018-2019"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb126-3"><a href="#cb126-3"></a>  <span class="fu">filter</span>(district <span class="sc">==</span> <span class="st">"Portland SD 1J"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb126-4"><a href="#cb126-4"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> school, </span>
+<span id="cb126-5"><a href="#cb126-5"></a>             <span class="at">y =</span> percent_proficient)) <span class="sc">+</span></span>
+<span id="cb126-6"><a href="#cb126-6"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb126-7"><a href="#cb126-7"></a>  <span class="fu">coord_flip</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section class="slide level2 center">
+
+
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-94-1.png" width="960" class="r-stretch"></section>
+<section id="your-turn-12" class="slide level2 your-turn center">
+<h2>Your Turn</h2>
+<p>Create a new R script file</p>
+<p>Create a data frame called <code>enrollment_by_race_ethnicity</code> by reading in your race/ethnicity data from the data wrangling and analysis section using the read_rds() function</p>
+<p>Pipe your data into a bar chart that shows the breakdown of race/ethnicity among students in Beaverton SD 48J in 2018-2019</p>
+</section></section>
+<section id="reorder-plots-to-highlight-findings" class="title-slide slide level1 inverse center">
+<h1>Reorder Plots to Highlight Findings</h1>
+
+</section>
+
+<section id="line-charts" class="title-slide slide level1 inverse center">
+<h1>Line Charts</h1>
+
+</section>
+
+<section id="use-color-to-highlight-findings" class="title-slide slide level1 inverse center">
+<h1>Use Color to Highlight Findings</h1>
+
+</section>
+
+<section id="declutter-1" class="title-slide slide level1 inverse center">
+<h1>Declutter</h1>
+
+</section>
+
+<section id="use-the-scales-package-for-nicely-formatted-values" class="title-slide slide level1 center">
+<h1>Use the <code>scales</code> Package for Nicely Formatted Values</h1>
+
+</section>
+
+<section id="use-direct-labeling" class="title-slide slide level1 inverse center">
+<h1>Use Direct Labeling</h1>
+
+</section>
+
+<section id="use-axis-text-wisely" class="title-slide slide level1 inverse center">
+<h1>Use Axis Text Wisely</h1>
+<ul>
+<li class="fragment">Format nicely</li>
+<li class="fragment">Or remove it</li>
+</ul>
+</section>
+
+<section id="use-axis-text-wisely-1" class="title-slide slide level1 inverse center">
+<h1>Use Axis Text Wisely</h1>
+
+</section>
+
+<section id="use-titles-to-highlight-findings" class="title-slide slide level1 inverse center">
+<h1>Use Titles to Highlight Findings</h1>
+
+</section>
+
+<section id="use-color-in-titles-to-highlight-findings" class="title-slide slide level1 inverse center">
+<h1>Use Color in Titles to Highlight Findings</h1>
+
+</section>
+
+<section id="use-annotations-to-explain" class="title-slide slide level1 inverse center">
+<h1>Use Annotations to Explain</h1>
+
+</section>
+
+<section id="tweak-spacing" class="title-slide slide level1 inverse center">
+<h1>Tweak Spacing</h1>
+
+</section>
+
+<section id="customize-your-theme" class="title-slide slide level1 inverse center">
+<h1>Customize Your Theme</h1>
+
+</section>
+
+<section id="customize-your-fonts" class="title-slide slide level1 inverse center">
+<h1>Customize Your Fonts</h1>
+
+</section>
+
+<section id="try-new-plot-types" class="title-slide slide level1 inverse center">
+<h1>Try New Plot Types</h1>
 <div class="footer footer-default">
 
 </div>
-</section></section>
+</section>
     </div>
   </div>
 
