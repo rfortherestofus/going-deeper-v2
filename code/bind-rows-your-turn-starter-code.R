@@ -47,9 +47,10 @@ enrollment_2021_2022 <- read_excel(path = "data-raw/fallmembershipreport_2021202
 
 enrollment_by_race_ethnicity_2022_2023 <-
   enrollment_2022_2023 |> 
-  select(district_institution_id, x2022_23_american_indian_alaska_native:x2022_23_percent_multi_racial) |>  
+  select(district_institution_id, school_institution_id,
+         x2022_23_american_indian_alaska_native:x2022_23_multi_racial) |> 
   select(-contains("percent")) |> 
-  pivot_longer(cols = -district_institution_id,
+  pivot_longer(cols = -c(district_institution_id, school_institution_id),
                names_to = "race_ethnicity",
                values_to = "number_of_students") |> 
   mutate(race_ethnicity = str_remove(race_ethnicity, pattern = "x2022_23_")) |> 
@@ -58,25 +59,28 @@ enrollment_by_race_ethnicity_2022_2023 <-
     race_ethnicity == "asian" ~ "Asian",
     race_ethnicity == "black_african_american" ~ "Black/African American",
     race_ethnicity == "hispanic_latino" ~ "Hispanic/Latino",
-    race_ethnicity == "multi_racial" ~ "Multiracial",
+    race_ethnicity == "multiracial" ~ "Multi-Racial",
     race_ethnicity == "native_hawaiian_pacific_islander" ~ "Native Hawaiian Pacific Islander",
-    race_ethnicity == "white" ~ "White"
+    race_ethnicity == "white" ~ "White",
+    race_ethnicity == "multi_racial" ~ "Multiracial"
   )) |> 
   mutate(number_of_students = parse_number(number_of_students)) |> 
-  group_by(district_institution_id, race_ethnicity) |>
+  group_by(district_institution_id, race_ethnicity) |> 
   summarize(number_of_students = sum(number_of_students, na.rm = TRUE)) |> 
   ungroup() |> 
-  group_by(district_institution_id) |>
-  mutate(pct = number_of_students / sum(number_of_students, na.rm = TRUE)) |> 
+  group_by(district_institution_id) |> 
+  mutate(pct = number_of_students / sum(number_of_students)) |> 
   ungroup() |> 
   mutate(year = YOURCODEHERE)
 
 enrollment_by_race_ethnicity_2021_2022 <-
   enrollment_2021_2022 |> 
-  select(attending_district_institution_id, YOURCODEHERE:YOURCODEHERE) |>  
-  rename(district_institution_id = YOURCODEHERE) |> 
+  select(attending_district_institution_id, attending_school_institution_id,
+         YOURCODEHERE:YOURCODEHERE) |> 
+  rename(YOURCODEHERE = attending_district_institution_id,
+         YOURCODEHERE = attending_school_institution_id) |> 
   select(-contains("percent")) |> 
-  pivot_longer(cols = -district_institution_id,
+  pivot_longer(cols = -c(district_institution_id, school_institution_id),
                names_to = "race_ethnicity",
                values_to = "number_of_students") |> 
   mutate(race_ethnicity = str_remove(race_ethnicity, pattern = YOURCODEHERE)) |> 
@@ -85,19 +89,20 @@ enrollment_by_race_ethnicity_2021_2022 <-
     race_ethnicity == "asian" ~ "Asian",
     race_ethnicity == "black_african_american" ~ "Black/African American",
     race_ethnicity == "hispanic_latino" ~ "Hispanic/Latino",
-    race_ethnicity == "multi_racial" ~ "Multiracial",
+    race_ethnicity == "multiracial" ~ "Multi-Racial",
     race_ethnicity == "native_hawaiian_pacific_islander" ~ "Native Hawaiian Pacific Islander",
-    race_ethnicity == "white" ~ "White"
+    race_ethnicity == "white" ~ "White",
+    race_ethnicity == "multi_racial" ~ "Multiracial"
   )) |> 
   mutate(number_of_students = parse_number(number_of_students)) |> 
-  group_by(district_institution_id, race_ethnicity) |>
+  group_by(district_institution_id, race_ethnicity) |> 
   summarize(number_of_students = sum(number_of_students, na.rm = TRUE)) |> 
   ungroup() |> 
-  group_by(district_institution_id) |>
-  mutate(pct = number_of_students / sum(number_of_students, na.rm = TRUE)) |> 
+  group_by(district_institution_id) |> 
+  mutate(pct = number_of_students / sum(number_of_students)) |> 
   ungroup() |> 
   mutate(year = YOURCODEHERE)
 
 enrollment_by_race_ethnicity <-
   bind_rows(YOURCODEHERE,
-            YOURCODEHERE) 
+            YOURCODEHERE)

@@ -33,16 +33,7 @@ dir_create("data-raw")
 #               mode = "wb",
 #               destfile = "data-raw/fallmembershipreport_20182019.xlsx")
 
-# Import Data -------------------------------------------------------------
-
-enrollment_2022_2023 <- read_excel(path = "data-raw/fallmembershipreport_20222023.xlsx",
-                                   sheet = "School 2022-23") |> 
-  clean_names()
-
-enrollment_2021_2022 <- read_excel(path = "data-raw/fallmembershipreport_20212022.xlsx",
-                                   sheet = "School 2021-22") |> 
-  clean_names()
-
+# Import, Tidy, and Clean Data -----------------------------------------------------
 
 clean_enrollment_data <- function(excel_file,
                                   sheet_name) {
@@ -54,10 +45,9 @@ clean_enrollment_data <- function(excel_file,
     # I've selected by column position rather than names 
     # because the column names vary in the data between years
     # but they're always in the same positions
-    select(1, 7:20) |> 
-    select(-contains("percent")) |> 
+    select(1, 3, 7:19) |> 
     
-    # Set the names of the columns
+    select(-contains("percent")) |> 
     set_names("district_institution_id",
               YOURCODEHERE,
               YOURCODEHERE,
@@ -65,8 +55,9 @@ clean_enrollment_data <- function(excel_file,
               YOURCODEHERE,
               YOURCODEHERE,
               YOURCODEHERE,
+              YOURCODEHERE,
               YOURCODEHERE) |> 
-    pivot_longer(cols = -district_institution_id,
+    pivot_longer(cols = -c(district_institution_id, school_institution_id),
                  names_to = "race_ethnicity",
                  values_to = "number_of_students") |> 
     mutate(race_ethnicity = case_when(
@@ -74,15 +65,19 @@ clean_enrollment_data <- function(excel_file,
       race_ethnicity == "asian" ~ "Asian",
       race_ethnicity == "black_african_american" ~ "Black/African American",
       race_ethnicity == "hispanic_latino" ~ "Hispanic/Latino",
-      race_ethnicity == "multi_racial" ~ "Multiracial",
+      race_ethnicity == "multiracial" ~ "Multi-Racial",
       race_ethnicity == "native_hawaiian_pacific_islander" ~ "Native Hawaiian Pacific Islander",
-      race_ethnicity == "white" ~ "White"
+      race_ethnicity == "white" ~ "White",
+      race_ethnicity == "multi_racial" ~ "Multiracial"
     )) |> 
     mutate(number_of_students = parse_number(number_of_students)) |> 
-    group_by(district_institution_id) |> 
-    mutate(pct = number_of_students / sum(number_of_students, na.rm = TRUE)) |> 
+    group_by(district_institution_id, race_ethnicity) |> 
+    summarize(number_of_students = sum(number_of_students, na.rm = TRUE)) |> 
     ungroup() |> 
-    mutate(year = sheet_name)
+    group_by(district_institution_id) |> 
+    mutate(pct = number_of_students / sum(number_of_students)) |> 
+    ungroup() |> 
+    mutate(year = sheet_name) 
   
 }
 
@@ -94,7 +89,6 @@ enrollment_by_race_ethnicity_2022_2023 <-
   clean_enrollment_data(excel_file = YOURCODEHERE,
                         sheet_name = YOURCODEHERE) 
 
-
-enrollment_by_race_ethnicity <-
+enrollment_by_race_ethnicity <- 
   bind_rows(enrollment_by_race_ethnicity_2021_2022,
-            enrollment_by_race_ethnicity_2022_2023) 
+            enrollment_by_race_ethnicity_2022_2023)

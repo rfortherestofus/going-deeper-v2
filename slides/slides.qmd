@@ -391,7 +391,7 @@ Do the following to create a new data frame called `enrollment_by_race_ethnicity
 
 1. Start with the `enrollment_2022_2023` data frame.
 
-1. `select()` the `district_institution_id` variable as well as those about number of students by race/ethnicity and get rid of all others.
+1. `select()` the `district_institution_id` and `school_institution_id` variables as well as those about number of students by race/ethnicity and get rid of all others.
 
 ## Your Turn, Continued {.your-turn}
 
@@ -1963,7 +1963,7 @@ third_grade_math_proficiency %>%
 
 # Use Titles to Highlight Findings {.inverse}
 
-# Use Color in Titles to Highlight Findings {.inverse}
+- Including color
 
 # Use Annotations to Explain {.inverse}
 

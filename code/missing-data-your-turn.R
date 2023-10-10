@@ -43,9 +43,10 @@ enrollment_2022_2023 <- read_excel(path = "data-raw/fallmembershipreport_2022202
 
 enrollment_by_race_ethnicity_2022_2023 <-
   enrollment_2022_2023 |> 
-  select(district_institution_id, x2022_23_american_indian_alaska_native:x2022_23_percent_multi_racial) |> 
+  select(district_institution_id, school_institution_id,
+         x2022_23_american_indian_alaska_native:x2022_23_multi_racial) |> 
   select(-contains("percent")) |> 
-  pivot_longer(cols = -district_institution_id,
+  pivot_longer(cols = -c(district_institution_id, school_institution_id),
                names_to = "race_ethnicity",
                values_to = "number_of_students") |> 
   mutate(race_ethnicity = str_remove(race_ethnicity, pattern = "x2022_23_")) |> 
@@ -54,9 +55,10 @@ enrollment_by_race_ethnicity_2022_2023 <-
     race_ethnicity == "asian" ~ "Asian",
     race_ethnicity == "black_african_american" ~ "Black/African American",
     race_ethnicity == "hispanic_latino" ~ "Hispanic/Latino",
-    race_ethnicity == "multi_racial" ~ "Multiracial",
+    race_ethnicity == "multiracial" ~ "Multi-Racial",
     race_ethnicity == "native_hawaiian_pacific_islander" ~ "Native Hawaiian Pacific Islander",
-    race_ethnicity == "white" ~ "White"
+    race_ethnicity == "white" ~ "White",
+    race_ethnicity == "multi_racial" ~ "Multiracial"
   ))
 
 enrollment_by_race_ethnicity_2022_2023 |> 

@@ -43,8 +43,10 @@ enrollment_2022_2023 <- read_excel(path = "data-raw/fallmembershipreport_2022202
 
 enrollment_by_race_ethnicity_2022_2023 <-
   enrollment_2022_2023 |> 
-  select(district_institution_id, x2022_23_american_indian_alaska_native:x2022_23_percent_multi_racial) |> 
+  select(district_institution_id, school_institution_id,
+         x2022_23_american_indian_alaska_native:x2022_23_multi_racial) |> 
   select(-contains("percent")) |> 
-  pivot_longer(cols = -district_institution_id,
+  pivot_longer(cols = -c(district_institution_id, school_institution_id),
                names_to = "race_ethnicity",
                values_to = "number_of_students") 
+
