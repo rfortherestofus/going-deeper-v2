@@ -1025,11 +1025,19 @@ And I can't forget to `ungroup()`!
 
 ## Your Turn {.your-turn}
 
-Create a new variable called `pct` that shows each race/ethnicity as a percentage of all students in each district.
+::: {.fragment}
+Create a new variable called `pct` that shows each race/ethnicity as a percentage of all students in each district. This will require two steps.
+:::
 
-You'll need to use `group_by()` and `mutate()`.
+1. Use `group_by()` and `summarize()` to calculate the number of students in each race/ethnicity group in each district. 
 
-Don't forget to `ungroup()` at the end!
+1. Use `group_by()` and `mutate()` to calculate the percentage of students in each race/ethnicity group in each district.
+
+## Your Turn, Continued {.your-turn}
+
+Don’t forget to `ungroup()` at the end of each step.
+
+
 
 
 # Binding Data Frames {.inverse background-image="assets/bind.jpg"}
@@ -1826,7 +1834,7 @@ third_grade_math_proficiency <-
 
 1. Create a data frame called `enrollment_by_race_ethnicity` by reading in the data you just downloaded.
 
-1. Pipe your data into a bar chart that shows the breakdown of race/ethnicity among students in Beaverton SD 48J in 2018-2019.
+1. Pipe your data into a bar chart that shows the breakdown of race/ethnicity among students in Beaverton SD 48J in 2022-2023.
 
 # Highlight {.has-bg-image background-image="assets/highlight.jpg"}
 

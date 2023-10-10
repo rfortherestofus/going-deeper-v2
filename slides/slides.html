@@ -1758,9 +1758,17 @@ Caused by error in `sum()`:
 </section>
 <section id="your-turn-7" class="slide level2 your-turn center">
 <h2>Your Turn</h2>
-<p>Create a new variable called <code>pct</code> that shows each race/ethnicity as a percentage of all students in each district.</p>
-<p>You’ll need to use <code>group_by()</code> and <code>mutate()</code>.</p>
-<p>Don’t forget to <code>ungroup()</code> at the end!</p>
+<div class="fragment">
+<p>Create a new variable called <code>pct</code> that shows each race/ethnicity as a percentage of all students in each district. This will require two steps.</p>
+</div>
+<ol type="1">
+<li class="fragment"><p>Use <code>group_by()</code> and <code>summarize()</code> to calculate the number of students in each race/ethnicity group in each district.</p></li>
+<li class="fragment"><p>Use <code>group_by()</code> and <code>mutate()</code> to calculate the percentage of students in each race/ethnicity group in each district.</p></li>
+</ol>
+</section>
+<section id="your-turn-continued-3" class="slide level2 your-turn center">
+<h2>Your Turn, Continued</h2>
+<p>Don’t forget to <code>ungroup()</code> at the end of each step.</p>
 </section></section>
 <section>
 <section id="binding-data-frames" class="title-slide slide level1 inverse center" data-background-image="assets/bind.jpg">
@@ -1884,7 +1892,7 @@ Caused by error in `sum()`:
 <li class="fragment"><p>Add a <code>year</code> variable to the <code>enrollment_by_race_ethnicity_2021_2022</code> and <code>enrollment_by_race_ethnicity_2022_2023</code> data frames.</p></li>
 </ol>
 </section>
-<section id="your-turn-continued-3" class="slide level2 your-turn center">
+<section id="your-turn-continued-4" class="slide level2 your-turn center">
 <h2>Your Turn, Continued</h2>
 <ol start="3" type="1">
 <li class="fragment">Use bind_rows() to make a <code>enrollment_by_race_ethnicity</code> data frame by combining the <code>enrollment_by_race_ethnicity_2021_2022</code> and <code>enrollment_by_race_ethnicity_2022_2023</code> data frames.</li>
@@ -2540,7 +2548,7 @@ Caused by error in `sum()`:
 <li class="fragment"><p>Create a new R script file.</p></li>
 <li class="fragment"><p>Download a slightly modified version of the enrollment data by race/ethnicity from <a href="https://rfor.us/enrollment-data"><code>https://rfor.us/enrollment-data</code></a> and save it in a <code>data</code> folder (create it if necessary).</p></li>
 <li class="fragment"><p>Create a data frame called <code>enrollment_by_race_ethnicity</code> by reading in the data you just downloaded.</p></li>
-<li class="fragment"><p>Pipe your data into a bar chart that shows the breakdown of race/ethnicity among students in Beaverton SD 48J in 2018-2019.</p></li>
+<li class="fragment"><p>Pipe your data into a bar chart that shows the breakdown of race/ethnicity among students in Beaverton SD 48J in 2022-2023.</p></li>
 </ol>
 </section></section>
 <section id="highlight-1" class="title-slide slide level1 has-bg-image center" data-background-image="assets/highlight.jpg">
