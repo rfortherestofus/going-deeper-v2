@@ -1668,7 +1668,7 @@ anti_join(german_speakers_2019,
 #| echo: true
 #| eval: false
 write_csv(french_and_german_speakers_2019,
-          path = "data/french_and_german_speakers_2019.csv")
+          file = "data/french_and_german_speakers_2019.csv")
 ```
 
 ## `write_rds()`
@@ -1677,7 +1677,7 @@ write_csv(french_and_german_speakers_2019,
 #| echo: true
 #| eval: false
 write_rds(french_and_german_speakers_2019,
-          path = "data/french_and_german_speakers_2019.rds")
+          file = "data/french_and_german_speakers_2019.rds")
 ```
 
 ## My Turn {.my-turn}
@@ -1823,14 +1823,14 @@ third_grade_math_proficiency <-
 
 1. Import the RDS file into a data frame called `third_grade_math_proficiency`.
 
-1. Make a plot by piping the third grade math proficiency data direcly into ggplot.
+1. Make a plot by piping the third grade math proficiency data directly into ggplot.
 
 
 ## Your Turn {.your-turn}
 
 1. Create a new R script file.
 
-1. Download a slightly modified version of the enrollment data by race/ethnicity from [`https://rfor.us/enrollment-data`](https://rfor.us/enrollment-data) and save it in a `data` folder (create it if necessary).
+1. Download a slightly modified version of the enrollment data by race/ethnicity from the URL below and save it in a `data` folder (create it if necessary).
 
 1. Create a data frame called `enrollment_by_race_ethnicity` by reading in the data you just downloaded.
 

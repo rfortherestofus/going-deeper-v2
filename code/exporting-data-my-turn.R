@@ -40,6 +40,11 @@ dir_create("data")
 
 # Import, Tidy, and Clean Data --------------------------------------------
 
+oregon_districts_and_schools <- 
+  read_excel("data-raw/oregon-districts-and-schools.xlsx") |> 
+  clean_names() |> 
+  rename(school_id = attending_school_institutional_id)
+
 clean_math_proficiency_data <- function(raw_data) {
   
   read_excel(path = raw_data) |> 
@@ -63,7 +68,6 @@ clean_math_proficiency_data <- function(raw_data) {
   
 }
 
-
 third_grade_math_proficiency_2021_2022 <-
   clean_math_proficiency_data(raw_data = "data-raw/pagr_schools_math_tot_raceethnicity_2122.xlsx")
 
@@ -73,23 +77,16 @@ third_grade_math_proficiency_2018_2019 <-
 
 third_grade_math_proficiency <- 
   bind_rows(third_grade_math_proficiency_2018_2019,
-            third_grade_math_proficiency_2021_2022)
-
-oregon_districts_and_schools <- 
-  read_excel("data-raw/oregon-districts-and-schools.xlsx") |> 
-  clean_names() |> 
-  rename(school_id = attending_school_institutional_id)
-
-third_grade_math_proficiency_with_districts <- 
-  left_join(third_grade_math_proficiency,
-            oregon_districts_and_schools,
+            third_grade_math_proficiency_2021_2022) |> 
+  left_join(oregon_districts_and_schools,
             join_by(school_id))
 
 
 # Export ------------------------------------------------------------------
 
-third_grade_math_proficiency_with_districts |> 
-  write_csv(path = "data/third_grade_math_proficiency_with_districts.csv")
+third_grade_math_proficiency |> 
+  write_csv(file = "data/third_grade_math_proficiency.csv")
 
-third_grade_math_proficiency_with_districts |> 
-  write_rds(path = "data/third_grade_math_proficiency_with_districts.rds")
+third_grade_math_proficiency |> 
+  write_rds(file = "data/third_grade_math_proficiency.rds")
+

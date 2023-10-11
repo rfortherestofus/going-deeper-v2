@@ -1,7 +1,7 @@
 library(tidyverse)
 
 # Data from going-deeper-v2-solutions
-read_rds("data/third_grade_math_proficiency_with_districts.rds") |> 
+read_rds("data/third_grade_math_proficiency.rds") |> 
   select(academic_year, school, school_id, district, proficiency_level, number_of_students) |> 
   mutate(is_proficient = case_when(
     proficiency_level >= 3 ~ TRUE,
@@ -22,7 +22,7 @@ read_rds("data/third_grade_math_proficiency_with_districts.rds") |>
   )) |> 
   write_rds("data/third_grade_math_proficiency.rds")
 
-read_rds("data/enrollment_by_race_ethnicity_with_district_names.rds") |> 
+read_rds("data/enrollment_by_race_ethnicity.rds") |> 
   view()
   select(-district_institution_id)  |> 
   select(year, district, everything()) |> 
