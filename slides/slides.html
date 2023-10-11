@@ -2539,16 +2539,21 @@ Caused by error in `sum()`:
 <li class="fragment"><p>Create a <code>data</code> directory using the <code>fs</code> package.</p></li>
 <li class="fragment"><p>Download a slightly modified version of the third grade math proficiency data into the <code>data</code> directory.</p></li>
 <li class="fragment"><p>Import the RDS file into a data frame called <code>third_grade_math_proficiency</code>.</p></li>
-<li class="fragment"><p>Make a plot by piping the third grade math proficiency data direcly into ggplot.</p></li>
+<li class="fragment"><p>Make a plot by piping the third grade math proficiency data directly into ggplot.</p></li>
 </ol>
 </section>
 <section id="your-turn-12" class="slide level2 your-turn center">
 <h2>Your Turn</h2>
 <ol type="1">
 <li class="fragment"><p>Create a new R script file.</p></li>
-<li class="fragment"><p>Download a slightly modified version of the enrollment data by race/ethnicity from <a href="https://rfor.us/enrollment-data"><code>https://rfor.us/enrollment-data</code></a> and save it in a <code>data</code> folder (create it if necessary).</p></li>
+<li class="fragment"><p>Download a slightly modified version of the enrollment data by race/ethnicity from the URL below and save it in a <code>data</code> folder (create it if necessary).</p></li>
 <li class="fragment"><p>Create a data frame called <code>enrollment_by_race_ethnicity</code> by reading in the data you just downloaded.</p></li>
-<li class="fragment"><p>Pipe your data into a bar chart that shows the breakdown of race/ethnicity among students in Beaverton SD 48J in 2022-2023.</p></li>
+</ol>
+</section>
+<section id="your-turn-continued-5" class="slide level2 your-turn center">
+<h2>Your Turn, Continued</h2>
+<ol start="4" type="1">
+<li class="fragment">Pipe your data into a bar chart that shows the breakdown of race/ethnicity among students in Beaverton SD 48J in 2022-2023.</li>
 </ol>
 </section></section>
 <section id="highlight-1" class="title-slide slide level1 has-bg-image center" data-background-image="assets/highlight.jpg">
@@ -2570,7 +2575,7 @@ Caused by error in `sum()`:
 <section id="your-turn-13" class="slide level2 your-turn center">
 <h2>Your Turn</h2>
 <ol type="1">
-<li class="fragment"><p>Make a bar chart that shows race/ethnicity in Beaverton SD 48J. As before, filter your data to only include 2018-2019 data and only include Beaverton SD 48J. Then, do the following:</p></li>
+<li class="fragment"><p>Make a bar chart that shows race/ethnicity in Beaverton SD 48J. As before, filter your data to only include 2022-2023 data and only include Beaverton SD 48J. Then, do the following:</p></li>
 <li class="fragment"><p>Using the <code>reorder()</code> function, make a bar chart that shows the percent of race/ethnicity groups in descending order</p></li>
 <li class="fragment"><p>Make the same bar chart using <code>mutate()</code> and <code>fct_reorder()</code> to reorder the race/ethnicity groups</p></li>
 </ol>
@@ -2580,104 +2585,145 @@ Caused by error in `sum()`:
 <h1>Line Charts</h1>
 
 </section>
-<section id="line-charts-1" class="slide level2 center">
-<h2>Line Charts</h2>
-<div class="cell">
-<div class="cell-output-display">
-
-<div data-pagedtable="false">
-  <script data-pagedtable-source="" type="application/json">
-{"columns":[{"label":["year"],"name":[1],"type":["chr"],"align":["left"]},{"label":["school"],"name":[2],"type":["chr"],"align":["left"]},{"label":["district"],"name":[3],"type":["chr"],"align":["left"]},{"label":["percent_proficient"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"2018-2019","2":"Abernethy Elementary School","3":"Portland SD 1J","4":"0.70652174"},{"1":"2018-2019","2":"Ainsworth Elementary School","3":"Portland SD 1J","4":"0.80434783"},{"1":"2018-2019","2":"Alameda Elementary School","3":"Portland SD 1J","4":"0.83050847"},{"1":"2018-2019","2":"Arleta Elementary School","3":"Portland SD 1J","4":"0.42307692"},{"1":"2018-2019","2":"Astor Elementary School","3":"Portland SD 1J","4":"0.59523810"},{"1":"2018-2019","2":"Atkinson Elementary School","3":"Portland SD 1J","4":"0.50793651"},{"1":"2018-2019","2":"Beach Elementary School","3":"Portland SD 1J","4":"0.56521739"},{"1":"2018-2019","2":"Beverly Cleary School","3":"Portland SD 1J","4":"0.68055556"},{"1":"2018-2019","2":"Boise-Eliot Elementary School","3":"Portland SD 1J","4":"0.17500000"},{"1":"2018-2019","2":"Bridger Elementary School","3":"Portland SD 1J","4":"0.60317460"},{"1":"2018-2019","2":"Bridlemile Elementary School","3":"Portland SD 1J","4":"0.68292683"},{"1":"2018-2019","2":"Buckman Elementary School","3":"Portland SD 1J","4":"0.56410256"},{"1":"2018-2019","2":"Capitol Hill Elementary School","3":"Portland SD 1J","4":"0.66250000"},{"1":"2018-2019","2":"Cesar Chavez K-8 School","3":"Portland SD 1J","4":"0.26000000"},{"1":"2018-2019","2":"Chapman Elementary School","3":"Portland SD 1J","4":"0.69736842"},{"1":"2018-2019","2":"Chief Joseph Elementary School","3":"Portland SD 1J","4":"0.50877193"},{"1":"2018-2019","2":"Creative Science School","3":"Portland SD 1J","4":"0.37500000"},{"1":"2018-2019","2":"Creston Elementary School","3":"Portland SD 1J","4":"0.55263158"},{"1":"2018-2019","2":"Duniway Elementary School","3":"Portland SD 1J","4":"0.70588235"},{"1":"2018-2019","2":"Emerson School","3":"Portland SD 1J","4":"0.52173913"},{"1":"2018-2019","2":"Faubion Elementary School","3":"Portland SD 1J","4":"0.21052632"},{"1":"2018-2019","2":"Forest Park Elementary School","3":"Portland SD 1J","4":"0.69642857"},{"1":"2018-2019","2":"Glencoe Elementary School","3":"Portland SD 1J","4":"0.69512195"},{"1":"2018-2019","2":"Grout Elementary School","3":"Portland SD 1J","4":"0.48333333"},{"1":"2018-2019","2":"Harrison Park School","3":"Portland SD 1J","4":"0.16438356"},{"1":"2018-2019","2":"Hayhurst Elementary School","3":"Portland SD 1J","4":"0.67021277"},{"1":"2018-2019","2":"Irvington Elementary School","3":"Portland SD 1J","4":"0.64285714"},{"1":"2018-2019","2":"James John Elementary School","3":"Portland SD 1J","4":"0.41860465"},{"1":"2018-2019","2":"Kairos PDX","3":"Portland SD 1J","4":"0.08000000"},{"1":"2018-2019","2":"Kelly Elementary School","3":"Portland SD 1J","4":"0.23376623"},{"1":"2018-2019","2":"Laurelhurst Elementary School","3":"Portland SD 1J","4":"0.68000000"},{"1":"2018-2019","2":"Le Monde French Immersion Public Charter School","3":"Portland SD 1J","4":"0.84126984"},{"1":"2018-2019","2":"Lee Elementary School","3":"Portland SD 1J","4":"0.22222222"},{"1":"2018-2019","2":"Lent Elementary School","3":"Portland SD 1J","4":"0.11111111"},{"1":"2018-2019","2":"Lewis Elementary School","3":"Portland SD 1J","4":"0.54687500"},{"1":"2018-2019","2":"Llewellyn Elementary School","3":"Portland SD 1J","4":"0.79268293"},{"1":"2018-2019","2":"Maplewood Elementary School","3":"Portland SD 1J","4":"0.43750000"},{"1":"2018-2019","2":"Markham Elementary School","3":"Portland SD 1J","4":"0.71428571"},{"1":"2018-2019","2":"Martin Luther King Jr. School","3":"Portland SD 1J","4":"0.09090909"},{"1":"2018-2019","2":"Marysville Elementary School","3":"Portland SD 1J","4":"0.25000000"},{"1":"2018-2019","2":"Metropolitan Learning Center","3":"Portland SD 1J","4":"0.42857143"},{"1":"2018-2019","2":"Opal School of the Portland Children's Museum","3":"Portland SD 1J","4":"0.28571429"},{"1":"2018-2019","2":"Peninsula Elementary School","3":"Portland SD 1J","4":"0.27272727"},{"1":"2018-2019","2":"Portland Arthur Academy Charter School","3":"Portland SD 1J","4":"0.42857143"},{"1":"2018-2019","2":"Portland Village School","3":"Portland SD 1J","4":"0.56410256"},{"1":"2018-2019","2":"Richmond Elementary School","3":"Portland SD 1J","4":"0.77884615"},{"1":"2018-2019","2":"Rieke Elementary School","3":"Portland SD 1J","4":"0.75438596"},{"1":"2018-2019","2":"Rigler Elementary School","3":"Portland SD 1J","4":"0.06666667"},{"1":"2018-2019","2":"Rosa Parks Elementary School","3":"Portland SD 1J","4":"0.14893617"},{"1":"2018-2019","2":"Rose City Park","3":"Portland SD 1J","4":"0.63218391"},{"1":"2018-2019","2":"Sabin Elementary School","3":"Portland SD 1J","4":"0.61971831"},{"1":"2018-2019","2":"Scott Elementary School","3":"Portland SD 1J","4":"0.27027027"},{"1":"2018-2019","2":"Sitton Elementary School","3":"Portland SD 1J","4":"0.14545455"},{"1":"2018-2019","2":"Skyline Elementary School","3":"Portland SD 1J","4":"0.50000000"},{"1":"2018-2019","2":"Stephenson Elementary School","3":"Portland SD 1J","4":"0.80000000"},{"1":"2018-2019","2":"Sunnyside Environmental School","3":"Portland SD 1J","4":"0.39655172"},{"1":"2018-2019","2":"Trillium","3":"Portland SD 1J","4":"0.28571429"},{"1":"2018-2019","2":"Vernon Elementary School","3":"Portland SD 1J","4":"0.52380952"},{"1":"2018-2019","2":"Vestal Elementary School","3":"Portland SD 1J","4":"0.64285714"},{"1":"2018-2019","2":"Whitman Elementary School","3":"Portland SD 1J","4":"0.37500000"},{"1":"2018-2019","2":"Winterhaven School","3":"Portland SD 1J","4":"0.36363636"},{"1":"2018-2019","2":"Woodlawn Elementary School","3":"Portland SD 1J","4":"0.46666667"},{"1":"2018-2019","2":"Woodmere Elementary School","3":"Portland SD 1J","4":"0.21276596"},{"1":"2018-2019","2":"Woodstock Elementary School","3":"Portland SD 1J","4":"0.69620253"},{"1":"2021-2022","2":"Abernethy Elementary School","3":"Portland SD 1J","4":"0.79166667"},{"1":"2021-2022","2":"Ainsworth Elementary School","3":"Portland SD 1J","4":"0.67777778"},{"1":"2021-2022","2":"Alameda Elementary School","3":"Portland SD 1J","4":"0.81720430"},{"1":"2021-2022","2":"Arleta Elementary School","3":"Portland SD 1J","4":"0.51851852"},{"1":"2021-2022","2":"Astor Elementary School","3":"Portland SD 1J","4":"0.63636364"},{"1":"2021-2022","2":"Atkinson Elementary School","3":"Portland SD 1J","4":"0.57692308"},{"1":"2021-2022","2":"Beach Elementary School","3":"Portland SD 1J","4":"0.73846154"},{"1":"2021-2022","2":"Beverly Cleary School","3":"Portland SD 1J","4":"0.75362319"},{"1":"2021-2022","2":"Boise-Eliot Elementary School","3":"Portland SD 1J","4":"0.21276596"},{"1":"2021-2022","2":"Bridger Elementary School","3":"Portland SD 1J","4":"0.34482759"},{"1":"2021-2022","2":"Bridlemile Elementary School","3":"Portland SD 1J","4":"0.72058824"},{"1":"2021-2022","2":"Buckman Elementary School","3":"Portland SD 1J","4":"0.49230769"},{"1":"2021-2022","2":"Capitol Hill Elementary School","3":"Portland SD 1J","4":"0.67272727"},{"1":"2021-2022","2":"Cesar Chavez K-8 School","3":"Portland SD 1J","4":"0.12962963"},{"1":"2021-2022","2":"Chapman Elementary School","3":"Portland SD 1J","4":"0.53658537"},{"1":"2021-2022","2":"Chief Joseph Elementary School","3":"Portland SD 1J","4":"0.50000000"},{"1":"2021-2022","2":"Creative Science School","3":"Portland SD 1J","4":"0.42105263"},{"1":"2021-2022","2":"Creston Elementary School","3":"Portland SD 1J","4":"0.61290323"},{"1":"2021-2022","2":"Duniway Elementary School","3":"Portland SD 1J","4":"0.66250000"},{"1":"2021-2022","2":"Emerson School","3":"Portland SD 1J","4":"0.62500000"},{"1":"2021-2022","2":"Faubion Elementary School","3":"Portland SD 1J","4":"0.16883117"},{"1":"2021-2022","2":"Forest Park Elementary School","3":"Portland SD 1J","4":"0.84313725"},{"1":"2021-2022","2":"Glencoe Elementary School","3":"Portland SD 1J","4":"0.56666667"},{"1":"2021-2022","2":"Grout Elementary School","3":"Portland SD 1J","4":"0.54166667"},{"1":"2021-2022","2":"Harrison Park School","3":"Portland SD 1J","4":"0.35000000"},{"1":"2021-2022","2":"Hayhurst Elementary School","3":"Portland SD 1J","4":"0.66216216"},{"1":"2021-2022","2":"Irvington Elementary School","3":"Portland SD 1J","4":"0.50000000"},{"1":"2021-2022","2":"James John Elementary School","3":"Portland SD 1J","4":"0.40000000"},{"1":"2021-2022","2":"Kairos PDX","3":"Portland SD 1J","4":"0.51612903"},{"1":"2021-2022","2":"Kelly Elementary School","3":"Portland SD 1J","4":"0.28571429"},{"1":"2021-2022","2":"Laurelhurst Elementary School","3":"Portland SD 1J","4":"0.59459459"},{"1":"2021-2022","2":"Le Monde French Immersion Public Charter School","3":"Portland SD 1J","4":"0.77272727"},{"1":"2021-2022","2":"Lee Elementary School","3":"Portland SD 1J","4":"0.50000000"},{"1":"2021-2022","2":"Lent Elementary School","3":"Portland SD 1J","4":"0.11428571"},{"1":"2021-2022","2":"Lewis Elementary School","3":"Portland SD 1J","4":"0.62711864"},{"1":"2021-2022","2":"Llewellyn Elementary School","3":"Portland SD 1J","4":"0.80952381"},{"1":"2021-2022","2":"Maplewood Elementary School","3":"Portland SD 1J","4":"0.66000000"},{"1":"2021-2022","2":"Markham Elementary School","3":"Portland SD 1J","4":"0.44827586"},{"1":"2021-2022","2":"Martin Luther King Jr. School","3":"Portland SD 1J","4":"0.36734694"},{"1":"2021-2022","2":"Marysville Elementary School","3":"Portland SD 1J","4":"0.36842105"},{"1":"2021-2022","2":"Metropolitan Learning Center","3":"Portland SD 1J","4":"0.61904762"},{"1":"2021-2022","2":"Peninsula Elementary School","3":"Portland SD 1J","4":"0.48717949"},{"1":"2021-2022","2":"Portland Arthur Academy Charter School","3":"Portland SD 1J","4":"0.50000000"},{"1":"2021-2022","2":"Portland Village School","3":"Portland SD 1J","4":"0.54347826"},{"1":"2021-2022","2":"Richmond Elementary School","3":"Portland SD 1J","4":"0.72619048"},{"1":"2021-2022","2":"Rieke Elementary School","3":"Portland SD 1J","4":"0.78000000"},{"1":"2021-2022","2":"Rigler Elementary School","3":"Portland SD 1J","4":"0.30000000"},{"1":"2021-2022","2":"Rosa Parks Elementary School","3":"Portland SD 1J","4":"0.07500000"},{"1":"2021-2022","2":"Rose City Park","3":"Portland SD 1J","4":"0.71951220"},{"1":"2021-2022","2":"Sabin Elementary School","3":"Portland SD 1J","4":"0.62295082"},{"1":"2021-2022","2":"Scott Elementary School","3":"Portland SD 1J","4":"0.46875000"},{"1":"2021-2022","2":"Sitton Elementary School","3":"Portland SD 1J","4":"0.30188679"},{"1":"2021-2022","2":"Skyline Elementary School","3":"Portland SD 1J","4":"0.80000000"},{"1":"2021-2022","2":"Stephenson Elementary School","3":"Portland SD 1J","4":"0.76271186"},{"1":"2021-2022","2":"Sunnyside Environmental School","3":"Portland SD 1J","4":"0.65789474"},{"1":"2021-2022","2":"Vernon Elementary School","3":"Portland SD 1J","4":"0.54545455"},{"1":"2021-2022","2":"Vestal Elementary School","3":"Portland SD 1J","4":"0.54838710"},{"1":"2021-2022","2":"Whitman Elementary School","3":"Portland SD 1J","4":"0.18518519"},{"1":"2021-2022","2":"Winterhaven School","3":"Portland SD 1J","4":"0.84210526"},{"1":"2021-2022","2":"Woodlawn Elementary School","3":"Portland SD 1J","4":"0.44230769"},{"1":"2021-2022","2":"Woodmere Elementary School","3":"Portland SD 1J","4":"0.28205128"},{"1":"2021-2022","2":"Woodstock Elementary School","3":"Portland SD 1J","4":"0.76136364"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
-</div>
-</div>
-</section>
-<section id="line-charts-2" class="slide level2 center">
-<h2>Line Charts</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb124"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb124-1"><a href="#cb124-1"></a>third_grade_math_proficiency <span class="sc">%&gt;%</span></span>
-<span id="cb124-2"><a href="#cb124-2"></a>  <span class="fu">filter</span>(district <span class="sc">==</span> <span class="st">"Portland SD 1J"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb124-3"><a href="#cb124-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year,</span>
-<span id="cb124-4"><a href="#cb124-4"></a>             <span class="at">y =</span> percent_proficient)) <span class="sc">+</span></span>
-<span id="cb124-5"><a href="#cb124-5"></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="fragment">
-<div class="cell">
-<div class="cell-output-display">
-<p><img data-src="slides_files/figure-revealjs/unnamed-chunk-93-1.png" width="960"></p>
-</div>
-</div>
-</div>
-</section>
-<section id="line-charts-3" class="slide level2 center">
-<h2>Line Charts</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb125" data-code-line-numbers="5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb125-1"><a href="#cb125-1"></a>third_grade_math_proficiency <span class="sc">%&gt;%</span></span>
-<span id="cb125-2"><a href="#cb125-2"></a>  <span class="fu">filter</span>(district <span class="sc">==</span> <span class="st">"Portland SD 1J"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb125-3"><a href="#cb125-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year,</span>
-<span id="cb125-4"><a href="#cb125-4"></a>             <span class="at">y =</span> percent_proficient,</span>
-<span id="cb125-5"><a href="#cb125-5"></a>             <span class="at">group =</span> school)) <span class="sc">+</span></span>
-<span id="cb125-6"><a href="#cb125-6"></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="fragment">
-<div class="cell">
-<div class="cell-output-display">
-<p><img data-src="slides_files/figure-revealjs/unnamed-chunk-95-1.png" width="960"></p>
-</div>
-</div>
-</div>
+<section id="my-turn-13" class="slide level2 my-turn center">
+<h2>My Turn</h2>
+<p>Make a line chart that shows the change in proficiency levels from 2018-2019 to 2021-2022</p>
 </section>
 <section id="your-turn-14" class="slide level2 your-turn center">
 <h2>Your Turn</h2>
-<p>Make a line chart that shows the growth in the Hispanic/Latino population in school districts from 2017-2018 to 2018-2019</p>
+<p>Make a line chart that shows the change in the Hispanic/Latino population in school districts from 2021-2022 to 2022-2023</p>
 </section></section>
 <section>
 <section id="use-color-to-highlight-findings" class="title-slide slide level1 has-bg-image center" data-background-image="assets/color.jpg">
 <h1>Use Color to Highlight Findings</h1>
 
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-96-1.png" width="960" class="r-stretch"></section>
-<section id="use-color-to-highlight-findings-1" class="slide level2 center">
-<h2>Use Color to Highlight Findings</h2>
+</section>
+<section class="slide level2 center">
 
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-97-1.png" width="960" class="r-stretch"></section></section>
-<section id="declutter-1" class="title-slide slide level1 inverse center">
+
+<img data-src="assets/nyt-sea-ice-viz.png" class="r-stretch quarto-figure-center"></section>
+<section id="my-turn-14" class="slide level2 my-turn center">
+<h2>My Turn</h2>
+<p>Highlight a single school in my line chart that showed growth in math proficiency between 2018-2019 and 2021-2022</p>
+</section>
+<section id="your-turn-15" class="slide level2 your-turn center">
+<h2>Your Turn</h2>
+<p>Highlight a single district in your line chart that had an increase in its Hispanic/Latino population between 2021-2022 and 2022-2023</p>
+</section></section>
+<section>
+<section id="declutter-1" class="title-slide slide level1 has-bg-image center" data-background-image="assets/declutter.jpg">
 <h1>Declutter</h1>
 
 </section>
+<section class="slide level2 center">
 
-<section id="use-the-scales-package-for-nicely-formatted-values" class="title-slide slide level1 center">
-<h1>Use the <code>scales</code> Package for Nicely Formatted Values</h1>
 
-</section>
-
-<section id="use-direct-labeling" class="title-slide slide level1 inverse center">
-<h1>Use Direct Labeling</h1>
-
-</section>
-
-<section id="use-axis-text-wisely" class="title-slide slide level1 inverse center">
-<h1>Use Axis Text Wisely</h1>
+<img data-src="assets/nyt-sea-ice-viz.png" class="r-stretch quarto-figure-center"></section>
+<section id="my-turn-15" class="slide level2 my-turn center">
+<h2>My Turn</h2>
+<ol type="1">
+<li class="fragment"><p>Remove the gray background</p></li>
+<li class="fragment"><p>Remove axis titles</p></li>
+<li class="fragment"><p>Remove the legend</p></li>
+<li class="fragment"><p>Remove or minimize grid lines</p></li>
+</ol>
+<aside class="notes">
 <ul>
-<li class="fragment">Format nicely</li>
-<li class="fragment">Or remove it</li>
+<li>Talk about complete themes vs theme()</li>
+<li>Explain this lesson is about using theme()</li>
+<li>Show Henry Wang image</li>
+<li>Explain I’m just showing a few tweaks</li>
 </ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
+<section id="your-turn-16" class="slide level2 your-turn center">
+<h2>Your Turn</h2>
+<ol type="1">
+<li class="fragment"><p>Remove the gray background</p></li>
+<li class="fragment"><p>Remove axis titles</p></li>
+<li class="fragment"><p>Remove the legend</p></li>
+<li class="fragment"><p>Remove or minimize grid lines</p></li>
+</ol>
+</section></section>
+<section>
+<section id="explain-1" class="title-slide slide level1 has-bg-image center" data-background-image="assets/explain.jpg">
+<h1>Explain</h1>
 
-<section id="use-axis-text-wisely-1" class="title-slide slide level1 inverse center">
-<h1>Use Axis Text Wisely</h1>
+</section>
+<section class="slide level2 center">
 
+
+<img data-src="assets/nyt-sea-ice-viz.png" class="r-stretch quarto-figure-center"><aside class="notes">
+<p>Section is about using text to explain</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section id="use-the-scales-package-for-nicely-formatted-values" class="title-slide slide level1 inverse center">
+<h1>Use the <code>scales</code> Package for Nicely Formatted Values</h1>
+<aside class="notes">
+<ul>
+<li>Direct labeling</li>
+<li>Axis text (either format it nicely or remove it)</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 
 <section id="use-titles-to-highlight-findings" class="title-slide slide level1 inverse center">
 <h1>Use Titles to Highlight Findings</h1>
+<aside class="notes">
 <ul>
-<li class="fragment">Including color</li>
+<li>Use descriptive titles</li>
+<li>Use color in titles</li>
 </ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 
 <section id="use-annotations-to-explain" class="title-slide slide level1 inverse center">
 <h1>Use Annotations to Explain</h1>
+
+</section>
+
+<section id="make-it-sparkle" class="title-slide slide level1 has-bg-image center" data-background-image="assets/sparkle.jpg">
+<h1>Make it Sparkle</h1>
 
 </section>
 

@@ -38,24 +38,34 @@ third_grade_math_proficiency <-
 
 # Plot --------------------------------------------------------------------
 
-third_grade_math_proficiency |> 
-  filter(year == "2021-2022") |> 
+top_growth_school <- 
+  third_grade_math_proficiency %>%
   filter(district == "Portland SD 1J") |> 
-  ggplot(aes(x = percent_proficient, 
-             y = school)) +
-  geom_col()
+  group_by(school) |> 
+  mutate(growth_from_previous_year = percent_proficient - lag(percent_proficient)) |> 
+  ungroup() |> 
+  drop_na(growth_from_previous_year) |>
+  slice_max(order_by = growth_from_previous_year,
+            n = 1) |> 
+  pull(school)
 
-third_grade_math_proficiency |> 
-  filter(year == "2021-2022") |> 
-  filter(district == "Portland SD 1J") |> 
-  ggplot(aes(x = percent_proficient, 
-             y = reorder(school, percent_proficient))) +
-  geom_col()
+third_grade_math_proficiency %>%
+  filter(district == "Portland SD 1J") %>%
+  mutate(highlight_school = case_when(
+    school == top_growth_school ~ "Y",
+    .default = "N"
+  )) |> 
+  mutate(school = fct_relevel(school, top_growth_school, after = Inf)) |>
+  ggplot(aes(x = year,
+             y = percent_proficient,
+             group = school,
+             color = highlight_school)) +
+  geom_line() +
+  scale_color_manual(values = c(
+    "N" = "grey90",
+    "Y" = "orange"
+  )) +
+  theme_minimal() +
+  theme(axis.title = element_blank(),
+        legend.position = "none")
 
-third_grade_math_proficiency |> 
-  filter(year == "2021-2022") |> 
-  filter(district == "Portland SD 1J") |> 
-  mutate(school = fct_reorder(school, percent_proficient)) |> 
-  ggplot(aes(x = percent_proficient, 
-             y = school)) +
-  geom_col()

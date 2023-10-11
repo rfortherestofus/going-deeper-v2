@@ -26,24 +26,34 @@ enrollment_by_race_ethnicity <-
 
 # Plot --------------------------------------------------------------------
 
-enrollment_by_race_ethnicity |> 
-  filter(year == "2022-2023") |> 
-  filter(district == "Beaverton SD 48J") |> 
-  ggplot(aes(x = pct, 
-             y = race_ethnicity)) +
-  geom_col()
+top_growth_district <- 
+  enrollment_by_race_ethnicity |> 
+  filter(race_ethnicity == "Hispanic/Latino") |> 
+  group_by(district) |> 
+  mutate(growth_from_previous_year = pct - lag(pct)) |> 
+  ungroup() |> 
+  drop_na(growth_from_previous_year) |>
+  slice_max(order_by = growth_from_previous_year,
+            n = 1) |> 
+  pull(district)
 
 enrollment_by_race_ethnicity |> 
-  filter(year == "2022-2023") |> 
-  filter(district == "Beaverton SD 48J") |> 
-  ggplot(aes(x = pct, 
-             y = reorder(race_ethnicity, pct))) +
-  geom_col()
+  filter(race_ethnicity == "Hispanic/Latino") |> 
+  mutate(highlight_district = case_when(
+    district == top_growth_district ~ "Y",
+    .default = "N"
+  )) |> 
+  mutate(district = fct_relevel(district, top_growth_district, after = Inf)) |>
+  ggplot(aes(x = year, 
+             y = pct,
+             group = district,
+             color = highlight_district)) +
+  geom_line() +
+  scale_color_manual(values = c(
+    "N" = "grey90",
+    "Y" = "orange"
+  )) +
+  theme_minimal() +
+  theme(axis.title = element_blank(),
+        legend.position = "none")
 
-enrollment_by_race_ethnicity |> 
-  filter(year == "2022-2023") |> 
-  filter(district == "Beaverton SD 48J") |> 
-  mutate(race_ethnicity = fct_reorder(race_ethnicity, pct)) |> 
-  ggplot(aes(x = pct, 
-             y = race_ethnicity)) +
-  geom_col()

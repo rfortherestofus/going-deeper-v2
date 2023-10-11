@@ -38,24 +38,19 @@ third_grade_math_proficiency <-
 
 # Plot --------------------------------------------------------------------
 
-third_grade_math_proficiency |> 
-  filter(year == "2021-2022") |> 
+third_grade_math_proficiency %>% 
   filter(district == "Portland SD 1J") |> 
-  ggplot(aes(x = percent_proficient, 
-             y = school)) +
-  geom_col()
+  view()
 
-third_grade_math_proficiency |> 
-  filter(year == "2021-2022") |> 
-  filter(district == "Portland SD 1J") |> 
-  ggplot(aes(x = percent_proficient, 
-             y = reorder(school, percent_proficient))) +
-  geom_col()
+third_grade_math_proficiency %>%
+  filter(district == "Portland SD 1J") %>%
+  ggplot(aes(x = year,
+             y = percent_proficient)) +
+  geom_line()
 
-third_grade_math_proficiency |> 
-  filter(year == "2021-2022") |> 
-  filter(district == "Portland SD 1J") |> 
-  mutate(school = fct_reorder(school, percent_proficient)) |> 
-  ggplot(aes(x = percent_proficient, 
-             y = school)) +
-  geom_col()
+third_grade_math_proficiency %>%
+  filter(district == "Portland SD 1J") %>%
+  ggplot(aes(x = year,
+             y = percent_proficient,
+             group = school)) +
+  geom_line()

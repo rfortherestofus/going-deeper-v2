@@ -9,9 +9,9 @@ dir_create("data")
 
 # Download Data -----------------------------------------------------------
 
-download.file("https://github.com/rfortherestofus/going-deeper-v2/raw/main/data/enrollment_by_race_ethnicity.rds",
-              mode = "wb",
-              destfile = "data/enrollment_by_race_ethnicity.rds")
+# download.file("https://github.com/rfortherestofus/going-deeper-v2/raw/main/data/enrollment_by_race_ethnicity.rds",
+#               mode = "wb",
+#               destfile = "data/enrollment_by_race_ethnicity.rds")
 
 # Import Data -------------------------------------------------------------
 
@@ -27,8 +27,9 @@ enrollment_by_race_ethnicity <-
 # Plot --------------------------------------------------------------------
 
 enrollment_by_race_ethnicity |> 
-  filter(year == "2022-2023") |> 
-  filter(district == "Beaverton SD 48J") |> 
-  ggplot(aes(x = pct, 
-             y = race_ethnicity)) +
-  geom_col()
+  filter(race_ethnicity == "Hispanic/Latino") |> 
+  ggplot(aes(x = year, 
+             y = pct,
+             group = district)) +
+  geom_line()
+
