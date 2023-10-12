@@ -2,6 +2,8 @@
 
 library(tidyverse)
 library(fs)
+library(scales)
+library(ggrepel)
 
 # Create Directory --------------------------------------------------------
 
@@ -22,7 +24,9 @@ enrollment_by_race_ethnicity <-
   mutate(year = case_when(
     year == "School 2021-22" ~ "2021-2022",
     year == "School 2022-23" ~ "2022-2023",
-  ))
+  )) |> 
+  mutate(pct_formatted = percent(pct, 
+                                 accuracy = 1))
 
 # Plot --------------------------------------------------------------------
 
@@ -43,16 +47,30 @@ enrollment_by_race_ethnicity |>
     district == top_growth_district ~ "Y",
     .default = "N"
   )) |> 
+  mutate(pct_formatted = case_when(
+    highlight_district == "Y" & year == "2022-2023" ~ str_glue("{pct_formatted} of students
+                                                               were Hispanic/Latino
+                                                               in {year}"),
+    highlight_district == "Y" & year == "2021-2022" ~ pct_formatted,
+    .default = NA
+  )) |>
   mutate(district = fct_relevel(district, top_growth_district, after = Inf)) |>
   ggplot(aes(x = year, 
              y = pct,
              group = district,
-             color = highlight_district)) +
+             color = highlight_district,
+             label = pct_formatted)) +
   geom_line() +
+  geom_text_repel(hjust = 0,
+                  lineheight = 0.9,
+                  direction = "x") +
   scale_color_manual(values = c(
     "N" = "grey90",
     "Y" = "orange"
   )) +
+  scale_y_continuous(labels = percent_format()) +
   theme_minimal() +
   theme(axis.title = element_blank(),
+        panel.grid = element_blank(),
         legend.position = "none")
+

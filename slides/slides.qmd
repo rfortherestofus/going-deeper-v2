@@ -1922,30 +1922,152 @@ Highlight a single district in your line chart that had an increase in its Hispa
 Section is about using text to explain
 :::
 
-# Use the `scales` Package for Nicely Formatted Values {.inverse}
+# Add Descriptive Labels to Your Plots {.inverse}
+
+---
+
+![](assets/nyt-sea-ice-viz.png){fig-width="100%"}
+
+
+
+## My Turn {.my-turn}
+
+1. Add text labels to show the percentage of proficient students in my highlight school in each year
+
+1. Format my axis text so it shows percentages
 
 ::: {.notes}
 - Direct labeling
+  - Create text labels
+  - Show to make all labels (https://show.rfor.us/rWJ5qnH3)
+  - Show ggrepel
 - Axis text (either format it nicely or remove it)
 :::
+
+## Your Turn {.your-turn}
+
+1. Add text labels to show the percentage of Hispanic/Latino students in the highlight district in each year
+
+1. Format the axis text so it shows percentages
 
 
 # Use Titles to Highlight Findings {.inverse}
 
+---
+
+![](assets/nyt-sea-ice-viz.png){fig-width="100%"}
+
+---
+
+![](assets/jbm-covid-plot.jpeg){fig-width="100%"}
+
+
+## My Turn {.my-turn}
+
+1. Add a descriptive title to my plot
+
+1. Use color strategically in my title using the `ggtext` package
+
+1. Align my title all the way to the edge of the plot
+
 ::: {.notes}
 - Use descriptive titles
 - Use color in titles
+  - Show datawrapper articles
+  - ggtext
+    - span
+    - b
+    - i
+- plot.title.position = "plot"
 :::
+
+## Your Turn {.your-turn}
+
+1. Add a descriptive title to your plot
+
+1. Use color strategically in your title using the `ggtext` package
+
+1. Align your title all the way to the edge of the plot
 
 # Use Annotations to Explain {.inverse}
 
+---
+
+![](assets/nyt-sea-ice-viz.png){fig-width="100%"}
+
+---
+
+![](assets/jbm-covid-plot.jpeg){fig-width="100%"}
+
+---
+
+![](assets/ft-annotation-example.jpeg){fig-width="100%"}
+
+
+
+## My Turn {.my-turn}
+
+1. Add an annotation to explain what the grey lines represent
+
+::: {.notes}
+- annotate() function
+:::
+
+## Your Turn {.your-turn}
+
+1. Add an annotation to explain what the grey lines represent
+
 # Make it Sparkle {.has-bg-image background-image="assets/sparkle.jpg"}
+
+---
+
+![](assets/default.gif){fig-width="100%"}
 
 # Tweak Spacing {.inverse}
 
+## My Turn {.my-turn}
+
+1. Tweak spacing around my plot to remove unnecessary blank spaces
+
+## Your Turn {.your-turn}
+
+1. Tweak spacing around my plot to remove unnecessary blank spaces
+
 # Customize Your Theme {.inverse}
 
+## My Turn {.my-turn}
+
+1. Make a custom theme and apply it to my plot.
+
+::: {.notes}
+- theme_set()
+:::
+
+## Your Turn {.your-turn}
+
+1. Make your own custom theme and apply it to your plot.
+
+1. If you want to confirm that it works with other plots, copy it to another project and try it there.
+
 # Customize Your Fonts {.inverse}
+
+## My Turn {.my-turn}
+
+1. Set my system up to use custom fonts using the `ragg` and `systemfonts` packages. 
+
+1. Apply a custom font to my plot.
+
+::: {.notes}
+- family in geom_text()
+- update_geom_defaults()
+- 
+:::
+
+## Your Turn {.your-turn}
+
+1. Set you system up to use custom fonts using the `ragg` and `systemfonts` packages. 
+
+1. Apply a custom font to your plot.
 
 # Try New Plot Types {.inverse}
 
