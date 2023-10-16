@@ -65,3 +65,31 @@ third_grade_math_proficiency %>%
     "N" = "grey80",
     "Y" = "orange"
   ))
+
+
+# Approach #2: gghighlight ------------------------------------------------
+
+library(gghighlight)
+
+third_grade_math_proficiency %>%
+  filter(district == "Portland SD 1J") |> 
+  group_by(school) |> 
+  mutate(growth_from_previous_year = percent_proficient - lag(percent_proficient)) |> 
+  ungroup() |> 
+  arrange(school) |> 
+  fill(growth_from_previous_year, .direction = "up") |> 
+  mutate(top_growth_school = case_when(
+    growth_from_previous_year == max(growth_from_previous_year) ~ "Y",
+    .default = "N"
+  )) |> 
+  ggplot(aes(x = year,
+             y = percent_proficient,
+             group = school,
+             color = top_growth_school)) +
+  geom_line() +
+  scale_color_manual(values = c(
+    "N" = "grey80",
+    "Y" = "orange"
+  )) +
+  gghighlight(top_growth_school == "Y",
+              use_direct_label = FALSE)

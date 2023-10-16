@@ -18,6 +18,9 @@ title-slide-attributes:
   data-background-size: cover
 editor_options: 
   chunk_output_type: console
+knitr:
+  opts_chunk: 
+    dev: ragg_png
 ---
 
 
@@ -30,6 +33,10 @@ library(janitor)
 library(here)
 library(gt)
 library(rmarkdown)
+library(palmerpenguins)
+library(ggtext)
+library(scales)
+library(ggrepel)
 ```
 
 
@@ -1808,10 +1815,41 @@ ggplot(data = german_speakers_tidy,
 
 # Pipe Data Into ggplot {.has-bg-image background-image="assets/pipes.jpg"}
 
+## Pipe Data Into ggplot
+
 ```{r}
-third_grade_math_proficiency <- 
-  read_rds(here("data/third_grade_math_proficiency.rds"))
+#| echo: true
+penguins |> 
+  filter(year == 2007) |> 
+  count(island) 
 ```
+
+## Pipe Data Into ggplot
+
+```{r}
+#| echo: true
+penguins |> 
+  filter(year == 2007) |> 
+  count(island) |> 
+  ggplot(aes(x = n,
+             y = island)) +
+  geom_col()
+```
+
+## Pipe Data Into ggplot
+
+```{r}
+#| echo: true
+#| code-line-numbers: "2"
+penguins |> 
+  filter(year == 2008) |> 
+  count(island) |> 
+  ggplot(aes(x = n,
+             y = island)) +
+  geom_col()
+```
+
+
 
 ## My Turn {.my-turn}
 
@@ -1821,9 +1859,11 @@ third_grade_math_proficiency <-
 
 1. Download a slightly modified version of the third grade math proficiency data into the `data` directory.
 
-1. Import the RDS file into a data frame called `third_grade_math_proficiency`.
+## My Turn, Continued {.my-turn}
 
-1. Make a plot by piping the third grade math proficiency data directly into ggplot.
+4. Import the RDS file into a data frame called `third_grade_math_proficiency`.
+
+5. Make a plot by piping the third grade math proficiency data directly into ggplot.
 
 
 ## Your Turn {.your-turn}
@@ -1842,6 +1882,59 @@ third_grade_math_proficiency <-
 
 # Reorder Plots to Highlight Findings {.has-bg-image background-image="assets/goya-cans.jpg"}
 
+---
+
+```{r}
+#| echo: true
+penguins |> 
+  count(island)
+```
+
+::: {.fragment}
+```{r}
+#| echo: true
+#| fig-height: 3
+penguins |> 
+  count(island) |> 
+  ggplot(aes(x = n,
+             y = island)) +
+  geom_col()
+```
+:::
+
+
+
+---
+
+```{r}
+#| echo: true
+#| code-line-numbers: "4"
+
+penguins |> 
+  count(island) |> 
+  ggplot(aes(x = n,
+             y = reorder(island, n))) +
+  geom_col()
+```
+
+---
+
+```{r}
+#| echo: true
+#| code-line-numbers: "3"
+
+penguins |> 
+  count(island) |> 
+  mutate(island = fct_reorder(island, n)) |> 
+  ggplot(aes(x = n,
+             y = island)) +
+  geom_col()
+```
+
+
+
+
+
 ## My Turn {.my-turn}
 
 1. Reorder my bar chart so that it shows schools with the highest proficiency rates at the top.
@@ -1857,6 +1950,51 @@ third_grade_math_proficiency <-
 
 # Line Charts {.has-bg-image background-image="assets/lines.jpg"}
 
+---
+
+```{r}
+#| echo: true
+penguins |> 
+  count(year, island)
+```
+
+
+::: {.fragment}
+```{r}
+#| echo: true
+#| fig-height: 2
+penguins |> 
+  count(year, island) |>
+  ggplot(aes(x = year, 
+             y = n)) +
+  geom_line()
+```
+:::
+
+---
+
+```{r}
+#| echo: true
+penguins |> 
+  count(year, island)
+```
+
+::: {.fragment}
+```{r}
+#| echo: true
+#| code-line-numbers: "5"
+#| fig-height: 2
+penguins |> 
+  count(year, island) |>
+  ggplot(aes(x = year, 
+             y = n,
+             group = island)) +
+  geom_line()
+```
+:::
+
+
+
 ## My Turn {.my-turn}
 
 Make a line chart that shows the change in proficiency levels from 2018-2019 to 2021-2022
@@ -1871,6 +2009,68 @@ Make a line chart that shows the change in the Hispanic/Latino population in sch
 
 ![](assets/nyt-sea-ice-viz.png){fig-width="100%"}
 
+---
+
+## Use Color to Highlight Findings
+
+::: {.fragment}
+<br>
+**Data wrangling**
+
+1. Figure out which line you want to highlight
+
+1. Create variable to highlight this line
+:::
+
+::: {.fragment}
+**Data visualization**
+
+1. Use the `color` aesthetic property combined with `scale_color_manual()` to highlight line
+:::
+
+---
+
+```{r}
+penguins |> 
+  filter(year >= 2008) |> 
+  mutate(year = as.character(year)) |> 
+  group_by(island, year) |> 
+  summarize(mean_bill_length = mean(bill_length_mm,
+                                    na.rm = TRUE)) |> 
+  ungroup() |> 
+  ggplot(aes(x = year,
+             y = mean_bill_length,
+             group = island)) +
+  geom_line()
+```
+
+
+---
+
+```{r}
+penguins |> 
+  filter(year >= 2008) |> 
+  mutate(year = as.character(year)) |> 
+  group_by(island, year) |> 
+  summarize(mean_bill_length = mean(bill_length_mm,
+                                    na.rm = TRUE)) |> 
+  ungroup() |> 
+  mutate(highlight_island = case_when(
+    island == "Biscoe" ~ "Y",
+    .default = "N"
+  )) |> 
+  ggplot(aes(x = year,
+             y = mean_bill_length,
+             color = highlight_island,
+             group = island)) +
+  geom_line() +
+  scale_color_manual(values = c(
+    "N" = "grey80",
+    "Y" = "orange"
+  )) +
+  theme(legend.position = "none")
+```
+
 ## My Turn {.my-turn}
 
 Highlight a single school in my line chart that showed growth in math proficiency between 2018-2019 and 2021-2022
@@ -1884,6 +2084,216 @@ Highlight a single district in your line chart that had an increase in its Hispa
 ---
 
 ![](assets/nyt-sea-ice-viz.png){fig-width="100%"}
+
+---
+
+```{r}
+penguins_bill_length_plot <-
+  penguins |> 
+  filter(year >= 2008) |> 
+  mutate(year = as.character(year)) |> 
+  group_by(island, year) |> 
+  summarize(mean_bill_length = mean(bill_length_mm,
+                                    na.rm = TRUE)) |> 
+  ungroup() |> 
+  mutate(highlight_island = case_when(
+    island == "Biscoe" ~ "Y",
+    .default = "N"
+  )) |> 
+  ggplot(aes(x = year,
+             y = mean_bill_length,
+             color = highlight_island,
+             group = island)) +
+  geom_line() +
+  scale_color_manual(values = c(
+    "N" = "grey80",
+    "Y" = "orange"
+  )) 
+
+penguins_bill_length_plot
+```
+
+## Complete Themes
+
+Complete themes like `theme_minimal()` etc completely change the look and feel of plots
+
+::: {.fragment}
+```{r}
+#| echo: true
+#| fig-height: 4
+penguins_bill_length_plot +
+  theme_minimal()
+```
+:::
+
+::: {.notes}
+https://ggplot2.tidyverse.org/reference/ggtheme.html
+:::
+
+
+
+## `theme()` Function
+
+The `theme()` function allows you to alter specific pieces of your plots.
+
+::: {.fragment}
+You usually use the `theme()` function after setting a complete theme.
+:::
+
+
+## `theme()` Function
+
+```{r}
+#| echo: true
+#| code-line-numbers: "3"
+penguins_bill_length_plot +
+  theme_minimal() +
+  theme(axis.title = element_blank())
+```
+
+
+## `theme()` Function
+
+Within the `theme()` function, we need to figure out two pieces:
+
+1. What part of the plot are we targeting?
+
+1. What do we want to change on that part of the plot?
+
+## Plot Parts
+
+![](assets/theme-elements-henry-wang.png){fig-width="100%"}
+
+## `element_` Functions
+
+- `element_blank()`
+
+- `element_rect()`
+
+- `element_line()`
+
+- `element_text()`
+
+## `element_blank()`
+
+```{r}
+#| echo: true
+#| fig-height: 2
+penguins_bill_length_plot +
+  theme_minimal()
+```
+
+::: {.fragment}
+```{r}
+#| echo: true
+#| code-line-numbers: "3"
+#| fig-height: 2
+penguins_bill_length_plot +
+  theme_minimal() +
+  theme(axis.title = element_blank())
+```
+:::
+
+## Remove Legends
+
+```{r}
+#| echo: true
+#| code-line-numbers: "2"
+penguins_bill_length_plot +
+  theme(legend.position = "none")
+```
+
+## `element_rect()`
+
+```{r}
+#| echo: true
+#| code-line-numbers: "3-5"
+penguins_bill_length_plot +
+  theme_minimal() +
+  theme(plot.background = element_rect(fill = "blue",
+                                       color = "orange",
+                                       linewidth = 5))
+```
+
+## `element_rect()`
+
+```{r}
+#| echo: true
+#| eval: false
+element_rect(
+  fill = NULL,
+  colour = NULL,
+  linewidth = NULL,
+  linetype = NULL,
+  color = NULL,
+  inherit.blank = FALSE,
+  size = deprecated()
+)
+```
+
+
+## `element_line()`
+
+```{r}
+#| echo: true
+#| code-line-numbers: "3-5"
+penguins_bill_length_plot +
+  theme_minimal() +
+  theme(panel.grid.major = element_line(color = "blue"),
+        panel.grid.minor = element_line(color = "red"))
+```
+
+## `element_line()`
+
+```{r}
+#| echo: true
+#| eval: false
+element_line(
+  colour = NULL,
+  linewidth = NULL,
+  linetype = NULL,
+  lineend = NULL,
+  color = NULL,
+  arrow = NULL,
+  inherit.blank = FALSE,
+  size = deprecated()
+)
+```
+
+## `element_text()`
+
+```{r}
+#| echo: true
+#| code-line-numbers: "3-6"
+penguins_bill_length_plot +
+  theme_minimal() +
+  theme(axis.text = element_text(family = "Times New Roman",
+                                 face = "bold",
+                                 size = 20,
+                                 color = "blue"))
+```
+
+
+## `element_text()`
+
+```{r}
+#| echo: true
+#| eval: false
+element_text(
+  family = NULL,
+  face = NULL,
+  colour = NULL,
+  size = NULL,
+  hjust = NULL,
+  vjust = NULL,
+  angle = NULL,
+  lineheight = NULL,
+  color = NULL,
+  margin = NULL,
+  debug = NULL,
+  inherit.blank = FALSE
+)
+```
 
 ## My Turn {.my-turn}
 
@@ -1927,7 +2337,46 @@ Section is about using text to explain
 ---
 
 ![](assets/nyt-sea-ice-viz.png){fig-width="100%"}
+---
 
+```{r}
+penguins |> 
+  filter(year >= 2008) |> 
+  mutate(year = as.character(year)) |> 
+  group_by(island, year) |> 
+  summarize(mean_bill_length = mean(bill_length_mm,
+                                    na.rm = TRUE)) |> 
+  ungroup() |> 
+  mutate(highlight_island = case_when(
+    island == "Biscoe" ~ "Y",
+    .default = "N"
+  )) |> 
+  mutate(text_label = case_when(
+    island == "Biscoe" & year == 2009 ~ str_glue("Average bill length
+                                                 {number(mean_bill_length, accuracy = 0.1)} mm"),
+    island == "Biscoe" & year == 2008 ~ number(mean_bill_length, accuracy = 0.1)
+  )) |> 
+  ggplot(aes(x = year,
+             y = mean_bill_length,
+             color = highlight_island,
+             label = text_label,
+             group = island)) +
+  geom_line() +
+  geom_text_repel(hjust = 0,
+                  seed = 1234,
+                  force = 25,
+                  segment.color = "transparent",
+                  direction = "x",
+                  lineheight = 0.9) +
+  scale_color_manual(values = c(
+    "N" = "grey80",
+    "Y" = "orange"
+  )) +
+  theme_minimal() +
+  theme(axis.title = element_blank(),
+        panel.grid = element_blank(),
+        legend.position = "none")
+```
 
 
 ## My Turn {.my-turn}
@@ -1938,9 +2387,9 @@ Section is about using text to explain
 
 ::: {.notes}
 - Direct labeling
-  - Create text labels
-  - Show to make all labels (https://show.rfor.us/rWJ5qnH3)
-  - Show ggrepel
+- Create text labels
+- Show how to make all labels (https://show.rfor.us/rWJ5qnH3)
+- Show ggrepel
 - Axis text (either format it nicely or remove it)
 :::
 
@@ -1957,9 +2406,124 @@ Section is about using text to explain
 
 ![](assets/nyt-sea-ice-viz.png){fig-width="100%"}
 
+
 ---
 
 ![](assets/jbm-covid-plot.jpeg){fig-width="100%"}
+
+
+
+## Add Descriptive Titles
+
+```{r}
+penguins |> 
+  filter(year >= 2008) |> 
+  mutate(year = as.character(year)) |> 
+  group_by(island, year) |> 
+  summarize(mean_bill_length = mean(bill_length_mm,
+                                    na.rm = TRUE)) |> 
+  ungroup() |> 
+  mutate(highlight_island = case_when(
+    island == "Biscoe" ~ "Y",
+    .default = "N"
+  )) |> 
+  mutate(text_label = case_when(
+    island == "Biscoe" & year == 2009 ~ str_glue("Average bill length
+                                                 {number(mean_bill_length, accuracy = 0.1)} mm"),
+    island == "Biscoe" & year == 2008 ~ number(mean_bill_length, accuracy = 0.1)
+  )) |> 
+  ggplot(aes(x = year,
+             y = mean_bill_length,
+             color = highlight_island,
+             label = text_label,
+             group = island)) +
+  geom_line() +
+  geom_text_repel(hjust = 0,
+                  seed = 1234,
+                  force = 25,
+                  segment.color = "transparent",
+                  direction = "x",
+                  lineheight = 0.9) +
+  scale_color_manual(values = c(
+    "N" = "grey80",
+    "Y" = "orange"
+  )) +
+  labs(title = "Penguins on Biscoe island had the longest average bill length in 2008 and 2009") +
+  theme_minimal() +
+  theme(axis.title = element_blank(),
+        panel.grid = element_blank(),
+        plot.title = element_text(face = "bold",
+                                  size = 16),
+        plot.title.position = "plot",
+        legend.position = "none")
+```
+
+## Use Color in Titles to Highlight Findings
+
+```{r}
+penguins |> 
+  filter(year >= 2008) |> 
+  mutate(year = as.character(year)) |> 
+  group_by(island, year) |> 
+  summarize(mean_bill_length = mean(bill_length_mm,
+                                    na.rm = TRUE)) |> 
+  ungroup() |> 
+  mutate(highlight_island = case_when(
+    island == "Biscoe" ~ "Y",
+    .default = "N"
+  )) |> 
+  mutate(text_label = case_when(
+    island == "Biscoe" & year == 2009 ~ str_glue("Average bill length
+                                                 {number(mean_bill_length, accuracy = 0.1)} mm"),
+    island == "Biscoe" & year == 2008 ~ number(mean_bill_length, accuracy = 0.1)
+  )) |> 
+  ggplot(aes(x = year,
+             y = mean_bill_length,
+             color = highlight_island,
+             label = text_label,
+             group = island)) +
+  geom_line() +
+  geom_text_repel(hjust = 0,
+                  seed = 1234,
+                  force = 25,
+                  segment.color = "transparent",
+                  direction = "x",
+                  lineheight = 0.9) +
+  scale_color_manual(values = c(
+    "N" = "grey80",
+    "Y" = "orange"
+  )) +
+  labs(title = "<b style='color: orange;'>Penguins on Biscoe island</b> had the longest average bill length in 2008 and 2009") +
+  theme_minimal() +
+  theme(axis.title = element_blank(),
+        panel.grid = element_blank(),
+        plot.title = element_markdown(size = 16),
+        plot.title.position = "plot",
+        legend.position = "none")
+```
+
+## `ggtext`
+
+Add a *little* bit of HTML (not too much, I promise!)
+
+```{r}
+#| eval: false
+#| echo: true
+labs(title = "<b style='color: orange;'>Penguins on Biscoe island</b> 
+     had the longest average bill length in 2008 and 2009")
+```
+
+::: {.fragment}
+And then tell ggplot to interpret the HTML correctly
+```{r}
+#| eval: false
+#| echo: true
+theme(plot.title = element_markdown())
+```
+:::
+
+
+
 
 
 ## My Turn {.my-turn}
@@ -1973,11 +2537,11 @@ Section is about using text to explain
 ::: {.notes}
 - Use descriptive titles
 - Use color in titles
-  - Show datawrapper articles
-  - ggtext
-    - span
-    - b
-    - i
+- Show datawrapper articles
+- ggtext
+- span
+- b
+- i
 - plot.title.position = "plot"
 :::
 
@@ -2005,6 +2569,77 @@ Section is about using text to explain
 
 
 
+```{r}
+penguins_plot_with_color_title <-
+  penguins |> 
+  filter(year >= 2008) |> 
+  mutate(year = as.character(year)) |> 
+  group_by(island, year) |> 
+  summarize(mean_bill_length = mean(bill_length_mm,
+                                    na.rm = TRUE)) |> 
+  ungroup() |> 
+  mutate(highlight_island = case_when(
+    island == "Biscoe" ~ "Y",
+    .default = "N"
+  )) |> 
+  mutate(text_label = case_when(
+    island == "Biscoe" & year == 2009 ~ str_glue("Average bill length
+                                                 {number(mean_bill_length, accuracy = 0.1)} mm"),
+    island == "Biscoe" & year == 2008 ~ number(mean_bill_length, accuracy = 0.1)
+  )) |> 
+  ggplot(aes(x = year,
+             y = mean_bill_length,
+             color = highlight_island,
+             label = text_label,
+             group = island)) +
+  geom_line() +
+  geom_text_repel(hjust = 0,
+                  seed = 1234,
+                  force = 25,
+                  segment.color = "transparent",
+                  direction = "x",
+                  lineheight = 0.9) +
+  scale_color_manual(values = c(
+    "N" = "grey80",
+    "Y" = "orange"
+  )) +
+  labs(title = "<b style='color: orange;'>Penguins on Biscoe island</b> had the longest average bill length in 2008 and 2009") +
+  theme_minimal() +
+  theme(axis.title = element_blank(),
+        panel.grid = element_blank(),
+        plot.title = element_markdown(size = 16),
+        plot.title.position = "plot",
+        legend.position = "none")
+```
+
+## Use Annotations to Explain
+
+```{r}
+penguins_plot_with_color_title +
+  annotate(geom = "text",
+           x = "2009",
+           y = 44,
+           hjust = 0,
+           lineheight = 0.9,
+           color = "grey70",
+           label = "Gray lines show\npenguins on other islands")
+```
+
+## Use Annotations to Explain
+
+```{r}
+#| echo: true
+penguins_plot_with_color_title +
+  annotate(geom = "text",
+           x = "2009",
+           y = 44,
+           hjust = 0,
+           lineheight = 0.9,
+           color = "grey70",
+           label = "Grey lines show\npenguins on other islands")
+```
+
+
 ## My Turn {.my-turn}
 
 1. Add an annotation to explain what the grey lines represent
@@ -2023,7 +2658,40 @@ Section is about using text to explain
 
 ![](assets/default.gif){fig-width="100%"}
 
+
+
+
 # Tweak Spacing {.inverse}
+
+```{r}
+penguins_plot_with_annotation <-
+  penguins_plot_with_color_title +
+  annotate(geom = "text",
+           x = "2009",
+           y = 44,
+           hjust = 0,
+           lineheight = 0.9,
+           color = "grey70",
+           label = "Grey lines show\npenguins on other islands")
+```
+
+
+## Tweak Spacing
+
+```{r}
+penguins_plot_with_annotation
+```
+
+
+## Tweak Spacing
+
+```{r}
+#| echo: true
+#| code-line-numbers: "2"
+penguins_plot_with_annotation +
+  scale_x_discrete(expand = expansion(add = c(0.1, 0.5)))
+```
+
 
 ## My Turn {.my-turn}
 
@@ -2034,6 +2702,72 @@ Section is about using text to explain
 1. Tweak spacing around my plot to remove unnecessary blank spaces
 
 # Customize Your Theme {.inverse}
+
+## Customize Your Theme
+
+```{r}
+penguins_bar_chart <-
+  penguins |> 
+  filter(year == 2007) |> 
+  count(island) |> 
+  ggplot(aes(x = n,
+             y = reorder(island, n),
+             fill = island)) +
+  geom_col() +
+  geom_text(aes(label = n),
+            nudge_x = -2) +
+  scale_fill_manual(values = c(
+    "Dream" = "orange",
+    "Biscoe" = "grey80",
+    "Torgersen" = "grey80"
+  )) +
+  labs(title = "In 2007, Dream island had the most penguins of any island") +
+  scale_x_continuous(expand = expansion(add = c(0.1, 0.5)))
+```
+
+```{r}
+penguins_bar_chart
+```
+
+## Make a Custom Theme
+
+```{r}
+#| echo: true
+penguins_bar_chart +
+  theme_void() +
+  theme(axis.text.y = element_text(),
+        legend.position = "none",
+        plot.title = element_text(face = "bold",
+                                  size = 20),
+        plot.title.position = "plot")
+```
+
+## Make a Custom Theme
+
+```{r}
+#| echo: true
+theme_bar_chart <- function() {
+  
+  theme_void() +
+    theme(axis.text.y = element_text(),
+          legend.position = "none",
+          plot.title = element_text(face = "bold",
+                                    size = 20),
+          plot.title.position = "plot")
+  
+}
+```
+
+## Make a Custom Theme
+
+```{r}
+#| echo: true
+penguins_bar_chart +
+  theme_bar_chart()
+```
+
+
+
 
 ## My Turn {.my-turn}
 
@@ -2050,6 +2784,175 @@ Section is about using text to explain
 1. If you want to confirm that it works with other plots, copy it to another project and try it there.
 
 # Customize Your Fonts {.inverse}
+
+## Working with Custom Fonts in R
+
+The `systemfonts` package makes custom fonts available to R.
+
+::: {.fragment}
+The `ragg` package enables ggplot to use these fonts when making plots.
+:::
+
+::: {.fragment}
+Begin by installing both packages.
+:::
+
+## Viewing All Fonts
+
+```{r}
+#| echo: true
+#| eval: false
+library(systemfonts)
+
+system_fonts()
+```
+
+## Rendering Plots in RStudio with Custom Fonts
+
+
+![](assets/graphics-device.png)
+
+## Saving Plots with Custom Fonts
+
+```{r}
+#| echo: true
+#| eval: false
+#| code-line-numbers: "1,5"
+
+library(ragg)
+
+ggsave(plot = penguins_bar_chart,
+       filename = "penguins_bar_chart.png",
+       device = agg_png)
+```
+
+
+## Rendering Plots with Custom Fonts in Quarto Documents
+
+```{yaml}
+#| echo: true
+#| eval: false
+#| code-line-numbers: "4-6"
+---
+title: "My Report"
+format: html
+knitr:
+  opts_chunk: 
+    dev: ragg_png
+---
+```
+
+## Where to Apply Custom Fonts: `geom_text()`
+
+```{r}
+#| echo: true
+#| eval: false
+#| code-line-numbers: "9"
+penguins |> 
+  filter(year == 2007) |> 
+  count(island) |> 
+  ggplot(aes(x = n,
+             y = reorder(island, n),
+             fill = island,
+             label = n)) +
+  geom_col() +
+  geom_text(family = "Papyrus") +
+  labs(title = "My Amazing Penguins Chart")
+```
+
+---
+
+```{r}
+#| echo: false
+penguins |> 
+  filter(year == 2007) |> 
+  count(island) |> 
+  ggplot(aes(x = n,
+             y = reorder(island, n),
+             fill = island,
+             label = n)) +
+  geom_col() +
+  geom_text(family = "Papyrus") +
+  labs(title = "My Amazing Penguins Chart")
+```
+
+## Where to Apply Custom Fonts: Complete Themes
+
+```{r}
+#| echo: true
+#| eval: false
+#| code-line-numbers: "11"
+penguins |> 
+  filter(year == 2007) |> 
+  count(island) |> 
+  ggplot(aes(x = n,
+             y = reorder(island, n),
+             fill = island,
+             label = n)) +
+  geom_col() +
+  geom_text(family = "Papyrus") +
+  labs(title = "My Amazing Penguins Chart") +
+  theme_minimal(base_family = "Papyrus")
+```
+
+---
+
+```{r}
+#| echo: false
+#| code-line-numbers: "11"
+penguins |> 
+  filter(year == 2007) |> 
+  count(island) |> 
+  ggplot(aes(x = n,
+             y = reorder(island, n),
+             fill = island,
+             label = n)) +
+  geom_col() +
+  geom_text(family = "Papyrus") +
+  labs(title = "My Amazing Penguins Chart") +
+  theme_minimal(base_family = "Papyrus")
+```
+
+## Where to Apply Custom Fonts: `theme()`
+
+```{r}
+#| echo: true
+#| eval: false
+#| code-line-numbers: "12"
+penguins |> 
+  filter(year == 2007) |> 
+  count(island) |> 
+  ggplot(aes(x = n,
+             y = reorder(island, n),
+             fill = island,
+             label = n)) +
+  geom_col() +
+  geom_text(family = "Papyrus") +
+  labs(title = "My Amazing Penguins Chart") +
+  theme_minimal(base_family = "Papyrus") +
+  theme(axis.text = element_text(family = "Inter"))
+```
+
+---
+
+```{r}
+#| echo: false
+#| code-line-numbers: "12"
+penguins |> 
+  filter(year == 2007) |> 
+  count(island) |> 
+  ggplot(aes(x = n,
+             y = reorder(island, n),
+             fill = island,
+             label = n)) +
+  geom_col() +
+  geom_text(family = "Papyrus") +
+  labs(title = "My Amazing Penguins Chart") +
+  theme_minimal(base_family = "Papyrus") +
+  theme(axis.text = element_text(family = "Inter"))
+```
+
+
 
 ## My Turn {.my-turn}
 
@@ -2070,4 +2973,46 @@ Section is about using text to explain
 1. Apply a custom font to your plot.
 
 # Try New Plot Types {.inverse}
+
+::: {.notes}
+https://github.com/erikgahner/awesome-ggplot2
+:::
+
+## `waffle`
+
+[![](assets/waffle-bars.png)](https://github.com/hrbrmstr/waffle)
+
+## `ggbump`
+
+[![](assets/bump-chart.png)](https://github.com/davidsjoberg/ggbump)
+
+## `ggstream`
+
+[![](assets/ggstream.png)](https://github.com/davidsjoberg/ggstream)
+
+## `ggridges`
+
+[![](assets/ggridges.png)](https://wilkelab.org/ggridges)
+
+## `ggbeeswarm`
+
+[![](assets/ggbeeswarm.png)](https://github.com/eclarke/ggbeeswarm)
+
+## `gganimate`
+
+[![](assets/claimsratio_2020_04_03.gif)](http://lenkiefer.com/2020/04/03/us-labor-market-update-april-2020/)
+
+## `patchwork`
+
+[![](assets/patchwork-twitter-post.png)](https://twitter.com/littlemissdata/status/1229176433123168256)
+
+## `patchwork`
+
+[![](assets/scherer-spotify.gif)](https://github.com/Z3tt/TidyTuesday#week-202004--spotify-songs-by-spotify-via-spotifyr)
+
+## Your Turn
+
+1. Make a plot using a new (to you) geom. You can use the ones I've shown in this lesson or you can find more on the [Awesome ggplot2 GitHub repository](https://github.com/erikgahner/awesome-ggplot2).
+
+1. If you come up with something you'd like to share, please email it to me at <david@rfortherestofus.com>.
 

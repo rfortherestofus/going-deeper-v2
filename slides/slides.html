@@ -2532,12 +2532,57 @@ Caused by error in `sum()`:
 <h1>Pipe Data Into ggplot</h1>
 
 </section>
+<section id="pipe-data-into-ggplot-1" class="slide level2 center">
+<h2>Pipe Data Into ggplot</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb124"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb124-1"><a href="#cb124-1"></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb124-2"><a href="#cb124-2"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2007</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb124-3"><a href="#cb124-3"></a>  <span class="fu">count</span>(island) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+  island        n
+  &lt;fct&gt;     &lt;int&gt;
+1 Biscoe       44
+2 Dream        46
+3 Torgersen    20</code></pre>
+</div>
+</div>
+</section>
+<section id="pipe-data-into-ggplot-2" class="slide level2 center">
+<h2>Pipe Data Into ggplot</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb126"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb126-1"><a href="#cb126-1"></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb126-2"><a href="#cb126-2"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2007</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb126-3"><a href="#cb126-3"></a>  <span class="fu">count</span>(island) <span class="sc">|&gt;</span> </span>
+<span id="cb126-4"><a href="#cb126-4"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> n,</span>
+<span id="cb126-5"><a href="#cb126-5"></a>             <span class="at">y =</span> island)) <span class="sc">+</span></span>
+<span id="cb126-6"><a href="#cb126-6"></a>  <span class="fu">geom_col</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-91-1.png" width="960" class="r-stretch"></section>
+<section id="pipe-data-into-ggplot-3" class="slide level2 center">
+<h2>Pipe Data Into ggplot</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb127" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb127-1"><a href="#cb127-1"></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb127-2"><a href="#cb127-2"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2008</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb127-3"><a href="#cb127-3"></a>  <span class="fu">count</span>(island) <span class="sc">|&gt;</span> </span>
+<span id="cb127-4"><a href="#cb127-4"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> n,</span>
+<span id="cb127-5"><a href="#cb127-5"></a>             <span class="at">y =</span> island)) <span class="sc">+</span></span>
+<span id="cb127-6"><a href="#cb127-6"></a>  <span class="fu">geom_col</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-92-1.png" width="960" class="r-stretch"></section>
 <section id="my-turn-11" class="slide level2 my-turn center">
 <h2>My Turn</h2>
 <ol type="1">
 <li class="fragment"><p>Create a new R script file.</p></li>
 <li class="fragment"><p>Create a <code>data</code> directory using the <code>fs</code> package.</p></li>
 <li class="fragment"><p>Download a slightly modified version of the third grade math proficiency data into the <code>data</code> directory.</p></li>
+</ol>
+</section>
+<section id="my-turn-continued-2" class="slide level2 my-turn center">
+<h2>My Turn, Continued</h2>
+<ol start="4" type="1">
 <li class="fragment"><p>Import the RDS file into a data frame called <code>third_grade_math_proficiency</code>.</p></li>
 <li class="fragment"><p>Make a plot by piping the third grade math proficiency data directly into ggplot.</p></li>
 </ol>
@@ -2566,6 +2611,56 @@ Caused by error in `sum()`:
 <h1>Reorder Plots to Highlight Findings</h1>
 
 </section>
+<section class="slide level2 center">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb128"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb128-1"><a href="#cb128-1"></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb128-2"><a href="#cb128-2"></a>  <span class="fu">count</span>(island)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+  island        n
+  &lt;fct&gt;     &lt;int&gt;
+1 Biscoe      168
+2 Dream       124
+3 Torgersen    52</code></pre>
+</div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb130"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb130-1"><a href="#cb130-1"></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb130-2"><a href="#cb130-2"></a>  <span class="fu">count</span>(island) <span class="sc">|&gt;</span> </span>
+<span id="cb130-3"><a href="#cb130-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> n,</span>
+<span id="cb130-4"><a href="#cb130-4"></a>             <span class="at">y =</span> island)) <span class="sc">+</span></span>
+<span id="cb130-5"><a href="#cb130-5"></a>  <span class="fu">geom_col</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img data-src="slides_files/figure-revealjs/unnamed-chunk-94-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2 center">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb131" data-code-line-numbers="4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb131-1"><a href="#cb131-1"></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb131-2"><a href="#cb131-2"></a>  <span class="fu">count</span>(island) <span class="sc">|&gt;</span> </span>
+<span id="cb131-3"><a href="#cb131-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> n,</span>
+<span id="cb131-4"><a href="#cb131-4"></a>             <span class="at">y =</span> <span class="fu">reorder</span>(island, n))) <span class="sc">+</span></span>
+<span id="cb131-5"><a href="#cb131-5"></a>  <span class="fu">geom_col</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-95-1.png" width="960" class="r-stretch"></section>
+<section class="slide level2 center">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb132" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb132-1"><a href="#cb132-1"></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb132-2"><a href="#cb132-2"></a>  <span class="fu">count</span>(island) <span class="sc">|&gt;</span> </span>
+<span id="cb132-3"><a href="#cb132-3"></a>  <span class="fu">mutate</span>(<span class="at">island =</span> <span class="fu">fct_reorder</span>(island, n)) <span class="sc">|&gt;</span> </span>
+<span id="cb132-4"><a href="#cb132-4"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> n,</span>
+<span id="cb132-5"><a href="#cb132-5"></a>             <span class="at">y =</span> island)) <span class="sc">+</span></span>
+<span id="cb132-6"><a href="#cb132-6"></a>  <span class="fu">geom_col</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-96-1.png" width="960" class="r-stretch"></section>
 <section id="my-turn-12" class="slide level2 my-turn center">
 <h2>My Turn</h2>
 <ol type="1">
@@ -2585,6 +2680,73 @@ Caused by error in `sum()`:
 <h1>Line Charts</h1>
 
 </section>
+<section class="slide level2 center">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb133"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb133-1"><a href="#cb133-1"></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb133-2"><a href="#cb133-2"></a>  <span class="fu">count</span>(year, island)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 9 × 3
+   year island        n
+  &lt;int&gt; &lt;fct&gt;     &lt;int&gt;
+1  2007 Biscoe       44
+2  2007 Dream        46
+3  2007 Torgersen    20
+4  2008 Biscoe       64
+5  2008 Dream        34
+6  2008 Torgersen    16
+7  2009 Biscoe       60
+8  2009 Dream        44
+9  2009 Torgersen    16</code></pre>
+</div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb135"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb135-1"><a href="#cb135-1"></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb135-2"><a href="#cb135-2"></a>  <span class="fu">count</span>(year, island) <span class="sc">|&gt;</span></span>
+<span id="cb135-3"><a href="#cb135-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, </span>
+<span id="cb135-4"><a href="#cb135-4"></a>             <span class="at">y =</span> n)) <span class="sc">+</span></span>
+<span id="cb135-5"><a href="#cb135-5"></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img data-src="slides_files/figure-revealjs/unnamed-chunk-98-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2 center">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb136"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb136-1"><a href="#cb136-1"></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb136-2"><a href="#cb136-2"></a>  <span class="fu">count</span>(year, island)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 9 × 3
+   year island        n
+  &lt;int&gt; &lt;fct&gt;     &lt;int&gt;
+1  2007 Biscoe       44
+2  2007 Dream        46
+3  2007 Torgersen    20
+4  2008 Biscoe       64
+5  2008 Dream        34
+6  2008 Torgersen    16
+7  2009 Biscoe       60
+8  2009 Dream        44
+9  2009 Torgersen    16</code></pre>
+</div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb138" data-code-line-numbers="5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb138-1"><a href="#cb138-1"></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb138-2"><a href="#cb138-2"></a>  <span class="fu">count</span>(year, island) <span class="sc">|&gt;</span></span>
+<span id="cb138-3"><a href="#cb138-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, </span>
+<span id="cb138-4"><a href="#cb138-4"></a>             <span class="at">y =</span> n,</span>
+<span id="cb138-5"><a href="#cb138-5"></a>             <span class="at">group =</span> island)) <span class="sc">+</span></span>
+<span id="cb138-6"><a href="#cb138-6"></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img data-src="slides_files/figure-revealjs/unnamed-chunk-100-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</section>
 <section id="my-turn-13" class="slide level2 my-turn center">
 <h2>My Turn</h2>
 <p>Make a line chart that shows the change in proficiency levels from 2018-2019 to 2021-2022</p>
@@ -2602,6 +2764,30 @@ Caused by error in `sum()`:
 
 
 <img data-src="assets/nyt-sea-ice-viz.png" class="r-stretch quarto-figure-center"></section>
+<section id="use-color-to-highlight-findings-1" class="slide level2 center">
+<h2>Use Color to Highlight Findings</h2>
+<div class="fragment">
+<p><br> <strong>Data wrangling</strong></p>
+<ol type="1">
+<li class="fragment"><p>Figure out which line you want to highlight</p></li>
+<li class="fragment"><p>Create variable to highlight this line</p></li>
+</ol>
+</div>
+<div class="fragment">
+<p><strong>Data visualization</strong></p>
+<ol type="1">
+<li class="fragment">Use the <code>color</code> aesthetic property combined with <code>scale_color_manual()</code> to highlight line</li>
+</ol>
+</div>
+</section>
+<section class="slide level2 center">
+
+
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-101-1.png" width="960" class="r-stretch"></section>
+<section class="slide level2 center">
+
+
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-102-1.png" width="960" class="r-stretch"></section>
 <section id="my-turn-14" class="slide level2 my-turn center">
 <h2>My Turn</h2>
 <p>Highlight a single school in my line chart that showed growth in math proficiency between 2018-2019 and 2021-2022</p>
@@ -2619,6 +2805,182 @@ Caused by error in `sum()`:
 
 
 <img data-src="assets/nyt-sea-ice-viz.png" class="r-stretch quarto-figure-center"></section>
+<section class="slide level2 center">
+
+
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-103-1.png" width="960" class="r-stretch"></section>
+<section id="complete-themes" class="slide level2 center">
+<h2>Complete Themes</h2>
+<p>Complete themes like <code>theme_minimal()</code> etc completely change the look and feel of plots</p>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb139"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb139-1"><a href="#cb139-1"></a>penguins_bill_length_plot <span class="sc">+</span></span>
+<span id="cb139-2"><a href="#cb139-2"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img data-src="slides_files/figure-revealjs/unnamed-chunk-104-1.png" width="960"></p>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>https://ggplot2.tidyverse.org/reference/ggtheme.html</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="theme-function" class="slide level2 center">
+<h2><code>theme()</code> Function</h2>
+<p>The <code>theme()</code> function allows you to alter specific pieces of your plots.</p>
+<div class="fragment">
+<p>You usually use the <code>theme()</code> function after setting a complete theme.</p>
+</div>
+</section>
+<section id="theme-function-1" class="slide level2 center">
+<h2><code>theme()</code> Function</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb140" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb140-1"><a href="#cb140-1"></a>penguins_bill_length_plot <span class="sc">+</span></span>
+<span id="cb140-2"><a href="#cb140-2"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb140-3"><a href="#cb140-3"></a>  <span class="fu">theme</span>(<span class="at">axis.title =</span> <span class="fu">element_blank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-105-1.png" width="960" class="r-stretch"></section>
+<section id="theme-function-2" class="slide level2 center">
+<h2><code>theme()</code> Function</h2>
+<p>Within the <code>theme()</code> function, we need to figure out two pieces:</p>
+<ol type="1">
+<li class="fragment"><p>What part of the plot are we targeting?</p></li>
+<li class="fragment"><p>What do we want to change on that part of the plot?</p></li>
+</ol>
+</section>
+<section id="plot-parts" class="slide level2 center">
+<h2>Plot Parts</h2>
+
+<img data-src="assets/theme-elements-henry-wang.png" class="r-stretch quarto-figure-center"></section>
+<section id="element_-functions" class="slide level2 center">
+<h2><code>element_</code> Functions</h2>
+<ul>
+<li class="fragment"><p><code>element_blank()</code></p></li>
+<li class="fragment"><p><code>element_rect()</code></p></li>
+<li class="fragment"><p><code>element_line()</code></p></li>
+<li class="fragment"><p><code>element_text()</code></p></li>
+</ul>
+</section>
+<section id="element_blank" class="slide level2 center">
+<h2><code>element_blank()</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb141"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb141-1"><a href="#cb141-1"></a>penguins_bill_length_plot <span class="sc">+</span></span>
+<span id="cb141-2"><a href="#cb141-2"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img data-src="slides_files/figure-revealjs/unnamed-chunk-106-1.png" width="960"></p>
+</div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb142" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb142-1"><a href="#cb142-1"></a>penguins_bill_length_plot <span class="sc">+</span></span>
+<span id="cb142-2"><a href="#cb142-2"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb142-3"><a href="#cb142-3"></a>  <span class="fu">theme</span>(<span class="at">axis.title =</span> <span class="fu">element_blank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img data-src="slides_files/figure-revealjs/unnamed-chunk-107-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="remove-legends" class="slide level2 center">
+<h2>Remove Legends</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb143" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb143-1"><a href="#cb143-1"></a>penguins_bill_length_plot <span class="sc">+</span></span>
+<span id="cb143-2"><a href="#cb143-2"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-108-1.png" width="960" class="r-stretch"></section>
+<section id="element_rect" class="slide level2 center">
+<h2><code>element_rect()</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb144" data-code-line-numbers="3-5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb144-1"><a href="#cb144-1"></a>penguins_bill_length_plot <span class="sc">+</span></span>
+<span id="cb144-2"><a href="#cb144-2"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb144-3"><a href="#cb144-3"></a>  <span class="fu">theme</span>(<span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"blue"</span>,</span>
+<span id="cb144-4"><a href="#cb144-4"></a>                                       <span class="at">color =</span> <span class="st">"orange"</span>,</span>
+<span id="cb144-5"><a href="#cb144-5"></a>                                       <span class="at">linewidth =</span> <span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-109-1.png" width="960" class="r-stretch"></section>
+<section id="element_rect-1" class="slide level2 center">
+<h2><code>element_rect()</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb145"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb145-1"><a href="#cb145-1"></a><span class="fu">element_rect</span>(</span>
+<span id="cb145-2"><a href="#cb145-2"></a>  <span class="at">fill =</span> <span class="cn">NULL</span>,</span>
+<span id="cb145-3"><a href="#cb145-3"></a>  <span class="at">colour =</span> <span class="cn">NULL</span>,</span>
+<span id="cb145-4"><a href="#cb145-4"></a>  <span class="at">linewidth =</span> <span class="cn">NULL</span>,</span>
+<span id="cb145-5"><a href="#cb145-5"></a>  <span class="at">linetype =</span> <span class="cn">NULL</span>,</span>
+<span id="cb145-6"><a href="#cb145-6"></a>  <span class="at">color =</span> <span class="cn">NULL</span>,</span>
+<span id="cb145-7"><a href="#cb145-7"></a>  <span class="at">inherit.blank =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb145-8"><a href="#cb145-8"></a>  <span class="at">size =</span> <span class="fu">deprecated</span>()</span>
+<span id="cb145-9"><a href="#cb145-9"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="element_line" class="slide level2 center">
+<h2><code>element_line()</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb146" data-code-line-numbers="3-5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb146-1"><a href="#cb146-1"></a>penguins_bill_length_plot <span class="sc">+</span></span>
+<span id="cb146-2"><a href="#cb146-2"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb146-3"><a href="#cb146-3"></a>  <span class="fu">theme</span>(<span class="at">panel.grid.major =</span> <span class="fu">element_line</span>(<span class="at">color =</span> <span class="st">"blue"</span>),</span>
+<span id="cb146-4"><a href="#cb146-4"></a>        <span class="at">panel.grid.minor =</span> <span class="fu">element_line</span>(<span class="at">color =</span> <span class="st">"red"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-111-1.png" width="960" class="r-stretch"></section>
+<section id="element_line-1" class="slide level2 center">
+<h2><code>element_line()</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb147"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb147-1"><a href="#cb147-1"></a><span class="fu">element_line</span>(</span>
+<span id="cb147-2"><a href="#cb147-2"></a>  <span class="at">colour =</span> <span class="cn">NULL</span>,</span>
+<span id="cb147-3"><a href="#cb147-3"></a>  <span class="at">linewidth =</span> <span class="cn">NULL</span>,</span>
+<span id="cb147-4"><a href="#cb147-4"></a>  <span class="at">linetype =</span> <span class="cn">NULL</span>,</span>
+<span id="cb147-5"><a href="#cb147-5"></a>  <span class="at">lineend =</span> <span class="cn">NULL</span>,</span>
+<span id="cb147-6"><a href="#cb147-6"></a>  <span class="at">color =</span> <span class="cn">NULL</span>,</span>
+<span id="cb147-7"><a href="#cb147-7"></a>  <span class="at">arrow =</span> <span class="cn">NULL</span>,</span>
+<span id="cb147-8"><a href="#cb147-8"></a>  <span class="at">inherit.blank =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb147-9"><a href="#cb147-9"></a>  <span class="at">size =</span> <span class="fu">deprecated</span>()</span>
+<span id="cb147-10"><a href="#cb147-10"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="element_text" class="slide level2 center">
+<h2><code>element_text()</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb148" data-code-line-numbers="3-6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb148-1"><a href="#cb148-1"></a>penguins_bill_length_plot <span class="sc">+</span></span>
+<span id="cb148-2"><a href="#cb148-2"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb148-3"><a href="#cb148-3"></a>  <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"Times New Roman"</span>,</span>
+<span id="cb148-4"><a href="#cb148-4"></a>                                 <span class="at">face =</span> <span class="st">"bold"</span>,</span>
+<span id="cb148-5"><a href="#cb148-5"></a>                                 <span class="at">size =</span> <span class="dv">20</span>,</span>
+<span id="cb148-6"><a href="#cb148-6"></a>                                 <span class="at">color =</span> <span class="st">"blue"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-113-1.png" width="960" class="r-stretch"></section>
+<section id="element_text-1" class="slide level2 center">
+<h2><code>element_text()</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb149"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb149-1"><a href="#cb149-1"></a><span class="fu">element_text</span>(</span>
+<span id="cb149-2"><a href="#cb149-2"></a>  <span class="at">family =</span> <span class="cn">NULL</span>,</span>
+<span id="cb149-3"><a href="#cb149-3"></a>  <span class="at">face =</span> <span class="cn">NULL</span>,</span>
+<span id="cb149-4"><a href="#cb149-4"></a>  <span class="at">colour =</span> <span class="cn">NULL</span>,</span>
+<span id="cb149-5"><a href="#cb149-5"></a>  <span class="at">size =</span> <span class="cn">NULL</span>,</span>
+<span id="cb149-6"><a href="#cb149-6"></a>  <span class="at">hjust =</span> <span class="cn">NULL</span>,</span>
+<span id="cb149-7"><a href="#cb149-7"></a>  <span class="at">vjust =</span> <span class="cn">NULL</span>,</span>
+<span id="cb149-8"><a href="#cb149-8"></a>  <span class="at">angle =</span> <span class="cn">NULL</span>,</span>
+<span id="cb149-9"><a href="#cb149-9"></a>  <span class="at">lineheight =</span> <span class="cn">NULL</span>,</span>
+<span id="cb149-10"><a href="#cb149-10"></a>  <span class="at">color =</span> <span class="cn">NULL</span>,</span>
+<span id="cb149-11"><a href="#cb149-11"></a>  <span class="at">margin =</span> <span class="cn">NULL</span>,</span>
+<span id="cb149-12"><a href="#cb149-12"></a>  <span class="at">debug =</span> <span class="cn">NULL</span>,</span>
+<span id="cb149-13"><a href="#cb149-13"></a>  <span class="at">inherit.blank =</span> <span class="cn">FALSE</span></span>
+<span id="cb149-14"><a href="#cb149-14"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
 <section id="my-turn-15" class="slide level2 my-turn center">
 <h2>My Turn</h2>
 <ol type="1">
@@ -2686,6 +3048,10 @@ Caused by error in `sum()`:
 
 
 <img data-src="assets/nyt-sea-ice-viz.png" class="r-stretch quarto-figure-center"></section>
+<section class="slide level2 center">
+
+
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-115-1.png" width="960" class="r-stretch"></section>
 <section id="my-turn-16" class="slide level2 my-turn center">
 <h2>My Turn</h2>
 <ol type="1">
@@ -2694,12 +3060,10 @@ Caused by error in `sum()`:
 </ol>
 <aside class="notes">
 <ul>
-<li>Direct labeling
-<ul>
+<li>Direct labeling</li>
 <li>Create text labels</li>
-<li>Show to make all labels (https://show.rfor.us/rWJ5qnH3)</li>
+<li>Show how to make all labels (https://show.rfor.us/rWJ5qnH3)</li>
 <li>Show ggrepel</li>
-</ul></li>
 <li>Axis text (either format it nicely or remove it)</li>
 </ul>
 <style type="text/css">
@@ -2734,6 +3098,28 @@ Caused by error in `sum()`:
 
 
 <img data-src="assets/jbm-covid-plot.jpeg" class="r-stretch quarto-figure-center"></section>
+<section id="add-descriptive-titles" class="slide level2 center">
+<h2>Add Descriptive Titles</h2>
+
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-116-1.png" width="960" class="r-stretch"></section>
+<section id="use-color-in-titles-to-highlight-findings" class="slide level2 center">
+<h2>Use Color in Titles to Highlight Findings</h2>
+
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-117-1.png" width="960" class="r-stretch"></section>
+<section id="ggtext" class="slide level2 center">
+<h2><code>ggtext</code></h2>
+<p>Add a <em>little</em> bit of HTML (not too much, I promise!)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb150"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb150-1"><a href="#cb150-1"></a><span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"&lt;b style='color: orange;'&gt;Penguins on Biscoe island&lt;/b&gt; </span></span>
+<span id="cb150-2"><a href="#cb150-2"></a><span class="st">     had the longest average bill length in 2008 and 2009"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="fragment">
+<p>And then tell ggplot to interpret the HTML correctly</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb151"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb151-1"><a href="#cb151-1"></a><span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_markdown</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
 <section id="my-turn-17" class="slide level2 my-turn center">
 <h2>My Turn</h2>
 <ol type="1">
@@ -2744,16 +3130,12 @@ Caused by error in `sum()`:
 <aside class="notes">
 <ul>
 <li>Use descriptive titles</li>
-<li>Use color in titles
-<ul>
+<li>Use color in titles</li>
 <li>Show datawrapper articles</li>
-<li>ggtext
-<ul>
+<li>ggtext</li>
 <li>span</li>
 <li>b</li>
 <li>i</li>
-</ul></li>
-</ul></li>
 <li>plot.title.position = “plot”</li>
 </ul>
 <style type="text/css">
@@ -2793,6 +3175,24 @@ Caused by error in `sum()`:
 
 
 <img data-src="assets/ft-annotation-example.jpeg" class="r-stretch quarto-figure-center"></section>
+<section id="use-annotations-to-explain-1" class="slide level2 center">
+<h2>Use Annotations to Explain</h2>
+
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-121-1.png" width="960" class="r-stretch"></section>
+<section id="use-annotations-to-explain-2" class="slide level2 center">
+<h2>Use Annotations to Explain</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb152"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb152-1"><a href="#cb152-1"></a>penguins_plot_with_color_title <span class="sc">+</span></span>
+<span id="cb152-2"><a href="#cb152-2"></a>  <span class="fu">annotate</span>(<span class="at">geom =</span> <span class="st">"text"</span>,</span>
+<span id="cb152-3"><a href="#cb152-3"></a>           <span class="at">x =</span> <span class="st">"2009"</span>,</span>
+<span id="cb152-4"><a href="#cb152-4"></a>           <span class="at">y =</span> <span class="dv">44</span>,</span>
+<span id="cb152-5"><a href="#cb152-5"></a>           <span class="at">hjust =</span> <span class="dv">0</span>,</span>
+<span id="cb152-6"><a href="#cb152-6"></a>           <span class="at">lineheight =</span> <span class="fl">0.9</span>,</span>
+<span id="cb152-7"><a href="#cb152-7"></a>           <span class="at">color =</span> <span class="st">"grey70"</span>,</span>
+<span id="cb152-8"><a href="#cb152-8"></a>           <span class="at">label =</span> <span class="st">"Grey lines show</span><span class="sc">\n</span><span class="st">penguins on other islands"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-122-1.png" width="960" class="r-stretch"></section>
 <section id="my-turn-18" class="slide level2 my-turn center">
 <h2>My Turn</h2>
 <ol type="1">
@@ -2834,6 +3234,18 @@ Caused by error in `sum()`:
 <h1>Tweak Spacing</h1>
 
 </section>
+<section id="tweak-spacing-1" class="slide level2 center">
+<h2>Tweak Spacing</h2>
+
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-124-1.png" width="960" class="r-stretch"></section>
+<section id="tweak-spacing-2" class="slide level2 center">
+<h2>Tweak Spacing</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb153" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb153-1"><a href="#cb153-1"></a>penguins_plot_with_annotation <span class="sc">+</span></span>
+<span id="cb153-2"><a href="#cb153-2"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">expand =</span> <span class="fu">expansion</span>(<span class="at">add =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.5</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-125-1.png" width="960" class="r-stretch"></section>
 <section id="my-turn-19" class="slide level2 my-turn center">
 <h2>My Turn</h2>
 <ol type="1">
@@ -2846,22 +3258,278 @@ Caused by error in `sum()`:
 <li class="fragment">Tweak spacing around my plot to remove unnecessary blank spaces</li>
 </ol>
 </section></section>
+<section>
 <section id="customize-your-theme" class="title-slide slide level1 inverse center">
 <h1>Customize Your Theme</h1>
 
 </section>
+<section id="customize-your-theme-1" class="slide level2 center">
+<h2>Customize Your Theme</h2>
 
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-127-1.png" width="960" class="r-stretch"></section>
+<section id="make-a-custom-theme" class="slide level2 center">
+<h2>Make a Custom Theme</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb154"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb154-1"><a href="#cb154-1"></a>penguins_bar_chart <span class="sc">+</span></span>
+<span id="cb154-2"><a href="#cb154-2"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
+<span id="cb154-3"><a href="#cb154-3"></a>  <span class="fu">theme</span>(<span class="at">axis.text.y =</span> <span class="fu">element_text</span>(),</span>
+<span id="cb154-4"><a href="#cb154-4"></a>        <span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
+<span id="cb154-5"><a href="#cb154-5"></a>        <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>,</span>
+<span id="cb154-6"><a href="#cb154-6"></a>                                  <span class="at">size =</span> <span class="dv">20</span>),</span>
+<span id="cb154-7"><a href="#cb154-7"></a>        <span class="at">plot.title.position =</span> <span class="st">"plot"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-128-1.png" width="960" class="r-stretch"></section>
+<section id="make-a-custom-theme-1" class="slide level2 center">
+<h2>Make a Custom Theme</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb155"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb155-1"><a href="#cb155-1"></a>theme_bar_chart <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb155-2"><a href="#cb155-2"></a>  </span>
+<span id="cb155-3"><a href="#cb155-3"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
+<span id="cb155-4"><a href="#cb155-4"></a>    <span class="fu">theme</span>(<span class="at">axis.text.y =</span> <span class="fu">element_text</span>(),</span>
+<span id="cb155-5"><a href="#cb155-5"></a>          <span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
+<span id="cb155-6"><a href="#cb155-6"></a>          <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>,</span>
+<span id="cb155-7"><a href="#cb155-7"></a>                                    <span class="at">size =</span> <span class="dv">20</span>),</span>
+<span id="cb155-8"><a href="#cb155-8"></a>          <span class="at">plot.title.position =</span> <span class="st">"plot"</span>)</span>
+<span id="cb155-9"><a href="#cb155-9"></a>  </span>
+<span id="cb155-10"><a href="#cb155-10"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="make-a-custom-theme-2" class="slide level2 center">
+<h2>Make a Custom Theme</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb156"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb156-1"><a href="#cb156-1"></a>penguins_bar_chart <span class="sc">+</span></span>
+<span id="cb156-2"><a href="#cb156-2"></a>  <span class="fu">theme_bar_chart</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-130-1.png" width="960" class="r-stretch"></section>
+<section id="my-turn-20" class="slide level2 my-turn center">
+<h2>My Turn</h2>
+<ol type="1">
+<li class="fragment">Make a custom theme and apply it to my plot.</li>
+</ol>
+<aside class="notes">
+<ul>
+<li>theme_set()</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="your-turn-21" class="slide level2 your-turn center">
+<h2>Your Turn</h2>
+<ol type="1">
+<li class="fragment"><p>Make your own custom theme and apply it to your plot.</p></li>
+<li class="fragment"><p>If you want to confirm that it works with other plots, copy it to another project and try it there.</p></li>
+</ol>
+</section></section>
+<section>
 <section id="customize-your-fonts" class="title-slide slide level1 inverse center">
 <h1>Customize Your Fonts</h1>
 
 </section>
+<section id="working-with-custom-fonts-in-r" class="slide level2 center">
+<h2>Working with Custom Fonts in R</h2>
+<p>The <code>systemfonts</code> package makes custom fonts available to R.</p>
+<div class="fragment">
+<p>The <code>ragg</code> package enables ggplot to use these fonts when making plots.</p>
+</div>
+<div class="fragment">
+<p>Begin by installing both packages.</p>
+</div>
+</section>
+<section id="viewing-all-fonts" class="slide level2 center">
+<h2>Viewing All Fonts</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb157"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb157-1"><a href="#cb157-1"></a><span class="fu">library</span>(systemfonts)</span>
+<span id="cb157-2"><a href="#cb157-2"></a></span>
+<span id="cb157-3"><a href="#cb157-3"></a><span class="fu">system_fonts</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="rendering-plots-in-rstudio-with-custom-fonts" class="slide level2 center">
+<h2>Rendering Plots in RStudio with Custom Fonts</h2>
 
+<img data-src="assets/graphics-device.png" class="r-stretch"></section>
+<section id="saving-plots-with-custom-fonts" class="slide level2 center">
+<h2>Saving Plots with Custom Fonts</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb158" data-code-line-numbers="1,5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb158-1"><a href="#cb158-1"></a><span class="fu">library</span>(ragg)</span>
+<span id="cb158-2"><a href="#cb158-2"></a></span>
+<span id="cb158-3"><a href="#cb158-3"></a><span class="fu">ggsave</span>(<span class="at">plot =</span> penguins_bar_chart,</span>
+<span id="cb158-4"><a href="#cb158-4"></a>       <span class="at">filename =</span> <span class="st">"penguins_bar_chart.png"</span>,</span>
+<span id="cb158-5"><a href="#cb158-5"></a>       <span class="at">device =</span> agg_png)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="rendering-plots-with-custom-fonts-in-quarto-documents" class="slide level2 center">
+<h2>Rendering Plots with Custom Fonts in Quarto Documents</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb159" data-code-line-numbers="4-6"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb159-1"><a href="#cb159-1"></a><span class="pp">---</span></span>
+<span id="cb159-2"><a href="#cb159-2"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"My Report"</span></span>
+<span id="cb159-3"><a href="#cb159-3"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> html</span></span>
+<span id="cb159-4"><a href="#cb159-4"></a><span class="fu">knitr</span><span class="kw">:</span></span>
+<span id="cb159-5"><a href="#cb159-5"></a><span class="at">  </span><span class="fu">opts_chunk</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb159-6"><a href="#cb159-6"></a><span class="at">    </span><span class="fu">dev</span><span class="kw">:</span><span class="at"> ragg_png</span></span>
+<span id="cb159-7"><a href="#cb159-7"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="where-to-apply-custom-fonts-geom_text" class="slide level2 center">
+<h2>Where to Apply Custom Fonts: <code>geom_text()</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb160" data-code-line-numbers="9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb160-1"><a href="#cb160-1"></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb160-2"><a href="#cb160-2"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2007</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb160-3"><a href="#cb160-3"></a>  <span class="fu">count</span>(island) <span class="sc">|&gt;</span> </span>
+<span id="cb160-4"><a href="#cb160-4"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> n,</span>
+<span id="cb160-5"><a href="#cb160-5"></a>             <span class="at">y =</span> <span class="fu">reorder</span>(island, n),</span>
+<span id="cb160-6"><a href="#cb160-6"></a>             <span class="at">fill =</span> island,</span>
+<span id="cb160-7"><a href="#cb160-7"></a>             <span class="at">label =</span> n)) <span class="sc">+</span></span>
+<span id="cb160-8"><a href="#cb160-8"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb160-9"><a href="#cb160-9"></a>  <span class="fu">geom_text</span>(<span class="at">family =</span> <span class="st">"Papyrus"</span>) <span class="sc">+</span></span>
+<span id="cb160-10"><a href="#cb160-10"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"My Amazing Penguins Chart"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section class="slide level2 center">
+
+
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-135-1.png" width="960" class="r-stretch"></section>
+<section id="where-to-apply-custom-fonts-complete-themes" class="slide level2 center">
+<h2>Where to Apply Custom Fonts: Complete Themes</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb161" data-code-line-numbers="11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb161-1"><a href="#cb161-1"></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb161-2"><a href="#cb161-2"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2007</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb161-3"><a href="#cb161-3"></a>  <span class="fu">count</span>(island) <span class="sc">|&gt;</span> </span>
+<span id="cb161-4"><a href="#cb161-4"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> n,</span>
+<span id="cb161-5"><a href="#cb161-5"></a>             <span class="at">y =</span> <span class="fu">reorder</span>(island, n),</span>
+<span id="cb161-6"><a href="#cb161-6"></a>             <span class="at">fill =</span> island,</span>
+<span id="cb161-7"><a href="#cb161-7"></a>             <span class="at">label =</span> n)) <span class="sc">+</span></span>
+<span id="cb161-8"><a href="#cb161-8"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb161-9"><a href="#cb161-9"></a>  <span class="fu">geom_text</span>(<span class="at">family =</span> <span class="st">"Papyrus"</span>) <span class="sc">+</span></span>
+<span id="cb161-10"><a href="#cb161-10"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"My Amazing Penguins Chart"</span>) <span class="sc">+</span></span>
+<span id="cb161-11"><a href="#cb161-11"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"Papyrus"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section class="slide level2 center">
+
+
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-137-1.png" width="960" class="r-stretch"></section>
+<section id="where-to-apply-custom-fonts-theme" class="slide level2 center">
+<h2>Where to Apply Custom Fonts: <code>theme()</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb162" data-code-line-numbers="12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb162-1"><a href="#cb162-1"></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb162-2"><a href="#cb162-2"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2007</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb162-3"><a href="#cb162-3"></a>  <span class="fu">count</span>(island) <span class="sc">|&gt;</span> </span>
+<span id="cb162-4"><a href="#cb162-4"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> n,</span>
+<span id="cb162-5"><a href="#cb162-5"></a>             <span class="at">y =</span> <span class="fu">reorder</span>(island, n),</span>
+<span id="cb162-6"><a href="#cb162-6"></a>             <span class="at">fill =</span> island,</span>
+<span id="cb162-7"><a href="#cb162-7"></a>             <span class="at">label =</span> n)) <span class="sc">+</span></span>
+<span id="cb162-8"><a href="#cb162-8"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb162-9"><a href="#cb162-9"></a>  <span class="fu">geom_text</span>(<span class="at">family =</span> <span class="st">"Papyrus"</span>) <span class="sc">+</span></span>
+<span id="cb162-10"><a href="#cb162-10"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"My Amazing Penguins Chart"</span>) <span class="sc">+</span></span>
+<span id="cb162-11"><a href="#cb162-11"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"Papyrus"</span>) <span class="sc">+</span></span>
+<span id="cb162-12"><a href="#cb162-12"></a>  <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"Inter"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section class="slide level2 center">
+
+
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-139-1.png" width="960" class="r-stretch"></section>
+<section id="my-turn-21" class="slide level2 my-turn center">
+<h2>My Turn</h2>
+<ol type="1">
+<li class="fragment"><p>Set my system up to use custom fonts using the <code>ragg</code> and <code>systemfonts</code> packages.</p></li>
+<li class="fragment"><p>Apply a custom font to my plot.</p></li>
+</ol>
+<aside class="notes">
+<ul>
+<li>family in geom_text()</li>
+<li>update_geom_defaults()</li>
+<li></li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="your-turn-22" class="slide level2 your-turn center">
+<h2>Your Turn</h2>
+<ol type="1">
+<li class="fragment"><p>Set you system up to use custom fonts using the <code>ragg</code> and <code>systemfonts</code> packages.</p></li>
+<li class="fragment"><p>Apply a custom font to your plot.</p></li>
+</ol>
+</section></section>
+<section>
 <section id="try-new-plot-types" class="title-slide slide level1 inverse center">
 <h1>Try New Plot Types</h1>
+<aside class="notes">
+<p>https://github.com/erikgahner/awesome-ggplot2</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="waffle" class="slide level2 center">
+<h2><code>waffle</code></h2>
+
+<img data-src="assets/waffle-bars.png" class="r-stretch quarto-figure-center"></section>
+<section id="ggbump" class="slide level2 center">
+<h2><code>ggbump</code></h2>
+
+<img data-src="assets/bump-chart.png" class="r-stretch quarto-figure-center"></section>
+<section id="ggstream" class="slide level2 center">
+<h2><code>ggstream</code></h2>
+
+<img data-src="assets/ggstream.png" class="r-stretch quarto-figure-center"></section>
+<section id="ggridges" class="slide level2 center">
+<h2><code>ggridges</code></h2>
+
+<img data-src="assets/ggridges.png" class="r-stretch quarto-figure-center"></section>
+<section id="ggbeeswarm" class="slide level2 center">
+<h2><code>ggbeeswarm</code></h2>
+
+<img data-src="assets/ggbeeswarm.png" class="r-stretch quarto-figure-center"></section>
+<section id="gganimate" class="slide level2 center">
+<h2><code>gganimate</code></h2>
+
+<img data-src="assets/claimsratio_2020_04_03.gif" class="r-stretch quarto-figure-center"></section>
+<section id="patchwork" class="slide level2 center">
+<h2><code>patchwork</code></h2>
+
+<img data-src="assets/patchwork-twitter-post.png" class="r-stretch quarto-figure-center"></section>
+<section id="patchwork-1" class="slide level2 center">
+<h2><code>patchwork</code></h2>
+
+<img data-src="assets/scherer-spotify.gif" class="r-stretch quarto-figure-center"></section>
+<section id="your-turn-23" class="slide level2 center">
+<h2>Your Turn</h2>
+<ol type="1">
+<li class="fragment"><p>Make a plot using a new (to you) geom. You can use the ones I’ve shown in this lesson or you can find more on the <a href="https://github.com/erikgahner/awesome-ggplot2">Awesome ggplot2 GitHub repository</a>.</p></li>
+<li class="fragment"><p>If you come up with something you’d like to share, please email it to me at <a href="mailto:david@rfortherestofus.com" class="email">david@rfortherestofus.com</a>.</p></li>
+</ol>
 <div class="footer footer-default">
 
 </div>
-</section>
+</section></section>
     </div>
   </div>
 
