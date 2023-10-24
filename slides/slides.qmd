@@ -1706,6 +1706,19 @@ write_rds(french_and_german_speakers_2019,
 ---
 
 ![](assets/nyt-sea-ice-viz.png){fig-width="100%"}
+::: {.notes}
+https://www.nytimes.com/2023/10/04/climate/antarctic-sea-ice-record-low.html
+:::
+
+
+---
+
+![](assets/jbm-covid-plot.jpeg){fig-width="100%"}
+
+::: {.notes}
+https://twitter.com/jburnmurdoch/status/1237737352879112194
+:::
+
 
 ## Highlight {.has-bg-image background-image="assets/highlight.jpg"}
 
@@ -1713,6 +1726,9 @@ write_rds(french_and_german_speakers_2019,
 
 ![](assets/nyt-sea-ice-viz.png){fig-width="100%"}
 
+---
+
+![](assets/jbm-covid-plot.jpeg){fig-width="100%"}
 
 ## Declutter {.has-bg-image background-image="assets/declutter.jpg"}
 
@@ -1721,6 +1737,10 @@ write_rds(french_and_german_speakers_2019,
 
 ![](assets/nyt-sea-ice-viz.png){fig-width="100%"}
 
+---
+
+![](assets/jbm-covid-plot.jpeg){fig-width="100%"}
+
 ## Explain {.has-bg-image background-image="assets/explain.jpg"}
 
 
@@ -1728,7 +1748,9 @@ write_rds(french_and_german_speakers_2019,
 
 ![](assets/nyt-sea-ice-viz.png){fig-width="100%"}
 
+---
 
+![](assets/jbm-covid-plot.jpeg){fig-width="100%"}
 
 ## Sparkle {.has-bg-image background-image="assets/sparkle.jpg"}
 
@@ -1736,6 +1758,9 @@ write_rds(french_and_german_speakers_2019,
 
 ![](assets/nyt-sea-ice-viz.png){fig-width="100%"}
 
+---
+
+![](assets/jbm-covid-plot.jpeg){fig-width="100%"}
 
 # Tidy Data {.has-bg-image background-image="assets/messy.jpg"}
 
@@ -1774,7 +1799,8 @@ german_speakers_numeric
 #| code-line-numbers: "2"
 ggplot(data = german_speakers_numeric,
        mapping = aes(x = ???, 
-                     y = state))
+                     y = state)) +
+  geom_col()
 ```
 
 
@@ -1857,11 +1883,11 @@ penguins |>
 
 1. Create a `data` directory using the `fs` package.
 
-1. Download a slightly modified version of the third grade math proficiency data into the `data` directory.
+1. Download the third grade math proficiency data from the data wrangling section of the course into the `data` directory.
 
 ## My Turn, Continued {.my-turn}
 
-4. Import the RDS file into a data frame called `third_grade_math_proficiency`.
+4. Import the RDS file into a data frame called `third_grade_math_proficiency` and make a few modifications so it's easier to work with.
 
 5. Make a plot by piping the third grade math proficiency data directly into ggplot.
 
@@ -1870,13 +1896,11 @@ penguins |>
 
 1. Create a new R script file.
 
-1. Download a slightly modified version of the enrollment data by race/ethnicity from the URL below and save it in a `data` folder (create it if necessary).
+1. Download the enrollment data by race/ethnicity and create a data frame called `enrollment_by_race_ethnicity` using the starter code below.
 
-1. Create a data frame called `enrollment_by_race_ethnicity` by reading in the data you just downloaded.
+1. Pipe your data into a bar chart that shows the breakdown of race/ethnicity among students in Beaverton SD 48J in 2022-2023.
 
-## Your Turn, Continued {.your-turn}
 
-4. Pipe your data into a bar chart that shows the breakdown of race/ethnicity among students in Beaverton SD 48J in 2022-2023.
 
 # Highlight {.has-bg-image background-image="assets/highlight.jpg"}
 
@@ -2011,22 +2035,7 @@ Make a line chart that shows the change in the Hispanic/Latino population in sch
 
 ---
 
-## Use Color to Highlight Findings
-
-::: {.fragment}
-<br>
-**Data wrangling**
-
-1. Figure out which line you want to highlight
-
-1. Create variable to highlight this line
-:::
-
-::: {.fragment}
-**Data visualization**
-
-1. Use the `color` aesthetic property combined with `scale_color_manual()` to highlight line
-:::
+![](assets/jbm-covid-plot.jpeg){fig-width="100%"}
 
 ---
 
@@ -2041,7 +2050,8 @@ penguins |>
   ggplot(aes(x = year,
              y = mean_bill_length,
              group = island)) +
-  geom_line()
+  geom_line() +
+  theme_minimal()
 ```
 
 
@@ -2068,8 +2078,26 @@ penguins |>
     "N" = "grey80",
     "Y" = "orange"
   )) +
+  theme_minimal() +
   theme(legend.position = "none")
 ```
+
+## Use Color to Highlight Findings
+
+::: {.fragment}
+<br>
+**Data wrangling**
+
+1. Figure out which line you want to highlight
+
+1. Create variable to highlight this line
+:::
+
+::: {.fragment}
+**Data visualization**
+
+1. Use the `color` aesthetic property combined with `scale_color_manual()` to highlight line
+:::
 
 ## My Turn {.my-turn}
 
@@ -2077,13 +2105,17 @@ Highlight a single school in my line chart that showed growth in math proficienc
 
 ## Your Turn {.your-turn}
 
-Highlight a single district in your line chart that had an increase in its Hispanic/Latino population between 2021-2022 and 2022-2023
+Highlight the district in your line chart that had the largest increase in its Hispanic/Latino population between 2021-2022 and 2022-2023
 
 # Declutter {.has-bg-image background-image="assets/declutter.jpg"}
 
 ---
 
 ![](assets/nyt-sea-ice-viz.png){fig-width="100%"}
+
+---
+
+![](assets/jbm-covid-plot.jpeg){fig-width="100%"}
 
 ---
 
@@ -2115,7 +2147,7 @@ penguins_bill_length_plot
 
 ## Complete Themes
 
-Complete themes like `theme_minimal()` etc completely change the look and feel of plots
+Complete themes like `theme_minimal()` completely change the look and feel of plots
 
 ::: {.fragment}
 ```{r}
@@ -2337,6 +2369,11 @@ Section is about using text to explain
 ---
 
 ![](assets/nyt-sea-ice-viz.png){fig-width="100%"}
+
+---
+
+![](assets/jbm-covid-plot.jpeg){fig-width="100%"}
+
 ---
 
 ```{r}
@@ -2504,6 +2541,7 @@ penguins |>
 
 ## `ggtext`
 
+::: {.fragment}
 Add a *little* bit of HTML (not too much, I promise!)
 
 ```{r}
@@ -2512,6 +2550,7 @@ Add a *little* bit of HTML (not too much, I promise!)
 labs(title = "<b style='color: orange;'>Penguins on Biscoe island</b> 
      had the longest average bill length in 2008 and 2009")
 ```
+:::
 
 ::: {.fragment}
 And then tell ggplot to interpret the HTML correctly
@@ -2689,7 +2728,52 @@ penguins_plot_with_annotation
 #| echo: true
 #| code-line-numbers: "2"
 penguins_plot_with_annotation +
-  scale_x_discrete(expand = expansion(add = c(0.1, 0.5)))
+  scale_x_discrete(expand = expansion(add = c(1, 1)))
+```
+
+## Tweak Spacing
+
+```{r}
+#| echo: true
+#| code-line-numbers: "2"
+penguins_plot_with_annotation +
+  scale_x_discrete(expand = expansion(mult = c(1, 1)))
+```
+
+## Tweak Spacing
+
+```{r}
+#| echo: true
+#| code-line-numbers: "2"
+penguins_plot_with_annotation +
+  scale_x_discrete(expand = expansion(add = c(0, 0.5)))
+```
+
+## Tweak Spacing
+
+```{r}
+#| echo: true
+#| code-line-numbers: "2"
+penguins_plot_with_annotation +
+  scale_x_discrete(expand = expansion(mult = c(0, 0.5)))
+```
+
+## Tweak Spacing
+
+```{r}
+#| echo: true
+#| code-line-numbers: "2"
+penguins_plot_with_annotation +
+  scale_y_continuous(expand = expansion(add = c(0, 10)))
+```
+
+## Tweak Spacing
+
+```{r}
+#| echo: true
+#| code-line-numbers: "2"
+penguins_plot_with_annotation +
+  scale_y_continuous(expand = expansion(mult = c(0, 10)))
 ```
 
 
@@ -2699,7 +2783,7 @@ penguins_plot_with_annotation +
 
 ## Your Turn {.your-turn}
 
-1. Tweak spacing around my plot to remove unnecessary blank spaces
+1. Tweak spacing around your plot to remove unnecessary blank spaces
 
 # Customize Your Theme {.inverse}
 
@@ -2732,13 +2816,19 @@ penguins_bar_chart
 ## Make a Custom Theme
 
 ```{r}
+penguins_bar_chart <-
+  penguins_bar_chart +
+  labs(title = "In 2007, <b style='color: orange;'>Dream island</b> had the most penguins of any island")
+```
+
+
+```{r}
 #| echo: true
 penguins_bar_chart +
   theme_void() +
   theme(axis.text.y = element_text(),
         legend.position = "none",
-        plot.title = element_text(face = "bold",
-                                  size = 20),
+        plot.title = element_markdown(size = 20),
         plot.title.position = "plot")
 ```
 
@@ -2751,8 +2841,7 @@ theme_bar_chart <- function() {
   theme_void() +
     theme(axis.text.y = element_text(),
           legend.position = "none",
-          plot.title = element_text(face = "bold",
-                                    size = 20),
+          plot.title = element_markdown(size = 20),
           plot.title.position = "plot")
   
 }
@@ -2841,9 +2930,9 @@ knitr:
     dev: ragg_png
 ---
 ```
-
+  
 ## Where to Apply Custom Fonts: `geom_text()`
-
+  
 ```{r}
 #| echo: true
 #| eval: false
@@ -2968,9 +3057,11 @@ penguins |>
 
 ## Your Turn {.your-turn}
 
-1. Set you system up to use custom fonts using the `ragg` and `systemfonts` packages. 
+1. Set your system up to work with custom fonts using the `ragg` and `systemfonts` packages. 
 
 1. Apply a custom font to your plot.
+
+1. Save your plot using `ggsave()` and add your plot to a Quarto document to make sure it renders correctly there.
 
 # Try New Plot Types {.inverse}
 
@@ -3010,7 +3101,7 @@ https://github.com/erikgahner/awesome-ggplot2
 
 [![](assets/scherer-spotify.gif)](https://github.com/Z3tt/TidyTuesday#week-202004--spotify-songs-by-spotify-via-spotifyr)
 
-## Your Turn
+## Your Turn {.your-turn}
 
 1. Make a plot using a new (to you) geom. You can use the ones I've shown in this lesson or you can find more on the [Awesome ggplot2 GitHub repository](https://github.com/erikgahner/awesome-ggplot2).
 

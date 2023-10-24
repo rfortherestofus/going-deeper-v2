@@ -26,7 +26,7 @@ enrollment_by_race_ethnicity <-
 
 # Plot --------------------------------------------------------------------
 
-top_growth_district <- 
+top_growth_district <-
   enrollment_by_race_ethnicity |> 
   filter(race_ethnicity == "Hispanic/Latino") |> 
   group_by(district) |> 

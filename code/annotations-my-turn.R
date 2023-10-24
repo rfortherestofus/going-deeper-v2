@@ -37,14 +37,12 @@ third_grade_math_proficiency <-
   mutate(percent_proficient = case_when(
     is.nan(percent_proficient) ~ NA,
     .default = percent_proficient
-  )) |> 
-  mutate(percent_proficient_formatted = percent(percent_proficient,
-                                                accuracy = 1))
+  ))
 
 # Plot --------------------------------------------------------------------
 
 top_growth_school <- 
-  third_grade_math_proficiency %>%
+  third_grade_math_proficiency |>
   filter(district == "Portland SD 1J") |> 
   group_by(school) |> 
   mutate(growth_from_previous_year = percent_proficient - lag(percent_proficient)) |> 
@@ -54,18 +52,20 @@ top_growth_school <-
             n = 1) |> 
   pull(school)
 
-third_grade_math_proficiency %>%
-  filter(district == "Portland SD 1J") %>%
+third_grade_math_proficiency |>
+  filter(district == "Portland SD 1J") |>
   mutate(highlight_school = case_when(
     school == top_growth_school ~ "Y",
     .default = "N"
   )) |> 
   mutate(percent_proficient_formatted = case_when(
+    school == top_growth_school ~ percent(percent_proficient, accuracy = 1)
+  )) |> 
+  mutate(percent_proficient_formatted = case_when(
     highlight_school == "Y" & year == "2021-2022" ~ str_glue("{percent_proficient_formatted} of students
-                                                             were proficient
+                                                             were proficient 
                                                              in {year}"),
-    highlight_school == "Y" & year == "2018-2019" ~ percent_proficient_formatted,
-    .default = NA
+    highlight_school == "Y" & year == "2018-2019" ~ percent_proficient_formatted
   )) |> 
   mutate(school = fct_relevel(school, top_growth_school, after = Inf)) |>
   ggplot(aes(x = year,
@@ -87,13 +87,16 @@ third_grade_math_proficiency %>%
            y = 0.6,
            hjust = 0,
            lineheight = 0.9,
-           color = "grey70",
+           color = "grey80",
            label = str_glue("Each grey line
                             represents one school")) +
-  labs(title = str_glue("<b style='color: orange;'>{top_growth_school}</b> showed large growth in math proficiency over the last two years")) +
+  labs(title = str_glue("<b style='color: orange;'>{top_growth_school}</b> 
+                        showed large growth in math proficiency over the
+                        last two years")) +
   theme_minimal() +
   theme(axis.title = element_blank(),
+        legend.position = "none",
         plot.title = element_markdown(),
         plot.title.position = "plot",
-        panel.grid = element_blank(),
-        legend.position = "none")
+        panel.grid = element_blank())
+

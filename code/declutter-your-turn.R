@@ -55,4 +55,5 @@ enrollment_by_race_ethnicity |>
   )) +
   theme_minimal() +
   theme(axis.title = element_blank(),
-        legend.position = "none")
+        legend.position = "none",
+        panel.grid = element_blank())

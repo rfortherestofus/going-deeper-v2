@@ -17,7 +17,7 @@ download.file("https://github.com/rfortherestofus/going-deeper-v2/raw/main/data/
 
 enrollment_by_race_ethnicity <-
   read_rds("data/enrollment_by_race_ethnicity.rds") |> 
-  select(-district_institution_id)  |> 
+  select(-district_institution_id) |> 
   select(year, district, everything()) |> 
   mutate(year = case_when(
     year == "School 2021-22" ~ "2021-2022",

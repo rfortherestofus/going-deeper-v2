@@ -5,6 +5,7 @@ library(fs)
 library(scales)
 library(ggrepel)
 library(ggtext)
+library(ragg)
 
 # Create Directory --------------------------------------------------------
 
@@ -46,14 +47,13 @@ third_grade_math_proficiency <-
 
 theme_dk <- function() {
   
-  theme_minimal() +
+  theme_minimal(base_family = "IBM Plex Mono") +
     theme(axis.title = element_blank(),
-          plot.title = element_markdown(family = "IBM Plex Mono"),
+          axis.text = element_text(color = "grey60",
+                                   size = 10),
+          plot.title = element_markdown(),
           plot.title.position = "plot",
           panel.grid = element_blank(),
-          axis.text = element_text(color = "grey60",
-                                   family = "IBM Plex Mono",
-                                   size = 10),
           legend.position = "none")
   
 }
@@ -61,7 +61,7 @@ theme_dk <- function() {
 # Plot --------------------------------------------------------------------
 
 top_growth_school <- 
-  third_grade_math_proficiency %>%
+  third_grade_math_proficiency |>
   filter(district == "Portland SD 1J") |> 
   group_by(school) |> 
   mutate(growth_from_previous_year = percent_proficient - lag(percent_proficient)) |> 
@@ -71,8 +71,8 @@ top_growth_school <-
             n = 1) |> 
   pull(school)
 
-third_grade_math_proficiency %>%
-  filter(district == "Portland SD 1J") %>%
+third_grade_math_proficiency |>
+  filter(district == "Portland SD 1J") |>
   mutate(highlight_school = case_when(
     school == top_growth_school ~ "Y",
     .default = "N"
@@ -100,15 +100,21 @@ third_grade_math_proficiency %>%
     "Y" = "orange"
   )) +
   scale_y_continuous(labels = percent_format()) +
-  scale_x_discrete(expand = expansion(add = c(0.05, 0.5))) +
+  scale_x_discrete(expand = expansion(mult = c(0.05, 0.5))) +
   annotate(geom = "text",
            x = 2.02,
            y = 0.6,
            hjust = 0,
            lineheight = 0.9,
-           family = "IBM Plex Mono",
            color = "grey70",
+           family = "IBM Plex Mono",
            label = str_glue("Each grey line
                             represents one school")) +
   labs(title = str_glue("<b style='color: orange;'>{top_growth_school}</b> showed large growth in math proficiency over the last two years")) +
   theme_dk()
+
+ggsave(filename = "math-proficiency.png",
+       width = 8,
+       height = 10,
+       bg = "white",
+       dev = agg_png)

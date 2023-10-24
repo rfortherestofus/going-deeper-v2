@@ -38,18 +38,18 @@ third_grade_math_proficiency <-
 
 # Plot --------------------------------------------------------------------
 
-third_grade_math_proficiency %>% 
+third_grade_math_proficiency |> 
   filter(district == "Portland SD 1J") |> 
   view()
 
-third_grade_math_proficiency %>%
-  filter(district == "Portland SD 1J") %>%
+third_grade_math_proficiency |>
+  filter(district == "Portland SD 1J") |>
   ggplot(aes(x = year,
              y = percent_proficient)) +
   geom_line()
 
-third_grade_math_proficiency %>%
-  filter(district == "Portland SD 1J") %>%
+third_grade_math_proficiency |>
+  filter(district == "Portland SD 1J") |>
   ggplot(aes(x = year,
              y = percent_proficient,
              group = school)) +

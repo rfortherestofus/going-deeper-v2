@@ -100,3 +100,9 @@ enrollment_by_race_ethnicity |>
                             represents one district")) +
   labs(title = str_glue("<b style='color: orange;'>{top_growth_district}</b> saw a large growth in its Hispanic/Latino student population over the last two years")) +
   theme_student()
+
+ggsave(filename = "enrollment-plot.png",
+       width = 12,
+       height = 8,
+       bg = "white",
+       device = agg_png)

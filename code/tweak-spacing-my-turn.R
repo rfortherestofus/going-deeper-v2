@@ -44,7 +44,7 @@ third_grade_math_proficiency <-
 # Plot --------------------------------------------------------------------
 
 top_growth_school <- 
-  third_grade_math_proficiency %>%
+  third_grade_math_proficiency |>
   filter(district == "Portland SD 1J") |> 
   group_by(school) |> 
   mutate(growth_from_previous_year = percent_proficient - lag(percent_proficient)) |> 
@@ -54,8 +54,8 @@ top_growth_school <-
             n = 1) |> 
   pull(school)
 
-third_grade_math_proficiency %>%
-  filter(district == "Portland SD 1J") %>%
+third_grade_math_proficiency |>
+  filter(district == "Portland SD 1J") |>
   mutate(highlight_school = case_when(
     school == top_growth_school ~ "Y",
     .default = "N"
@@ -82,7 +82,7 @@ third_grade_math_proficiency %>%
     "Y" = "orange"
   )) +
   scale_y_continuous(labels = percent_format()) +
-  scale_x_discrete(expand = expansion(add = c(0.05, 0.5))) +
+  scale_x_discrete(expand = expansion(mult = c(0.05, 0.5))) +
   annotate(geom = "text",
            x = 2.02,
            y = 0.6,

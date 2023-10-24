@@ -39,7 +39,7 @@ third_grade_math_proficiency <-
 # Plot --------------------------------------------------------------------
 
 top_growth_school <- 
-  third_grade_math_proficiency %>%
+  third_grade_math_proficiency |>
   filter(district == "Portland SD 1J") |> 
   group_by(school) |> 
   mutate(growth_from_previous_year = percent_proficient - lag(percent_proficient)) |> 
@@ -49,8 +49,8 @@ top_growth_school <-
             n = 1) |> 
   pull(school)
 
-third_grade_math_proficiency %>%
-  filter(district == "Portland SD 1J") %>%
+third_grade_math_proficiency |>
+  filter(district == "Portland SD 1J") |>
   mutate(highlight_school = case_when(
     school == top_growth_school ~ "Y",
     .default = "N"
@@ -67,5 +67,6 @@ third_grade_math_proficiency %>%
   )) +
   theme_minimal() +
   theme(axis.title = element_blank(),
-        legend.position = "none")
+        legend.position = "none",
+        panel.grid = element_blank())
 
