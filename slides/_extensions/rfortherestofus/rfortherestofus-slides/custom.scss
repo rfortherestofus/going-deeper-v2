@@ -205,9 +205,11 @@ h3.title {
     list-style: none;
   }
 
-  code {
+  code, blockquote>p {
     color: #ffffff;
   }
+  
+
 
 }
 
@@ -268,6 +270,13 @@ a > code {
 
 .reveal .slide blockquote li {
   color: white;
+}
+
+#your-turn-continued > div > blockquote  {
+  border-left: #ffffff 3px solid; 
+    font-style: italic;
+    color: #ffffff;
+    margin-bottom: 1em;
 }
 
 .pagedtable-footer {

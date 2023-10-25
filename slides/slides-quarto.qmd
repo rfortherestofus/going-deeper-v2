@@ -1,0 +1,296 @@
+---
+title: Going Deeper with R
+format:
+  rfortherestofus-slides-revealjs:
+    menu: false
+    progress: false
+    slide-number: true
+    show-slide-number: print
+    center: true
+    incremental: true
+    auto-animate: true
+execute: 
+  message: false
+  warning: false
+  cache: false
+title-slide-attributes:
+  data-background-image: assets/rru-hex-bg-gradient-dark.svg
+  data-background-size: cover
+editor_options: 
+  chunk_output_type: console
+knitr:
+  opts_chunk: 
+    dev: ragg_png
+---
+
+
+```{r}
+#| echo: false
+
+library(tidyverse)
+library(readxl)
+library(janitor)
+library(here)
+library(gt)
+library(rmarkdown)
+library(palmerpenguins)
+library(ggtext)
+library(scales)
+library(ggrepel)
+```
+
+# Advanced Markdown {.inverse}
+
+## Links
+
+This is a [link to the Rest for the Rest of Us website](http://rfortherestofus.com/)
+
+::: {.fragment}
+```{markdown}
+#| echo: true
+This is a [link to the Rest for the Rest of Us website](http://rfortherestofus.com/)
+```
+:::
+
+## Images
+
+![](assets/girl-meditating.jpg)
+
+## Image Sizing
+
+
+
+::: {.fragment}
+Set the width of your images in pixels
+```{markdown}
+#| echo: true
+![](assets/girl-meditating.jpg){width=300}
+```
+:::
+
+
+
+::: {.fragment}
+Set the width of your images in inches
+```{markdown}
+#| echo: true
+![](assets/girl-meditating.jpg){width=4in}
+```
+:::
+
+
+
+::: {.fragment}
+Set the width of your images as a percent
+```{markdown}
+#| echo: true
+![](assets/girl-meditating.jpg){width=50%}
+```
+:::
+
+## Image Alignment
+
+Images are centered by default but you can change this.
+
+
+
+::: {.fragment}
+Align images to the right 
+```{markdown}
+#| echo: true
+![](assets/girl-meditating.jpg){fig-align="right"}
+```
+:::
+
+
+
+::: {.fragment}
+Align images to the left 
+```{markdown}
+#| echo: true
+![](assets/girl-meditating.jpg){fig-align="left"}
+```
+:::
+
+
+## Alt Text
+
+::: {.fragment}
+```{markdown}
+#| echo: true
+![](assets/girl-meditating.jpg){fig-alt="A girl meditating"}
+```
+:::
+
+## Blockquotes
+
+And here is what Abraham Lincoln said:
+
+::: {.fragment}
+> Four score and seven years ago ...
+:::
+
+
+::: {.fragment}
+```{markdown}
+#| echo: true
+> Four score and seven years ago ...
+```
+:::
+
+
+
+
+## Footnotes
+
+Here is some text.^[Here is a footnote]
+
+## Footnotes
+
+```{markdown}
+#| echo: true
+Here is some text.^[Here is a footnote]
+```
+
+
+## My Turn {.my-turn}
+
+I'll create a Quarto document and do the following:
+
+1. Add a link
+
+1. Add an image
+
+1. Add a blockquote
+
+1. Add a footnote
+
+## Your Turn {.your-turn}
+
+- Add the Oregon Department of Education logo to the top of your report. You can find it at https://github.com/rfortherestofus/going-deeper/raw/master/slides/images/ode-logo.jpg
+
+- Add the following text (make sure you include the link, which points to https://www.oregon.gov/ode/pages/default.aspx):
+
+::: {.fragment}
+This is a report for the [Oregon Department of Education](https://www.oregon.gov/ode/pages/default.aspx) on diversity in Oregon school districts. 
+:::
+
+## Your Turn, Continued {.your-turn}
+
+- Add the following text as a block quote:
+
+::: {.fragment}
+> The Oregon Department of Education fosters equity and excellence for every learner through collaboration with educators, partners, and communities.
+:::
+
+- Add a link to the source for mission statement above (https://www.oregon.gov/ode/about-us/Pages/default.aspx) as a footnote.
+
+# Tables {.inverse background-image="assets/table.jpg"}
+
+## Don't Use the Default Output
+
+![](assets/default-table-output.png){fig-width="100%"}
+
+
+## Table Packages {.inverse background-image="assets/packages.jpg"} 
+
+## Static Tables {.inverse}
+
+## `flextable` {.center-slide}
+
+![](assets/flextable.svg) 
+
+## `gt` {.center-slide}
+
+![](assets/gt_parts_of_a_table.svg)
+
+## Interactive Tables {.inverse}
+
+## Interactive Tables with `gt` {.center-slide}
+
+![](assets/gt-interactive.gif)
+
+::: {.notes}
+https://posit.co/blog/new-in-gt-0-9-0-interactive-tables/
+:::
+
+## `reactable` {.center-slide}
+
+![](assets/reactable-example.gif)
+
+## My Turn {.my-turn}
+
+I'll demonstrate making an effective table using `gt`
+
+::: {.notes}
+- Title
+- Set Names (cols_label)
+- Align
+- Width
+- Formatting numbers
+- Color shading
+- Source
+:::
+
+## Your Turn {.your-turn}
+
+- Copy the starter code below into RStudio and use it to make a table using `flextable`, `gt`, or `reactable`.
+
+- Work on adjusting your column names, column width, number formatting, and anything else you might want to try out.
+
+# Advanced YAML and Code Chunk Options {.inverse background-image="assets/book.jpg"}
+
+::: {.notes}
+https://quarto.org/docs/reference/cells/cells-knitr.html
+:::
+
+## Table of Contents
+
+
+::: {.fragment}
+Add a table of contents
+
+```{yaml}
+#| echo: true
+#| code-line-numbers: "3"
+format: 
+  html:
+    toc: true
+```
+:::
+
+
+
+::: {.fragment}
+Choose how many levels of headings should be included in the table of contents
+```{yaml}
+#| echo: true
+#| code-line-numbers: "4"
+format: 
+  html:
+    toc: true
+    toc-depth: 2
+```
+:::
+
+::: {.fragment}
+Choose the location for the table of contents
+```{yaml}
+#| echo: true
+#| code-line-numbers: "5"
+format: 
+  html:
+    toc: true
+    toc-depth: 2
+    toc-location: "left"
+```
+:::
+
+
+## Figure Options
+
+- `fig-width`
+- `fig-height`
+
+
+
