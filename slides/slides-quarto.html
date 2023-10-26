@@ -8,7 +8,7 @@
 <link href="slides-quarto_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="slides-quarto_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="slides-quarto_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.353">
+  <meta name="generator" content="quarto-1.4.449">
 
   <title>Going Deeper with R</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -30,7 +30,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -220,7 +220,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -418,7 +419,7 @@
 <div class="fragment">
 <p>Set the width of your images in pixels</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1"></a><span class="al">![](assets/girl-meditating.jpg)</span>{width=300}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1"></a><span class="al">![](assets/girl-meditating.jpg)</span>{width=300px}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment">
@@ -438,15 +439,29 @@
 <h2>Image Alignment</h2>
 <p>Images are centered by default but you can change this.</p>
 <div class="fragment">
-<p>Align images to the right</p>
+<p>Align images to the left</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1"></a><span class="al">![](assets/girl-meditating.jpg)</span>{fig-align="right"}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1"></a><span class="al">![](assets/girl-meditating.jpg)</span>{fig-align="left"}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment">
-<p>Align images to the left</p>
+<p>Align images to the right</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1"></a><span class="al">![](assets/girl-meditating.jpg)</span>{fig-align="left"}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1"></a><span class="al">![](assets/girl-meditating.jpg)</span>{fig-align="right"}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="fragment">
+<p>Center align images</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1"></a><span class="al">![](assets/girl-meditating.jpg)</span>{fig-align="center"}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="caption" class="slide level2 center">
+<h2>Caption</h2>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1"></a><span class="al">![A girl meditating](assets/girl-meditating.jpg)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -454,7 +469,7 @@
 <h2>Alt Text</h2>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1"></a><span class="al">![](assets/girl-meditating.jpg)</span>{fig-alt="A girl meditating"}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1"></a><span class="al">![](assets/girl-meditating.jpg)</span>{fig-alt="A girl meditating"}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -468,7 +483,7 @@
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1"></a><span class="at">&gt; Four score and seven years ago ...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1"></a><span class="at">&gt; Four score and seven years ago ...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -479,7 +494,7 @@
 <section id="footnotes-1" class="slide level2 center">
 <h2>Footnotes</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1"></a>Here is some text.^<span class="co">[</span><span class="ot">Here is a footnote</span><span class="co">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1"></a>Here is some text.^<span class="co">[</span><span class="ot">Here is a footnote</span><span class="co">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="my-turn" class="slide level2 my-turn center">
@@ -487,7 +502,7 @@
 <p>I’ll create a Quarto document and do the following:</p>
 <ol type="1">
 <li class="fragment"><p>Add a link</p></li>
-<li class="fragment"><p>Add an image</p></li>
+<li class="fragment"><p>Add an image and adjust its alignment and alt text</p></li>
 <li class="fragment"><p>Add a blockquote</p></li>
 <li class="fragment"><p>Add a footnote</p></li>
 </ol>
@@ -495,8 +510,8 @@
 <section id="your-turn" class="slide level2 your-turn center">
 <h2>Your Turn</h2>
 <ul>
-<li class="fragment"><p>Add the Oregon Department of Education logo to the top of your report. You can find it at https://github.com/rfortherestofus/going-deeper/raw/master/slides/assets/ode-logo.jpg</p></li>
-<li class="fragment"><p>Add the following text (make sure you include the link, which points to https://www.oregon.gov/ode/pages/default.aspx):</p></li>
+<li class="fragment"><p>Add the Oregon Department of Education logo to the top of your report. You can find it at the <a href="https://github.com/rfortherestofus/going-deeper/raw/master/slides/assets/ode-logo.jpg">link below</a>.</p></li>
+<li class="fragment"><p>Add the following text (make sure you include the <a href="https://www.oregon.gov/ode/pages/default.aspx">link</a>, which is below):</p></li>
 </ul>
 <div class="fragment">
 <p>This is a report for the <a href="https://www.oregon.gov/ode/pages/default.aspx">Oregon Department of Education</a> on diversity in Oregon school districts.</p>
@@ -513,7 +528,7 @@
 </blockquote>
 </div>
 <ul>
-<li class="fragment">Add a link to the source for mission statement above (https://www.oregon.gov/ode/about-us/Pages/default.aspx) as a footnote.</li>
+<li class="fragment">Add a <a href="https://www.oregon.gov/ode/about-us/Pages/default.aspx">link to the source for mission statement</a> as a footnote.</li>
 </ul>
 </section></section>
 <section>
@@ -521,10 +536,83 @@
 <h1>Tables</h1>
 
 </section>
+<section id="tables-usually-need-wide-data" class="slide level2 center">
+<h2>Tables Usually Need Wide Data</h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 3
+   year      school                      percent_proficient_formatted
+   &lt;chr&gt;     &lt;chr&gt;                       &lt;chr&gt;                       
+ 1 2018-2019 Abernethy Elementary School 71%                         
+ 2 2021-2022 Abernethy Elementary School 79%                         
+ 3 2018-2019 Ainsworth Elementary School 80%                         
+ 4 2021-2022 Ainsworth Elementary School 68%                         
+ 5 2018-2019 Alameda Elementary School   83%                         
+ 6 2021-2022 Alameda Elementary School   82%                         
+ 7 2018-2019 Arleta Elementary School    42%                         
+ 8 2021-2022 Arleta Elementary School    52%                         
+ 9 2018-2019 Atkinson Elementary School  51%                         
+10 2021-2022 Atkinson Elementary School  58%                         </code></pre>
+</div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 3
+  school                      `2018-2019` `2021-2022`
+  &lt;chr&gt;                       &lt;chr&gt;       &lt;chr&gt;      
+1 Abernethy Elementary School 71%         79%        
+2 Ainsworth Elementary School 80%         68%        
+3 Alameda Elementary School   83%         82%        
+4 Arleta Elementary School    42%         52%        
+5 Atkinson Elementary School  51%         58%        </code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="pivot_wider" class="slide level2 center">
+<h2><code>pivot_wider()</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>data_long</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 3
+   year      school                      percent_proficient_formatted
+   &lt;chr&gt;     &lt;chr&gt;                       &lt;chr&gt;                       
+ 1 2018-2019 Abernethy Elementary School 71%                         
+ 2 2021-2022 Abernethy Elementary School 79%                         
+ 3 2018-2019 Ainsworth Elementary School 80%                         
+ 4 2021-2022 Ainsworth Elementary School 68%                         
+ 5 2018-2019 Alameda Elementary School   83%                         
+ 6 2021-2022 Alameda Elementary School   82%                         
+ 7 2018-2019 Arleta Elementary School    42%                         
+ 8 2021-2022 Arleta Elementary School    52%                         
+ 9 2018-2019 Atkinson Elementary School  51%                         
+10 2021-2022 Atkinson Elementary School  58%                         </code></pre>
+</div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16" data-code-line-numbers="2-4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>data_long <span class="sc">|&gt;</span> </span>
+<span id="cb16-2"><a href="#cb16-2"></a>  <span class="fu">pivot_wider</span>(<span class="at">id_cols =</span> school,</span>
+<span id="cb16-3"><a href="#cb16-3"></a>              <span class="at">names_from =</span> year,</span>
+<span id="cb16-4"><a href="#cb16-4"></a>              <span class="at">values_from =</span> percent_proficient_formatted)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 3
+  school                      `2018-2019` `2021-2022`
+  &lt;chr&gt;                       &lt;chr&gt;       &lt;chr&gt;      
+1 Abernethy Elementary School 71%         79%        
+2 Ainsworth Elementary School 80%         68%        
+3 Alameda Elementary School   83%         82%        
+4 Arleta Elementary School    42%         52%        
+5 Atkinson Elementary School  51%         58%        </code></pre>
+</div>
+</div>
+</div>
+</section>
 <section id="dont-use-the-default-output" class="slide level2 center">
 <h2>Don’t Use the Default Output</h2>
 
-<img data-src="assets/default-table-output.png" class="r-stretch quarto-figure-center"></section>
+<img data-src="assets/default-table-output.png" data-fig-width="100%" class="r-stretch"></section>
 <section id="table-packages" class="slide level2 inverse center" data-background-image="assets/packages.jpg">
 <h2>Table Packages</h2>
 </section>
@@ -565,15 +653,13 @@
 <img data-src="assets/reactable-example.gif" class="r-stretch"></section>
 <section id="my-turn-1" class="slide level2 my-turn center">
 <h2>My Turn</h2>
-<p>I’ll demonstrate making an effective table using <code>gt</code></p>
+<p>I’ll demonstrate making effective tables using <code>gt</code>, <code>flextable</code>, and <code>reactable</code>.</p>
 <aside class="notes">
 <ul>
-<li>Title</li>
 <li>Set Names (cols_label)</li>
 <li>Align</li>
-<li>Width</li>
+<li>Column Width</li>
 <li>Formatting numbers</li>
-<li>Color shading</li>
 <li>Source</li>
 </ul>
 <style type="text/css">
@@ -617,28 +703,28 @@
 <div class="fragment">
 <p>Add a table of contents</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10" data-code-line-numbers="3"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> </span></span>
-<span id="cb10-2"><a href="#cb10-2"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
-<span id="cb10-3"><a href="#cb10-3"></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18" data-code-line-numbers="3"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb18-2"><a href="#cb18-2"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
+<span id="cb18-3"><a href="#cb18-3"></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment">
 <p>Choose how many levels of headings should be included in the table of contents</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11" data-code-line-numbers="4"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> </span></span>
-<span id="cb11-2"><a href="#cb11-2"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
-<span id="cb11-3"><a href="#cb11-3"></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb11-4"><a href="#cb11-4"></a><span class="at">    </span><span class="fu">toc-depth</span><span class="kw">:</span><span class="at"> </span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19" data-code-line-numbers="4"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb19-2"><a href="#cb19-2"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
+<span id="cb19-3"><a href="#cb19-3"></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb19-4"><a href="#cb19-4"></a><span class="at">    </span><span class="fu">toc-depth</span><span class="kw">:</span><span class="at"> </span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment">
 <p>Choose the location for the table of contents</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12" data-code-line-numbers="5"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> </span></span>
-<span id="cb12-2"><a href="#cb12-2"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
-<span id="cb12-3"><a href="#cb12-3"></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb12-4"><a href="#cb12-4"></a><span class="at">    </span><span class="fu">toc-depth</span><span class="kw">:</span><span class="at"> </span><span class="dv">2</span></span>
-<span id="cb12-5"><a href="#cb12-5"></a><span class="at">    </span><span class="fu">toc-location</span><span class="kw">:</span><span class="at"> </span><span class="st">"left"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20" data-code-line-numbers="5"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb20-2"><a href="#cb20-2"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
+<span id="cb20-3"><a href="#cb20-3"></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb20-4"><a href="#cb20-4"></a><span class="at">    </span><span class="fu">toc-depth</span><span class="kw">:</span><span class="at"> </span><span class="dv">2</span></span>
+<span id="cb20-5"><a href="#cb20-5"></a><span class="at">    </span><span class="fu">toc-location</span><span class="kw">:</span><span class="at"> </span><span class="st">"left"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -646,55 +732,55 @@
 <h2>Set the Default Figure Width and Height</h2>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13" data-code-line-numbers="3-4"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> </span></span>
-<span id="cb13-2"><a href="#cb13-2"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
-<span id="cb13-3"><a href="#cb13-3"></a><span class="at">    </span><span class="fu">fig-width</span><span class="kw">:</span><span class="at"> </span><span class="dv">4</span></span>
-<span id="cb13-4"><a href="#cb13-4"></a><span class="at">    </span><span class="fu">fig-height</span><span class="kw">:</span><span class="at"> </span><span class="dv">6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21" data-code-line-numbers="3-4"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb21-2"><a href="#cb21-2"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
+<span id="cb21-3"><a href="#cb21-3"></a><span class="at">    </span><span class="fu">fig-width</span><span class="kw">:</span><span class="at"> </span><span class="dv">4</span></span>
+<span id="cb21-4"><a href="#cb21-4"></a><span class="at">    </span><span class="fu">fig-height</span><span class="kw">:</span><span class="at"> </span><span class="dv">6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
 <section id="override-default-figure-width-and-height" class="slide level2 center">
 <h2>Override Default Figure Width and Height</h2>
 <div class="fragment">
-<div class="sourceCode" id="cb14"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 3</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 5</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span> </span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2007</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(island) <span class="sc">|&gt;</span> </span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> n,</span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> <span class="fu">reorder</span>(island, n),</span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>             <span class="at">fill =</span> island,</span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>             <span class="at">label =</span> n)) <span class="sc">+</span></span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">family =</span> <span class="st">"Papyrus"</span>) <span class="sc">+</span></span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"My Amazing Penguins Chart"</span>) <span class="sc">+</span></span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"Papyrus"</span>) <span class="sc">+</span></span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"Inter"</span>))</span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb22-1"><a href="#cb22-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-2"><a href="#cb22-2"></a><span class="in">#| fig-width: 3</span></span>
+<span id="cb22-3"><a href="#cb22-3"></a><span class="in">#| fig-height: 5</span></span>
+<span id="cb22-4"><a href="#cb22-4"></a></span>
+<span id="cb22-5"><a href="#cb22-5"></a><span class="in">penguins |&gt; </span></span>
+<span id="cb22-6"><a href="#cb22-6"></a><span class="in">  filter(year == 2007) |&gt; </span></span>
+<span id="cb22-7"><a href="#cb22-7"></a><span class="in">  count(island) |&gt; </span></span>
+<span id="cb22-8"><a href="#cb22-8"></a><span class="in">  ggplot(aes(x = n,</span></span>
+<span id="cb22-9"><a href="#cb22-9"></a><span class="in">             y = reorder(island, n),</span></span>
+<span id="cb22-10"><a href="#cb22-10"></a><span class="in">             fill = island,</span></span>
+<span id="cb22-11"><a href="#cb22-11"></a><span class="in">             label = n)) +</span></span>
+<span id="cb22-12"><a href="#cb22-12"></a><span class="in">  geom_col() +</span></span>
+<span id="cb22-13"><a href="#cb22-13"></a><span class="in">  geom_text(family = "Papyrus") +</span></span>
+<span id="cb22-14"><a href="#cb22-14"></a><span class="in">  labs(title = "My Amazing Penguins Chart") +</span></span>
+<span id="cb22-15"><a href="#cb22-15"></a><span class="in">  theme_minimal(base_family = "Papyrus") +</span></span>
+<span id="cb22-16"><a href="#cb22-16"></a><span class="in">  theme(axis.text = element_text(family = "Inter"))</span></span>
+<span id="cb22-17"><a href="#cb22-17"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="captions-and-alt-text" class="slide level2 center">
 <h2>Captions and Alt Text</h2>
 <div class="fragment">
-<div class="sourceCode" id="cb15"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "A plot about penguins"</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-alt: "A bar chart showing the number of penguins on each island with data from the palmerpenguins R package"</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span> </span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2007</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(island) <span class="sc">|&gt;</span> </span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> n,</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> <span class="fu">reorder</span>(island, n),</span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>             <span class="at">fill =</span> island,</span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>             <span class="at">label =</span> n)) <span class="sc">+</span></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">family =</span> <span class="st">"Papyrus"</span>) <span class="sc">+</span></span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"My Amazing Penguins Chart"</span>) <span class="sc">+</span></span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"Papyrus"</span>) <span class="sc">+</span></span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"Inter"</span>))</span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb23-1"><a href="#cb23-1"></a><span class="in">```{r}</span></span>
+<span id="cb23-2"><a href="#cb23-2"></a><span class="in">#| fig-cap: "A plot about penguins"</span></span>
+<span id="cb23-3"><a href="#cb23-3"></a><span class="in">#| fig-alt: "A bar chart showing the number of penguins on each island"</span></span>
+<span id="cb23-4"><a href="#cb23-4"></a></span>
+<span id="cb23-5"><a href="#cb23-5"></a><span class="in">penguins |&gt; </span></span>
+<span id="cb23-6"><a href="#cb23-6"></a><span class="in">  filter(year == 2007) |&gt; </span></span>
+<span id="cb23-7"><a href="#cb23-7"></a><span class="in">  count(island) |&gt; </span></span>
+<span id="cb23-8"><a href="#cb23-8"></a><span class="in">  ggplot(aes(x = n,</span></span>
+<span id="cb23-9"><a href="#cb23-9"></a><span class="in">             y = reorder(island, n),</span></span>
+<span id="cb23-10"><a href="#cb23-10"></a><span class="in">             fill = island,</span></span>
+<span id="cb23-11"><a href="#cb23-11"></a><span class="in">             label = n)) +</span></span>
+<span id="cb23-12"><a href="#cb23-12"></a><span class="in">  geom_col() +</span></span>
+<span id="cb23-13"><a href="#cb23-13"></a><span class="in">  geom_text(family = "Papyrus") +</span></span>
+<span id="cb23-14"><a href="#cb23-14"></a><span class="in">  labs(title = "My Amazing Penguins Chart") +</span></span>
+<span id="cb23-15"><a href="#cb23-15"></a><span class="in">  theme_minimal(base_family = "Papyrus") +</span></span>
+<span id="cb23-16"><a href="#cb23-16"></a><span class="in">  theme(axis.text = element_text(family = "Inter"))</span></span>
+<span id="cb23-17"><a href="#cb23-17"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section></section>
 <section>
@@ -732,7 +818,7 @@
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16" data-code-line-numbers="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>There are <span class="in">`r oregon_school_districts`</span> school districts in Oregon.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>There are <span class="in">`r oregon_school_districts`</span> school districts in Oregon.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -752,9 +838,9 @@
 <section id="making-your-reports-shine-word-edition-1" class="slide level2 center">
 <h2>Making Your Reports Shine: Word Edition</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">format</span><span class="kw">:</span></span>
-<span id="cb17-2"><a href="#cb17-2"></a><span class="at">  </span><span class="fu">docx</span><span class="kw">:</span></span>
-<span id="cb17-3"><a href="#cb17-3"></a><span class="at">    </span><span class="fu">reference-doc</span><span class="kw">:</span><span class="at"> custom-reference-doc.docx</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25" data-code-line-numbers="3"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb25-2"><a href="#cb25-2"></a><span class="at">  </span><span class="fu">docx</span><span class="kw">:</span></span>
+<span id="cb25-3"><a href="#cb25-3"></a><span class="at">    </span><span class="fu">reference-doc</span><span class="kw">:</span><span class="at"> custom-reference-doc.docx</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <aside class="notes">
 <p>https://quarto.org/docs/output-formats/ms-word-templates.html</p>
@@ -779,13 +865,102 @@
 <p>Use a reference document to change the look and feel of your report when rendered to Word.</p>
 </section></section>
 <section>
+<section id="making-your-reports-shine-pdf-edition" class="title-slide slide level1 inverse center" data-background-image="assets/report.jpg">
+<h1>Making Your Reports Shine: PDF Edition</h1>
+<aside class="notes">
+<p>You need to download Quarto 1.4</p>
+<p>https://github.com/cscheid/2023-posit-conf-talk/blob/main/talk.qmd</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2 center">
+
+<div class="center-slide">
+<p><a href="https://twitter.com/jefflittlejohn/status/1216869830726316033"><img data-src="assets/littlejohn-latex-tweet.png"></a></p>
+</div>
+</section>
+<section class="slide level2 center">
+
+<div class="center-slide">
+<p><a href="https://twitter.com/andrewheiss/status/1204870408148832257"><img data-src="assets/heiss-latex-tweet.png"></a></p>
+</div>
+</section>
+<section class="slide level2 center">
+
+<div class="center-slide">
+<p><a href="https://twitter.com/MattCowgill/status/1249190934392307712"><img data-src="assets/latex-table-tweet.png"></a></p>
+</div>
+</section>
+<section class="slide level2 center">
+
+<div class="center-slide">
+<p><a href="https://twitter.com/thattommyhall/status/1248679614337241089"><img data-src="assets/latex-book-tweet.png"></a></p>
+</div>
+</section>
+<section class="slide level2 center">
+
+
+<img data-src="assets/typst.png" class="quarto-figure-center r-stretch"></section>
+<section id="making-your-reports-shine-pdf-edition-1" class="slide level2 center">
+<h2>Making Your Reports Shine: PDF Edition</h2>
+<ul>
+<li class="fragment"><code>papersize</code></li>
+<li class="fragment"><code>margin</code></li>
+<li class="fragment"><code>fontsize</code></li>
+<li class="fragment"><code>columns</code></li>
+</ul>
+<aside class="notes">
+<p>https://quarto.org/docs/prerelease/1.4/typst.html#typst-format</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="my-turn-4" class="slide level2 my-turn center">
+<h2>My Turn</h2>
+<ul>
+<li class="fragment">Create a PDF document using the <code>typst</code> format</li>
+</ul>
+</section>
+<section id="your-turn-4" class="slide level2 your-turn center">
+<h2>Your Turn</h2>
+<ul>
+<li class="fragment">Create a PDF document using the <code>typst</code> format</li>
+</ul>
+</section></section>
+<section>
 <section id="making-your-reports-shine-html-edition" class="title-slide slide level1 inverse center" data-background-image="assets/html.jpg">
 <h1>Making Your Reports Shine: HTML Edition</h1>
 
 </section>
 <section id="built-in-themes" class="slide level2 center">
 <h2>Built-In Themes</h2>
-<p>Quarto has a number of built-in themes</p>
+<p><a href="https://quarto.org/docs/output-formats/html-themes.html">Quarto has a number of built-in themes</a></p>
+</section>
+<section id="built-in-themes-1" class="slide level2 center">
+<h2>Built-In Themes</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26" data-code-line-numbers="4"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"My Document"</span></span>
+<span id="cb26-2"><a href="#cb26-2"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb26-3"><a href="#cb26-3"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb26-4"><a href="#cb26-4"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> cosmo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <aside class="notes">
 <p>https://quarto.org/docs/output-formats/html-themes.html</p>
 <style type="text/css">
@@ -825,29 +1000,29 @@
 <section id="customizing-built-in-themes-1" class="slide level2 center">
 <h2>Customizing Built-In Themes</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"My Document"</span></span>
-<span id="cb18-2"><a href="#cb18-2"></a><span class="fu">format</span><span class="kw">:</span></span>
-<span id="cb18-3"><a href="#cb18-3"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span><span class="at"> </span></span>
-<span id="cb18-4"><a href="#cb18-4"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> cosmo</span></span>
-<span id="cb18-5"><a href="#cb18-5"></a><span class="at">    </span><span class="fu">mainfont</span><span class="kw">:</span><span class="at"> Inter</span></span>
-<span id="cb18-6"><a href="#cb18-6"></a><span class="at">    </span><span class="fu">fontsize</span><span class="kw">:</span><span class="at"> 20px</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27" data-code-line-numbers="5-6"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb27-1"><a href="#cb27-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"My Document"</span></span>
+<span id="cb27-2"><a href="#cb27-2"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb27-3"><a href="#cb27-3"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb27-4"><a href="#cb27-4"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> cosmo</span></span>
+<span id="cb27-5"><a href="#cb27-5"></a><span class="at">    </span><span class="fu">mainfont</span><span class="kw">:</span><span class="at"> Inter</span></span>
+<span id="cb27-6"><a href="#cb27-6"></a><span class="at">    </span><span class="fu">fontsize</span><span class="kw">:</span><span class="at"> 20px</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="creating-your-own-theme" class="slide level2 center">
 <h2>Creating Your Own Theme</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"My Document"</span></span>
-<span id="cb19-2"><a href="#cb19-2"></a><span class="fu">format</span><span class="kw">:</span></span>
-<span id="cb19-3"><a href="#cb19-3"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span><span class="at"> </span></span>
-<span id="cb19-4"><a href="#cb19-4"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> custom.scss</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28" data-code-line-numbers="4"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb28-1"><a href="#cb28-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"My Document"</span></span>
+<span id="cb28-2"><a href="#cb28-2"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb28-3"><a href="#cb28-3"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb28-4"><a href="#cb28-4"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> custom.scss</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="anatomy-of-a-.scss-file" class="slide level2 center">
 <h2>Anatomy of a <code>.scss</code> File</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource scss number-lines code-with-copy"><code class="sourceCode scss"><span id="cb20-1"><a href="#cb20-1"></a><span class="co">/*-- scss:defaults --*/</span></span>
-<span id="cb20-2"><a href="#cb20-2"></a></span>
-<span id="cb20-3"><a href="#cb20-3"></a><span class="co">/*-- scss:rules --*/</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource scss number-lines code-with-copy"><code class="sourceCode scss"><span id="cb29-1"><a href="#cb29-1"></a><span class="co">/*-- scss:defaults --*/</span></span>
+<span id="cb29-2"><a href="#cb29-2"></a></span>
+<span id="cb29-3"><a href="#cb29-3"></a><span class="co">/*-- scss:rules --*/</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <style type="text/css">
 
 </style>
@@ -856,12 +1031,13 @@
 <section id="anatomy-of-a-.scss-file-1" class="slide level2 center">
 <h2>Anatomy of a <code>.scss</code> File</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21" data-code-line-numbers="1-4"><pre class="sourceCode numberSource scss number-lines code-with-copy"><code class="sourceCode scss"><span id="cb21-1"><a href="#cb21-1"></a><span class="co">/*-- scss:defaults --*/</span></span>
-<span id="cb21-2"><a href="#cb21-2"></a><span class="va">$body-bg</span>: <span class="cn">red</span><span class="op">;</span></span>
-<span id="cb21-3"><a href="#cb21-3"></a><span class="va">$body-color</span>: <span class="cn">white</span><span class="op">;</span></span>
-<span id="cb21-4"><a href="#cb21-4"></a><span class="va">$font-size-root</span>: <span class="dv">20</span><span class="dt">px</span><span class="op">;</span></span>
-<span id="cb21-5"><a href="#cb21-5"></a></span>
-<span id="cb21-6"><a href="#cb21-6"></a><span class="co">/*-- scss:rules --*/</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30" data-code-line-numbers="1-5"><pre class="sourceCode numberSource scss number-lines code-with-copy"><code class="sourceCode scss"><span id="cb30-1"><a href="#cb30-1"></a><span class="co">/*-- scss:defaults --*/</span></span>
+<span id="cb30-2"><a href="#cb30-2"></a></span>
+<span id="cb30-3"><a href="#cb30-3"></a><span class="va">$body-bg</span>: <span class="cn">red</span><span class="op">;</span></span>
+<span id="cb30-4"><a href="#cb30-4"></a><span class="va">$body-color</span>: <span class="cn">white</span><span class="op">;</span></span>
+<span id="cb30-5"><a href="#cb30-5"></a><span class="va">$font-size-root</span>: <span class="dv">20</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb30-6"><a href="#cb30-6"></a></span>
+<span id="cb30-7"><a href="#cb30-7"></a><span class="co">/*-- scss:rules --*/</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <style type="text/css">
 
 </style>
@@ -883,21 +1059,31 @@
 <section id="anatomy-of-a-.scss-file-2" class="slide level2 center">
 <h2>Anatomy of a <code>.scss</code> File</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22" data-code-line-numbers="6-9"><pre class="sourceCode numberSource scss number-lines code-with-copy"><code class="sourceCode scss"><span id="cb22-1"><a href="#cb22-1"></a><span class="co">/*-- scss:defaults --*/</span></span>
-<span id="cb22-2"><a href="#cb22-2"></a><span class="va">$body-bg</span>: <span class="cn">red</span><span class="op">;</span></span>
-<span id="cb22-3"><a href="#cb22-3"></a><span class="va">$body-color</span>: <span class="cn">white</span><span class="op">;</span></span>
-<span id="cb22-4"><a href="#cb22-4"></a><span class="va">$font-size-root</span>: <span class="dv">20</span><span class="dt">px</span><span class="op">;</span></span>
-<span id="cb22-5"><a href="#cb22-5"></a></span>
-<span id="cb22-6"><a href="#cb22-6"></a><span class="co">/*-- scss:rules --*/</span></span>
-<span id="cb22-7"><a href="#cb22-7"></a>h1 {</span>
-<span id="cb22-8"><a href="#cb22-8"></a>  <span class="kw">text-shadow</span>: <span class="op">-</span><span class="dv">1</span><span class="dt">px</span> <span class="op">-</span><span class="dv">1</span><span class="dt">px</span> <span class="dv">0</span> <span class="fu">rgba(</span><span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">.3</span><span class="fu">)</span><span class="op">;</span></span>
-<span id="cb22-9"><a href="#cb22-9"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31" data-code-line-numbers="7-11"><pre class="sourceCode numberSource scss number-lines code-with-copy"><code class="sourceCode scss"><span id="cb31-1"><a href="#cb31-1"></a><span class="co">/*-- scss:defaults --*/</span></span>
+<span id="cb31-2"><a href="#cb31-2"></a></span>
+<span id="cb31-3"><a href="#cb31-3"></a><span class="va">$body-bg</span>: <span class="cn">red</span><span class="op">;</span></span>
+<span id="cb31-4"><a href="#cb31-4"></a><span class="va">$body-color</span>: <span class="cn">white</span><span class="op">;</span></span>
+<span id="cb31-5"><a href="#cb31-5"></a><span class="va">$font-size-root</span>: <span class="dv">20</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb31-6"><a href="#cb31-6"></a></span>
+<span id="cb31-7"><a href="#cb31-7"></a><span class="co">/*-- scss:rules --*/</span></span>
+<span id="cb31-8"><a href="#cb31-8"></a></span>
+<span id="cb31-9"><a href="#cb31-9"></a>h1 {</span>
+<span id="cb31-10"><a href="#cb31-10"></a>  <span class="kw">text-shadow</span>: <span class="op">-</span><span class="dv">1</span><span class="dt">px</span> <span class="op">-</span><span class="dv">1</span><span class="dt">px</span> <span class="dv">0</span> <span class="fu">rgba(</span><span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">.3</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb31-11"><a href="#cb31-11"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <style type="text/css">
 h1{text-shadow:-1px -1px 0 rgba(0,0,0,0.3)}
 </style>
 </div>
 </section>
-<section id="your-turn-4" class="slide level2 your-turn center">
+<section id="my-turn-5" class="slide level2 my-turn center">
+<h2>My Turn</h2>
+<ol type="1">
+<li class="fragment"><p>Apply a built-in HTML theme to my report.</p></li>
+<li class="fragment"><p>Customize the built-in HTML theme.</p></li>
+<li class="fragment"><p>Create my own theme using an <code>.scss</code> file, Sass variables, and some custom CSS.</p></li>
+</ol>
+</section>
+<section id="your-turn-5" class="slide level2 your-turn center">
 <h2>Your Turn</h2>
 <ol type="1">
 <li class="fragment"><p>Apply a built-in HTML theme to your report.</p></li>
@@ -907,59 +1093,206 @@ h1{text-shadow:-1px -1px 0 rgba(0,0,0,0.3)}
 </ol>
 </section></section>
 <section>
-<section id="making-your-reports-shine-pdf-edition" class="title-slide slide level1 inverse center" data-background-image="assets/report.jpg">
-<h1>Making Your Reports Shine: PDF Edition</h1>
-
-</section>
-<section class="slide level2 center">
-
-
-<img data-src="assets/littlejohn-latex-tweet.png" class="r-stretch quarto-figure-center"></section>
-<section class="slide level2 center">
-
-
-<img data-src="assets/heiss-latex-tweet.png" class="r-stretch quarto-figure-center"></section>
-<section class="slide level2 center">
-
-
-<img data-src="assets/latex-table-tweet.png" class="r-stretch quarto-figure-center"></section>
-<section class="slide level2 center">
-
-
-<img data-src="assets/latex-book-tweet.png" class="r-stretch quarto-figure-center"></section>
-<section id="making-your-reports-shine-pdf-edition-1" class="slide level2 center">
-<h2>Making Your Reports Shine: PDF Edition</h2>
-<ul>
-<li class="fragment">typst</li>
-</ul>
-</section></section>
 <section id="presentations" class="title-slide slide level1 inverse center" data-background-image="assets/projector.jpg">
 <h1>Presentations</h1>
 
 </section>
-
+<section id="powerpoint" class="slide level2 inverse center">
+<h2>PowerPoint</h2>
+<aside class="notes">
+<p>Can use reference docs</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="revealjs" class="slide level2 inverse center">
+<h2>Revealjs</h2>
+</section>
+<section id="revealjs-1" class="slide level2 center">
+<h2>Revealjs</h2>
+<ul>
+<li class="fragment">revealjs
+<ul>
+<li class="fragment">footer and logo</li>
+<li class="fragment">slide backgrounds</li>
+<li class="fragment">columns</li>
+<li class="fragment">incremental reveal</li>
+<li class="fragment">speaker notes + speaker view</li>
+</ul></li>
+<li class="fragment">themes: https://quarto.org/docs/presentations/revealjs/themes.html</li>
+<li class="fragment">customizing themes</li>
+<li class="fragment">creating your own theme with sass variables</li>
+</ul>
+<aside class="notes">
+<p>https://quarto.org/docs/reference/formats/presentations/revealjs.html</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="my-turn-6" class="slide level2 my-turn center">
+<h2>My Turn</h2>
+<ul>
+<li class="fragment">Turn my report into a presentation</li>
+</ul>
+</section>
+<section id="your-turn-6" class="slide level2 your-turn center">
+<h2>Your Turn</h2>
+<ul>
+<li class="fragment">Turn your report into a presentation</li>
+</ul>
+</section></section>
+<section>
 <section id="dashboards" class="title-slide slide level1 inverse center" data-background-image="assets/dashboard.jpg">
 <h1>Dashboards</h1>
-
+<ul>
+<li class="fragment">Layout
+<ul>
+<li class="fragment">pages (level 1)</li>
+<li class="fragment">rows/columns (level 2)</li>
+<li class="fragment">https://quarto.org/docs/dashboards/layouts.html</li>
+</ul></li>
+<li class="fragment">orientation</li>
+<li class="fragment">fill vs scrolling</li>
+<li class="fragment">tabset</li>
+<li class="fragment">sidebars</li>
+<li class="fragment">themes: https://quarto.org/docs/dashboards/theming.html</li>
+</ul>
+<aside class="notes">
+<p>https://quarto.org/docs/dashboards/ https://quarto.org/docs/dashboards/components.html</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
-
+<section id="my-turn-7" class="slide level2 my-turn center">
+<h2>My Turn</h2>
+<ul>
+<li class="fragment">Turn my presentation into a dashboard</li>
+</ul>
+</section>
+<section id="your-turn-7" class="slide level2 your-turn center">
+<h2>Your Turn</h2>
+<ul>
+<li class="fragment">Turn your presentation into a dashboard</li>
+</ul>
+</section></section>
+<section>
 <section id="websites" class="title-slide slide level1 inverse center" data-background-image="assets/website.jpg">
 <h1>Websites</h1>
-
+<ul>
+<li class="fragment">Create new project</li>
+<li class="fragment">Add pages</li>
+<li class="fragment">_quarto.yml
+<ul>
+<li class="fragment">logo</li>
+<li class="fragment">navbar</li>
+<li class="fragment">sidebar</li>
+<li class="fragment">footer</li>
+</ul></li>
+<li class="fragment">render</li>
+</ul>
+<aside class="notes">
+<p>Have to create new project</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
-
+<section id="my-turn-8" class="slide level2 my-turn center">
+<h2>My Turn</h2>
+<ul>
+<li class="fragment">Turn my dashboard into a website</li>
+</ul>
+</section>
+<section id="your-turn-8" class="slide level2 your-turn center">
+<h2>Your Turn</h2>
+<ul>
+<li class="fragment">Turn your dashboard into a website</li>
+</ul>
+</section></section>
+<section>
 <section id="quarto-extensions" class="title-slide slide level1 inverse center" data-background-image="assets/extension.jpg">
 <h1>Quarto Extensions</h1>
-
+<ul>
+<li class="fragment">What they are</li>
+<li class="fragment">Types
+<ul>
+<li class="fragment">Shortcode/filter</li>
+<li class="fragment">Journal articles</li>
+<li class="fragment">Custom formats</li>
+<li class="fragment">Revealjs</li>
+</ul></li>
+<li class="fragment"><h2 id="examples">Examples</h2></li>
+</ul>
 </section>
-
+<section id="my-turn-9" class="slide level2 my-turn center">
+<h2>My Turn</h2>
+<ul>
+<li class="fragment">Show three Quarto extensions: <code>lightbox</code>, <code>downloadthis</code>, <code>nutshell</code></li>
+</ul>
+</section>
+<section id="your-turn-9" class="slide level2 your-turn center">
+<h2>Your Turn</h2>
+<ul>
+<li class="fragment">Try out a Quarto extension</li>
+</ul>
+</section></section>
+<section>
 <section id="publishing-your-work" class="title-slide slide level1 inverse center" data-background-image="assets/publish.jpg">
 <h1>Publishing Your Work</h1>
+<ul>
+<li class="fragment">Use <code>quarto publish</code> in terminal</li>
+<li class="fragment">Quartopub.com</li>
+<li class="fragment">Netlify</li>
+</ul>
+</section>
+<section id="my-turn-10" class="slide level2 my-turn center">
+<h2>My Turn</h2>
+<p>I’ll publish my website to:</p>
+<ul>
+<li class="fragment">Quarto Pub</li>
+<li class="fragment">Netlify</li>
+</ul>
+</section>
+<section id="your-turn-10" class="slide level2 your-turn center">
+<h2>Your Turn</h2>
+<ul>
+<li class="fragment">Publish your website to Quarto Pub or Netlify</li>
+</ul>
 <div class="footer footer-default">
 
 </div>
-</section>
-
+</section></section>
 
     </div>
   </div>
@@ -987,7 +1320,6 @@ h1{text-shadow:-1px -1px 0 rgba(0,0,0,0.3)}
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -1286,10 +1618,9 @@ h1{text-shadow:-1px -1px 0 rgba(0,0,0,0.3)}
         // clear code selection
         e.clearSelection();
       });
-      function tippyHover(el, contentFn) {
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1299,8 +1630,17 @@ h1{text-shadow:-1px -1px 0 rgba(0,0,0,0.3)}
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 

@@ -64,7 +64,7 @@ This is a [link to the Rest for the Rest of Us website](http://rfortherestofus.c
 Set the width of your images in pixels
 ```{markdown}
 #| echo: true
-![](assets/girl-meditating.jpg){width=300}
+![](assets/girl-meditating.jpg){width=300px}
 ```
 :::
 
@@ -92,7 +92,13 @@ Set the width of your images as a percent
 
 Images are centered by default but you can change this.
 
-
+::: {.fragment}
+Align images to the left 
+```{markdown}
+#| echo: true
+![](assets/girl-meditating.jpg){fig-align="left"}
+```
+:::
 
 ::: {.fragment}
 Align images to the right 
@@ -102,16 +108,23 @@ Align images to the right
 ```
 :::
 
-
-
 ::: {.fragment}
-Align images to the left 
+Center align images
 ```{markdown}
 #| echo: true
-![](assets/girl-meditating.jpg){fig-align="left"}
+![](assets/girl-meditating.jpg){fig-align="center"}
 ```
 :::
 
+
+## Caption
+
+::: {.fragment}
+```{markdown}
+#| echo: true
+![A girl meditating](assets/girl-meditating.jpg)
+```
+:::
 
 ## Alt Text
 
@@ -121,6 +134,8 @@ Align images to the left
 ![](assets/girl-meditating.jpg){fig-alt="A girl meditating"}
 ```
 :::
+
+
 
 ## Blockquotes
 
@@ -159,7 +174,7 @@ I'll create a Quarto document and do the following:
 
 1. Add a link
 
-1. Add an image
+1. Add an image and adjust its alignment and alt text
 
 1. Add a blockquote
 
@@ -167,9 +182,9 @@ I'll create a Quarto document and do the following:
 
 ## Your Turn {.your-turn}
 
-- Add the Oregon Department of Education logo to the top of your report. You can find it at https://github.com/rfortherestofus/going-deeper/raw/master/slides/assets/ode-logo.jpg
+- Add the Oregon Department of Education logo to the top of your report. You can find it at the [link below](https://github.com/rfortherestofus/going-deeper/raw/master/slides/assets/ode-logo.jpg).
 
-- Add the following text (make sure you include the link, which points to https://www.oregon.gov/ode/pages/default.aspx):
+- Add the following text (make sure you include the [link](https://www.oregon.gov/ode/pages/default.aspx), which is below):
 
 ::: {.fragment}
 This is a report for the [Oregon Department of Education](https://www.oregon.gov/ode/pages/default.aspx) on diversity in Oregon school districts. 
@@ -183,9 +198,81 @@ This is a report for the [Oregon Department of Education](https://www.oregon.gov
 > The Oregon Department of Education fosters equity and excellence for every learner through collaboration with educators, partners, and communities.
 :::
 
-- Add a link to the source for mission statement above (https://www.oregon.gov/ode/about-us/Pages/default.aspx) as a footnote.
+- Add a [link to the source for mission statement](https://www.oregon.gov/ode/about-us/Pages/default.aspx) as a footnote.
 
 # Tables {.inverse background-image="assets/table.jpg"}
+
+
+
+## Tables Usually Need Wide Data
+
+```{r}
+third_grade_math_proficiency <- 
+  read_rds(here("data/third_grade_math_proficiency.rds")) |> 
+  select(academic_year, school, school_id, district, proficiency_level, number_of_students) |> 
+  mutate(is_proficient = case_when(
+    proficiency_level >= 3 ~ TRUE,
+    .default = FALSE
+  )) |> 
+  group_by(academic_year, school, district, school_id, is_proficient) |> 
+  summarize(number_of_students = sum(number_of_students, na.rm = TRUE)) |> 
+  ungroup() |> 
+  group_by(academic_year, school, district, school_id) |> 
+  mutate(percent_proficient = number_of_students / sum(number_of_students, na.rm = TRUE)) |> 
+  ungroup() |> 
+  filter(is_proficient == TRUE) |> 
+  select(academic_year, school, district, percent_proficient) |> 
+  rename(year = academic_year) |> 
+  mutate(percent_proficient = case_when(
+    is.nan(percent_proficient) ~ NA,
+    .default = percent_proficient
+  )) |> 
+  mutate(percent_proficient_formatted = percent(percent_proficient,
+                                                accuracy = 1))
+```
+
+```{r}
+data_long <- 
+  third_grade_math_proficiency |> 
+  filter(district == "Portland SD 1J") |> 
+  filter(school %in% c("Abernethy Elementary School",
+                       "Ainsworth Elementary School",
+                       "Alameda Elementary School",
+                       "Arleta Elementary School",
+                       "Atkinson Elementary School")) |> 
+  select(year, school, percent_proficient_formatted) |> 
+  arrange(school)
+
+data_long
+```
+
+. . .
+
+```{r}
+data_long |> 
+  pivot_wider(id_cols = school,
+              names_from = year,
+              values_from = percent_proficient_formatted)
+```
+
+## `pivot_wider()`
+
+```{r}
+#| echo: true
+data_long
+```
+
+. . .
+
+```{r}
+#| echo: true
+#| code-line-numbers: "2-4"
+data_long |> 
+  pivot_wider(id_cols = school,
+              names_from = year,
+              values_from = percent_proficient_formatted)
+```
+
 
 ## Don't Use the Default Output
 
@@ -220,15 +307,13 @@ https://posit.co/blog/new-in-gt-0-9-0-interactive-tables/
 
 ## My Turn {.my-turn}
 
-I'll demonstrate making an effective table using `gt`
+I'll demonstrate making effective tables using `gt`, `flextable`, and `reactable`.
 
 ::: {.notes}
-- Title
 - Set Names (cols_label)
 - Align
-- Width
+- Column Width
 - Formatting numbers
-- Color shading
 - Source
 :::
 
@@ -330,7 +415,7 @@ penguins |>
 ````
 ```{{r}}
 #| fig-cap: "A plot about penguins"
-#| fig-alt: "A bar chart showing the number of penguins on each island with data from the palmerpenguins R package"
+#| fig-alt: "A bar chart showing the number of penguins on each island"
 
 penguins |> 
   filter(year == 2007) |> 
@@ -404,6 +489,7 @@ Add a line to your report that uses inline R code.
 ```{yaml}
 #| echo: true
 #| eval: false
+#| code-line-numbers: "3"
 format:
   docx:
     reference-doc: custom-reference-doc.docx
@@ -423,11 +509,77 @@ I'll use a reference document to change the look and feel of my report that is r
 Use a reference document to change the look and feel of your report when rendered to Word.
 
 
+# Making Your Reports Shine: PDF Edition {.inverse background-image="assets/report.jpg"}
+
+::: {.notes}
+You need to download Quarto 1.4
+
+https://github.com/cscheid/2023-posit-conf-talk/blob/main/talk.qmd
+:::
+
+---
+
+::: {.center-slide}
+[![](assets/littlejohn-latex-tweet.png)](https://twitter.com/jefflittlejohn/status/1216869830726316033)
+:::
+
+---
+
+::: {.center-slide}
+[![](assets/heiss-latex-tweet.png)](https://twitter.com/andrewheiss/status/1204870408148832257)
+:::
+
+---
+
+::: {.center-slide}
+[![](assets/latex-table-tweet.png)](https://twitter.com/MattCowgill/status/1249190934392307712)
+:::
+
+---
+
+::: {.center-slide}
+[![](assets/latex-book-tweet.png)](https://twitter.com/thattommyhall/status/1248679614337241089)
+:::
+
+---
+
+![](assets/typst.png){fig-align="center"}
+
+## Making Your Reports Shine: PDF Edition
+
+- `papersize`
+- `margin`
+- `fontsize`
+- `columns`
+
+::: {.notes}
+https://quarto.org/docs/prerelease/1.4/typst.html#typst-format
+:::
+
+## My Turn {.my-turn}
+
+- Create a PDF document using the `typst` format
+
+## Your Turn {.your-turn}
+
+- Create a PDF document using the `typst` format
+
 # Making Your Reports Shine: HTML Edition {.inverse background-image="assets/html.jpg"}
 
 ## Built-In Themes
 
-Quarto has a number of built-in themes
+[Quarto has a number of built-in themes](https://quarto.org/docs/output-formats/html-themes.html)
+
+## Built-In Themes
+
+```{yaml}
+#| echo: true
+#| code-line-numbers: "4"
+title: "My Document"
+format:
+  html: 
+    theme: cosmo
+```
 
 ::: {.notes}
 https://quarto.org/docs/output-formats/html-themes.html
@@ -459,6 +611,7 @@ https://quarto.org/docs/output-formats/html-themes.html
 
 ```{yaml}
 #| echo: true
+#| code-line-numbers: "5-6"
 title: "My Document"
 format:
   html: 
@@ -472,6 +625,7 @@ format:
 
 ```{yaml}
 #| echo: true
+#| code-line-numbers: "4"
 title: "My Document"
 format:
   html: 
@@ -491,8 +645,9 @@ format:
 
 ```{scss}
 #| echo: true
-#| code-line-numbers: "1-4"
+#| code-line-numbers: "1-5"
 /*-- scss:defaults --*/
+
 $body-bg: red;
 $body-color: white;
 $font-size-root: 20px;
@@ -508,17 +663,27 @@ Talk about Sass variables
 
 ```{scss}
 #| echo: true
-#| code-line-numbers: "6-9"
+#| code-line-numbers: "7-11"
 /*-- scss:defaults --*/
+
 $body-bg: red;
 $body-color: white;
 $font-size-root: 20px;
 
 /*-- scss:rules --*/
+
 h1 {
   text-shadow: -1px -1px 0 rgba(0, 0, 0, .3);
 }
 ```
+
+## My Turn {.my-turn}
+
+1. Apply a built-in HTML theme to my report. 
+
+1. Customize the built-in HTML theme.
+
+1. Create my own theme using an `.scss` file, Sass variables, and some custom CSS.
 
 ## Your Turn {.your-turn}
 
@@ -530,39 +695,126 @@ h1 {
 
 1. If you know any CSS, customize your `.scss` file further.
 
-# Making Your Reports Shine: PDF Edition {.inverse background-image="assets/report.jpg"}
 
----
-
-[![](assets/littlejohn-latex-tweet.png)](https://twitter.com/jefflittlejohn/status/1216869830726316033)
-
----
-
-[![](assets/heiss-latex-tweet.png)](https://twitter.com/andrewheiss/status/1204870408148832257)
-
----
-
-[![](assets/latex-table-tweet.png)](https://twitter.com/MattCowgill/status/1249190934392307712)
-
----
-
-[![](assets/latex-book-tweet.png)](https://twitter.com/thattommyhall/status/1248679614337241089)
-
-## Making Your Reports Shine: PDF Edition
-
-- typst
 
 # Presentations {.inverse background-image="assets/projector.jpg"}
 
+## PowerPoint {.inverse}
+
+::: {.notes}
+Can use reference docs
+:::
+
+## Revealjs {.inverse}
+
+## Revealjs
+
+- revealjs
+  - footer and logo
+  - slide backgrounds
+  - columns
+  - incremental reveal
+  - speaker notes + speaker view
+- themes: https://quarto.org/docs/presentations/revealjs/themes.html
+- customizing themes
+- creating your own theme with sass variables
+
+
+::: {.notes}
+https://quarto.org/docs/reference/formats/presentations/revealjs.html
+:::
+
+## My Turn {.my-turn}
+
+- Turn my report into a presentation
+
+## Your Turn {.your-turn}
+
+- Turn your report into a presentation
+
 # Dashboards {.inverse background-image="assets/dashboard.jpg"}
+
+- Layout
+  - pages (level 1)
+  - rows/columns (level 2)
+  - https://quarto.org/docs/dashboards/layouts.html
+- orientation
+- fill vs scrolling
+- tabset
+- sidebars
+- themes: https://quarto.org/docs/dashboards/theming.html
+
+::: {.notes}
+https://quarto.org/docs/dashboards/
+https://quarto.org/docs/dashboards/components.html
+:::
+
+## My Turn {.my-turn}
+
+- Turn my presentation into a dashboard
+
+## Your Turn {.your-turn}
+
+- Turn your presentation into a dashboard
 
 # Websites {.inverse background-image="assets/website.jpg"}
 
+- Create new project
+- Add pages
+- _quarto.yml
+  - logo
+  - navbar
+  - sidebar
+  - footer
+- render
+
+::: {.notes}
+Have to create new project
+:::
+
+## My Turn {.my-turn}
+
+- Turn my dashboard into a website
+
+## Your Turn {.your-turn}
+
+- Turn your dashboard into a website
+
 # Quarto Extensions {.inverse background-image="assets/extension.jpg"}
+
+- What they are
+- Types
+  - Shortcode/filter
+  - Journal articles
+  - Custom formats
+  - Revealjs
+- Examples
+  - 
+
+## My Turn {.my-turn}
+
+- Show three Quarto extensions: `lightbox`, `downloadthis`, `nutshell`
+
+## Your Turn {.your-turn}
+
+- Try out a Quarto extension
 
 # Publishing Your Work {.inverse background-image="assets/publish.jpg"}
 
+- Use `quarto publish` in terminal
+- Quartopub.com
+- Netlify
 
+## My Turn {.my-turn}
+
+I'll publish my website to:
+
+- Quarto Pub
+- Netlify
+
+## Your Turn {.your-turn}
+
+- Publish your website to Quarto Pub or Netlify
 
 
 

@@ -191,7 +191,9 @@ h3.title {
   }
 
   a,
-  a:hover {
+  a:hover,
+  p > a,
+  li > a {
     color: #ffffff;
     text-decoration: underline;
     text-underline-offset: 8px;
@@ -208,6 +210,7 @@ h3.title {
   code, blockquote>p {
     color: #ffffff;
   }
+  
   
 
 
@@ -231,7 +234,8 @@ h3.title {
 }
 
 a,
-a > code {
+a > code,
+.reveal a {
   color: #6cabdd;
   text-decoration: underline;
   text-underline-offset: 8px;
