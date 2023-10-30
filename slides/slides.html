@@ -8,7 +8,7 @@
 <link href="slides_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="slides_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="slides_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.353">
+  <meta name="generator" content="quarto-1.4.449">
 
   <title>Going Deeper with R</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -30,7 +30,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -220,7 +220,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -383,7 +384,6 @@
       margin-right: 0; 
     }
   </style>
-  
   <link href="slides_files/libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
   <script src="slides_files/libs/pagedtable-1.1/js/pagedtable.js"></script>
 </head>
@@ -436,7 +436,7 @@
 <section class="slide level2 center">
 
 
-<img data-src="assets/readxl-logo.png" class="r-stretch quarto-figure-center"></section>
+<img data-src="assets/readxl-logo.png" class="quarto-figure-center r-stretch"></section>
 <section id="importing-excel-files-1" class="slide level2 center">
 <h2>Importing Excel Files</h2>
 <div class="small">
@@ -481,15 +481,15 @@
 <section class="slide level2 center">
 
 
-<img data-src="assets/googlesheets4.svg" class="r-stretch quarto-figure-center"></section>
+<img data-src="assets/googlesheets4.svg" class="quarto-figure-center r-stretch"></section>
 <section class="slide level2 center">
 
 
-<img data-src="assets/haven.svg" class="r-stretch quarto-figure-center"></section>
+<img data-src="assets/haven.svg" class="quarto-figure-center r-stretch"></section>
 <section class="slide level2 center">
 
 
-<img data-src="assets/rio-logo.png" class="r-stretch quarto-figure-center"></section>
+<img data-src="assets/rio-logo.png" class="quarto-figure-center r-stretch"></section>
 <section id="my-turn" class="slide level2 my-turn center">
 <h2>My Turn</h2>
 <p>Working with <a href="https://www.oregon.gov/ode/educator-resources/assessment/Pages/Assessment-Group-Reports.aspx">data on third grade math proficiency in Oregon schools</a>, I’ll do the following:</p>
@@ -1134,7 +1134,7 @@
 <section class="slide level2 center">
 
 
-<img data-src="assets/parse_number.png" class="r-stretch quarto-figure-center"><div class="center-slide small">
+<img data-src="assets/parse_number.png" class="quarto-figure-center r-stretch"><div class="center-slide small">
 <p>Image courtesy of <a href="https://github.com/allisonhorst/stats-illustrations">Allison Horst</a></p>
 </div>
 </section>
@@ -1844,7 +1844,6 @@ Caused by error in `sum()`:
 <h2>bind_rows()</h2>
 <div class="cell">
 <div class="cell-output-display">
-
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
 {"columns":[{"label":["state"],"name":[1],"type":["chr"],"align":["left"]},{"label":["year"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["number"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"Alabama","2":"2018","3":"395"},{"1":"Alaska","2":"2018","3":"201"},{"1":"Arizona","2":"2018","3":"858"},{"1":"Arkansas","2":"2018","3":"635"},{"1":"California","2":"2018","3":"318"},{"1":"Colorado","2":"2018","3":"498"},{"1":"Connecticut","2":"2018","3":"334"},{"1":"Delaware","2":"2018","3":"998"},{"1":"District of Columbia","2":"2018","3":"745"},{"1":"Florida","2":"2018","3":"924"},{"1":"Georgia","2":"2018","3":"293"},{"1":"Hawaii","2":"2018","3":"303"},{"1":"Idaho","2":"2018","3":"349"},{"1":"Illinois","2":"2018","3":"573"},{"1":"Indiana","2":"2018","3":"188"},{"1":"Iowa","2":"2018","3":"330"},{"1":"Kansas","2":"2018","3":"546"},{"1":"Kentucky","2":"2018","3":"976"},{"1":"Louisiana","2":"2018","3":"NA"},{"1":"Maine","2":"2018","3":"127"},{"1":"Montana","2":"2018","3":"296"},{"1":"Nebraska","2":"2018","3":"726"},{"1":"Nevada","2":"2018","3":"526"},{"1":"New Hampshire","2":"2018","3":"109"},{"1":"New Jersey","2":"2018","3":"961"},{"1":"New Mexico","2":"2018","3":"771"},{"1":"New York","2":"2018","3":"637"},{"1":"North Carolina","2":"2018","3":"970"},{"1":"North Dakota","2":"2018","3":"307"},{"1":"Ohio","2":"2018","3":"900"},{"1":"Oklahoma","2":"2018","3":"699"},{"1":"Oregon","2":"2018","3":"762"},{"1":"Maryland","2":"2018","3":"106"},{"1":"Massachusetts","2":"2018","3":"507"},{"1":"Michigan","2":"2018","3":"503"},{"1":"Minnesota","2":"2018","3":"344"},{"1":"Mississippi","2":"2018","3":"246"},{"1":"Missouri","2":"2018","3":"250"},{"1":"Pennsylvania","2":"2018","3":"475"},{"1":"Rhode Island","2":"2018","3":"852"},{"1":"South Carolina","2":"2018","3":"815"},{"1":"South Dakota","2":"2018","3":"601"},{"1":"Tennessee","2":"2018","3":"568"},{"1":"Texas","2":"2018","3":"571"},{"1":"Utah","2":"2018","3":"486"},{"1":"Vermont","2":"2018","3":"470"},{"1":"Virginia","2":"2018","3":"105"},{"1":"Washington","2":"2018","3":"474"},{"1":"West Virginia","2":"2018","3":"600"},{"1":"Wisconsin","2":"2018","3":"997"},{"1":"Wyoming","2":"2018","3":"593"},{"1":"Alabama","2":"2019","3":"711"},{"1":"Alaska","2":"2019","3":"131"},{"1":"Arizona","2":"2019","3":"136"},{"1":"Arkansas","2":"2019","3":"557"},{"1":"California","2":"2019","3":"854"},{"1":"Colorado","2":"2019","3":"768"},{"1":"Connecticut","2":"2019","3":"586"},{"1":"Delaware","2":"2019","3":"453"},{"1":"District of Columbia","2":"2019","3":"180"},{"1":"Florida","2":"2019","3":"958"},{"1":"Georgia","2":"2019","3":"821"},{"1":"Hawaii","2":"2019","3":"931"},{"1":"Idaho","2":"2019","3":"NA"},{"1":"Illinois","2":"2019","3":"827"},{"1":"Indiana","2":"2019","3":"728"},{"1":"Iowa","2":"2019","3":"657"},{"1":"Kansas","2":"2019","3":"501"},{"1":"Kentucky","2":"2019","3":"332"},{"1":"Louisiana","2":"2019","3":"490"},{"1":"Maine","2":"2019","3":"206"},{"1":"Montana","2":"2019","3":"527"},{"1":"Nebraska","2":"2019","3":"232"},{"1":"Nevada","2":"2019","3":"647"},{"1":"New Hampshire","2":"2019","3":"818"},{"1":"New Jersey","2":"2019","3":"168"},{"1":"New Mexico","2":"2019","3":"336"},{"1":"New York","2":"2019","3":"207"},{"1":"North Carolina","2":"2019","3":"508"},{"1":"North Dakota","2":"2019","3":"652"},{"1":"Ohio","2":"2019","3":"186"},{"1":"Oklahoma","2":"2019","3":"621"},{"1":"Oregon","2":"2019","3":"471"},{"1":"Maryland","2":"2019","3":"507"},{"1":"Massachusetts","2":"2019","3":"859"},{"1":"Michigan","2":"2019","3":"467"},{"1":"Minnesota","2":"2019","3":"251"},{"1":"Mississippi","2":"2019","3":"372"},{"1":"Missouri","2":"2019","3":"972"},{"1":"Pennsylvania","2":"2019","3":"956"},{"1":"Rhode Island","2":"2019","3":"900"},{"1":"South Carolina","2":"2019","3":"182"},{"1":"South Dakota","2":"2019","3":"584"},{"1":"Tennessee","2":"2019","3":"476"},{"1":"Texas","2":"2019","3":"292"},{"1":"Utah","2":"2019","3":"758"},{"1":"Vermont","2":"2019","3":"158"},{"1":"Virginia","2":"2019","3":"432"},{"1":"Washington","2":"2019","3":"615"},{"1":"West Virginia","2":"2019","3":"974"},{"1":"Wisconsin","2":"2019","3":"842"},{"1":"Wyoming","2":"2019","3":"431"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -2133,8 +2132,8 @@ Caused by error in `sum()`:
 </section>
 <section class="slide level2 center">
 
-
-<img data-src="assets/tidyexplain.png" class="r-stretch quarto-figure-center"><aside class="notes">
+<p><a href="https://www.garrickadenbuie.com/project/tidyexplain/"><img data-src="assets/tidyexplain.png" class="quarto-figure-center"></a></p>
+<aside class="notes">
 <p>All of the animations and explanations used here come from the <a href="https://www.garrickadenbuie.com/project/tidyexplain/">tidyexplain project by Garrick Aden-Buie</a>.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -2151,7 +2150,7 @@ Caused by error in `sum()`:
 <section class="slide level2 center">
 
 
-<img data-src="assets/original-dfs.png" class="r-stretch quarto-figure-center"></section>
+<img data-src="assets/original-dfs.png" class="quarto-figure-center r-stretch"></section>
 <section class="slide level2 center">
 
 <p>Join with variables in common in <code>x</code> and <code>y</code></p>
@@ -2209,7 +2208,6 @@ Caused by error in `sum()`:
 </div>
 <div class="cell">
 <div class="cell-output-display">
-
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
 {"columns":[{"label":["state"],"name":[1],"type":["chr"],"align":["left"]},{"label":["number"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["french_speakers"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"Alabama","2":"711","3":"1678"},{"1":"Alaska","2":"131","3":"1441"},{"1":"Arizona","2":"136","3":"1002"},{"1":"Arkansas","2":"557","3":"1558"},{"1":"California","2":"854","3":"1935"},{"1":"Colorado","2":"768","3":"1714"},{"1":"Connecticut","2":"586","3":"1536"},{"1":"Delaware","2":"453","3":"1824"},{"1":"District of Columbia","2":"180","3":"1601"},{"1":"Florida","2":"958","3":"NA"},{"1":"Georgia","2":"821","3":"NA"},{"1":"Hawaii","2":"931","3":"NA"},{"1":"Idaho","2":"NA","3":"NA"},{"1":"Illinois","2":"827","3":"NA"},{"1":"Indiana","2":"728","3":"NA"},{"1":"Iowa","2":"657","3":"NA"},{"1":"Kansas","2":"501","3":"NA"},{"1":"Kentucky","2":"332","3":"NA"},{"1":"Louisiana","2":"490","3":"NA"},{"1":"Maine","2":"206","3":"NA"},{"1":"Montana","2":"527","3":"NA"},{"1":"Nebraska","2":"232","3":"NA"},{"1":"Nevada","2":"647","3":"NA"},{"1":"New Hampshire","2":"818","3":"NA"},{"1":"New Jersey","2":"168","3":"NA"},{"1":"New Mexico","2":"336","3":"NA"},{"1":"New York","2":"207","3":"NA"},{"1":"North Carolina","2":"508","3":"NA"},{"1":"North Dakota","2":"652","3":"NA"},{"1":"Ohio","2":"186","3":"NA"},{"1":"Oklahoma","2":"621","3":"NA"},{"1":"Oregon","2":"471","3":"NA"},{"1":"Maryland","2":"507","3":"NA"},{"1":"Massachusetts","2":"859","3":"NA"},{"1":"Michigan","2":"467","3":"NA"},{"1":"Minnesota","2":"251","3":"NA"},{"1":"Mississippi","2":"372","3":"NA"},{"1":"Missouri","2":"972","3":"NA"},{"1":"Pennsylvania","2":"956","3":"NA"},{"1":"Rhode Island","2":"900","3":"NA"},{"1":"South Carolina","2":"182","3":"NA"},{"1":"South Dakota","2":"584","3":"NA"},{"1":"Tennessee","2":"476","3":"NA"},{"1":"Texas","2":"292","3":"NA"},{"1":"Utah","2":"758","3":"NA"},{"1":"Vermont","2":"158","3":"NA"},{"1":"Virginia","2":"432","3":"NA"},{"1":"Washington","2":"615","3":"NA"},{"1":"West Virginia","2":"974","3":"NA"},{"1":"Wisconsin","2":"842","3":"NA"},{"1":"Wyoming","2":"431","3":"NA"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -2238,7 +2236,6 @@ Caused by error in `sum()`:
 </div>
 <div class="cell">
 <div class="cell-output-display">
-
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
 {"columns":[{"label":["state"],"name":[1],"type":["chr"],"align":["left"]},{"label":["number"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["french_speakers"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"Alabama","2":"711","3":"1678"},{"1":"Alaska","2":"131","3":"1441"},{"1":"Arizona","2":"136","3":"1002"},{"1":"Arkansas","2":"557","3":"1558"},{"1":"California","2":"854","3":"1935"},{"1":"Colorado","2":"768","3":"1714"},{"1":"Connecticut","2":"586","3":"1536"},{"1":"Delaware","2":"453","3":"1824"},{"1":"District of Columbia","2":"180","3":"1601"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -2267,7 +2264,6 @@ Caused by error in `sum()`:
 </div>
 <div class="cell">
 <div class="cell-output-display">
-
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
 {"columns":[{"label":["state"],"name":[1],"type":["chr"],"align":["left"]},{"label":["number"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["french_speakers"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"Alabama","2":"711","3":"1678"},{"1":"Alaska","2":"131","3":"1441"},{"1":"Arizona","2":"136","3":"1002"},{"1":"Arkansas","2":"557","3":"1558"},{"1":"California","2":"854","3":"1935"},{"1":"Colorado","2":"768","3":"1714"},{"1":"Connecticut","2":"586","3":"1536"},{"1":"Delaware","2":"453","3":"1824"},{"1":"District of Columbia","2":"180","3":"1601"},{"1":"Florida","2":"958","3":"NA"},{"1":"Georgia","2":"821","3":"NA"},{"1":"Hawaii","2":"931","3":"NA"},{"1":"Idaho","2":"NA","3":"NA"},{"1":"Illinois","2":"827","3":"NA"},{"1":"Indiana","2":"728","3":"NA"},{"1":"Iowa","2":"657","3":"NA"},{"1":"Kansas","2":"501","3":"NA"},{"1":"Kentucky","2":"332","3":"NA"},{"1":"Louisiana","2":"490","3":"NA"},{"1":"Maine","2":"206","3":"NA"},{"1":"Montana","2":"527","3":"NA"},{"1":"Nebraska","2":"232","3":"NA"},{"1":"Nevada","2":"647","3":"NA"},{"1":"New Hampshire","2":"818","3":"NA"},{"1":"New Jersey","2":"168","3":"NA"},{"1":"New Mexico","2":"336","3":"NA"},{"1":"New York","2":"207","3":"NA"},{"1":"North Carolina","2":"508","3":"NA"},{"1":"North Dakota","2":"652","3":"NA"},{"1":"Ohio","2":"186","3":"NA"},{"1":"Oklahoma","2":"621","3":"NA"},{"1":"Oregon","2":"471","3":"NA"},{"1":"Maryland","2":"507","3":"NA"},{"1":"Massachusetts","2":"859","3":"NA"},{"1":"Michigan","2":"467","3":"NA"},{"1":"Minnesota","2":"251","3":"NA"},{"1":"Mississippi","2":"372","3":"NA"},{"1":"Missouri","2":"972","3":"NA"},{"1":"Pennsylvania","2":"956","3":"NA"},{"1":"Rhode Island","2":"900","3":"NA"},{"1":"South Carolina","2":"182","3":"NA"},{"1":"South Dakota","2":"584","3":"NA"},{"1":"Tennessee","2":"476","3":"NA"},{"1":"Texas","2":"292","3":"NA"},{"1":"Utah","2":"758","3":"NA"},{"1":"Vermont","2":"158","3":"NA"},{"1":"Virginia","2":"432","3":"NA"},{"1":"Washington","2":"615","3":"NA"},{"1":"West Virginia","2":"974","3":"NA"},{"1":"Wisconsin","2":"842","3":"NA"},{"1":"Wyoming","2":"431","3":"NA"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -2296,7 +2292,6 @@ Caused by error in `sum()`:
 </div>
 <div class="cell">
 <div class="cell-output-display">
-
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
 {"columns":[{"label":["state"],"name":[1],"type":["chr"],"align":["left"]},{"label":["number"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"Alabama","2":"711"},{"1":"Alaska","2":"131"},{"1":"Arizona","2":"136"},{"1":"Arkansas","2":"557"},{"1":"California","2":"854"},{"1":"Colorado","2":"768"},{"1":"Connecticut","2":"586"},{"1":"Delaware","2":"453"},{"1":"District of Columbia","2":"180"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -2325,7 +2320,6 @@ Caused by error in `sum()`:
 </div>
 <div class="cell">
 <div class="cell-output-display">
-
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
 {"columns":[{"label":["state"],"name":[1],"type":["chr"],"align":["left"]},{"label":["number"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"Florida","2":"958"},{"1":"Georgia","2":"821"},{"1":"Hawaii","2":"931"},{"1":"Idaho","2":"NA"},{"1":"Illinois","2":"827"},{"1":"Indiana","2":"728"},{"1":"Iowa","2":"657"},{"1":"Kansas","2":"501"},{"1":"Kentucky","2":"332"},{"1":"Louisiana","2":"490"},{"1":"Maine","2":"206"},{"1":"Montana","2":"527"},{"1":"Nebraska","2":"232"},{"1":"Nevada","2":"647"},{"1":"New Hampshire","2":"818"},{"1":"New Jersey","2":"168"},{"1":"New Mexico","2":"336"},{"1":"New York","2":"207"},{"1":"North Carolina","2":"508"},{"1":"North Dakota","2":"652"},{"1":"Ohio","2":"186"},{"1":"Oklahoma","2":"621"},{"1":"Oregon","2":"471"},{"1":"Maryland","2":"507"},{"1":"Massachusetts","2":"859"},{"1":"Michigan","2":"467"},{"1":"Minnesota","2":"251"},{"1":"Mississippi","2":"372"},{"1":"Missouri","2":"972"},{"1":"Pennsylvania","2":"956"},{"1":"Rhode Island","2":"900"},{"1":"South Carolina","2":"182"},{"1":"South Dakota","2":"584"},{"1":"Tennessee","2":"476"},{"1":"Texas","2":"292"},{"1":"Utah","2":"758"},{"1":"Vermont","2":"158"},{"1":"Virginia","2":"432"},{"1":"Washington","2":"615"},{"1":"West Virginia","2":"974"},{"1":"Wisconsin","2":"842"},{"1":"Wyoming","2":"431"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -2400,7 +2394,7 @@ Caused by error in `sum()`:
 <section class="slide level2 center">
 
 
-<img data-src="assets/jbm-covid-plot.jpeg" class="r-stretch quarto-figure-center"><aside class="notes">
+<img data-src="assets/jbm-covid-plot.jpeg" data-fig-width="100%" class="r-stretch"><aside class="notes">
 <p>https://twitter.com/jburnmurdoch/status/1237737352879112194</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -2420,44 +2414,44 @@ Caused by error in `sum()`:
 <section class="slide level2 center">
 
 
-<img data-src="assets/nyt-sea-ice-viz.png" class="r-stretch quarto-figure-center"></section>
+<img data-src="assets/nyt-sea-ice-viz.png" data-fig-width="100%" class="r-stretch"></section>
 <section class="slide level2 center">
 
 
-<img data-src="assets/jbm-covid-plot.jpeg" class="r-stretch quarto-figure-center"></section>
+<img data-src="assets/jbm-covid-plot.jpeg" data-fig-width="100%" class="r-stretch"></section>
 <section id="declutter" class="slide level2 has-bg-image center" data-background-image="assets/declutter.jpg">
 <h2>Declutter</h2>
 </section>
 <section class="slide level2 center">
 
 
-<img data-src="assets/nyt-sea-ice-viz.png" class="r-stretch quarto-figure-center"></section>
+<img data-src="assets/nyt-sea-ice-viz.png" data-fig-width="100%" class="r-stretch"></section>
 <section class="slide level2 center">
 
 
-<img data-src="assets/jbm-covid-plot.jpeg" class="r-stretch quarto-figure-center"></section>
+<img data-src="assets/jbm-covid-plot.jpeg" data-fig-width="100%" class="r-stretch"></section>
 <section id="explain" class="slide level2 has-bg-image center" data-background-image="assets/explain.jpg">
 <h2>Explain</h2>
 </section>
 <section class="slide level2 center">
 
 
-<img data-src="assets/nyt-sea-ice-viz.png" class="r-stretch quarto-figure-center"></section>
+<img data-src="assets/nyt-sea-ice-viz.png" data-fig-width="100%" class="r-stretch"></section>
 <section class="slide level2 center">
 
 
-<img data-src="assets/jbm-covid-plot.jpeg" class="r-stretch quarto-figure-center"></section>
+<img data-src="assets/jbm-covid-plot.jpeg" data-fig-width="100%" class="r-stretch"></section>
 <section id="sparkle" class="slide level2 has-bg-image center" data-background-image="assets/sparkle.jpg">
 <h2>Sparkle</h2>
 </section>
 <section class="slide level2 center">
 
 
-<img data-src="assets/nyt-sea-ice-viz.png" class="r-stretch quarto-figure-center"></section>
+<img data-src="assets/nyt-sea-ice-viz.png" data-fig-width="100%" class="r-stretch"></section>
 <section class="slide level2 center">
 
 
-<img data-src="assets/jbm-covid-plot.jpeg" class="r-stretch quarto-figure-center"></section></section>
+<img data-src="assets/jbm-covid-plot.jpeg" data-fig-width="100%" class="r-stretch"></section></section>
 <section>
 <section id="tidy-data-2" class="title-slide slide level1 has-bg-image center" data-background-image="assets/messy.jpg">
 <h1>Tidy Data</h1>
@@ -2791,11 +2785,11 @@ Caused by error in `sum()`:
 <section class="slide level2 center">
 
 
-<img data-src="assets/nyt-sea-ice-viz.png" class="r-stretch quarto-figure-center"></section>
+<img data-src="assets/nyt-sea-ice-viz.png" data-fig-width="100%" class="r-stretch"></section>
 <section class="slide level2 center">
 
 
-<img data-src="assets/jbm-covid-plot.jpeg" class="r-stretch quarto-figure-center"></section>
+<img data-src="assets/jbm-covid-plot.jpeg" data-fig-width="100%" class="r-stretch"></section>
 <section class="slide level2 center">
 
 
@@ -2836,11 +2830,11 @@ Caused by error in `sum()`:
 <section class="slide level2 center">
 
 
-<img data-src="assets/nyt-sea-ice-viz.png" class="r-stretch quarto-figure-center"></section>
+<img data-src="assets/nyt-sea-ice-viz.png" data-fig-width="100%" class="r-stretch"></section>
 <section class="slide level2 center">
 
 
-<img data-src="assets/jbm-covid-plot.jpeg" class="r-stretch quarto-figure-center"></section>
+<img data-src="assets/jbm-covid-plot.jpeg" data-fig-width="100%" class="r-stretch"></section>
 <section class="slide level2 center">
 
 
@@ -2898,7 +2892,7 @@ Caused by error in `sum()`:
 <section id="plot-parts" class="slide level2 center">
 <h2>Plot Parts</h2>
 
-<img data-src="assets/theme-elements-henry-wang.png" class="r-stretch quarto-figure-center"></section>
+<img data-src="assets/theme-elements-henry-wang.png" data-fig-width="100%" class="r-stretch"></section>
 <section id="element_-functions" class="slide level2 center">
 <h2><code>element_</code> Functions</h2>
 <ul>
@@ -3061,7 +3055,7 @@ Caused by error in `sum()`:
 <section class="slide level2 center">
 
 
-<img data-src="assets/nyt-sea-ice-viz.png" class="r-stretch quarto-figure-center"><aside class="notes">
+<img data-src="assets/nyt-sea-ice-viz.png" data-fig-width="100%" class="r-stretch"><aside class="notes">
 <p>Section is about using text to explain</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -3083,11 +3077,11 @@ Caused by error in `sum()`:
 <section class="slide level2 center">
 
 
-<img data-src="assets/nyt-sea-ice-viz.png" class="r-stretch quarto-figure-center"></section>
+<img data-src="assets/nyt-sea-ice-viz.png" data-fig-width="100%" class="r-stretch"></section>
 <section class="slide level2 center">
 
 
-<img data-src="assets/jbm-covid-plot.jpeg" class="r-stretch quarto-figure-center"></section>
+<img data-src="assets/jbm-covid-plot.jpeg" data-fig-width="100%" class="r-stretch"></section>
 <section class="slide level2 center">
 
 
@@ -3133,11 +3127,11 @@ Caused by error in `sum()`:
 <section class="slide level2 center">
 
 
-<img data-src="assets/nyt-sea-ice-viz.png" class="r-stretch quarto-figure-center"></section>
+<img data-src="assets/nyt-sea-ice-viz.png" data-fig-width="100%" class="r-stretch"></section>
 <section class="slide level2 center">
 
 
-<img data-src="assets/jbm-covid-plot.jpeg" class="r-stretch quarto-figure-center"></section>
+<img data-src="assets/jbm-covid-plot.jpeg" data-fig-width="100%" class="r-stretch"></section>
 <section id="add-descriptive-titles" class="slide level2 center">
 <h2>Add Descriptive Titles</h2>
 
@@ -3208,15 +3202,15 @@ Caused by error in `sum()`:
 <section class="slide level2 center">
 
 
-<img data-src="assets/nyt-sea-ice-viz.png" class="r-stretch quarto-figure-center"></section>
+<img data-src="assets/nyt-sea-ice-viz.png" data-fig-width="100%" class="r-stretch"></section>
 <section class="slide level2 center">
 
 
-<img data-src="assets/jbm-covid-plot.jpeg" class="r-stretch quarto-figure-center"></section>
+<img data-src="assets/jbm-covid-plot.jpeg" data-fig-width="100%" class="r-stretch"></section>
 <section class="slide level2 center">
 
 
-<img data-src="assets/ft-annotation-example.jpeg" class="r-stretch quarto-figure-center"></section>
+<img data-src="assets/ft-annotation-example.jpeg" data-fig-width="100%" class="r-stretch"></section>
 <section id="use-annotations-to-explain-1" class="slide level2 center">
 <h2>Use Annotations to Explain</h2>
 
@@ -3270,7 +3264,7 @@ Caused by error in `sum()`:
 <section class="slide level2 center">
 
 
-<img data-src="assets/default.gif" class="r-stretch quarto-figure-center"></section></section>
+<img data-src="assets/default.gif" data-fig-width="100%" class="r-stretch"></section></section>
 <section>
 <section id="tweak-spacing" class="title-slide slide level1 inverse center">
 <h1>Tweak Spacing</h1>
@@ -3571,46 +3565,1204 @@ Caused by error in `sum()`:
 </section>
 <section id="waffle" class="slide level2 center">
 <h2><code>waffle</code></h2>
-
-<img data-src="assets/waffle-bars.png" class="r-stretch quarto-figure-center"></section>
+<p><a href="https://github.com/hrbrmstr/waffle"><img data-src="assets/waffle-bars.png"></a></p>
+</section>
 <section id="ggbump" class="slide level2 center">
 <h2><code>ggbump</code></h2>
-
-<img data-src="assets/bump-chart.png" class="r-stretch quarto-figure-center"></section>
+<p><a href="https://github.com/davidsjoberg/ggbump"><img data-src="assets/bump-chart.png"></a></p>
+</section>
 <section id="ggstream" class="slide level2 center">
 <h2><code>ggstream</code></h2>
-
-<img data-src="assets/ggstream.png" class="r-stretch quarto-figure-center"></section>
+<p><a href="https://github.com/davidsjoberg/ggstream"><img data-src="assets/ggstream.png"></a></p>
+</section>
 <section id="ggridges" class="slide level2 center">
 <h2><code>ggridges</code></h2>
-
-<img data-src="assets/ggridges.png" class="r-stretch quarto-figure-center"></section>
+<p><a href="https://wilkelab.org/ggridges"><img data-src="assets/ggridges.png"></a></p>
+</section>
 <section id="ggbeeswarm" class="slide level2 center">
 <h2><code>ggbeeswarm</code></h2>
-
-<img data-src="assets/ggbeeswarm.png" class="r-stretch quarto-figure-center"></section>
+<p><a href="https://github.com/eclarke/ggbeeswarm"><img data-src="assets/ggbeeswarm.png"></a></p>
+</section>
 <section id="gganimate" class="slide level2 center">
 <h2><code>gganimate</code></h2>
-
-<img data-src="assets/claimsratio_2020_04_03.gif" class="r-stretch quarto-figure-center"></section>
+<p><a href="http://lenkiefer.com/2020/04/03/us-labor-market-update-april-2020/"><img data-src="assets/claimsratio_2020_04_03.gif"></a></p>
+</section>
 <section id="patchwork" class="slide level2 center">
 <h2><code>patchwork</code></h2>
-
-<img data-src="assets/patchwork-twitter-post.png" class="r-stretch quarto-figure-center"></section>
+<p><a href="https://twitter.com/littlemissdata/status/1229176433123168256"><img data-src="assets/patchwork-twitter-post.png"></a></p>
+</section>
 <section id="patchwork-1" class="slide level2 center">
 <h2><code>patchwork</code></h2>
-
-<img data-src="assets/scherer-spotify.gif" class="r-stretch quarto-figure-center"></section>
+<p><a href="https://github.com/Z3tt/TidyTuesday#week-202004--spotify-songs-by-spotify-via-spotifyr"><img data-src="assets/scherer-spotify.gif"></a></p>
+</section>
 <section id="your-turn-23" class="slide level2 your-turn center">
 <h2>Your Turn</h2>
 <ol type="1">
 <li class="fragment"><p>Make a plot using a new (to you) geom. You can use the ones I’ve shown in this lesson or you can find more on the <a href="https://github.com/erikgahner/awesome-ggplot2">Awesome ggplot2 GitHub repository</a>.</p></li>
 <li class="fragment"><p>If you come up with something you’d like to share, please email it to me at <a href="mailto:david@rfortherestofus.com" class="email">david@rfortherestofus.com</a>.</p></li>
 </ol>
+</section></section>
+<section>
+<section id="advanced-markdown" class="title-slide slide level1 inverse center" data-background-image="assets/fancy-text.jpg">
+<h1>Advanced Markdown</h1>
+
+</section>
+<section id="links" class="slide level2 center">
+<h2>Links</h2>
+<p>This is a <a href="http://rfortherestofus.com/">link to the Rest for the Rest of Us website</a></p>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb168"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb168-1"><a href="#cb168-1"></a>This is a <span class="co">[</span><span class="ot">link to the Rest for the Rest of Us website</span><span class="co">](http://rfortherestofus.com/)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="images" class="slide level2 center">
+<h2>Images</h2>
+
+<img data-src="assets/girl-meditating.jpg" class="r-stretch"></section>
+<section id="image-sizing" class="slide level2 center">
+<h2>Image Sizing</h2>
+<div class="fragment">
+<p>Set the width of your images in pixels</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb169"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb169-1"><a href="#cb169-1"></a><span class="al">![](assets/girl-meditating.jpg)</span>{width=300px}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="fragment">
+<p>Set the width of your images in inches</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb170"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb170-1"><a href="#cb170-1"></a><span class="al">![](assets/girl-meditating.jpg)</span>{width=4in}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="fragment">
+<p>Set the width of your images as a percent</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb171"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb171-1"><a href="#cb171-1"></a><span class="al">![](assets/girl-meditating.jpg)</span>{width=50%}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="image-alignment" class="slide level2 center">
+<h2>Image Alignment</h2>
+<p>Images are centered by default but you can change this.</p>
+<div class="fragment">
+<p>Align images to the left</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb172"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb172-1"><a href="#cb172-1"></a><span class="al">![](assets/girl-meditating.jpg)</span>{fig-align="left"}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="fragment">
+<p>Align images to the right</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb173"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb173-1"><a href="#cb173-1"></a><span class="al">![](assets/girl-meditating.jpg)</span>{fig-align="right"}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="fragment">
+<p>Center align images</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb174"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb174-1"><a href="#cb174-1"></a><span class="al">![](assets/girl-meditating.jpg)</span>{fig-align="center"}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="caption" class="slide level2 center">
+<h2>Caption</h2>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb175"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb175-1"><a href="#cb175-1"></a><span class="al">![A girl meditating](assets/girl-meditating.jpg)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="alt-text" class="slide level2 center">
+<h2>Alt Text</h2>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb176"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb176-1"><a href="#cb176-1"></a><span class="al">![](assets/girl-meditating.jpg)</span>{fig-alt="A girl meditating"}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="blockquotes" class="slide level2 center">
+<h2>Blockquotes</h2>
+<p>And here is what Abraham Lincoln said:</p>
+<div class="fragment">
+<blockquote>
+<p>Four score and seven years ago …</p>
+</blockquote>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb177"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb177-1"><a href="#cb177-1"></a><span class="at">&gt; Four score and seven years ago ...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="footnotes" class="slide level2 center">
+<h2>Footnotes</h2>
+<p>Here is some text.<sup>1</sup></p>
+<aside><ol class="aside-footnotes"><li id="fn1"><p>Here is a footnote</p></li></ol></aside></section>
+<section id="footnotes-1" class="slide level2 center">
+<h2>Footnotes</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb178"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb178-1"><a href="#cb178-1"></a>Here is some text.^<span class="co">[</span><span class="ot">Here is a footnote</span><span class="co">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="my-turn-22" class="slide level2 my-turn center">
+<h2>My Turn</h2>
+<p>I’ll create a Quarto document and do the following:</p>
+<ol type="1">
+<li class="fragment"><p>Add a link</p></li>
+<li class="fragment"><p>Add an image and adjust its alignment and alt text</p></li>
+<li class="fragment"><p>Add a blockquote</p></li>
+<li class="fragment"><p>Add a footnote</p></li>
+</ol>
+</section>
+<section id="your-turn-24" class="slide level2 your-turn center">
+<h2>Your Turn</h2>
+<ul>
+<li class="fragment"><p>Add the Oregon Department of Education logo to the top of your report. You can find it at the <a href="https://github.com/rfortherestofus/going-deeper/raw/master/slides/assets/ode-logo.jpg">link below</a>.</p></li>
+<li class="fragment"><p>Add the following text (make sure you include the <a href="https://www.oregon.gov/ode/pages/default.aspx">link</a>, which is below):</p></li>
+</ul>
+<div class="fragment">
+<p>This is a report for the <a href="https://www.oregon.gov/ode/pages/default.aspx">Oregon Department of Education</a> on diversity in Oregon school districts.</p>
+</div>
+</section>
+<section id="your-turn-continued-5" class="slide level2 your-turn center">
+<h2>Your Turn, Continued</h2>
+<ul>
+<li class="fragment">Add the following text as a block quote:</li>
+</ul>
+<div class="fragment">
+<blockquote>
+<p>The Oregon Department of Education fosters equity and excellence for every learner through collaboration with educators, partners, and communities.</p>
+</blockquote>
+</div>
+<ul>
+<li class="fragment">Add a <a href="https://www.oregon.gov/ode/about-us/Pages/default.aspx">link to the source for mission statement</a> as a footnote.</li>
+</ul>
+</section></section>
+<section>
+<section id="tables" class="title-slide slide level1 inverse center" data-background-image="assets/table.jpg">
+<h1>Tables</h1>
+
+</section>
+<section id="tables-usually-need-wide-data" class="slide level2 center">
+<h2>Tables Usually Need Wide Data</h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 3
+   year      school                      percent_proficient_formatted
+   &lt;chr&gt;     &lt;chr&gt;                       &lt;chr&gt;                       
+ 1 2018-2019 Abernethy Elementary School 71%                         
+ 2 2021-2022 Abernethy Elementary School 79%                         
+ 3 2018-2019 Ainsworth Elementary School 80%                         
+ 4 2021-2022 Ainsworth Elementary School 68%                         
+ 5 2018-2019 Alameda Elementary School   83%                         
+ 6 2021-2022 Alameda Elementary School   82%                         
+ 7 2018-2019 Arleta Elementary School    42%                         
+ 8 2021-2022 Arleta Elementary School    52%                         
+ 9 2018-2019 Atkinson Elementary School  51%                         
+10 2021-2022 Atkinson Elementary School  58%                         </code></pre>
+</div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 3
+  school                      `2018-2019` `2021-2022`
+  &lt;chr&gt;                       &lt;chr&gt;       &lt;chr&gt;      
+1 Abernethy Elementary School 71%         79%        
+2 Ainsworth Elementary School 80%         68%        
+3 Alameda Elementary School   83%         82%        
+4 Arleta Elementary School    42%         52%        
+5 Atkinson Elementary School  51%         58%        </code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="pivot_wider" class="slide level2 center">
+<h2><code>pivot_wider()</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb181"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb181-1"><a href="#cb181-1"></a>data_long</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 3
+   year      school                      percent_proficient_formatted
+   &lt;chr&gt;     &lt;chr&gt;                       &lt;chr&gt;                       
+ 1 2018-2019 Abernethy Elementary School 71%                         
+ 2 2021-2022 Abernethy Elementary School 79%                         
+ 3 2018-2019 Ainsworth Elementary School 80%                         
+ 4 2021-2022 Ainsworth Elementary School 68%                         
+ 5 2018-2019 Alameda Elementary School   83%                         
+ 6 2021-2022 Alameda Elementary School   82%                         
+ 7 2018-2019 Arleta Elementary School    42%                         
+ 8 2021-2022 Arleta Elementary School    52%                         
+ 9 2018-2019 Atkinson Elementary School  51%                         
+10 2021-2022 Atkinson Elementary School  58%                         </code></pre>
+</div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb183" data-code-line-numbers="2-4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb183-1"><a href="#cb183-1"></a>data_long <span class="sc">|&gt;</span> </span>
+<span id="cb183-2"><a href="#cb183-2"></a>  <span class="fu">pivot_wider</span>(<span class="at">id_cols =</span> school,</span>
+<span id="cb183-3"><a href="#cb183-3"></a>              <span class="at">names_from =</span> year,</span>
+<span id="cb183-4"><a href="#cb183-4"></a>              <span class="at">values_from =</span> percent_proficient_formatted)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 3
+  school                      `2018-2019` `2021-2022`
+  &lt;chr&gt;                       &lt;chr&gt;       &lt;chr&gt;      
+1 Abernethy Elementary School 71%         79%        
+2 Ainsworth Elementary School 80%         68%        
+3 Alameda Elementary School   83%         82%        
+4 Arleta Elementary School    42%         52%        
+5 Atkinson Elementary School  51%         58%        </code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="dont-use-the-default-output" class="slide level2 center">
+<h2>Don’t Use the Default Output</h2>
+
+<img data-src="assets/default-table-output.png" data-fig-width="100%" class="r-stretch"></section>
+<section id="table-packages" class="slide level2 inverse center" data-background-image="assets/packages.jpg">
+<h2>Table Packages</h2>
+</section>
+<section id="flextable" class="slide level2 center-slide center">
+<h2><code>flextable</code></h2>
+
+<img data-src="assets/flextable.svg" class="r-stretch"></section>
+<section id="gt" class="slide level2 center-slide center">
+<h2><code>gt</code></h2>
+
+<img data-src="assets/gt_parts_of_a_table.svg" class="r-stretch"></section>
+<section id="interactive-tables-with-gt" class="slide level2 center-slide center">
+<h2>Interactive Tables with <code>gt</code></h2>
+
+<img data-src="assets/gt-interactive.gif" class="r-stretch"><aside class="notes">
+<p>https://posit.co/blog/new-in-gt-0-9-0-interactive-tables/</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="my-turn-23" class="slide level2 my-turn center">
+<h2>My Turn</h2>
+<p>I’ll demonstrate making effective tables using <code>flextable</code> and <code>gt</code>.</p>
+<aside class="notes">
+<ul>
+<li>Set Names (cols_label)</li>
+<li>Align</li>
+<li>Column Width</li>
+<li>Formatting numbers</li>
+<li>Source</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="your-turn-25" class="slide level2 your-turn center">
+<h2>Your Turn</h2>
+<ul>
+<li class="fragment"><p>Copy the starter code below into RStudio and use it to make a table using <code>flextable</code> or <code>gt</code>.</p></li>
+<li class="fragment"><p>Work on adjusting your column names, column width, number formatting, and anything else you might want to try out.</p></li>
+</ul>
+</section></section>
+<section>
+<section id="advanced-yaml-and-code-chunk-options" class="title-slide slide level1 inverse center" data-background-image="assets/book.jpg">
+<h1>Advanced YAML and Code Chunk Options</h1>
+<aside class="notes">
+<p>https://quarto.org/docs/reference/cells/cells-knitr.html</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="table-of-contents" class="slide level2 center">
+<h2>Table of Contents</h2>
+<div class="fragment">
+<p>Add a table of contents</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb185" data-code-line-numbers="3"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb185-1"><a href="#cb185-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb185-2"><a href="#cb185-2"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
+<span id="cb185-3"><a href="#cb185-3"></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="fragment">
+<p>Choose how many levels of headings should be included in the table of contents</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb186" data-code-line-numbers="4"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb186-1"><a href="#cb186-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb186-2"><a href="#cb186-2"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
+<span id="cb186-3"><a href="#cb186-3"></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb186-4"><a href="#cb186-4"></a><span class="at">    </span><span class="fu">toc-depth</span><span class="kw">:</span><span class="at"> </span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="fragment">
+<p>Choose the location for the table of contents</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb187" data-code-line-numbers="5"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb187-1"><a href="#cb187-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb187-2"><a href="#cb187-2"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
+<span id="cb187-3"><a href="#cb187-3"></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb187-4"><a href="#cb187-4"></a><span class="at">    </span><span class="fu">toc-depth</span><span class="kw">:</span><span class="at"> </span><span class="dv">2</span></span>
+<span id="cb187-5"><a href="#cb187-5"></a><span class="at">    </span><span class="fu">toc-location</span><span class="kw">:</span><span class="at"> left</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="set-the-default-figure-width-and-height" class="slide level2 center">
+<h2>Set the Default Figure Width and Height</h2>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb188" data-code-line-numbers="3-4"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb188-1"><a href="#cb188-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb188-2"><a href="#cb188-2"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
+<span id="cb188-3"><a href="#cb188-3"></a><span class="at">    </span><span class="fu">fig-width</span><span class="kw">:</span><span class="at"> </span><span class="dv">4</span></span>
+<span id="cb188-4"><a href="#cb188-4"></a><span class="at">    </span><span class="fu">fig-height</span><span class="kw">:</span><span class="at"> </span><span class="dv">6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="override-default-figure-width-and-height" class="slide level2 center">
+<h2>Override Default Figure Width and Height</h2>
+<div class="fragment">
+<div class="sourceCode" id="cb189"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb189-1"><a href="#cb189-1"></a><span class="in">```{r}</span></span>
+<span id="cb189-2"><a href="#cb189-2"></a><span class="in">#| fig-width: 3</span></span>
+<span id="cb189-3"><a href="#cb189-3"></a><span class="in">#| fig-height: 5</span></span>
+<span id="cb189-4"><a href="#cb189-4"></a></span>
+<span id="cb189-5"><a href="#cb189-5"></a><span class="in">penguins |&gt; </span></span>
+<span id="cb189-6"><a href="#cb189-6"></a><span class="in">  filter(year == 2007) |&gt; </span></span>
+<span id="cb189-7"><a href="#cb189-7"></a><span class="in">  count(island) |&gt; </span></span>
+<span id="cb189-8"><a href="#cb189-8"></a><span class="in">  ggplot(aes(x = n,</span></span>
+<span id="cb189-9"><a href="#cb189-9"></a><span class="in">             y = reorder(island, n),</span></span>
+<span id="cb189-10"><a href="#cb189-10"></a><span class="in">             fill = island,</span></span>
+<span id="cb189-11"><a href="#cb189-11"></a><span class="in">             label = n)) +</span></span>
+<span id="cb189-12"><a href="#cb189-12"></a><span class="in">  geom_col() +</span></span>
+<span id="cb189-13"><a href="#cb189-13"></a><span class="in">  geom_text(family = "Papyrus") +</span></span>
+<span id="cb189-14"><a href="#cb189-14"></a><span class="in">  labs(title = "My Amazing Penguins Chart") +</span></span>
+<span id="cb189-15"><a href="#cb189-15"></a><span class="in">  theme_minimal(base_family = "Papyrus") +</span></span>
+<span id="cb189-16"><a href="#cb189-16"></a><span class="in">  theme(axis.text = element_text(family = "Inter"))</span></span>
+<span id="cb189-17"><a href="#cb189-17"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="captions-and-alt-text" class="slide level2 center">
+<h2>Captions and Alt Text</h2>
+<div class="fragment">
+<div class="sourceCode" id="cb190"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb190-1"><a href="#cb190-1"></a><span class="in">```{r}</span></span>
+<span id="cb190-2"><a href="#cb190-2"></a><span class="in">#| fig-cap: A plot about penguins</span></span>
+<span id="cb190-3"><a href="#cb190-3"></a><span class="in">#| fig-alt: A bar chart showing the number of penguins on each island</span></span>
+<span id="cb190-4"><a href="#cb190-4"></a></span>
+<span id="cb190-5"><a href="#cb190-5"></a><span class="in">penguins |&gt; </span></span>
+<span id="cb190-6"><a href="#cb190-6"></a><span class="in">  filter(year == 2007) |&gt; </span></span>
+<span id="cb190-7"><a href="#cb190-7"></a><span class="in">  count(island) |&gt; </span></span>
+<span id="cb190-8"><a href="#cb190-8"></a><span class="in">  ggplot(aes(x = n,</span></span>
+<span id="cb190-9"><a href="#cb190-9"></a><span class="in">             y = reorder(island, n),</span></span>
+<span id="cb190-10"><a href="#cb190-10"></a><span class="in">             fill = island,</span></span>
+<span id="cb190-11"><a href="#cb190-11"></a><span class="in">             label = n)) +</span></span>
+<span id="cb190-12"><a href="#cb190-12"></a><span class="in">  geom_col() +</span></span>
+<span id="cb190-13"><a href="#cb190-13"></a><span class="in">  geom_text(family = "Papyrus") +</span></span>
+<span id="cb190-14"><a href="#cb190-14"></a><span class="in">  labs(title = "My Amazing Penguins Chart") +</span></span>
+<span id="cb190-15"><a href="#cb190-15"></a><span class="in">  theme_minimal(base_family = "Papyrus") +</span></span>
+<span id="cb190-16"><a href="#cb190-16"></a><span class="in">  theme(axis.text = element_text(family = "Inter"))</span></span>
+<span id="cb190-17"><a href="#cb190-17"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="my-turn-24" class="slide level2 my-turn center">
+<h2>My Turn</h2>
+<ol type="1">
+<li class="fragment"><p>Add a table of contents and adjust where it goes</p></li>
+<li class="fragment"><p>Set default figure width and height</p></li>
+<li class="fragment"><p>Change the figure width and height in an individual code chunk</p></li>
+<li class="fragment"><p>Add a figure caption and alt text</p></li>
+</ol>
+</section>
+<section id="your-turn-26" class="slide level2 your-turn center">
+<h2>Your Turn</h2>
+<ol type="1">
+<li class="fragment"><p>Add a table of contents and adjust where it goes</p></li>
+<li class="fragment"><p>Set default figure width and height</p></li>
+<li class="fragment"><p>Change the figure width and height in an individual code chunk</p></li>
+<li class="fragment"><p>Add a figure caption and alt text</p></li>
+</ol>
+</section></section>
+<section>
+<section id="inline-r-code" class="title-slide slide level1 inverse center" data-background-image="assets/inline-skating.jpg">
+<h1>Inline R Code</h1>
+<aside class="notes">
+<p>The goal is to make everything reproducible, including text</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="inline-r-code-1" class="slide level2 center">
+<h2>Inline R Code</h2>
+<p>These two lines of text look identical, right?</p>
+<div class="fragment">
+<p>There are 210 school districts in Oregon.</p>
+</div>
+<div class="fragment">
+<p>There are 210 school districts in Oregon.</p>
+</div>
+</section>
+<section id="inline-r-code-2" class="slide level2 center">
+<h2>Inline R Code</h2>
+<p>They’re not identical!</p>
+<div class="fragment">
+<p>There are 210 school districts in Oregon.</p>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb191"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb191-1"><a href="#cb191-1" aria-hidden="true" tabindex="-1"></a>There are <span class="in">`r oregon_school_districts`</span> school districts in Oregon.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="my-turn-25" class="slide level2 my-turn center">
+<h2>My Turn</h2>
+<p>I’ll add a line to my report that uses inline R code.</p>
+</section>
+<section id="your-turn-27" class="slide level2 your-turn center">
+<h2>Your Turn</h2>
+<p>Add a line to your report that uses inline R code.</p>
+</section></section>
+<section>
+<section id="making-your-reports-shine-word-edition" class="title-slide slide level1 inverse center" data-background-image="assets/microsoft-word.jpg">
+<h1>Making Your Reports Shine: Word Edition</h1>
+
+</section>
+<section id="making-your-reports-shine-word-edition-1" class="slide level2 center">
+<h2>Making Your Reports Shine: Word Edition</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb192" data-code-line-numbers="3"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb192-1"><a href="#cb192-1"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb192-2"><a href="#cb192-2"></a><span class="at">  </span><span class="fu">docx</span><span class="kw">:</span></span>
+<span id="cb192-3"><a href="#cb192-3"></a><span class="at">    </span><span class="fu">reference-doc</span><span class="kw">:</span><span class="at"> custom-reference-doc.docx</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<aside class="notes">
+<p>https://quarto.org/docs/output-formats/ms-word-templates.html</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="my-turn-26" class="slide level2 my-turn center">
+<h2>My Turn</h2>
+<p>I’ll use a reference document to change the look and feel of my report that is rendered to Word.</p>
+</section>
+<section id="your-turn-28" class="slide level2 your-turn center">
+<h2>Your Turn</h2>
+<p>Use a reference document to change the look and feel of your report when rendered to Word.</p>
+</section></section>
+<section>
+<section id="making-your-reports-shine-pdf-edition" class="title-slide slide level1 inverse center" data-background-image="assets/report.jpg">
+<h1>Making Your Reports Shine: PDF Edition</h1>
+<aside class="notes">
+<p>You need to download Quarto 1.4</p>
+<p>https://github.com/cscheid/2023-posit-conf-talk/blob/main/talk.qmd</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2 center">
+
+<div class="center-slide">
+<p><a href="https://twitter.com/jefflittlejohn/status/1216869830726316033"><img data-src="assets/littlejohn-latex-tweet.png"></a></p>
+</div>
+</section>
+<section class="slide level2 center">
+
+<div class="center-slide">
+<p><a href="https://twitter.com/andrewheiss/status/1204870408148832257"><img data-src="assets/heiss-latex-tweet.png"></a></p>
+</div>
+</section>
+<section class="slide level2 center">
+
+<div class="center-slide">
+<p><a href="https://twitter.com/MattCowgill/status/1249190934392307712"><img data-src="assets/latex-table-tweet.png"></a></p>
+</div>
+</section>
+<section class="slide level2 center">
+
+<div class="center-slide">
+<p><a href="https://twitter.com/thattommyhall/status/1248679614337241089"><img data-src="assets/latex-book-tweet.png"></a></p>
+</div>
+</section>
+<section class="slide level2 center">
+
+
+<img data-src="assets/typst.png" class="quarto-figure-center r-stretch"></section>
+<section id="typst" class="slide level2 center">
+<h2><code>typst</code></h2>
+<ul>
+<li class="fragment"><p>Very much in development now!</p></li>
+<li class="fragment"><p>To use it, you must install a <a href="https://quarto.org/docs/download/prerelease">pre-release version of Quarto</a></p></li>
+<li class="fragment"><p>Provides syntax to relatively easily adjust page size, margins, font size, etc.</p></li>
+</ul>
+</section>
+<section id="typst-1" class="slide level2 center">
+<h2><code>typst</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb193"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb193-1"><a href="#cb193-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb193-2"><a href="#cb193-2"></a><span class="at">  </span><span class="fu">typst</span><span class="kw">:</span></span>
+<span id="cb193-3"><a href="#cb193-3"></a><span class="at">    </span><span class="fu">papersize</span><span class="kw">:</span><span class="at"> us-letter</span></span>
+<span id="cb193-4"><a href="#cb193-4"></a><span class="at">    </span><span class="fu">mainfont</span><span class="kw">:</span><span class="at"> Inter</span></span>
+<span id="cb193-5"><a href="#cb193-5"></a><span class="at">    </span><span class="fu">fontsize</span><span class="kw">:</span><span class="at"> 20pt</span></span>
+<span id="cb193-6"><a href="#cb193-6"></a><span class="fu">margin</span><span class="kw">:</span></span>
+<span id="cb193-7"><a href="#cb193-7"></a><span class="at">  </span><span class="fu">top</span><span class="kw">:</span><span class="at"> 5in</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<aside class="notes">
+<p>https://quarto.org/docs/prerelease/1.4/typst.html#typst-format</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="page-breaks" class="slide level2 center">
+<h2>Page Breaks</h2>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb194"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb194-1"><a href="#cb194-1"></a>{{&lt; pagebreak &gt;}}</span>
+<span id="cb194-2"><a href="#cb194-2"></a></span>
+<span id="cb194-3"><a href="#cb194-3"></a><span class="fu"># Header I want to go on the next page</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="my-turn-27" class="slide level2 my-turn center">
+<h2>My Turn</h2>
+<ul>
+<li class="fragment"><p>Create a PDF document using the <code>typst</code> format</p></li>
+<li class="fragment"><p>Add page breaks to make my report easier to read</p></li>
+</ul>
+</section>
+<section id="your-turn-29" class="slide level2 your-turn center">
+<h2>Your Turn</h2>
+<ul>
+<li class="fragment">Create a PDF document using the <code>typst</code> format</li>
+</ul>
+</section></section>
+<section>
+<section id="making-your-reports-shine-html-edition" class="title-slide slide level1 inverse center" data-background-image="assets/html.jpg">
+<h1>Making Your Reports Shine: HTML Edition</h1>
+
+</section>
+<section id="built-in-themes" class="slide level2 center">
+<h2>Built-In Themes</h2>
+<p><a href="https://quarto.org/docs/output-formats/html-themes.html">Quarto has a number of built-in themes</a></p>
+</section>
+<section id="built-in-themes-1" class="slide level2 center">
+<h2>Built-In Themes</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb195" data-code-line-numbers="4"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb195-1"><a href="#cb195-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"My Document"</span></span>
+<span id="cb195-2"><a href="#cb195-2"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb195-3"><a href="#cb195-3"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb195-4"><a href="#cb195-4"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> cosmo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<aside class="notes">
+<p>https://quarto.org/docs/output-formats/html-themes.html</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="customizing-built-in-themes" class="slide level2 center">
+<h2>Customizing Built-In Themes</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment"><code>max-width</code></li>
+<li class="fragment"><code>mainfont</code></li>
+<li class="fragment"><code>fontsize</code></li>
+<li class="fragment"><code>fontcolor</code></li>
+<li class="fragment"><code>linkcolor</code></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li class="fragment"><code>monofont</code></li>
+<li class="fragment"><code>monobackgroundcolor</code></li>
+<li class="fragment"><code>linestretch</code></li>
+<li class="fragment"><code>backgroundcolor</code></li>
+<li class="fragment"><code>margin-left</code>, <code>margin-right</code>, <code>margin-top</code>, <code>margin-bottom</code></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="customizing-built-in-themes-1" class="slide level2 center">
+<h2>Customizing Built-In Themes</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb196" data-code-line-numbers="5-6"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb196-1"><a href="#cb196-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"My Document"</span></span>
+<span id="cb196-2"><a href="#cb196-2"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb196-3"><a href="#cb196-3"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb196-4"><a href="#cb196-4"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> cosmo</span></span>
+<span id="cb196-5"><a href="#cb196-5"></a><span class="at">    </span><span class="fu">mainfont</span><span class="kw">:</span><span class="at"> Inter</span></span>
+<span id="cb196-6"><a href="#cb196-6"></a><span class="at">    </span><span class="fu">fontsize</span><span class="kw">:</span><span class="at"> 20px</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="creating-your-own-theme" class="slide level2 center">
+<h2>Creating Your Own Theme</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb197" data-code-line-numbers="4"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb197-1"><a href="#cb197-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"My Document"</span></span>
+<span id="cb197-2"><a href="#cb197-2"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb197-3"><a href="#cb197-3"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb197-4"><a href="#cb197-4"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> custom.scss</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="anatomy-of-a-.scss-file" class="slide level2 center">
+<h2>Anatomy of a <code>.scss</code> File</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb198"><pre class="sourceCode numberSource scss number-lines code-with-copy"><code class="sourceCode scss"><span id="cb198-1"><a href="#cb198-1"></a><span class="co">/*-- scss:defaults --*/</span></span>
+<span id="cb198-2"><a href="#cb198-2"></a></span>
+<span id="cb198-3"><a href="#cb198-3"></a><span class="co">/*-- scss:rules --*/</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<style type="text/css">
+
+</style>
+</div>
+</section>
+<section id="anatomy-of-a-.scss-file-1" class="slide level2 center">
+<h2>Anatomy of a <code>.scss</code> File</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb199" data-code-line-numbers="1-5"><pre class="sourceCode numberSource scss number-lines code-with-copy"><code class="sourceCode scss"><span id="cb199-1"><a href="#cb199-1"></a><span class="co">/*-- scss:defaults --*/</span></span>
+<span id="cb199-2"><a href="#cb199-2"></a></span>
+<span id="cb199-3"><a href="#cb199-3"></a><span class="va">$body-bg</span>: <span class="cn">red</span><span class="op">;</span></span>
+<span id="cb199-4"><a href="#cb199-4"></a><span class="va">$body-color</span>: <span class="cn">white</span><span class="op">;</span></span>
+<span id="cb199-5"><a href="#cb199-5"></a><span class="va">$font-size-root</span>: <span class="dv">20</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb199-6"><a href="#cb199-6"></a></span>
+<span id="cb199-7"><a href="#cb199-7"></a><span class="co">/*-- scss:rules --*/</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<style type="text/css">
+
+</style>
+</div>
+<aside class="notes">
+<p>Talk about Sass variables https://quarto.org/docs/output-formats/html-themes.html#sass-variables</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="anatomy-of-a-.scss-file-2" class="slide level2 center">
+<h2>Anatomy of a <code>.scss</code> File</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb200" data-code-line-numbers="7-11"><pre class="sourceCode numberSource scss number-lines code-with-copy"><code class="sourceCode scss"><span id="cb200-1"><a href="#cb200-1"></a><span class="co">/*-- scss:defaults --*/</span></span>
+<span id="cb200-2"><a href="#cb200-2"></a></span>
+<span id="cb200-3"><a href="#cb200-3"></a><span class="va">$body-bg</span>: <span class="cn">red</span><span class="op">;</span></span>
+<span id="cb200-4"><a href="#cb200-4"></a><span class="va">$body-color</span>: <span class="cn">white</span><span class="op">;</span></span>
+<span id="cb200-5"><a href="#cb200-5"></a><span class="va">$font-size-root</span>: <span class="dv">20</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb200-6"><a href="#cb200-6"></a></span>
+<span id="cb200-7"><a href="#cb200-7"></a><span class="co">/*-- scss:rules --*/</span></span>
+<span id="cb200-8"><a href="#cb200-8"></a></span>
+<span id="cb200-9"><a href="#cb200-9"></a>h1 {</span>
+<span id="cb200-10"><a href="#cb200-10"></a>  <span class="kw">text-shadow</span>: <span class="op">-</span><span class="dv">1</span><span class="dt">px</span> <span class="op">-</span><span class="dv">1</span><span class="dt">px</span> <span class="dv">0</span> <span class="fu">rgba(</span><span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">.3</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb200-11"><a href="#cb200-11"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<style type="text/css">
+h1{text-shadow:-1px -1px 0 rgba(0,0,0,0.3)}
+</style>
+</div>
+</section>
+<section id="my-turn-28" class="slide level2 my-turn center">
+<h2>My Turn</h2>
+<ol type="1">
+<li class="fragment"><p>Apply a built-in HTML theme to my report.</p></li>
+<li class="fragment"><p>Customize the built-in HTML theme.</p></li>
+<li class="fragment"><p>Create my own theme using an <code>.scss</code> file, Sass variables, and some custom CSS.</p></li>
+</ol>
+</section>
+<section id="your-turn-30" class="slide level2 your-turn center">
+<h2>Your Turn</h2>
+<ol type="1">
+<li class="fragment"><p>Apply a built-in HTML theme to your report.</p></li>
+<li class="fragment"><p>Customize the built-in HTML theme.</p></li>
+<li class="fragment"><p>Create your own theme using an <code>.scss</code> file and Sass variables</p></li>
+<li class="fragment"><p>If you know any CSS, customize your <code>.scss</code> file further.</p></li>
+</ol>
+</section></section>
+<section>
+<section id="presentations" class="title-slide slide level1 inverse center" data-background-image="assets/projector.jpg">
+<h1>Presentations</h1>
+
+</section>
+<section id="powerpoint" class="slide level2 inverse center">
+<h2>PowerPoint</h2>
+<aside class="notes">
+<p>Can use reference docs</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="reference-documents" class="slide level2 center">
+<h2>Reference Documents</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb201" data-code-line-numbers="3"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb201-1"><a href="#cb201-1"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb201-2"><a href="#cb201-2"></a><span class="at">  </span><span class="fu">docx</span><span class="kw">:</span></span>
+<span id="cb201-3"><a href="#cb201-3"></a><span class="at">    </span><span class="fu">reference-doc</span><span class="kw">:</span><span class="at"> template.pptx</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="revealjs" class="slide level2 inverse center">
+<h2>Revealjs</h2>
+<aside class="notes">
+<p>https://quarto.org/docs/reference/formats/presentations/revealjs.html</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="creating-slides" class="slide level2 center">
+<h2>Creating Slides</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb202"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb202-1"><a href="#cb202-1"></a><span class="fu"># Slide 1</span></span>
+<span id="cb202-2"><a href="#cb202-2"></a></span>
+<span id="cb202-3"><a href="#cb202-3"></a>Content on slide 1</span>
+<span id="cb202-4"><a href="#cb202-4"></a></span>
+<span id="cb202-5"><a href="#cb202-5"></a><span class="fu">## Slide 2</span></span>
+<span id="cb202-6"><a href="#cb202-6"></a></span>
+<span id="cb202-7"><a href="#cb202-7"></a>Content on slide 2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="columns" class="slide level2 center">
+<h2>Columns</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb203"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb203-1"><a href="#cb203-1"></a>:::: {.columns}</span>
+<span id="cb203-2"><a href="#cb203-2"></a></span>
+<span id="cb203-3"><a href="#cb203-3"></a>::: {.column width="50%"}</span>
+<span id="cb203-4"><a href="#cb203-4"></a>Content in column 1</span>
+<span id="cb203-5"><a href="#cb203-5"></a>:::</span>
+<span id="cb203-6"><a href="#cb203-6"></a></span>
+<span id="cb203-7"><a href="#cb203-7"></a>::: {.column width="50%"}</span>
+<span id="cb203-8"><a href="#cb203-8"></a>Content in column 2</span>
+<span id="cb203-9"><a href="#cb203-9"></a>:::</span>
+<span id="cb203-10"><a href="#cb203-10"></a></span>
+<span id="cb203-11"><a href="#cb203-11"></a>::::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="fragment">
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Content in column 1</p>
+</div><div class="column" style="width:50%;">
+<p>Content in column 2</p>
+</div>
+</div>
+</div>
+</section>
+<section id="incremental-reveal" class="slide level2 center">
+<h2>Incremental Reveal</h2>
+<ul>
+<li class="fragment"><p>You can incrementally reveal</p></li>
+<li class="fragment"><p>content by putting it in a bulleted list</p></li>
+<li class="fragment"><p>and adding <code>incremental: true</code> to the YAML</p></li>
+</ul>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb204"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb204-1"><a href="#cb204-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"My Presentation"</span></span>
+<span id="cb204-2"><a href="#cb204-2"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb204-3"><a href="#cb204-3"></a><span class="at">  </span><span class="fu">revealjs</span><span class="kw">:</span></span>
+<span id="cb204-4"><a href="#cb204-4"></a><span class="at">    </span><span class="fu">incremental</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span><span class="at">   </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<ul>
+<li class="fragment">or surrounding content with an <code>incremental</code> div</li>
+</ul>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb205"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb205-1"><a href="#cb205-1"></a>::: {.incremental}</span>
+<span id="cb205-2"><a href="#cb205-2"></a><span class="ss">- </span>List item 1</span>
+<span id="cb205-3"><a href="#cb205-3"></a></span>
+<span id="cb205-4"><a href="#cb205-4"></a><span class="ss">- </span>List item 2</span>
+<span id="cb205-5"><a href="#cb205-5"></a></span>
+<span id="cb205-6"><a href="#cb205-6"></a><span class="ss">- </span>List item 3</span>
+<span id="cb205-7"><a href="#cb205-7"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="adding-content-to-the-footer" class="slide level2 center">
+<h2>Adding Content to the Footer</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb206" data-code-line-numbers="4-5"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb206-1"><a href="#cb206-1"></a><span class="pp">---</span></span>
+<span id="cb206-2"><a href="#cb206-2"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb206-3"><a href="#cb206-3"></a><span class="at">  </span><span class="fu">revealjs</span><span class="kw">:</span></span>
+<span id="cb206-4"><a href="#cb206-4"></a><span class="at">    </span><span class="fu">logo</span><span class="kw">:</span><span class="at"> logo.png</span></span>
+<span id="cb206-5"><a href="#cb206-5"></a><span class="at">    </span><span class="fu">footer</span><span class="kw">:</span><span class="at"> </span><span class="st">"Footer text"</span></span>
+<span id="cb206-6"><a href="#cb206-6"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<aside class="notes">
+<p>Show https://quarto.org/docs/presentations/revealjs/#footer-logo</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="slide-background-color" class="slide level2 center" data-background-color="red">
+<h2>Slide Background Color</h2>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb207"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb207-1"><a href="#cb207-1"></a><span class="fu">## Slide Title {background-color="red"}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="slide-background-image" class="slide level2 inverse center" data-background-image="assets/kids-laughing.jpg">
+<h2>Slide Background Image</h2>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb208"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb208-1"><a href="#cb208-1"></a><span class="fu">## Slide Background Image {background-image="assets/kids-laughing.jpg"}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="revealjs-themes" class="slide level2 center">
+<h2>Revealjs Themes</h2>
+<ul>
+<li class="fragment"><p>Revealjs has built-in themes</p></li>
+<li class="fragment"><p>There are also <a href="https://quarto.org/docs/extensions/listing-revealjs.html">custom Revealjs themes</a></p></li>
+<li class="fragment"><p>You can customize further using a .scss file</p></li>
+</ul>
+<aside class="notes">
+<p>For more, see https://quarto.org/docs/presentations/revealjs/themes.html</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="speaker-notes" class="slide level2 center">
+<h2>Speaker Notes</h2>
+<ul>
+<li class="fragment">You can add speaker notes with the <code>.notes</code> class:</li>
+</ul>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb209"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb209-1"><a href="#cb209-1"></a>::: {.notes}</span>
+<span id="cb209-2"><a href="#cb209-2"></a>This content is only visible to the speaker</span>
+<span id="cb209-3"><a href="#cb209-3"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="speaker-view" class="slide level2 center">
+<h2>Speaker View</h2>
+<div class="fragment">
+<p>Allows you to see:</p>
+<ul>
+<li class="fragment"><p>Speaker notes</p></li>
+<li class="fragment"><p>Upcoming slide</p></li>
+<li class="fragment"><p>Timer</p></li>
+</ul>
+</div>
+</section>
+<section id="my-turn-29" class="slide level2 my-turn center">
+<h2>My Turn</h2>
+<ul>
+<li class="fragment"><p>Turn my report into a Revealjs presentation</p></li>
+<li class="fragment"><p>Demonstrate putting content in columns and using incremental reveal</p></li>
+<li class="fragment"><p>Adjust the look-and-feel of my presentation by adding a logo and footer text, adjusting slide backgrounds, and using a custom theme</p></li>
+<li class="fragment"><p>Demonstrate how to present using Revealjs slides</p></li>
+</ul>
+</section>
+<section id="your-turn-31" class="slide level2 your-turn center">
+<h2>Your Turn</h2>
+<ul>
+<li class="fragment"><p>Turn your report into a Revealjs presentation</p></li>
+<li class="fragment"><p>Demonstrate putting content in columns and using incremental reveal</p></li>
+<li class="fragment"><p>Adjust the look-and-feel of your presentation by adding a logo and footer text, adjusting slide backgrounds, and using a custom theme</p></li>
+<li class="fragment"><p>Practice presenting using Revealjs slides</p></li>
+</ul>
+</section></section>
+<section>
+<section id="dashboards" class="title-slide slide level1 inverse center" data-background-image="assets/dashboard.jpg">
+<h1>Dashboards</h1>
+<aside class="notes">
+<p>https://quarto.org/docs/dashboards/ https://quarto.org/docs/dashboards/components.html</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="dashboard-layout" class="slide level2 center">
+<h2>Dashboard Layout</h2>
+<ul>
+<li class="fragment"><p>First-level headers make <strong>pages</strong></p></li>
+<li class="fragment"><p>Second-level headers make <strong>rows</strong> or <strong>columns</strong></p></li>
+<li class="fragment"><p>Code chunks make <strong>cards</strong></p></li>
+</ul>
+</section>
+<section id="navigation-bars" class="slide level2 center">
+<h2>Navigation Bars</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb210"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb210-1"><a href="#cb210-1"></a><span class="pp">---</span></span>
+<span id="cb210-2"><a href="#cb210-2"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"My Dashboard"</span></span>
+<span id="cb210-3"><a href="#cb210-3"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> dashboard</span></span>
+<span id="cb210-4"><a href="#cb210-4"></a><span class="fu">logo</span><span class="kw">:</span><span class="at"> </span><span class="st">"portland-public-schools-logo.svg"</span></span>
+<span id="cb210-5"><a href="#cb210-5"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="sidebars" class="slide level2 center">
+<h2>Sidebars</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb211"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb211-1"><a href="#cb211-1"></a><span class="fu">## {.sidebar}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="fill-versus-scroll" class="slide level2 center">
+<h2>Fill Versus Scroll</h2>
+<ul>
+<li class="fragment"><p>By default, dashboard content will <strong>fill</strong> the space available on the screen</p></li>
+<li class="fragment"><p>You can also make your content <strong>scroll</strong> using the YAML</p></li>
+</ul>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb212" data-code-line-numbers="4"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb212-1"><a href="#cb212-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"My Dashboard"</span></span>
+<span id="cb212-2"><a href="#cb212-2"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb212-3"><a href="#cb212-3"></a><span class="at">  </span><span class="fu">dashboard</span><span class="kw">:</span></span>
+<span id="cb212-4"><a href="#cb212-4"></a><span class="at">    </span><span class="fu">scrolling</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span><span class="at"> </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="themes" class="slide level2 center">
+<h2>Themes</h2>
+<div class="fragment">
+<p>Exactly the same as HTML and Revealjs presentations:</p>
+<ul>
+<li class="fragment"><p>Custom themes</p></li>
+<li class="fragment"><p>You can customize further with <code>.scss</code> file</p></li>
+</ul>
+<aside class="notes">
+<p>https://quarto.org/docs/dashboards/theming.html</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section>
+<section id="my-turn-30" class="slide level2 my-turn center">
+<h2>My Turn</h2>
+<ul>
+<li class="fragment">Turn my presentation into a dashboard</li>
+</ul>
+</section>
+<section id="your-turn-32" class="slide level2 your-turn center">
+<h2>Your Turn</h2>
+<ul>
+<li class="fragment">Turn your presentation into a dashboard</li>
+</ul>
+</section></section>
+<section>
+<section id="websites" class="title-slide slide level1 inverse center" data-background-image="assets/website.jpg">
+<h1>Websites</h1>
+
+</section>
+<section id="websites-1" class="slide level2 center">
+<h2>Websites</h2>
+<ul>
+<li class="fragment"><p>To make a website, you need to create a new project</p></li>
+<li class="fragment"><p>You can create a website with a set of <code>.qmd</code> files and a <code>_quarto.yml</code> file to tie them all together</p></li>
+</ul>
+</section>
+<section id="quarto.yml" class="slide level2 center">
+<h2><code>_quarto.yml</code></h2>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb213"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb213-1"><a href="#cb213-1"></a><span class="fu">project</span><span class="kw">:</span></span>
+<span id="cb213-2"><a href="#cb213-2"></a><span class="at">  </span><span class="fu">type</span><span class="kw">:</span><span class="at"> website</span></span>
+<span id="cb213-3"><a href="#cb213-3"></a></span>
+<span id="cb213-4"><a href="#cb213-4"></a><span class="fu">website</span><span class="kw">:</span></span>
+<span id="cb213-5"><a href="#cb213-5"></a><span class="at">  </span><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Portland Public Schools Math Proficiency"</span></span>
+<span id="cb213-6"><a href="#cb213-6"></a><span class="at">  </span><span class="fu">navbar</span><span class="kw">:</span></span>
+<span id="cb213-7"><a href="#cb213-7"></a><span class="at">    </span><span class="fu">logo</span><span class="kw">:</span><span class="at"> </span><span class="st">"portland-public-schools-logo.svg"</span></span>
+<span id="cb213-8"><a href="#cb213-8"></a><span class="at">    </span><span class="fu">left</span><span class="kw">:</span></span>
+<span id="cb213-9"><a href="#cb213-9"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">href</span><span class="kw">:</span><span class="at"> index.qmd</span></span>
+<span id="cb213-10"><a href="#cb213-10"></a><span class="at">        </span><span class="fu">text</span><span class="kw">:</span><span class="at"> </span><span class="st">"Home"</span></span>
+<span id="cb213-11"><a href="#cb213-11"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">href</span><span class="kw">:</span><span class="at"> about.qmd</span></span>
+<span id="cb213-12"><a href="#cb213-12"></a><span class="at">        </span><span class="fu">text</span><span class="kw">:</span><span class="at"> </span><span class="st">"About this Website"</span></span>
+<span id="cb213-13"><a href="#cb213-13"></a><span class="at">  </span><span class="fu">page-footer</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb213-14"><a href="#cb213-14"></a><span class="at">    </span><span class="fu">left</span><span class="kw">:</span><span class="at"> </span><span class="st">"Copyright 2023, Portland Public Schools"</span><span class="at"> </span></span>
+<span id="cb213-15"><a href="#cb213-15"></a></span>
+<span id="cb213-16"><a href="#cb213-16"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb213-17"><a href="#cb213-17"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
+<span id="cb213-18"><a href="#cb213-18"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> cosmo</span></span>
+<span id="cb213-19"><a href="#cb213-19"></a><span class="at">    </span><span class="fu">mainfont</span><span class="kw">:</span><span class="at"> </span><span class="st">"Inter"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="render-your-website" class="slide level2 center">
+<h2>Render Your Website</h2>
+<ul>
+<li class="fragment"><p>Render individual pages with the Render button</p></li>
+<li class="fragment"><p>Render the entire website with the Render Website button</p></li>
+</ul>
+</section>
+<section id="my-turn-31" class="slide level2 my-turn center">
+<h2>My Turn</h2>
+<ul>
+<li class="fragment">Turn my dashboard into a website</li>
+</ul>
+</section>
+<section id="your-turn-33" class="slide level2 your-turn center">
+<h2>Your Turn</h2>
+<ul>
+<li class="fragment">Turn your dashboard into a website</li>
+</ul>
+</section></section>
+<section>
+<section id="publishing-your-work" class="title-slide slide level1 inverse center" data-background-image="assets/publish.jpg">
+<h1>Publishing Your Work</h1>
+
+</section>
+<section id="publishing-your-work-1" class="slide level2 center">
+<h2>Publishing Your Work</h2>
+
+<img data-src="assets/quarto-publish.png" class="r-stretch"></section>
+<section id="quarto-pub" class="slide level2 center-slide center">
+<h2>Quarto Pub</h2>
+
+<img data-src="assets/quartopub.png" class="r-stretch"></section>
+<section id="netlify" class="slide level2 center-slide center">
+<h2>Netlify</h2>
+
+<img data-src="assets/netlify.png" class="r-stretch"></section>
+<section id="my-turn-32" class="slide level2 my-turn center">
+<h2>My Turn</h2>
+<div class="fragment">
+<p>I’ll publish my website to Quarto Pub and Netlify</p>
+</div>
+</section>
+<section id="your-turn-34" class="slide level2 your-turn center">
+<h2>Your Turn</h2>
+<div class="fragment">
+<p>Publish your website to Quarto Pub or Netlify</p>
+</div>
+</section></section>
+<section>
+<section id="quarto-extensions" class="title-slide slide level1 inverse center" data-background-image="assets/extension.jpg">
+<h1>Quarto Extensions</h1>
+<aside class="notes">
+<ul>
+<li>What they are</li>
+<li>Types
+<ul>
+<li>Shortcode/filter</li>
+<li>Journal articles</li>
+<li>Custom formats</li>
+<li>Revealjs</li>
+</ul></li>
+<li>I’ve made a custom format for these slides</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="my-turn-33" class="slide level2 my-turn center">
+<h2>My Turn</h2>
+<ul>
+<li class="fragment">Show three Quarto extensions: <code>lightbox</code>, <code>downloadthis</code>, <code>nutshell</code></li>
+</ul>
+</section>
+<section id="your-turn-35" class="slide level2 your-turn center">
+<h2>Your Turn</h2>
+<ul>
+<li class="fragment">Try out a Quarto extension</li>
+</ul>
 <div class="footer footer-default">
 
 </div>
 </section></section>
+
     </div>
   </div>
 
@@ -3637,7 +4789,6 @@ Caused by error in `sum()`:
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -3936,10 +5087,9 @@ Caused by error in `sum()`:
         // clear code selection
         e.clearSelection();
       });
-      function tippyHover(el, contentFn) {
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -3949,8 +5099,17 @@ Caused by error in `sum()`:
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 

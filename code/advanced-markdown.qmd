@@ -3,7 +3,7 @@ title: "Portland Public Schools Math Proficiency Report"
 format: html
 ---
 
-![Portland Public Schools](code/portland-public-schools-logo.svg){width=300px fig-align="center"}
+![Portland Public Schools](portland-public-schools-logo.svg){width=300px fig-align="center"}
 
 # Introduction
 
