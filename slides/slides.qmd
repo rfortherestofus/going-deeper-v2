@@ -12,7 +12,7 @@ format:
 execute: 
   message: false
   warning: false
-  cache: false
+  cache: true
 title-slide-attributes:
   data-background-image: assets/rru-hex-bg-gradient-dark.svg
   data-background-size: cover
@@ -3111,18 +3111,39 @@ https://github.com/erikgahner/awesome-ggplot2
 
 ## Links
 
-This is a [link to the Rest for the Rest of Us website](http://rfortherestofus.com/)
+. . .
+
+This is a [link to the Rest for the Rest of Us website](https://rfortherestofus.com/)
 
 ::: {.fragment}
 ```{markdown}
 #| echo: true
-This is a [link to the Rest for the Rest of Us website](http://rfortherestofus.com/)
+This is a [link to the Rest for the Rest of Us website](https://rfortherestofus.com/)
 ```
 :::
 
 ## Images
 
+:::: {.columns}
+
+::: {.column width="50%"}
 ![](assets/girl-meditating.jpg)
+:::
+
+::: {.column width="50%"}
+::: {.fragment}
+```{markdown}
+#| echo: true
+![](assets/girl-meditating.jpg)
+```
+:::
+:::
+
+::::
+
+
+
+
 
 ## Image Sizing
 
@@ -3185,7 +3206,7 @@ Center align images
 :::
 
 
-## Caption
+## Captions
 
 ::: {.fragment}
 ```{markdown}
@@ -3242,7 +3263,7 @@ I'll create a Quarto document and do the following:
 
 1. Add a link
 
-1. Add an image and adjust its alignment and alt text
+1. Add an image and adjust its size, alignment, caption, and alt text
 
 1. Add a blockquote
 
