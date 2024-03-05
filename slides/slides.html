@@ -8,7 +8,7 @@
 <link href="slides_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="slides_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="slides_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.449">
+  <meta name="generator" content="quarto-1.4.472">
 
   <title>Going Deeper with R</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -3728,11 +3728,11 @@ Caused by error in `sum()`:
 <section id="your-turn-24" class="slide level2 your-turn center">
 <h2>Your Turn</h2>
 <ul>
-<li class="fragment"><p>Add the Oregon Department of Education logo to the top of your report. You can find it at the <a href="https://github.com/rfortherestofus/going-deeper/raw/master/slides/assets/ode-logo.jpg">link below</a>.</p></li>
+<li class="fragment"><p>Create a Quarto document and add the Oregon Department of Education logo to the top of your report. You can find it at the <a href="https://raw.githubusercontent.com/rfortherestofus/going-deeper-v2/main/slides/assets/ode-logo.jpg">link below</a>.</p></li>
 <li class="fragment"><p>Add the following text (make sure you include the <a href="https://www.oregon.gov/ode/pages/default.aspx">link</a>, which is below):</p></li>
 </ul>
 <div class="fragment">
-<p>This is a report for the <a href="https://www.oregon.gov/ode/pages/default.aspx">Oregon Department of Education</a> on diversity in Oregon school districts.</p>
+<p>“This is a report for the <a href="https://www.oregon.gov/ode/pages/default.aspx">Oregon Department of Education</a> on diversity in Oregon school districts.”</p>
 </div>
 </section>
 <section id="your-turn-continued-5" class="slide level2 your-turn center">
@@ -3837,11 +3837,11 @@ Caused by error in `sum()`:
 <section id="flextable" class="slide level2 center-slide center">
 <h2><code>flextable</code></h2>
 
-<img data-src="assets/flextable.svg" class="r-stretch"></section>
+<img data-src="assets/flextable-logo.svg" class="r-stretch"></section>
 <section id="gt" class="slide level2 center-slide center">
 <h2><code>gt</code></h2>
 
-<img data-src="assets/gt_parts_of_a_table.svg" class="r-stretch"></section>
+<img data-src="assets/gt-logo.svg" class="r-stretch"></section>
 <section id="interactive-tables-with-gt" class="slide level2 center-slide center">
 <h2>Interactive Tables with <code>gt</code></h2>
 
@@ -4002,6 +4002,7 @@ Caused by error in `sum()`:
 </section>
 <section id="your-turn-26" class="slide level2 your-turn center">
 <h2>Your Turn</h2>
+<p>Working in your Quarto document:</p>
 <ol type="1">
 <li class="fragment"><p>Add a table of contents and adjust where it goes</p></li>
 <li class="fragment"><p>Set default figure width and height</p></li>
@@ -4146,14 +4147,16 @@ Caused by error in `sum()`:
 </section>
 <section id="typst-1" class="slide level2 center">
 <h2><code>typst</code></h2>
-<div class="cell" data-hash="slides_cache/revealjs/unnamed-chunk-170_772dd2eed554cd889e42ebf55c596f80">
-<div class="sourceCode cell-code" id="cb194"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb194-1"><a href="#cb194-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> </span></span>
-<span id="cb194-2"><a href="#cb194-2"></a><span class="at">  </span><span class="fu">typst</span><span class="kw">:</span></span>
-<span id="cb194-3"><a href="#cb194-3"></a><span class="at">    </span><span class="fu">papersize</span><span class="kw">:</span><span class="at"> us-letter</span></span>
-<span id="cb194-4"><a href="#cb194-4"></a><span class="at">    </span><span class="fu">mainfont</span><span class="kw">:</span><span class="at"> Inter</span></span>
-<span id="cb194-5"><a href="#cb194-5"></a><span class="at">    </span><span class="fu">fontsize</span><span class="kw">:</span><span class="at"> 20pt</span></span>
-<span id="cb194-6"><a href="#cb194-6"></a><span class="fu">margin</span><span class="kw">:</span></span>
-<span id="cb194-7"><a href="#cb194-7"></a><span class="at">  </span><span class="fu">top</span><span class="kw">:</span><span class="at"> 5in</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="slides_cache/revealjs/unnamed-chunk-170_ceefbabbabe376379623761c5281b31e">
+<div class="sourceCode cell-code" id="cb194"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb194-1"><a href="#cb194-1"></a><span class="pp">---</span></span>
+<span id="cb194-2"><a href="#cb194-2"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb194-3"><a href="#cb194-3"></a><span class="at">  </span><span class="fu">typst</span><span class="kw">:</span></span>
+<span id="cb194-4"><a href="#cb194-4"></a><span class="at">    </span><span class="fu">papersize</span><span class="kw">:</span><span class="at"> us-letter</span></span>
+<span id="cb194-5"><a href="#cb194-5"></a><span class="at">    </span><span class="fu">mainfont</span><span class="kw">:</span><span class="at"> Inter</span></span>
+<span id="cb194-6"><a href="#cb194-6"></a><span class="at">    </span><span class="fu">fontsize</span><span class="kw">:</span><span class="at"> 20pt</span></span>
+<span id="cb194-7"><a href="#cb194-7"></a><span class="fu">margin</span><span class="kw">:</span></span>
+<span id="cb194-8"><a href="#cb194-8"></a><span class="at">  </span><span class="fu">top</span><span class="kw">:</span><span class="at"> 5in</span></span>
+<span id="cb194-9"><a href="#cb194-9"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <aside class="notes">
 <p>https://quarto.org/docs/prerelease/1.4/typst.html#typst-format</p>
@@ -4437,6 +4440,9 @@ h1{text-shadow:-1px -1px 0 rgba(0,0,0,0.3)}
 <span id="cb205-4"><a href="#cb205-4"></a><span class="at">    </span><span class="fu">incremental</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span><span class="at">   </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
+</section>
+<section id="incremental-reveal-1" class="slide level2 center">
+<h2>Incremental Reveal</h2>
 <ul>
 <li class="fragment">or surrounding content with an <code>incremental</code> div</li>
 </ul>
@@ -4497,7 +4503,7 @@ h1{text-shadow:-1px -1px 0 rgba(0,0,0,0.3)}
 <ul>
 <li class="fragment"><p>Revealjs has built-in themes</p></li>
 <li class="fragment"><p>There are also <a href="https://quarto.org/docs/extensions/listing-revealjs.html">custom Revealjs themes</a></p></li>
-<li class="fragment"><p>You can customize further using a .scss file</p></li>
+<li class="fragment"><p>You can customize further using an <code>.scss</code> file</p></li>
 </ul>
 <aside class="notes">
 <p>For more, see https://quarto.org/docs/presentations/revealjs/themes.html</p>
@@ -4550,7 +4556,7 @@ h1{text-shadow:-1px -1px 0 rgba(0,0,0,0.3)}
 <h2>Your Turn</h2>
 <ul>
 <li class="fragment"><p>Turn your report into a Revealjs presentation</p></li>
-<li class="fragment"><p>Demonstrate putting content in columns and using incremental reveal</p></li>
+<li class="fragment"><p>Put content in columns and using incremental reveal</p></li>
 <li class="fragment"><p>Adjust the look-and-feel of your presentation by adding a logo and footer text, adjusting slide backgrounds, and using a custom theme</p></li>
 <li class="fragment"><p>Practice presenting using Revealjs slides</p></li>
 </ul>
@@ -4558,6 +4564,16 @@ h1{text-shadow:-1px -1px 0 rgba(0,0,0,0.3)}
 <section>
 <section id="dashboards" class="title-slide slide level1 inverse center" data-background-image="assets/dashboard.jpg">
 <h1>Dashboards</h1>
+
+</section>
+<section id="dashboards-1" class="slide level2 center">
+<h2>Dashboards</h2>
+<div class="cell" data-hash="slides_cache/revealjs/unnamed-chunk-187_b2a90d386fab75987819365e83b67105">
+<div class="sourceCode cell-code" id="cb211"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb211-1"><a href="#cb211-1"></a><span class="pp">---</span></span>
+<span id="cb211-2"><a href="#cb211-2"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"My Dashboard"</span></span>
+<span id="cb211-3"><a href="#cb211-3"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> dashboard</span></span>
+<span id="cb211-4"><a href="#cb211-4"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <aside class="notes">
 <p>https://quarto.org/docs/dashboards/ https://quarto.org/docs/dashboards/components.html</p>
 <style type="text/css">
@@ -4580,21 +4596,34 @@ h1{text-shadow:-1px -1px 0 rgba(0,0,0,0.3)}
 <li class="fragment"><p>Code chunks make <strong>cards</strong></p></li>
 </ul>
 </section>
-<section id="navigation-bars" class="slide level2 center">
-<h2>Navigation Bars</h2>
-<div class="cell" data-hash="slides_cache/revealjs/unnamed-chunk-187_b74ddc359bb89d01dca89aad4fe9079c">
-<div class="sourceCode cell-code" id="cb211"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb211-1"><a href="#cb211-1"></a><span class="pp">---</span></span>
-<span id="cb211-2"><a href="#cb211-2"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"My Dashboard"</span></span>
-<span id="cb211-3"><a href="#cb211-3"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> dashboard</span></span>
-<span id="cb211-4"><a href="#cb211-4"></a><span class="fu">logo</span><span class="kw">:</span><span class="at"> </span><span class="st">"portland-public-schools-logo.svg"</span></span>
-<span id="cb211-5"><a href="#cb211-5"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="dashboard-layout-1" class="slide level2 center">
+<h2>Dashboard Layout</h2>
+<ul>
+<li class="fragment">You can adjust the orientation in the YAML:</li>
+</ul>
+<div class="fragment">
+<div class="cell" data-hash="slides_cache/revealjs/unnamed-chunk-188_12b9dca6e6ffe45e27a5443fd55aceb4">
+<div class="sourceCode cell-code" id="cb212"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb212-1"><a href="#cb212-1"></a><span class="pp">---</span></span>
+<span id="cb212-2"><a href="#cb212-2"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"My Dashboard"</span></span>
+<span id="cb212-3"><a href="#cb212-3"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb212-4"><a href="#cb212-4"></a><span class="at">  </span><span class="fu">dashboard</span><span class="kw">:</span></span>
+<span id="cb212-5"><a href="#cb212-5"></a><span class="at">    </span><span class="fu">orientation</span><span class="kw">:</span><span class="at"> columns</span></span>
+<span id="cb212-6"><a href="#cb212-6"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="sidebars" class="slide level2 center">
-<h2>Sidebars</h2>
-<div class="cell" data-hash="slides_cache/revealjs/unnamed-chunk-188_ad91c4f641693d04a6c910d9ce8e516f">
-<div class="sourceCode cell-code" id="cb212"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb212-1"><a href="#cb212-1"></a><span class="fu">## {.sidebar}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<aside class="notes">
+<p>https://quarto.org/docs/dashboards/layouts.html</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="fill-versus-scroll" class="slide level2 center">
 <h2>Fill Versus Scroll</h2>
@@ -4609,6 +4638,22 @@ h1{text-shadow:-1px -1px 0 rgba(0,0,0,0.3)}
 <span id="cb213-3"><a href="#cb213-3"></a><span class="at">  </span><span class="fu">dashboard</span><span class="kw">:</span></span>
 <span id="cb213-4"><a href="#cb213-4"></a><span class="at">    </span><span class="fu">scrolling</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span><span class="at"> </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</div>
+</section>
+<section id="navigation-bars" class="slide level2 center">
+<h2>Navigation Bars</h2>
+<div class="cell" data-hash="slides_cache/revealjs/unnamed-chunk-190_aa288a557eaf372c292b817c5fba97e7">
+<div class="sourceCode cell-code" id="cb214"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb214-1"><a href="#cb214-1"></a><span class="pp">---</span></span>
+<span id="cb214-2"><a href="#cb214-2"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"My Dashboard"</span></span>
+<span id="cb214-3"><a href="#cb214-3"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> dashboard</span></span>
+<span id="cb214-4"><a href="#cb214-4"></a><span class="fu">logo</span><span class="kw">:</span><span class="at"> </span><span class="st">"portland-public-schools-logo.svg"</span></span>
+<span id="cb214-5"><a href="#cb214-5"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="sidebars" class="slide level2 center">
+<h2>Sidebars</h2>
+<div class="cell" data-hash="slides_cache/revealjs/unnamed-chunk-191_8ae1795e8c2134e56bed36e85d437785">
+<div class="sourceCode cell-code" id="cb215"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb215-1"><a href="#cb215-1"></a><span class="fu">## {.sidebar}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="themes" class="slide level2 center">
@@ -4661,26 +4706,26 @@ h1{text-shadow:-1px -1px 0 rgba(0,0,0,0.3)}
 <section id="quarto.yml" class="slide level2 center">
 <h2><code>_quarto.yml</code></h2>
 <div class="fragment">
-<div class="cell" data-hash="slides_cache/revealjs/unnamed-chunk-190_34045f61261d9461c6e9ecf2b1c5ecf8">
-<div class="sourceCode cell-code" id="cb214"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb214-1"><a href="#cb214-1"></a><span class="fu">project</span><span class="kw">:</span></span>
-<span id="cb214-2"><a href="#cb214-2"></a><span class="at">  </span><span class="fu">type</span><span class="kw">:</span><span class="at"> website</span></span>
-<span id="cb214-3"><a href="#cb214-3"></a></span>
-<span id="cb214-4"><a href="#cb214-4"></a><span class="fu">website</span><span class="kw">:</span></span>
-<span id="cb214-5"><a href="#cb214-5"></a><span class="at">  </span><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Portland Public Schools Math Proficiency"</span></span>
-<span id="cb214-6"><a href="#cb214-6"></a><span class="at">  </span><span class="fu">navbar</span><span class="kw">:</span></span>
-<span id="cb214-7"><a href="#cb214-7"></a><span class="at">    </span><span class="fu">logo</span><span class="kw">:</span><span class="at"> </span><span class="st">"portland-public-schools-logo.svg"</span></span>
-<span id="cb214-8"><a href="#cb214-8"></a><span class="at">    </span><span class="fu">left</span><span class="kw">:</span></span>
-<span id="cb214-9"><a href="#cb214-9"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">href</span><span class="kw">:</span><span class="at"> index.qmd</span></span>
-<span id="cb214-10"><a href="#cb214-10"></a><span class="at">        </span><span class="fu">text</span><span class="kw">:</span><span class="at"> </span><span class="st">"Home"</span></span>
-<span id="cb214-11"><a href="#cb214-11"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">href</span><span class="kw">:</span><span class="at"> about.qmd</span></span>
-<span id="cb214-12"><a href="#cb214-12"></a><span class="at">        </span><span class="fu">text</span><span class="kw">:</span><span class="at"> </span><span class="st">"About this Website"</span></span>
-<span id="cb214-13"><a href="#cb214-13"></a><span class="at">  </span><span class="fu">page-footer</span><span class="kw">:</span><span class="at"> </span></span>
-<span id="cb214-14"><a href="#cb214-14"></a><span class="at">    </span><span class="fu">left</span><span class="kw">:</span><span class="at"> </span><span class="st">"Copyright 2023, Portland Public Schools"</span><span class="at"> </span></span>
-<span id="cb214-15"><a href="#cb214-15"></a></span>
-<span id="cb214-16"><a href="#cb214-16"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> </span></span>
-<span id="cb214-17"><a href="#cb214-17"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
-<span id="cb214-18"><a href="#cb214-18"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> cosmo</span></span>
-<span id="cb214-19"><a href="#cb214-19"></a><span class="at">    </span><span class="fu">mainfont</span><span class="kw">:</span><span class="at"> </span><span class="st">"Inter"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="slides_cache/revealjs/unnamed-chunk-192_836b8b14e5d3e37177bd6addde1a34e5">
+<div class="sourceCode cell-code" id="cb216"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb216-1"><a href="#cb216-1"></a><span class="fu">project</span><span class="kw">:</span></span>
+<span id="cb216-2"><a href="#cb216-2"></a><span class="at">  </span><span class="fu">type</span><span class="kw">:</span><span class="at"> website</span></span>
+<span id="cb216-3"><a href="#cb216-3"></a></span>
+<span id="cb216-4"><a href="#cb216-4"></a><span class="fu">website</span><span class="kw">:</span></span>
+<span id="cb216-5"><a href="#cb216-5"></a><span class="at">  </span><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Portland Public Schools Math Proficiency"</span></span>
+<span id="cb216-6"><a href="#cb216-6"></a><span class="at">  </span><span class="fu">navbar</span><span class="kw">:</span></span>
+<span id="cb216-7"><a href="#cb216-7"></a><span class="at">    </span><span class="fu">logo</span><span class="kw">:</span><span class="at"> </span><span class="st">"portland-public-schools-logo.svg"</span></span>
+<span id="cb216-8"><a href="#cb216-8"></a><span class="at">    </span><span class="fu">left</span><span class="kw">:</span></span>
+<span id="cb216-9"><a href="#cb216-9"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">href</span><span class="kw">:</span><span class="at"> index.qmd</span></span>
+<span id="cb216-10"><a href="#cb216-10"></a><span class="at">        </span><span class="fu">text</span><span class="kw">:</span><span class="at"> </span><span class="st">"Home"</span></span>
+<span id="cb216-11"><a href="#cb216-11"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">href</span><span class="kw">:</span><span class="at"> about.qmd</span></span>
+<span id="cb216-12"><a href="#cb216-12"></a><span class="at">        </span><span class="fu">text</span><span class="kw">:</span><span class="at"> </span><span class="st">"About this Website"</span></span>
+<span id="cb216-13"><a href="#cb216-13"></a><span class="at">  </span><span class="fu">page-footer</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb216-14"><a href="#cb216-14"></a><span class="at">    </span><span class="fu">left</span><span class="kw">:</span><span class="at"> </span><span class="st">"Copyright 2023, Portland Public Schools"</span><span class="at"> </span></span>
+<span id="cb216-15"><a href="#cb216-15"></a></span>
+<span id="cb216-16"><a href="#cb216-16"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb216-17"><a href="#cb216-17"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
+<span id="cb216-18"><a href="#cb216-18"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> cosmo</span></span>
+<span id="cb216-19"><a href="#cb216-19"></a><span class="at">    </span><span class="fu">mainfont</span><span class="kw">:</span><span class="at"> </span><span class="st">"Inter"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -4712,10 +4757,6 @@ h1{text-shadow:-1px -1px 0 rgba(0,0,0,0.3)}
 <h2>Publishing Your Work</h2>
 
 <img data-src="assets/quarto-publish.png" class="r-stretch"></section>
-<section id="quarto-pub" class="slide level2 center-slide center">
-<h2>Quarto Pub</h2>
-
-<img data-src="assets/quartopub.png" class="r-stretch"></section>
 <section id="netlify" class="slide level2 center-slide center">
 <h2>Netlify</h2>
 
@@ -4723,13 +4764,13 @@ h1{text-shadow:-1px -1px 0 rgba(0,0,0,0.3)}
 <section id="my-turn-32" class="slide level2 my-turn center">
 <h2>My Turn</h2>
 <div class="fragment">
-<p>I’ll publish my website to Quarto Pub and Netlify</p>
+<p>I’ll publish my website to Netlify</p>
 </div>
 </section>
 <section id="your-turn-34" class="slide level2 your-turn center">
 <h2>Your Turn</h2>
 <div class="fragment">
-<p>Publish your website to Quarto Pub or Netlify</p>
+<p>Publish your website to Netlify</p>
 </div>
 </section></section>
 <section>
@@ -4762,7 +4803,7 @@ h1{text-shadow:-1px -1px 0 rgba(0,0,0,0.3)}
 <section id="my-turn-33" class="slide level2 my-turn center">
 <h2>My Turn</h2>
 <ul>
-<li class="fragment">Show three Quarto extensions: <code>lightbox</code>, <code>downloadthis</code>, <code>nutshell</code></li>
+<li class="fragment">Show two Quarto extensions: <code>lightbox</code> and <code>downloadthis</code></li>
 </ul>
 </section>
 <section id="your-turn-35" class="slide level2 your-turn center">

@@ -2,10 +2,11 @@
 title: "Advanced YAML and Code Chunk Options"
 format: 
   html:
-    fig-height: 10
+    fig-height: 5
     fig-width: 5
     toc: true
-    toc-location: left
+    toc-location: right
+    toc-depth: 1
 execute: 
   echo: false
   warning: false
@@ -71,8 +72,9 @@ theme_dk <- function() {
 The chart below shows math proficiency for all PPS schools.
 
 ```{r}
-#| fig-height: 5
 #| fig-alt: A line chart showing math proficiency rates among all PPS schools in 2018-2019 and 2021-2022
+#| fig-cap: A line chart showing math proficiency rates among all PPS schools in 2018-2019 and 2021-2022
+#| fig-height: 10
 
 top_growth_school <- 
   third_grade_math_proficiency |>

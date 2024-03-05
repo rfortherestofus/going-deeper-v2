@@ -1,11 +1,19 @@
 ---
-title: "Tables Your Turn"
+title: "Oregon Department of Education Diversity Report"
 format: html
 ---
 
 ```{r}
 library(tidyverse)
 ```
+
+![](ode-logo.jpg)
+
+This is a report for the [Oregon Department of Education](https://www.oregon.gov/ode/pages/default.aspx) on diversity in Oregon school districts.
+
+> The Oregon Department of Education fosters equity and excellence for every learner through collaboration with educators, partners, and communities.^[https://www.oregon.gov/ode/about-us/Pages/default.aspx]
+
+
 
 ```{r}
 # The code below will bring in the enrollment by race/ethnicity data
@@ -30,7 +38,10 @@ baker_enrollment_by_race_ethnicity <-
 # Work on adjusting your column names, column width, number formatting, 
 # and anything else you might want to try out.
 
-# YOUR CODE HERE
+baker_enrollment_by_race_ethnicity |> 
+  pivot_wider(id_cols = year,
+              names_from = race_ethnicity,
+              values_from = pct)
 ```
 
 

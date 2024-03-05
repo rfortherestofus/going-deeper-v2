@@ -4,8 +4,8 @@ format:
   typst:
     papersize: us-letter
     mainfont: Inter
-    fontsize: 20pt
-margin:
+    fontsize: 12pt
+margin: 
   top: 1in
 execute: 
   echo: false
@@ -129,6 +129,8 @@ third_grade_math_proficiency |>
   theme_dk()
 ```
 
+{{< pagebreak >}}
+
 # Table
 
 ```{r}
@@ -153,7 +155,6 @@ flextable_data |>
   flextable() |> 
   set_header_labels(school = "School") |> 
   align(j = 2, align = "center") |> 
-  # width(j = 1, width = 10) |> 
   autofit() |> 
   set_caption("Math proficiency among third graders in five Portland schools")
 ```

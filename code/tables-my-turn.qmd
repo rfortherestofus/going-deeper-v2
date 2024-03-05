@@ -15,9 +15,7 @@ library(here)
 library(scales)
 library(flextable)
 library(gt)
-library(reactable)
 ```
-
 
 ```{r}
 third_grade_math_proficiency_wide <- 
@@ -43,6 +41,12 @@ This is a report on math proficiency results in [Portland Public Schools (PPS)](
 
 > ... to educate all children to their highest potential to be productive, respectful, self-reliant, and responsible citizens who value the richness of diversity. In partnership with families and the community, we are committed to excellence in a dynamic, child-centered, nurturing environment that provides the foundation and enthusiasm for life-long learning.^[https://www.pps.net/domain/551]
 
+# Don’t Use the Default Output
+
+```{r}
+third_grade_math_proficiency_wide
+```
+
 # Flextable
 
 ```{r}
@@ -67,7 +71,8 @@ flextable_data |>
   flextable() |> 
   set_header_labels(school = "School") |> 
   align(j = 2, align = "center") |> 
-  # width(j = 1, width = 10) |> 
+  # width(j = 1, width = 10, unit = "cm") |> 
+  # width(j = 2:3, width = 5, unit = "cm") |> 
   autofit() |> 
   set_caption("Math proficiency among third graders in five Portland schools")
 ```
@@ -75,9 +80,6 @@ flextable_data |>
 # gt
 
 ```{r}
-#| tbl-cap: Math proficiency among third graders in five Portland schools
-
-
 gt_data <- 
   read_rds(here("data/third_grade_math_proficiency_dichotomous.rds")) |> 
   filter(district == "Portland SD 1J") |> 
@@ -99,7 +101,7 @@ gt_data |>
     school ~ px(100)
   ) |> 
   cols_align(
-    columns = `2018-2019`,
+    columns = 2,
     align = "center"
   ) |> 
   fmt_percent(
@@ -124,13 +126,13 @@ gt_data_interactive <-
 gt_data_interactive |> 
   gt() |> 
   cols_label(school = "School") |> 
-  cols_width(
-    school ~ pct(50)
-  ) |> 
-  cols_align(
-    columns = `2018-2019`,
-    align = "center"
-  ) |> 
+  # cols_width(
+  #   school ~ pct(50)
+  # ) |> 
+  # cols_align(
+  #   columns = `2018-2019`,
+  #   align = "center"
+  # ) |> 
   fmt_percent(
     columns = 2:3,
     decimals = 0
@@ -138,7 +140,8 @@ gt_data_interactive |>
   tab_caption("Math proficiency among third graders in five Portland schools") |> 
   opt_interactive(
     use_search = TRUE,
-    use_highlight = TRUE
+    use_highlight = TRUE,
+    use_compact_mode = TRUE
   )
 ```
 

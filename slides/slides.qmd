@@ -3271,12 +3271,12 @@ I'll create a Quarto document and do the following:
 
 ## Your Turn {.your-turn}
 
-- Add the Oregon Department of Education logo to the top of your report. You can find it at the [link below](https://github.com/rfortherestofus/going-deeper/raw/master/slides/assets/ode-logo.jpg).
+- Create a Quarto document and add the Oregon Department of Education logo to the top of your report. You can find it at the [link below](https://raw.githubusercontent.com/rfortherestofus/going-deeper-v2/main/slides/assets/ode-logo.jpg).
 
 - Add the following text (make sure you include the [link](https://www.oregon.gov/ode/pages/default.aspx), which is below):
 
 ::: {.fragment}
-This is a report for the [Oregon Department of Education](https://www.oregon.gov/ode/pages/default.aspx) on diversity in Oregon school districts. 
+"This is a report for the [Oregon Department of Education](https://www.oregon.gov/ode/pages/default.aspx) on diversity in Oregon school districts." 
 :::
 
 ## Your Turn, Continued {.your-turn}
@@ -3372,11 +3372,11 @@ data_long |>
 
 ## `flextable` {.center-slide}
 
-![](assets/flextable.svg) 
+![](assets/flextable-logo.svg) 
 
 ## `gt` {.center-slide}
 
-![](assets/gt_parts_of_a_table.svg)
+![](assets/gt-logo.svg)
 
 ## Interactive Tables with `gt` {.center-slide}
 
@@ -3526,6 +3526,8 @@ penguins |>
 
 ## Your Turn {.your-turn}
 
+Working in your Quarto document:
+
 1. Add a table of contents and adjust where it goes
 
 1. Set default figure width and height
@@ -3657,6 +3659,7 @@ https://github.com/cscheid/2023-posit-conf-talk/blob/main/talk.qmd
 
 ```{yaml}
 #| echo: true
+---
 format: 
   typst:
     papersize: us-letter
@@ -3664,6 +3667,7 @@ format:
     fontsize: 20pt
 margin:
   top: 5in
+---
 ```
 
 
@@ -3918,6 +3922,8 @@ format:
 ```
 :::
 
+## Incremental Reveal
+
 - or surrounding content with an `incremental` div
 
 ::: {.fragment}
@@ -3977,7 +3983,7 @@ Show https://quarto.org/docs/presentations/revealjs/#footer-logo
 
 - There are also [custom Revealjs themes](https://quarto.org/docs/extensions/listing-revealjs.html)
 
-- You can customize further using a .scss file
+- You can customize further using an `.scss` file
 
 ::: {.notes}
 For more, see https://quarto.org/docs/presentations/revealjs/themes.html
@@ -4022,7 +4028,7 @@ Allows you to see:
 
 - Turn your report into a Revealjs presentation
 
-- Demonstrate putting content in columns and using incremental reveal
+- Put content in columns and using incremental reveal
 
 - Adjust the look-and-feel of your presentation by adding a logo and footer text, adjusting slide backgrounds, and using a custom theme
 
@@ -4030,6 +4036,15 @@ Allows you to see:
 
 # Dashboards {.inverse background-image="assets/dashboard.jpg"}
 
+## Dashboards
+
+```{yaml}
+#| echo: true
+---
+title: "My Dashboard"
+format: dashboard
+---
+```
 
 
 ::: {.notes}
@@ -4044,6 +4059,46 @@ https://quarto.org/docs/dashboards/components.html
 - Second-level headers make **rows** or **columns**
 
 - Code chunks make **cards**
+
+## Dashboard Layout
+
+- You can adjust the orientation in the YAML:
+
+::: {.fragment}
+```{yaml}
+#| eval: false
+#| echo: true
+---
+title: "My Dashboard"
+format: 
+  dashboard:
+    orientation: columns
+---
+```
+:::
+
+
+
+::: {.notes}
+https://quarto.org/docs/dashboards/layouts.html
+:::
+
+## Fill Versus Scroll
+
+- By default, dashboard content will **fill** the space available on the screen
+
+- You can also make your content **scroll** using the YAML
+
+::: {.fragment}
+```{yaml}
+#| echo: true
+#| code-line-numbers: "4"
+title: "My Dashboard"
+format: 
+  dashboard:
+    scrolling: true 
+```
+:::
 
 ## Navigation Bars
 
@@ -4064,22 +4119,7 @@ logo: "portland-public-schools-logo.svg"
 ````
 
 
-## Fill Versus Scroll
 
-- By default, dashboard content will **fill** the space available on the screen
-
-- You can also make your content **scroll** using the YAML
-
-::: {.fragment}
-```{yaml}
-#| echo: true
-#| code-line-numbers: "4"
-title: "My Dashboard"
-format: 
-  dashboard:
-    scrolling: true 
-```
-:::
 
 ## Themes
 
@@ -4158,10 +4198,6 @@ format:
 
 ![](assets/quarto-publish.png)
 
-## Quarto Pub {.center-slide}
-
-![](assets/quartopub.png)
-
 ## Netlify {.center-slide}
 
 ![](assets/netlify.png)
@@ -4170,13 +4206,13 @@ format:
 
 . . .
 
-I'll publish my website to Quarto Pub and Netlify
+I'll publish my website to Netlify
 
 ## Your Turn {.your-turn}
 
 . . .
 
-Publish your website to Quarto Pub or Netlify
+Publish your website to Netlify
 
 # Quarto Extensions {.inverse background-image="assets/extension.jpg"}
 
@@ -4192,7 +4228,7 @@ Publish your website to Quarto Pub or Netlify
 
 ## My Turn {.my-turn}
 
-- Show three Quarto extensions: `lightbox`, `downloadthis`, `nutshell`
+- Show two Quarto extensions: `lightbox` and `downloadthis`
 
 ## Your Turn {.your-turn}
 

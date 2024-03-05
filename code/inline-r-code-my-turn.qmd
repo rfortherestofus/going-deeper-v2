@@ -128,9 +128,18 @@ third_grade_math_proficiency |>
   theme_dk()
 ```
 
+```{r}
+top_growth_school_percents <-
+  third_grade_math_proficiency |> 
+  filter(school == top_growth_school) |> 
+  mutate(percent_proficient_formatted = percent(percent_proficient)) |> 
+  pull(percent_proficient_formatted)
+```
+
+
 # Table
 
-The following table shows math proficiency in the last two years for five key schools. If you want to see `r top_growth_school`, you can use the search bar to find it.
+The following table shows math proficiency in the last two years for five key schools. If you want to see `r top_growth_school`, the school with the greatest growth (going from `r top_growth_school_percents[1]` to `r top_growth_school_percents[2]`), you can use the search bar to find it.
 
 ```{r}
 gt_data_interactive <- 
