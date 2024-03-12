@@ -4240,8 +4240,6 @@ Publish your website to Netlify
 Make multiple reports at once
 :::
 
-
-
 ## Why Parameterized Reporting?
 
 1. Allows you to make multiple reports at once
